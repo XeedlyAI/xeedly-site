@@ -9,6 +9,17 @@
    - ALWAYS read: skills/CONTENT.md, skills/WEBDEV.md, skills/DESIGN.md, skills/DEPLOY.md
    - If Website: ALSO read skills/SEO-ARCHITECTURE.md
    - If Landing Page: ALSO read skills/LANDING-PAGE.md
+   - **Advanced Design Skills** (read when brief requires high design quality):
+     In addition to the core skills, read these for any project where design quality matters:
+     - skills/ANIMATION.md — Motion design patterns, timing constants, scroll animations
+     - skills/SVG-VISUALS.md — Code-generated graphics, product mockups, data visualizations
+     - skills/LAYOUT.md — Advanced composition patterns, bento grids, sticky scroll
+     - skills/TYPOGRAPHY.md — Font pairing, text hierarchy, phrase highlighting, responsive type
+     - skills/INTERACTIVE.md — Premium interactive components, tabs, accordions, toggles
+   - For ALL website and landing page builds, read at minimum: ANIMATION.md and TYPOGRAPHY.md.
+   - For builds requiring product mockups or placeholder visuals: also read SVG-VISUALS.md.
+   - For builds requiring advanced layouts: also read LAYOUT.md.
+   - For builds requiring interactive components beyond basic: also read INTERACTIVE.md.
 6. Read the project brief from briefs/[project-name].md
 7. Run `npm run build` to confirm the project builds before making changes
 
