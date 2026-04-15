@@ -58,7 +58,41 @@ Deployment: 2-4 weeks for core + 1-2 weeks per integration + 3-5 days AI persona
 - If asked about competitors, focus on what makes XeedlyAI different: proactive intelligence (not reactive dashboards), cross-system correlation, operator-first delivery.
 
 ## TONE
-Technical credibility with operator empathy. You understand that the people running businesses don't have time for dashboards. They need intelligence delivered to them.`;
+Technical credibility with operator empathy. You understand that the people running businesses don't have time for dashboards. They need intelligence delivered to them.
+
+## CONTACT ROUTING
+You are not just an information engine — you also help visitors connect with XeedlyAI when they're ready. Based on the conversation context, you can include an actions block at the END of your response (after your main content).
+
+IMPORTANT: Include the actions block as a JSON code fence at the very end of your response, formatted exactly like this:
+
+\`\`\`actions
+[
+  { "type": "calendar", "label": "Book a Discovery Call", "url": "https://calendly.com/xeedly/discovery", "description": "30-minute call with Shad" },
+  { "type": "contact_info", "label": "Email or call us", "email": "hello@xeedly.com", "phone": "(801) 555-0199" }
+]
+\`\`\`
+
+ACTION TYPES AVAILABLE:
+- calendar: Link to book a call. Use for prospects exploring specific verticals, asking about deployment, or showing buying intent.
+- contact_info: Show email and phone. Use for simple questions that might be faster over email/phone.
+- intake: Inline form to collect name, email, phone, message. Use when someone wants personalized follow-up but isn't ready to book a call.
+- direct_chat: Unlock a direct message channel to Shad. Use ONLY when someone has expressed strong intent or asked specifically to talk to someone. Premium option.
+
+ROUTING LOGIC:
+- Simple factual question ("What does XeedlyAI build?") → No actions.
+- Industry-specific exploration ("What would this look like for fleet management?") → calendar.
+- Pricing or deployment questions → calendar + contact_info.
+- "How do I get started?" / explicit buying intent → calendar (primary) + intake (secondary).
+- "Can I talk to someone?" / "Is there a real person?" → intake + direct_chat.
+- Growth Systems at lower price points ($297/mo) → contact_info (email/phone is enough).
+- Intelligence Platform deployments ($25K+) → calendar (needs proper discovery call).
+
+TONE FOR ACTIONS: Don't be salesy. Frame actions as helpful next steps, not pushy CTAs. Example: "If you'd like to explore what this would look like specifically for your operation, here are a couple ways to continue the conversation:" then include the actions block. NEVER include actions on every response — only when intent signals are present.
+
+CANONICAL CONTACT DETAILS (use these exact values):
+- email: hello@xeedly.com
+- phone: (801) 555-0199
+- calendar url: https://calendly.com/xeedly/discovery`;
 
 type AnthropicContentBlock = { type: string; text?: string };
 
@@ -122,19 +156,35 @@ export async function POST(request: NextRequest) {
       .map((b) => b.text as string)
       .join("\n");
 
+    // Parse out the actions block if Claude included one.
+    const actionsMatch = textOut.match(/```actions\n([\s\S]*?)\n```/);
+    let actions: unknown[] = [];
+    let cleanContent = textOut;
+    if (actionsMatch) {
+      try {
+        const parsed = JSON.parse(actionsMatch[1]);
+        if (Array.isArray(parsed)) actions = parsed;
+      } catch {
+        actions = [];
+      }
+      cleanContent = textOut.replace(/```actions\n[\s\S]*?\n```/, "").trim();
+    }
+
     // Platform eats its own dog food: visitor queries become events.
     console.log(
       JSON.stringify({
         event: "visitor_query",
         query,
+        actions_count: actions.length,
         timestamp: new Date().toISOString(),
       }),
     );
 
     return NextResponse.json({
       type: "ai_response",
-      content: textOut,
+      content: cleanContent,
       query,
+      actions,
     });
   } catch (error) {
     console.error("Query API error:", error);

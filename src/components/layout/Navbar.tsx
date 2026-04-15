@@ -13,7 +13,7 @@ const NAV_LINKS = [
   { href: "/about", label: "About" },
 ];
 
-const LOGO_LIGHT = "/images/logos/Xeedly_ai_logo_light_grey.png";
+const LOGO_LIGHT = "/images/logos/Xeedly_ai_logo_bright_blue.png";
 const LOGO_DARK = "/images/logos/Xeedly_ai_logo_dark_blue.png";
 
 export function Navbar() {
@@ -62,7 +62,7 @@ export function Navbar() {
               priority
               className={cn(
                 "w-auto transition-all duration-300",
-                scrolled ? "h-7" : "h-7 md:h-8",
+                scrolled ? "h-8" : "h-9 md:h-9",
               )}
             />
           </Link>

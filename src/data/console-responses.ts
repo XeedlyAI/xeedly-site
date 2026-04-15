@@ -1,3 +1,5 @@
+import type { ConsoleAction } from "@/types/console-actions";
+
 export type BriefingSection = {
   title: string;
   icon?: string;
@@ -18,17 +20,20 @@ export type BriefingResponse = {
   type: "briefing";
   title: string;
   sections: BriefingSection[];
+  actions?: ConsoleAction[];
 };
 
 export type SignalsResponse = {
   type: "signals";
   title: string;
   signals: SignalCard[];
+  actions?: ConsoleAction[];
 };
 
 export type FreeformResponse = {
   type: "freeform";
   body: string;
+  actions?: ConsoleAction[];
 };
 
 export type ConsoleResponse =
@@ -177,6 +182,20 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
             "Businesses that start with Growth Systems often discover they need the intelligence layer to connect all their data. Growth Systems are the entry point. Intelligence Platforms are the destination.",
         },
       ],
+      actions: [
+        {
+          type: "calendar",
+          label: "Book a Discovery Call",
+          url: "https://calendly.com/xeedly/discovery",
+          description: "30-minute call with Shad to map Growth Systems to your business",
+        },
+        {
+          type: "contact_info",
+          label: "Or reach us directly",
+          email: "hello@xeedly.com",
+          phone: "(801) 555-0199",
+        },
+      ],
     },
   },
   {
@@ -202,6 +221,14 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
           icon: "⏱",
           body:
             "Intelligence Platforms: 2–4 weeks core + 1–2 weeks per integration. Growth Systems: live within 72 hours — ad campaigns launching day one.",
+        },
+      ],
+      actions: [
+        {
+          type: "calendar",
+          label: "Explore your vertical",
+          url: "https://calendly.com/xeedly/discovery",
+          description: "Let's map the signal engine to your operation",
         },
       ],
     },
@@ -236,6 +263,20 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
           icon: "🔑",
           body:
             "Sovvrn and Propertyolio as vertical SaaS. Per-location or per-org pricing.",
+        },
+      ],
+      actions: [
+        {
+          type: "calendar",
+          label: "Book a pricing conversation",
+          url: "https://calendly.com/xeedly/discovery",
+          description: "We'll scope the right tier for your operation",
+        },
+        {
+          type: "contact_info",
+          label: "Or reach us directly",
+          email: "hello@xeedly.com",
+          phone: "(801) 555-0199",
         },
       ],
     },

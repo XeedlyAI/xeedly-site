@@ -13,6 +13,8 @@ import {
   CONSOLE_EVENT,
   type ConsoleEventDetail,
 } from "@/components/shared/IntelligenceConsoleMini";
+import { ConsoleActions } from "@/components/shared/ConsoleActions";
+import type { ConsoleAction } from "@/types/console-actions";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -159,10 +161,29 @@ function FreeformView({ response }: { response: Extract<ConsoleResponse, { type:
   );
 }
 
-function ResponseView({ response }: { response: ConsoleResponse }) {
-  if (response.type === "briefing") return <BriefingView response={response} />;
-  if (response.type === "signals") return <SignalsView response={response} />;
-  return <FreeformView response={response} />;
+function ResponseView({
+  response,
+  context,
+}: {
+  response: ConsoleResponse;
+  context?: string;
+}) {
+  const inner =
+    response.type === "briefing" ? (
+      <BriefingView response={response} />
+    ) : response.type === "signals" ? (
+      <SignalsView response={response} />
+    ) : (
+      <FreeformView response={response} />
+    );
+  return (
+    <>
+      {inner}
+      {response.actions && response.actions.length > 0 && (
+        <ConsoleActions actions={response.actions} context={context} />
+      )}
+    </>
+  );
 }
 
 export function IntelligenceConsole() {
@@ -173,6 +194,7 @@ export function IntelligenceConsole() {
   );
   const [freeformValue, setFreeformValue] = useState("");
   const [freeformActive, setFreeformActive] = useState(false);
+  const [lastQuery, setLastQuery] = useState<string>("");
 
   // Listen for externally-dispatched queries (e.g. from the hero mini console).
   useEffect(() => {
@@ -200,6 +222,7 @@ export function IntelligenceConsole() {
   function runQuery(q: ConsoleQuery) {
     setActiveId(q.id);
     setFreeformActive(false);
+    setLastQuery(q.label);
     setProcessing(true);
     const delay = 600 + Math.round(Math.random() * 400);
     window.setTimeout(() => {
@@ -217,6 +240,7 @@ export function IntelligenceConsole() {
     if (!q) return;
     setActiveId("");
     setFreeformActive(true);
+    setLastQuery(q);
     setProcessing(true);
 
     try {
@@ -229,12 +253,16 @@ export function IntelligenceConsole() {
       if (!res.ok) {
         throw new Error(`status ${res.status}`);
       }
-      const data = (await res.json()) as { content?: string };
+      const data = (await res.json()) as {
+        content?: string;
+        actions?: ConsoleAction[];
+      };
       setResponse({
         type: "freeform",
         body:
           data.content ||
           "Unable to process your query right now. Try one of the suggested queries above, or reach out to us directly.",
+        actions: Array.isArray(data.actions) ? data.actions : undefined,
       });
     } catch {
       setResponse({
@@ -352,7 +380,7 @@ export function IntelligenceConsole() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                <ResponseView response={response} />
+                <ResponseView response={response} context={lastQuery} />
               </motion.div>
             )}
           </AnimatePresence>

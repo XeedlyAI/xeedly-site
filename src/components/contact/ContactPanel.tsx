@@ -4,6 +4,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { MiniConsole } from "./MiniConsole";
+import { ConsoleActions } from "@/components/shared/ConsoleActions";
+import type { ConsoleAction } from "@/types/console-actions";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -16,6 +18,20 @@ const INTERESTS = [
 ];
 
 const SIZES = ["1", "2–5", "6–20", "21–100", "100+"];
+
+const SUCCESS_ACTIONS: ConsoleAction[] = [
+  {
+    type: "direct_chat",
+    label: "Message Shad directly",
+    description: "He gets notified instantly on his phone.",
+  },
+  {
+    type: "calendar",
+    label: "Or book a Discovery Call",
+    url: "https://calendly.com/xeedly/discovery",
+    description: "30 minutes, no pitch — just answers.",
+  },
+];
 
 export function ContactPanel() {
   const [submitted, setSubmitted] = useState(false);
@@ -54,21 +70,29 @@ export function ContactPanel() {
                 className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#38b6ff]"
               />
               {submitted ? (
-                <div className="py-6 text-center">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#14b8a6]/10 mb-5">
-                    <Check className="h-6 w-6 text-[#0d9488]" />
+                <div className="py-2">
+                  <div className="text-center">
+                    <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#14b8a6]/10 mb-5">
+                      <Check className="h-6 w-6 text-[#0d9488]" />
+                    </div>
+                    <h3 className="text-[18px] font-bold text-[#0f172a]">
+                      Message received.
+                    </h3>
+                    <p className="mt-3 text-[13.5px] text-[#334155] max-w-md mx-auto leading-[1.7]">
+                      Shad will respond within one business day. Want to keep
+                      the conversation moving now?
+                    </p>
                   </div>
-                  <h3 className="text-[18px] font-bold text-[#0f172a]">
-                    Message received.
-                  </h3>
-                  <p className="mt-3 text-[13.5px] text-[#334155] max-w-md mx-auto leading-[1.7]">
-                    We&apos;ll respond within one business day. In the meantime,
-                    feel free to explore the Intelligence Console on the right.
-                  </p>
-                  <div className="mt-6 inline-flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full bg-[#f1f5f9] text-[#64748b]">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#14b8a6]" />
-                    Response time &lt; 24h
-                  </div>
+                  <ConsoleActions
+                    actions={SUCCESS_ACTIONS}
+                    context={`Contact form: ${form.interest || "general"} — ${
+                      form.company || "no company"
+                    }`}
+                    knownContact={{
+                      name: form.name,
+                      email: form.email,
+                    }}
+                  />
                 </div>
               ) : (
                 <form onSubmit={onSubmit} className="space-y-5">
