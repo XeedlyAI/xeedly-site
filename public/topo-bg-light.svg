@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" fill="none">
+  <defs>
+    <pattern id="topo-light" x="0" y="0" width="1200" height="800" patternUnits="userSpaceOnUse">
+      <g stroke="#0f172a" stroke-width="1" fill="none" opacity="0.03">
+        <path d="M-50 120 Q 150 60 350 140 T 750 120 T 1250 160" />
+        <path d="M-50 180 Q 170 130 380 200 T 780 180 T 1250 220" />
+        <path d="M-50 240 Q 190 200 400 260 T 810 250 T 1250 290" />
+        <path d="M-50 300 Q 210 270 420 320 T 840 320 T 1250 360" />
+        <path d="M-50 370 Q 230 340 450 390 T 870 400 T 1250 440" />
+        <path d="M-50 440 Q 250 420 480 470 T 900 480 T 1250 520" />
+        <path d="M-50 510 Q 270 490 510 550 T 930 560 T 1250 600" />
+        <path d="M-50 580 Q 290 560 540 620 T 960 640 T 1250 680" />
+        <path d="M-50 650 Q 310 630 570 690 T 990 710 T 1250 760" />
+        <path d="M-50 720 Q 330 700 600 760 T 1020 780 T 1250 830" />
+        <circle cx="300" cy="320" r="80" opacity="0.7" />
+        <circle cx="300" cy="320" r="140" opacity="0.55" />
+        <circle cx="300" cy="320" r="210" opacity="0.4" />
+        <circle cx="900" cy="500" r="60" opacity="0.7" />
+        <circle cx="900" cy="500" r="120" opacity="0.55" />
+        <circle cx="900" cy="500" r="190" opacity="0.4" />
+      </g>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#topo-light)" />
+</svg>
