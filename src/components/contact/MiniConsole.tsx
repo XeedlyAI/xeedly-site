@@ -23,11 +23,44 @@ const PROMPTS = [
 export function MiniConsole() {
   const [active, setActive] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
+  const [freeform, setFreeform] = useState("");
+  const [freeformAnswer, setFreeformAnswer] = useState<string | null>(null);
+  const [freeformActive, setFreeformActive] = useState(false);
 
   const ask = (i: number) => {
+    setFreeformActive(false);
+    setFreeformAnswer(null);
     setLoading(true);
     setActive(i);
     setTimeout(() => setLoading(false), 650 + Math.random() * 350);
+  };
+
+  const askFreeform = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = freeform.trim();
+    if (!q) return;
+    setActive(null);
+    setFreeformActive(true);
+    setFreeformAnswer(null);
+    setLoading(true);
+    try {
+      const res = await fetch("/api/query", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: q }),
+      });
+      const data = (await res.json()) as { content?: string };
+      setFreeformAnswer(
+        data.content ||
+          "Unable to process that right now — try one of the suggestions, or reach us at hello@xeedly.com.",
+      );
+    } catch {
+      setFreeformAnswer(
+        "Unable to process that right now — try one of the suggestions, or reach us at hello@xeedly.com.",
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -67,9 +100,58 @@ export function MiniConsole() {
         ))}
       </div>
 
+      <form
+        onSubmit={askFreeform}
+        className="mt-3 flex items-stretch gap-0 bg-white/5 rounded-lg border border-white/15 overflow-hidden focus-within:border-[#38b6ff]/60 focus-within:bg-white/10 transition-all"
+      >
+        <input
+          type="text"
+          value={freeform}
+          onChange={(e) => setFreeform(e.target.value)}
+          placeholder="Ask your own question…"
+          className="flex-1 px-3 py-2.5 text-[12.5px] text-white placeholder:text-[#94a3b8] bg-transparent focus:outline-none"
+        />
+        <button
+          type="submit"
+          disabled={!freeform.trim() || loading}
+          className="px-4 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[#38b6ff] hover:bg-[#38b6ff]/10 disabled:opacity-40 transition-colors"
+        >
+          Ask →
+        </button>
+      </form>
+
       <div className="mt-5 min-h-[140px]">
         <AnimatePresence mode="wait">
-          {active === null ? (
+          {freeformActive ? (
+            loading ? (
+              <motion.div
+                key="ff-loading"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="flex items-center gap-2 font-mono text-[11px] text-[#38b6ff]"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-[#38b6ff] animate-pulse" />
+                processing signal…
+              </motion.div>
+            ) : (
+              <motion.div
+                key="ff-answer"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4, ease: EASE }}
+                className="rounded-lg border-l-2 border-[#8b5cf6] bg-[#8b5cf6]/10 px-3 py-2.5"
+              >
+                <div className="font-mono text-[9px] font-semibold uppercase tracking-[0.12em] text-[#a78bfa]">
+                  ⚡ AI Response
+                </div>
+                <p className="mt-1.5 text-[12.5px] text-[#e2e8f0] leading-[1.65] whitespace-pre-line">
+                  {freeformAnswer}
+                </p>
+              </motion.div>
+            )
+          ) : active === null ? (
             <motion.div
               key="empty"
               initial={{ opacity: 0 }}
