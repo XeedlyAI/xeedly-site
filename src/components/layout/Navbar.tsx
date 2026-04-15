@@ -67,12 +67,18 @@ export function Navbar() {
             />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-7">
+          <nav
+            className="hidden md:flex items-center gap-6 px-4 py-2 rounded-lg border"
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              borderColor: "rgba(255,255,255,0.06)",
+            }}
+          >
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[13px] font-medium text-[#f1f5f9] hover:text-[#38b6ff] transition-colors"
+                className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[#f1f5f9] hover:text-[#38b6ff] transition-colors"
               >
                 {link.label}
               </Link>

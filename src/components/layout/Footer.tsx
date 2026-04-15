@@ -50,47 +50,63 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="md:col-span-3">
-            <div className="text-[11px] font-semibold tracking-[0.12em] uppercase text-[#64748b] mb-4">
-              Products
+          <div className="md:col-span-3 text-left">
+            <div
+              className="rounded-lg border px-4 py-3"
+              style={{
+                background: "rgba(255,255,255,0.03)",
+                borderColor: "rgba(255,255,255,0.06)",
+              }}
+            >
+              <div className="font-mono text-[11px] font-semibold tracking-[0.08em] uppercase text-[#64748b] mb-3">
+                Products
+              </div>
+              <ul className="space-y-2.5">
+                {PRODUCT_LINKS.map((l) => (
+                  <li key={l.label}>
+                    <Link
+                      href={l.href}
+                      className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[#f1f5f9] hover:text-[#38b6ff] transition-colors"
+                      {...(l.external
+                        ? { target: "_blank", rel: "noreferrer" }
+                        : {})}
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="space-y-3">
-              {PRODUCT_LINKS.map((l) => (
-                <li key={l.label}>
-                  <Link
-                    href={l.href}
-                    className="text-[14px] text-[#f1f5f9] hover:text-[#38b6ff] transition-colors"
-                    {...(l.external
-                      ? { target: "_blank", rel: "noreferrer" }
-                      : {})}
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
 
-          <div className="md:col-span-4">
-            <div className="text-[11px] font-semibold tracking-[0.12em] uppercase text-[#64748b] mb-4">
-              Company
+          <div className="md:col-span-4 text-left">
+            <div
+              className="rounded-lg border px-4 py-3"
+              style={{
+                background: "rgba(255,255,255,0.03)",
+                borderColor: "rgba(255,255,255,0.06)",
+              }}
+            >
+              <div className="font-mono text-[11px] font-semibold tracking-[0.08em] uppercase text-[#64748b] mb-3">
+                Company
+              </div>
+              <ul className="space-y-2.5">
+                {COMPANY_LINKS.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[#f1f5f9] hover:text-[#38b6ff] transition-colors"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="space-y-3">
-              {COMPANY_LINKS.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className="text-[14px] text-[#f1f5f9] hover:text-[#38b6ff] transition-colors"
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
 
-        <div className="mt-14 pt-6 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="mt-14 pt-6 border-t border-white/10 flex flex-col md:flex-row items-start justify-start gap-4 text-left">
           <p className="text-[12px] text-[#64748b] font-mono">
             © 2026 XeedlyAI. AI intelligence platforms for operational
             businesses.
@@ -100,7 +116,7 @@ export function Footer() {
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="text-[12px] text-[#64748b] hover:text-[#94a3b8] transition-colors"
+                  className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[#64748b] hover:text-[#94a3b8] transition-colors"
                 >
                   {l.label}
                 </Link>
