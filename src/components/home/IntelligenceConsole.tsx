@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   CONSOLE_QUERIES,
@@ -9,6 +9,10 @@ import {
   type SignalSeverity,
 } from "@/data/console-responses";
 import { cn } from "@/lib/utils";
+import {
+  CONSOLE_EVENT,
+  type ConsoleEventDetail,
+} from "@/components/shared/IntelligenceConsoleMini";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -170,6 +174,29 @@ export function IntelligenceConsole() {
   const [freeformValue, setFreeformValue] = useState("");
   const [freeformActive, setFreeformActive] = useState(false);
 
+  // Listen for externally-dispatched queries (e.g. from the hero mini console).
+  useEffect(() => {
+    function onExternal(e: Event) {
+      const ce = e as CustomEvent<ConsoleEventDetail>;
+      const detail = ce.detail;
+      if (!detail) return;
+      if (detail.kind === "pill") {
+        const q = CONSOLE_QUERIES.find((c) => c.id === detail.id);
+        if (q) runQuery(q);
+      } else if (detail.kind === "freeform") {
+        setFreeformValue(detail.text);
+        // Fire the API call on the next tick so state updates settle.
+        window.setTimeout(() => {
+          runFreeformWith(detail.text);
+        }, 0);
+      }
+    }
+    window.addEventListener(CONSOLE_EVENT, onExternal as EventListener);
+    return () =>
+      window.removeEventListener(CONSOLE_EVENT, onExternal as EventListener);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   function runQuery(q: ConsoleQuery) {
     setActiveId(q.id);
     setFreeformActive(false);
@@ -182,7 +209,11 @@ export function IntelligenceConsole() {
   }
 
   async function runFreeform() {
-    const q = freeformValue.trim();
+    return runFreeformWith(freeformValue);
+  }
+
+  async function runFreeformWith(raw: string) {
+    const q = raw.trim();
     if (!q) return;
     setActiveId("");
     setFreeformActive(true);
