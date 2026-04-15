@@ -148,6 +148,17 @@ export function IntelligenceTiers() {
               >
                 Talk to Us
               </Link>
+              <p className="mt-2 text-[10px] text-[#94a3b8] text-center leading-[1.5]">
+                By signing up, you agree to our{" "}
+                <Link href="/terms" className="text-[#0A8FD4] hover:text-[#38b6ff] underline">
+                  Terms of Service
+                </Link>{" "}
+                and{" "}
+                <Link href="/privacy" className="text-[#0A8FD4] hover:text-[#38b6ff] underline">
+                  Privacy Policy
+                </Link>
+                .
+              </p>
             </motion.div>
           );
         })}

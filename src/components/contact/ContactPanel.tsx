@@ -181,9 +181,27 @@ export function ContactPanel() {
                   >
                     Send Message
                   </button>
-                  <p className="text-[11px] text-[#64748b] text-center">
+                  <p className="text-[11px] text-[#64748b] text-center leading-[1.55]">
                     We&apos;ll respond within one business day. No sales
-                    sequences, no drip campaigns.
+                    sequences, no drip campaigns. By submitting, you agree to
+                    our{" "}
+                    <a
+                      href="/terms"
+                      className="text-[#0A8FD4] hover:text-[#38b6ff] underline"
+                    >
+                      Terms of Service
+                    </a>{" "}
+                    and{" "}
+                    <a
+                      href="/privacy"
+                      className="text-[#0A8FD4] hover:text-[#38b6ff] underline"
+                    >
+                      Privacy Policy
+                    </a>
+                    . If you share a phone number, you consent to receive
+                    automated text messages and calls from XeedlyAI. Message
+                    frequency varies. Msg &amp; data rates may apply. Reply
+                    STOP to opt out.
                   </p>
                 </form>
               )}
