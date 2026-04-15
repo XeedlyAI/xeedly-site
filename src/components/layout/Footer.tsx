@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const PRODUCT_LINKS = [
   { href: "https://sovvrn.com", label: "Sovvrn", external: true },
@@ -34,15 +35,16 @@ export function Footer() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-5">
-            <Link href="/" className="inline-flex items-center gap-1.5">
-              <span className="text-xl font-bold tracking-tight text-white">
-                Xeedly
-              </span>
-              <span className="text-xl font-bold tracking-tight text-[#38b6ff]">
-                AI
-              </span>
+            <Link href="/" className="inline-flex items-center" aria-label="XeedlyAI home">
+              <Image
+                src="/images/logos/Xeedly_ai_logo_light_grey.png"
+                alt="XeedlyAI"
+                width={480}
+                height={96}
+                className="h-12 md:h-14 w-auto"
+              />
             </Link>
-            <p className="mt-4 max-w-sm text-[14px] leading-relaxed text-[#94a3b8]">
+            <p className="mt-6 max-w-sm text-[14px] leading-relaxed text-[#94a3b8]">
               AI-native intelligence platforms and automated growth systems
               for operational businesses.
             </p>

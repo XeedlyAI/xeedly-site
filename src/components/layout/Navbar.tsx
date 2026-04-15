@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -12,12 +13,15 @@ const NAV_LINKS = [
   { href: "/about", label: "About" },
 ];
 
+const LOGO_LIGHT = "/images/logos/Xeedly_ai_logo_light_grey.png";
+const LOGO_DARK = "/images/logos/Xeedly_ai_logo_dark_blue.png";
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setScrolled(window.scrollY > 50);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -27,28 +31,53 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          "fixed top-0 inset-x-0 z-50 transition-all duration-300",
+          "fixed z-50 transition-all duration-300 ease-out",
           scrolled
-            ? "bg-white/90 backdrop-blur-md shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
-            : "bg-transparent",
+            ? "top-3 left-1/2 -translate-x-1/2 w-[min(940px,calc(100%-16px))] rounded-full border border-black/[0.06] bg-white/85 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.08),0_1px_4px_rgba(0,0,0,0.04)]"
+            : "top-0 left-0 right-0 w-full bg-transparent border border-transparent",
         )}
+        style={{
+          transitionProperty:
+            "top, width, max-width, background-color, border-color, box-shadow, border-radius, transform",
+        }}
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-1.5 group">
-            <span
+        <div
+          className={cn(
+            "mx-auto flex items-center justify-between transition-all duration-300",
+            scrolled
+              ? "h-14 px-4 sm:px-5"
+              : "h-16 px-4 sm:px-6 lg:px-8 max-w-7xl",
+          )}
+        >
+          {/* Logo */}
+          <Link href="/" className="flex items-center shrink-0" aria-label="XeedlyAI home">
+            {/* Light logo for dark/top state */}
+            <Image
+              src={LOGO_LIGHT}
+              alt="XeedlyAI"
+              width={320}
+              height={64}
+              priority
               className={cn(
-                "text-lg font-bold tracking-tight transition-colors",
-                scrolled ? "text-[#0f172a]" : "text-white",
+                "h-7 md:h-8 w-auto transition-opacity duration-300",
+                scrolled ? "opacity-0 absolute pointer-events-none" : "opacity-100",
               )}
-            >
-              Xeedly
-            </span>
-            <span className="text-lg font-bold tracking-tight text-[#38b6ff]">
-              AI
-            </span>
+            />
+            {/* Dark logo for scrolled/pill state */}
+            <Image
+              src={LOGO_DARK}
+              alt="XeedlyAI"
+              width={320}
+              height={64}
+              priority
+              className={cn(
+                "h-7 w-auto transition-opacity duration-300",
+                scrolled ? "opacity-100" : "opacity-0 absolute pointer-events-none",
+              )}
+            />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-7">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -56,8 +85,8 @@ export function Navbar() {
                 className={cn(
                   "text-[13px] font-medium transition-colors",
                   scrolled
-                    ? "text-[#334155] hover:text-[#0f172a]"
-                    : "text-white/80 hover:text-white",
+                    ? "text-[#334155] hover:text-[#38b6ff]"
+                    : "text-white/85 hover:text-white",
                 )}
               >
                 {link.label}
@@ -65,7 +94,7 @@ export function Navbar() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <Link
               href="/contact"
               className="hidden md:inline-flex items-center px-4 py-2 rounded-full bg-[#38b6ff] hover:bg-[#0A8FD4] text-[#0f172a] text-[13px] font-semibold transition-colors"
@@ -96,14 +125,13 @@ export function Navbar() {
           />
           <div className="absolute right-0 top-0 h-full w-[80%] max-w-xs bg-white shadow-xl flex flex-col">
             <div className="h-16 px-5 flex items-center justify-between border-b border-[#e2e8f0]">
-              <div className="flex items-center gap-1.5">
-                <span className="text-lg font-bold tracking-tight text-[#0f172a]">
-                  Xeedly
-                </span>
-                <span className="text-lg font-bold tracking-tight text-[#38b6ff]">
-                  AI
-                </span>
-              </div>
+              <Image
+                src={LOGO_DARK}
+                alt="XeedlyAI"
+                width={320}
+                height={64}
+                className="h-7 w-auto"
+              />
               <button
                 type="button"
                 onClick={() => setMobileOpen(false)}
