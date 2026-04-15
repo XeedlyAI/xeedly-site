@@ -64,13 +64,7 @@ export function MiniConsole() {
   };
 
   return (
-    <div
-      className="p-5 md:p-6 sticky top-24 overflow-hidden relative rounded-xl border"
-      style={{
-        background: "#0f172a",
-        borderColor: "rgba(56,182,255,0.2)",
-      }}
-    >
+    <div className="dash-card-dark p-5 md:p-6 sticky top-24 overflow-hidden relative">
       <div
         aria-hidden
         className="absolute left-0 right-0 top-0 h-[2px] bg-[#38b6ff]"
@@ -78,14 +72,14 @@ export function MiniConsole() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="h-2 w-2 rounded-full bg-[#14b8a6] animate-pulse" />
-          <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-[#94a3b8]">
+          <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-[#475569]">
             Intelligence Console
           </span>
         </div>
         <span className="font-mono text-[9px] text-[#64748b]">xeedly://mini</span>
       </div>
 
-      <p className="mt-4 text-[12px] text-[#94a3b8] leading-[1.6]">
+      <p className="mt-4 text-[12px] text-[#475569] leading-[1.6]">
         Not sure which product fits? Ask a quick question — answers are
         generated from the same engine that powers our platforms.
       </p>
@@ -97,8 +91,8 @@ export function MiniConsole() {
             onClick={() => ask(i)}
             className={`w-full text-left px-3 py-2 rounded-lg border text-[12px] leading-[1.5] transition ${
               active === i
-                ? "border-[#38b6ff]/50 bg-[#38b6ff]/10 text-white"
-                : "border-white/10 bg-white/5 text-[#cbd5e1] hover:border-white/20 hover:text-white"
+                ? "border-[#38b6ff]/50 bg-[#38b6ff]/10 text-[#0f172a]"
+                : "border-white/10 bg-white/5 text-[#475569] hover:border-white/20 hover:text-[#0f172a]"
             }`}
           >
             {p.q}
@@ -115,7 +109,7 @@ export function MiniConsole() {
           value={freeform}
           onChange={(e) => setFreeform(e.target.value)}
           placeholder="Ask your own question…"
-          className="flex-1 px-3 py-2.5 text-[12.5px] text-white placeholder:text-[#cbd5e1] bg-transparent focus:outline-none"
+          className="flex-1 px-3 py-2.5 text-[12.5px] text-[#0f172a] placeholder:text-[#64748b] bg-transparent focus:outline-none"
         />
         <button
           type="submit"
@@ -152,7 +146,7 @@ export function MiniConsole() {
                 <div className="font-mono text-[9px] font-semibold uppercase tracking-[0.12em] text-[#a78bfa]">
                   ⚡ AI Response
                 </div>
-                <p className="mt-1.5 text-[12.5px] text-[#f1f5f9] leading-[1.65] whitespace-pre-line">
+                <p className="mt-1.5 text-[12.5px] text-[#334155] leading-[1.65] whitespace-pre-line">
                   {freeformAnswer}
                 </p>
               </motion.div>
@@ -190,7 +184,7 @@ export function MiniConsole() {
               <div className="font-mono text-[9px] font-semibold uppercase tracking-[0.12em] text-[#38b6ff]">
                 Recommendation
               </div>
-              <p className="mt-1.5 text-[12.5px] text-[#f1f5f9] leading-[1.65]">
+              <p className="mt-1.5 text-[12.5px] text-[#334155] leading-[1.65]">
                 {PROMPTS[active].a}
               </p>
             </motion.div>
