@@ -148,7 +148,7 @@ function FreeformView({ response }: { response: Extract<ConsoleResponse, { type:
       <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-[#8b5cf6]">
         ⚡ AI-Generated Response
       </div>
-      <p className="mt-3 text-[13px] leading-[1.6] text-[#334155]">
+      <p className="mt-3 text-[13px] leading-[1.6] text-[#334155] whitespace-pre-line">
         {response.body}
       </p>
     </motion.div>
@@ -181,19 +181,39 @@ export function IntelligenceConsole() {
     }, delay);
   }
 
-  function runFreeform() {
-    if (!freeformValue.trim()) return;
+  async function runFreeform() {
+    const q = freeformValue.trim();
+    if (!q) return;
     setActiveId("");
     setFreeformActive(true);
     setProcessing(true);
-    const delay = 700 + Math.round(Math.random() * 400);
-    window.setTimeout(() => {
+
+    try {
+      const res = await fetch("/api/query", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: q }),
+      });
+
+      if (!res.ok) {
+        throw new Error(`status ${res.status}`);
+      }
+      const data = (await res.json()) as { content?: string };
       setResponse({
         type: "freeform",
-        body: `In production, this freeform query would hit the Claude API with a system prompt loaded with XeedlyAI platform context. You asked: "${freeformValue.trim()}" — the platform would generate a tailored response showing what intelligence delivery would look like for your industry, vertical, and data sources. This is the entry point to every deployment conversation.`,
+        body:
+          data.content ||
+          "Unable to process your query right now. Try one of the suggested queries above, or reach out to us directly.",
       });
+    } catch {
+      setResponse({
+        type: "freeform",
+        body:
+          "Unable to process your query right now. Try one of the suggested queries above, or reach out to us directly.",
+      });
+    } finally {
       setProcessing(false);
-    }, delay);
+    }
   }
 
   return (
