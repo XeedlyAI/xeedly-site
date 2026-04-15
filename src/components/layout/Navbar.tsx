@@ -33,12 +33,15 @@ export function Navbar() {
         className={cn(
           "fixed z-50 transition-all duration-300 ease-out",
           scrolled
-            ? "top-3 left-1/2 -translate-x-1/2 w-[min(940px,calc(100%-16px))] rounded-full border border-black/[0.06] bg-white/85 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.08),0_1px_4px_rgba(0,0,0,0.04)]"
-            : "top-0 left-0 right-0 w-full bg-transparent border border-transparent",
+            ? "top-3 left-1/2 -translate-x-1/2 w-[min(950px,calc(100%-16px))] rounded-full border border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.15),0_1px_4px_rgba(0,0,0,0.08)]"
+            : "top-0 left-0 right-0 w-full border border-transparent",
         )}
         style={{
+          background: scrolled ? "rgba(15, 23, 42, 0.75)" : "transparent",
+          WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
+          backdropFilter: scrolled ? "blur(16px)" : "none",
           transitionProperty:
-            "top, width, max-width, background-color, border-color, box-shadow, border-radius, transform",
+            "top, width, max-width, background, border-color, box-shadow, border-radius, transform, backdrop-filter",
         }}
       >
         <div
@@ -49,9 +52,8 @@ export function Navbar() {
               : "h-16 px-4 sm:px-6 lg:px-8 max-w-7xl",
           )}
         >
-          {/* Logo */}
+          {/* Logo — stays light in both states (dark bg in both) */}
           <Link href="/" className="flex items-center shrink-0" aria-label="XeedlyAI home">
-            {/* Light logo for dark/top state */}
             <Image
               src={LOGO_LIGHT}
               alt="XeedlyAI"
@@ -59,20 +61,8 @@ export function Navbar() {
               height={64}
               priority
               className={cn(
-                "h-7 md:h-8 w-auto transition-opacity duration-300",
-                scrolled ? "opacity-0 absolute pointer-events-none" : "opacity-100",
-              )}
-            />
-            {/* Dark logo for scrolled/pill state */}
-            <Image
-              src={LOGO_DARK}
-              alt="XeedlyAI"
-              width={320}
-              height={64}
-              priority
-              className={cn(
-                "h-7 w-auto transition-opacity duration-300",
-                scrolled ? "opacity-100" : "opacity-0 absolute pointer-events-none",
+                "w-auto transition-all duration-300",
+                scrolled ? "h-7" : "h-7 md:h-8",
               )}
             />
           </Link>
@@ -82,12 +72,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={cn(
-                  "text-[13px] font-medium transition-colors",
-                  scrolled
-                    ? "text-[#334155] hover:text-[#38b6ff]"
-                    : "text-white/85 hover:text-white",
-                )}
+                className="text-[13px] font-medium text-[#f1f5f9] hover:text-[#38b6ff] transition-colors"
               >
                 {link.label}
               </Link>
@@ -104,10 +89,7 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => setMobileOpen(true)}
-              className={cn(
-                "md:hidden p-2 rounded-md transition-colors",
-                scrolled ? "text-[#0f172a]" : "text-white",
-              )}
+              className="md:hidden p-2 rounded-md text-white transition-colors"
               aria-label="Open menu"
             >
               <Menu size={22} />
