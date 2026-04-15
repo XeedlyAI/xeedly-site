@@ -64,7 +64,13 @@ export function MiniConsole() {
   };
 
   return (
-    <div className="dash-card-dark p-5 md:p-6 sticky top-24 overflow-hidden relative">
+    <div
+      className="p-5 md:p-6 sticky top-24 overflow-hidden relative rounded-xl border"
+      style={{
+        background: "#0f172a",
+        borderColor: "rgba(56,182,255,0.2)",
+      }}
+    >
       <div
         aria-hidden
         className="absolute left-0 right-0 top-0 h-[2px] bg-[#38b6ff]"
@@ -109,7 +115,7 @@ export function MiniConsole() {
           value={freeform}
           onChange={(e) => setFreeform(e.target.value)}
           placeholder="Ask your own question…"
-          className="flex-1 px-3 py-2.5 text-[12.5px] text-white placeholder:text-[#94a3b8] bg-transparent focus:outline-none"
+          className="flex-1 px-3 py-2.5 text-[12.5px] text-white placeholder:text-[#cbd5e1] bg-transparent focus:outline-none"
         />
         <button
           type="submit"
@@ -146,7 +152,7 @@ export function MiniConsole() {
                 <div className="font-mono text-[9px] font-semibold uppercase tracking-[0.12em] text-[#a78bfa]">
                   ⚡ AI Response
                 </div>
-                <p className="mt-1.5 text-[12.5px] text-[#e2e8f0] leading-[1.65] whitespace-pre-line">
+                <p className="mt-1.5 text-[12.5px] text-[#f1f5f9] leading-[1.65] whitespace-pre-line">
                   {freeformAnswer}
                 </p>
               </motion.div>
@@ -184,7 +190,7 @@ export function MiniConsole() {
               <div className="font-mono text-[9px] font-semibold uppercase tracking-[0.12em] text-[#38b6ff]">
                 Recommendation
               </div>
-              <p className="mt-1.5 text-[12.5px] text-[#e2e8f0] leading-[1.65]">
+              <p className="mt-1.5 text-[12.5px] text-[#f1f5f9] leading-[1.65]">
                 {PROMPTS[active].a}
               </p>
             </motion.div>
