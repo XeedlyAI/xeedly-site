@@ -102,7 +102,7 @@ export function MiniConsole() {
 
       <form
         onSubmit={askFreeform}
-        className="mt-3 flex items-stretch gap-0 bg-white/5 rounded-lg border border-white/15 overflow-hidden focus-within:border-[#38b6ff]/60 focus-within:bg-white/10 transition-all"
+        className="mt-3 flex items-stretch gap-0 bg-white/5 rounded-lg border border-[#cbd5e1] overflow-hidden focus-within:border-[#38b6ff] focus-within:bg-white/10 transition-all"
       >
         <input
           type="text"
