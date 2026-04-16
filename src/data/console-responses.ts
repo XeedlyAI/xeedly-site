@@ -244,13 +244,13 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
           title: "Intelligence Deployment",
           icon: "🏗",
           body:
-            "$25K–$75K one-time. Full platform on your infrastructure. 30-day onboarding.",
+            "Most deployments land between $5K and $25K — a 2–4 week standup with signal rules, AI persona, and delivery channels configured for your vertical. Complex builds with 6+ integrations or multi-brand architectures can reach $35K–$50K.",
         },
         {
           title: "Managed Intelligence",
           icon: "🛠",
           body:
-            "$2K–$8K/mo ongoing tuning and integrations. Continuous signal engine refinement.",
+            "Most clients pay $500–$3K/mo for ongoing signal tuning, platform updates, and support. High-volume environments with 10+ integrations and daily adjustments: $5K–$7.5K/mo.",
         },
         {
           title: "Growth Systems",
@@ -262,7 +262,7 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
           title: "Product Licenses",
           icon: "🔑",
           body:
-            "Sovvrn and Propertyolio as vertical SaaS. Per-location or per-org pricing.",
+            "Sovvrn and Propertyolio as vertical SaaS. Per-location or per-org pricing, starting at $499/mo.",
         },
       ],
       actions: [

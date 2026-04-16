@@ -8,27 +8,32 @@ type Plan = {
   name: string;
   price: string;
   priceSuffix?: string;
+  anchor?: string;
   items: string[];
   tags: string[];
+  footnote?: string;
 };
 
 const PLANS: Plan[] = [
   {
     name: "Intelligence Deployment",
-    price: "$25K–$75K",
+    price: "$5K–$25K",
     priceSuffix: "one-time",
+    anchor: "most deployments",
     items: [
       "Full platform on your infrastructure",
       "Configured for your vertical",
-      "30-day onboarding",
+      "2–4 week standup",
       "Custom signal rules + AI persona",
     ],
     tags: ["One-time", "2–4 weeks"],
+    footnote: "Complex builds (6+ integrations, multi-brand): $35K–$50K",
   },
   {
     name: "Managed Intelligence",
-    price: "$2K–$8K",
+    price: "$500–$3K",
     priceSuffix: "/mo",
+    anchor: "most clients",
     items: [
       "Ongoing signal rule tuning",
       "New system integrations",
@@ -36,6 +41,7 @@ const PLANS: Plan[] = [
       "Platform updates + monitoring",
     ],
     tags: ["Monthly", "Ongoing"],
+    footnote: "High-volume (10+ integrations, daily adjustments): $5K–$7.5K/mo",
   },
   {
     name: "Product Licenses",
@@ -110,6 +116,11 @@ export function DeploymentModel() {
                   </span>
                 )}
               </div>
+              {p.anchor && (
+                <div className="mt-1 font-mono text-[12px] text-[#64748b]">
+                  {p.anchor}
+                </div>
+              )}
               <ul className="mt-5 space-y-2">
                 {p.items.map((it) => (
                   <li
@@ -121,6 +132,11 @@ export function DeploymentModel() {
                   </li>
                 ))}
               </ul>
+              {p.footnote && (
+                <div className="mt-4 pt-3 border-t border-[#e2e8f0]/70 text-[12px] italic text-[#64748b] leading-[1.45]">
+                  {p.footnote}
+                </div>
+              )}
               <div className="mt-6 flex flex-wrap gap-2">
                 {p.tags.map((t) => (
                   <span

@@ -39,9 +39,9 @@ Deployment: 2-4 weeks for core + 1-2 weeks per integration + 3-5 days AI persona
 
 ## PRICING
 ### Intelligence Platforms
-- Intelligence Deployment: $25K-$75K one-time (full platform on your infrastructure)
-- Managed Intelligence: $2K-$8K/mo (ongoing tuning, integrations, updates)
-- Product Licenses: SaaS pricing for Sovvrn and Propertyolio
+- Intelligence Deployment: $5K-$25K for most deployments (2-4 week standup, 3-5 data sources). Complex builds with 6+ integrations: $35K-$50K.
+- Managed Intelligence: $500-$3K/mo for most clients. High-volume (10+ integrations): $5K-$7.5K/mo.
+- Product Licenses: SaaS pricing for Sovvrn and Propertyolio, starting at $499/mo per location.
 
 ### Growth Systems (Automated Marketing)
 - Starter: $297/mo — AI Ad Engine (1 platform), AI Chat Agent, Review Intelligence

@@ -9,18 +9,21 @@ type Tier = {
   name: string;
   price: string;
   unit: string;
+  anchor?: string;
   tagline: string;
   features: string[];
+  footnote?: { headline: string; detail?: string };
   accent: "teal" | "blue" | "purple";
 };
 
 const TIERS: Tier[] = [
   {
     name: "Intelligence Deployment",
-    price: "$25K–$75K",
+    price: "$5K–$25K",
     unit: "one-time",
+    anchor: "most deployments",
     tagline:
-      "We deploy an intelligence platform for your vertical. Event bus, signal engine, delivery layer — configured to your data sources.",
+      "Typical 2–4 week standup for businesses with 3–5 data sources. Includes vertical discovery, signal rules, AI persona, and delivery channel configuration.",
     features: [
       "Vertical discovery & signal mapping",
       "Data source integrations (POS, CRM, docs, field systems)",
@@ -28,14 +31,19 @@ const TIERS: Tier[] = [
       "Morning briefing + alert channels",
       "2–4 week standup",
     ],
+    footnote: {
+      headline: "Complex builds: $35K–$50K",
+      detail: "6+ integrations, custom pipelines, multi-brand",
+    },
     accent: "blue",
   },
   {
     name: "Managed Intelligence",
-    price: "$2K–$8K",
+    price: "$500–$3K",
     unit: "/mo",
+    anchor: "most clients",
     tagline:
-      "Ongoing operation of your intelligence platform. Claude API, event ingestion, signal tuning, and platform upkeep.",
+      "Ongoing signal tuning, platform updates, and support scaled to your signal volume and integration count.",
     features: [
       "Claude API usage (included up to tier)",
       "Event ingestion & retention",
@@ -43,6 +51,10 @@ const TIERS: Tier[] = [
       "Quarterly business review",
       "Priority escalation",
     ],
+    footnote: {
+      headline: "High-volume: $5K–$7.5K/mo",
+      detail: "10+ integrations, daily rule adjustments",
+    },
     accent: "teal",
   },
   {
@@ -121,6 +133,11 @@ export function IntelligenceTiers() {
                   <span className="text-[14px] text-[#64748b]">{t.unit}</span>
                 )}
               </div>
+              {t.anchor && (
+                <div className="mt-1 font-mono text-[12px] text-[#64748b]">
+                  {t.anchor}
+                </div>
+              )}
               <p className="mt-3 text-[13px] text-[#334155] leading-[1.6]">
                 {t.tagline}
               </p>
@@ -137,6 +154,18 @@ export function IntelligenceTiers() {
                   </li>
                 ))}
               </ul>
+              {t.footnote && (
+                <div className="mt-4 pt-3 border-t border-[#e2e8f0]/70">
+                  <div className="text-[12px] italic text-[#64748b] leading-[1.45]">
+                    {t.footnote.headline}
+                  </div>
+                  {t.footnote.detail && (
+                    <div className="mt-0.5 text-[11px] text-[#94a3b8] leading-[1.45]">
+                      {t.footnote.detail}
+                    </div>
+                  )}
+                </div>
+              )}
               <div
                 className={`mt-6 inline-flex font-mono text-[10px] font-semibold uppercase tracking-[0.12em] px-2.5 py-1 rounded-full ${a.chip} ${a.chipText} self-start`}
               >
