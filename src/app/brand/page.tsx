@@ -7,11 +7,10 @@ export const metadata: Metadata = {
 };
 
 const PALETTE = [
-  { name: "Brand Blue", hex: "#2563EB", token: "primary" },
-  { name: "Signal Cyan", hex: "#06B6D4", token: "accent" },
-  { name: "Ink", hex: "#0F172A", token: "ink" },
-  { name: "Slate", hex: "#334155", token: "body" },
-  { name: "Mist", hex: "#F1F5F9", token: "surface" },
+  { name: "Bright Blue", hex: "#38B6FF", token: "primary / icon" },
+  { name: "Slate", hex: "#64748B", token: "wordmark text" },
+  { name: "Ink", hex: "#0F172A", token: "dark surfaces" },
+  { name: "Mist", hex: "#F1F5F9", token: "light surfaces" },
 ];
 
 export default function BrandPreviewPage() {
@@ -22,26 +21,23 @@ export default function BrandPreviewPage() {
           Brand Preview — Internal
         </div>
         <h1 className="mt-3 text-[36px] font-bold text-[#0f172a] tracking-tight">
-          xeedlyAI identity — stab #1
+          xeedlyAI identity — v2
         </h1>
         <p className="mt-3 max-w-2xl text-[14px] leading-[1.7] text-[#334155]">
-          The X becomes two intersecting diagonal strokes — one primary blue,
-          one signal cyan. No circle, no badge. Reads as two data streams
-          crossing. Pairs with a clean Inter wordmark, lowercase to match the
-          product family (sovvrn, propertydocz, propertyjobz, propertyolio),
-          with <span className="font-semibold text-[#2563EB]">AI</span> in
-          primary blue as a live suffix.
+          Sovvrn-family tree icon in bright blue (#38B6FF) paired with a
+          medium-grey Inter wordmark. One lockup works on both dark and light
+          backgrounds — no separate light/dark variants needed.
         </p>
 
-        {/* Primary lockup on light */}
+        {/* Lockup on light */}
         <section className="mt-10 rounded-xl bg-white p-10 border border-[#e2e8f0]">
-          <Label>Primary lockup — light surface</Label>
+          <Label>Lockup — light surface</Label>
           <div className="mt-6 flex items-center justify-center">
             <Image
               src="/brand/xeedly-lockup.svg"
               alt="XeedlyAI"
-              width={260}
-              height={64}
+              width={420}
+              height={100}
               unoptimized
             />
           </div>
@@ -49,23 +45,39 @@ export default function BrandPreviewPage() {
 
         {/* Lockup on dark */}
         <section className="mt-5 rounded-xl bg-[#0f172a] p-10 border border-[#1e293b]">
-          <LabelDark>Primary lockup — dark surface</LabelDark>
+          <LabelDark>Lockup — dark surface (same file)</LabelDark>
           <div className="mt-6 flex items-center justify-center">
             <Image
-              src="/brand/xeedly-lockup-light.svg"
+              src="/brand/xeedly-lockup.svg"
               alt="XeedlyAI"
-              width={260}
-              height={64}
+              width={420}
+              height={100}
               unoptimized
             />
           </div>
         </section>
 
-        {/* Icon variants */}
+        {/* Mid-tone surface */}
+        <section className="mt-5 rounded-xl p-10 border border-[#94a3b8]/30" style={{ background: "#475569" }}>
+          <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-[#e2e8f0]">
+            Lockup — mid-tone surface (same file)
+          </div>
+          <div className="mt-6 flex items-center justify-center">
+            <Image
+              src="/brand/xeedly-lockup.svg"
+              alt="XeedlyAI"
+              width={420}
+              height={100}
+              unoptimized
+            />
+          </div>
+        </section>
+
+        {/* Icon on surfaces */}
         <section className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-5">
           <div className="rounded-xl bg-white p-10 border border-[#e2e8f0] flex flex-col items-center">
-            <Label>Icon — color</Label>
-            <div className="mt-6 p-6 rounded-lg bg-[#f8fafc]">
+            <Label>Icon — on white</Label>
+            <div className="mt-6 flex items-center justify-center">
               <Image
                 src="/brand/xeedly-icon.svg"
                 alt=""
@@ -76,31 +88,28 @@ export default function BrandPreviewPage() {
             </div>
           </div>
           <div className="rounded-xl bg-[#0f172a] p-10 border border-[#1e293b] flex flex-col items-center">
-            <LabelDark>Icon — on dark surface</LabelDark>
-            <div className="mt-6 p-6 rounded-lg bg-[#1e293b]">
+            <LabelDark>Icon — on dark</LabelDark>
+            <div className="mt-6 flex items-center justify-center">
               <Image
                 src="/brand/xeedly-icon.svg"
                 alt=""
                 width={96}
                 height={96}
                 unoptimized
-                style={{ filter: "invert(1) brightness(2)" }}
               />
             </div>
           </div>
-          <div className="rounded-xl bg-white p-10 border border-[#e2e8f0] flex flex-col items-center">
-            <Label>Icon — tinted brand blue</Label>
-            <div className="mt-6 p-6 rounded-lg bg-[#f1f5f9]">
+          <div className="rounded-xl p-10 border flex flex-col items-center" style={{ background: "#475569", borderColor: "rgba(148,163,184,0.3)" }}>
+            <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-[#e2e8f0]">
+              Icon — on mid-tone
+            </div>
+            <div className="mt-6 flex items-center justify-center">
               <Image
                 src="/brand/xeedly-icon.svg"
                 alt=""
                 width={96}
                 height={96}
                 unoptimized
-                style={{
-                  filter:
-                    "brightness(0) saturate(100%) invert(28%) sepia(86%) saturate(2476%) hue-rotate(214deg) brightness(97%) contrast(92%)",
-                }}
               />
             </div>
           </div>
@@ -130,7 +139,7 @@ export default function BrandPreviewPage() {
         {/* Palette */}
         <section className="mt-5 rounded-xl bg-white p-10 border border-[#e2e8f0]">
           <Label>Palette</Label>
-          <div className="mt-6 grid grid-cols-2 md:grid-cols-5 gap-3">
+          <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
             {PALETTE.map((c) => (
               <div
                 key={c.hex}
@@ -157,9 +166,9 @@ export default function BrandPreviewPage() {
         <section className="mt-5 rounded-xl bg-white p-10 border border-[#e2e8f0]">
           <Label>In the family</Label>
           <p className="mt-3 text-[13px] text-[#334155] leading-[1.7] max-w-xl">
-            The wordmark uses the same lowercase, tightly-tracked sans that
-            the product sites use. XeedlyAI sits as the parent — the
-            intelligence source that powers the verticals below it.
+            Same icon family as Sovvrn. Lowercase wordmark matches the
+            portfolio voice (sovvrn, propertydocz, propertyjobz, propertyolio).
+            Medium grey text + bright blue icon = one lockup file for every context.
           </p>
           <div className="mt-6 flex flex-col gap-3">
             <FamilyRow name="xeedlyAI" role="parent — intelligence platform" primary />
@@ -170,41 +179,9 @@ export default function BrandPreviewPage() {
           </div>
         </section>
 
-        {/* Design notes */}
-        <section className="mt-5 rounded-xl bg-white p-10 border border-[#e2e8f0]">
-          <Label>Why this works</Label>
-          <ul className="mt-4 space-y-2 text-[13px] text-[#334155] leading-[1.7]">
-            <li>
-              <strong>No circle.</strong> The enclosing circle read as "app
-              icon from 2012." Removing it makes the mark feel like a symbol,
-              not a sticker.
-            </li>
-            <li>
-              <strong>Two colors in the X itself.</strong> Maps directly to
-              the pitch — cross-system correlation, two streams intersecting.
-              Distinct without being busy.
-            </li>
-            <li>
-              <strong>Lowercase wordmark.</strong> Matches sovvrn, propertydocz,
-              propertyjobz, propertyolio. The parent feels like it belongs to
-              the family instead of standing above it awkwardly.
-            </li>
-            <li>
-              <strong>New blue.</strong> #2563EB is deeper and more premium
-              than the old #38B6FF cyan — reads closer to Linear / Stripe /
-              Resend than to early-2020s SaaS.
-            </li>
-            <li>
-              <strong>SVG, not PNG.</strong> Crisp at any size, works as
-              favicon, scales to billboards, editable in one file.
-            </li>
-          </ul>
-        </section>
-
         <p className="mt-10 text-[12px] text-[#64748b]">
-          This is a preview only — the site still ships with the current logo.
-          Say the word and I&apos;ll swap the navbar, footer, favicon, and
-          brand blue throughout.
+          This is a preview only — the site still ships with the old logo.
+          Say the word and I&apos;ll swap the navbar, footer, and favicon.
         </p>
       </div>
     </main>
@@ -240,8 +217,8 @@ function FamilyRow({
     <div
       className="flex items-center justify-between rounded-lg border px-4 py-3"
       style={{
-        borderColor: primary ? "#2563EB" : "#e2e8f0",
-        background: primary ? "rgba(37,99,235,0.04)" : "white",
+        borderColor: primary ? "#38b6ff" : "#e2e8f0",
+        background: primary ? "rgba(56,182,255,0.05)" : "white",
       }}
     >
       <div className="flex items-center gap-3">

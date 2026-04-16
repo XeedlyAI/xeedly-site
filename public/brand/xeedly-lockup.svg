@@ -1,5 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="480" height="120" viewBox="0 0 480 120" preserveAspectRatio="xMinYMid meet">
-  <image xlink:href="xeedly-icon.svg" x="0" y="0" width="120" height="120"/>
-  <text x="136" y="78" font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="64" font-weight="700" letter-spacing="-2.2" fill="#0F172A">xeedly</text>
-  <text x="358" y="78" font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="64" font-weight="700" letter-spacing="-2.2" fill="#2563EB">AI</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="420" height="100" viewBox="0 0 420 100" preserveAspectRatio="xMinYMid meet">
+  <!-- Sovvrn-family tree icon -->
+  <svg x="0" y="5" width="90" height="90" viewBox="60 0 255 375">
+    <defs>
+      <clipPath id="lk-c1"><path d="M 85.808594 16.433594 L 289.058594 16.433594 L 289.058594 164.183594 L 85.808594 164.183594 Z" clip-rule="nonzero"/></clipPath>
+      <clipPath id="lk-c2"><path d="M 85.808594 112.289062 L 289.058594 112.289062 L 289.058594 260.039062 L 85.808594 260.039062 Z" clip-rule="nonzero"/></clipPath>
+      <clipPath id="lk-c3"><path d="M 85.808594 210.683594 L 289.058594 210.683594 L 289.058594 358.433594 L 85.808594 358.433594 Z" clip-rule="nonzero"/></clipPath>
+    </defs>
+    <g clip-path="url(#lk-c1)"><path fill="#38b6ff" d="M 122.550781 164.183594 C 110.386719 164.183594 98.222656 164.183594 85.90625 164.183594 C 119.847656 114.925781 153.636719 65.820312 187.574219 16.5625 C 221.363281 65.820312 255.152344 114.925781 289.09375 164.183594 C 276.929688 164.183594 264.765625 164.183594 252.75 164.183594 L 187.726562 69.574219 Z" fill-opacity="1" fill-rule="nonzero"/></g>
+    <g clip-path="url(#lk-c2)"><path fill="#38b6ff" d="M 122.550781 260.039062 C 110.386719 260.039062 98.222656 260.039062 85.90625 260.039062 C 119.847656 210.785156 153.636719 161.675781 187.574219 112.417969 C 221.363281 161.675781 255.152344 210.785156 289.09375 260.039062 C 276.929688 260.039062 264.765625 260.039062 252.75 260.039062 L 187.726562 165.429688 Z" fill-opacity="1" fill-rule="nonzero"/></g>
+    <g clip-path="url(#lk-c3)"><path fill="#38b6ff" d="M 122.550781 358.433594 C 110.386719 358.433594 98.222656 358.433594 85.90625 358.433594 C 119.847656 309.175781 153.636719 260.070312 187.574219 210.8125 C 221.363281 260.070312 255.152344 309.175781 289.09375 358.433594 C 276.929688 358.433594 264.765625 358.433594 252.75 358.433594 L 187.726562 263.824219 Z" fill-opacity="1" fill-rule="nonzero"/></g>
+  </svg>
+  <!-- Wordmark: medium grey works on both dark and light backgrounds -->
+  <text x="100" y="64" font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="-1.8" fill="#64748b">xeedly</text>
+  <text x="298" y="64" font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="-1.8" fill="#38b6ff">AI</text>
 </svg>
