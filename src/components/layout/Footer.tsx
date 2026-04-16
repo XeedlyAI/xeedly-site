@@ -37,11 +37,11 @@ export function Footer() {
           <div className="md:col-span-5">
             <Link href="/" className="inline-flex items-center mb-5" aria-label="XeedlyAI home">
               <Image
-                src="/images/logos/Xeedly_ai_logo_bright_blue.png"
+                src="/images/logos/xeedly-logo-bright-blue.png"
                 alt="XeedlyAI"
-                width={480}
-                height={96}
-                className="h-14 md:h-16 w-auto"
+                width={820}
+                height={350}
+                className="h-16 md:h-20 w-auto"
               />
             </Link>
             <p className="mt-6 max-w-sm text-[14px] leading-relaxed text-[#94a3b8]">

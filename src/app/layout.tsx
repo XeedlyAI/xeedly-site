@@ -69,7 +69,10 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.png",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
     apple: "/favicon.png",
   },
 };
@@ -79,7 +82,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "XeedlyAI",
   url: SITE_URL,
-  logo: `${SITE_URL}/favicon.ico`,
+  logo: `${SITE_URL}/images/logos/xeedly-logo-bright-blue.png`,
   description:
     "AI-native intelligence platforms and automated growth systems for operational businesses.",
   sameAs: [],

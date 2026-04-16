@@ -13,8 +13,8 @@ const NAV_LINKS = [
   { href: "/about", label: "About" },
 ];
 
-const LOGO_LIGHT = "/images/logos/Xeedly_ai_logo_bright_blue.png";
-const LOGO_DARK = "/images/logos/Xeedly_ai_logo_dark_blue.png";
+// Bright-blue icon + medium-grey wordmark — works on both dark and light surfaces.
+const LOGO = "/images/logos/xeedly-logo-bright-blue.png";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -55,14 +55,14 @@ export function Navbar() {
           {/* Logo — stays light in both states (dark bg in both) */}
           <Link href="/" className="flex items-center shrink-0" aria-label="XeedlyAI home">
             <Image
-              src={LOGO_LIGHT}
+              src={LOGO}
               alt="XeedlyAI"
-              width={320}
-              height={64}
+              width={820}
+              height={350}
               priority
               className={cn(
                 "w-auto transition-all duration-300",
-                scrolled ? "h-8" : "h-9 md:h-9",
+                scrolled ? "h-9" : "h-10 md:h-11",
               )}
             />
           </Link>
@@ -114,11 +114,11 @@ export function Navbar() {
           <div className="absolute right-0 top-0 h-full w-[80%] max-w-xs bg-white shadow-xl flex flex-col">
             <div className="h-16 px-5 flex items-center justify-between border-b border-[#e2e8f0]">
               <Image
-                src={LOGO_DARK}
+                src={LOGO}
                 alt="XeedlyAI"
-                width={320}
-                height={64}
-                className="h-7 w-auto"
+                width={820}
+                height={350}
+                className="h-9 w-auto"
               />
               <button
                 type="button"
