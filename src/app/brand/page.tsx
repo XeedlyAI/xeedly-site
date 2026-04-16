@@ -76,26 +76,31 @@ export default function BrandPreviewPage() {
             </div>
           </div>
           <div className="rounded-xl bg-[#0f172a] p-10 border border-[#1e293b] flex flex-col items-center">
-            <LabelDark>Icon — mono / dark surface</LabelDark>
+            <LabelDark>Icon — on dark surface</LabelDark>
             <div className="mt-6 p-6 rounded-lg bg-[#1e293b]">
               <Image
-                src="/brand/xeedly-icon-white.svg"
+                src="/brand/xeedly-icon.svg"
                 alt=""
                 width={96}
                 height={96}
                 unoptimized
+                style={{ filter: "invert(1) brightness(2)" }}
               />
             </div>
           </div>
           <div className="rounded-xl bg-white p-10 border border-[#e2e8f0] flex flex-col items-center">
-            <Label>Icon — mono / light surface</Label>
+            <Label>Icon — tinted brand blue</Label>
             <div className="mt-6 p-6 rounded-lg bg-[#f1f5f9]">
               <Image
-                src="/brand/xeedly-icon-dark.svg"
+                src="/brand/xeedly-icon.svg"
                 alt=""
                 width={96}
                 height={96}
                 unoptimized
+                style={{
+                  filter:
+                    "brightness(0) saturate(100%) invert(28%) sepia(86%) saturate(2476%) hue-rotate(214deg) brightness(97%) contrast(92%)",
+                }}
               />
             </div>
           </div>
@@ -241,20 +246,13 @@ function FamilyRow({
     >
       <div className="flex items-center gap-3">
         {primary && (
-          <svg width="20" height="20" viewBox="0 0 64 64" fill="none">
-            <path
-              d="M16 16 L48 48"
-              stroke="#2563EB"
-              strokeWidth="7"
-              strokeLinecap="round"
-            />
-            <path
-              d="M48 16 L16 48"
-              stroke="#06B6D4"
-              strokeWidth="7"
-              strokeLinecap="round"
-            />
-          </svg>
+          <Image
+            src="/brand/xeedly-icon.svg"
+            alt=""
+            width={24}
+            height={24}
+            unoptimized
+          />
         )}
         <span
           className="text-[15px] font-bold tracking-[-0.02em]"
