@@ -6,6 +6,7 @@ import { Check } from "lucide-react";
 import { MiniConsole } from "./MiniConsole";
 import { ConsoleActions } from "@/components/shared/ConsoleActions";
 import type { ConsoleAction } from "@/types/console-actions";
+import { CONTACT } from "@/lib/contact";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -28,7 +29,7 @@ const SUCCESS_ACTIONS: ConsoleAction[] = [
   {
     type: "calendar",
     label: "Or book a Discovery Call",
-    url: "https://calendly.com/xeedly/discovery",
+    url: CONTACT.calendar,
     description: "30 minutes, no pitch — just answers.",
   },
 ];

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { CONTACT } from "@/lib/contact";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -41,19 +42,21 @@ export function PlatformCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
-          className="mt-9 flex flex-col items-center gap-4"
+          className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3"
         >
-          <Link
-            href="/contact"
-            className="inline-flex items-center px-9 py-4 rounded-lg bg-[#38b6ff] hover:bg-[#0A8FD4] text-[#0f172a] font-bold text-[15px] transition-all hover:brightness-105"
+          <a
+            href={CONTACT.calendar}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-8 py-3.5 rounded-lg bg-[#38b6ff] hover:bg-[#0A8FD4] text-[#0f172a] font-bold text-[15px] transition-all hover:brightness-105"
           >
-            Start a Conversation
-          </Link>
+            Book a Discovery Call
+          </a>
           <Link
             href="/#console"
-            className="text-[13px] text-[#94a3b8] hover:text-[#f1f5f9] transition-colors"
+            className="inline-flex items-center px-8 py-3.5 rounded-lg border border-[#38b6ff]/40 hover:border-[#38b6ff] hover:bg-[#38b6ff]/10 text-[#38b6ff] font-semibold text-[14px] transition-all"
           >
-            Or try the Intelligence Console on our homepage →
+            Try the Intelligence Console →
           </Link>
         </motion.div>
       </div>

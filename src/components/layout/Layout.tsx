@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { KpiTicker } from "./KpiTicker";
+import { ContactWidget } from "./ContactWidget";
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
@@ -12,6 +13,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <KpiTicker variant="dark" />
       <main className="flex-1">{children}</main>
       <Footer />
+      <ContactWidget />
     </div>
   );
 }

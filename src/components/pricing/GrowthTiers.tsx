@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { CONTACT } from "@/lib/contact";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -143,8 +144,10 @@ export function GrowthTiers() {
             <div className="mt-6 inline-flex font-mono text-[10px] px-2.5 py-1 rounded-full bg-[#f1f5f9] text-[#64748b] self-start">
               {t.tag}
             </div>
-            <Link
-              href="/contact"
+            <a
+              href={CONTACT.calendar}
+              target="_blank"
+              rel="noopener noreferrer"
               className={cn(
                 "mt-6 inline-flex items-center justify-center px-5 py-3 rounded-lg text-[13px] font-semibold transition-all",
                 t.recommended
@@ -153,6 +156,12 @@ export function GrowthTiers() {
               )}
             >
               Get Started
+            </a>
+            <Link
+              href="/contact"
+              className="mt-2 text-[11px] text-[#0A8FD4] hover:text-[#38b6ff] text-center transition-colors"
+            >
+              Or send a message →
             </Link>
             <p className="mt-2 text-[10px] text-[#94a3b8] text-center leading-[1.5]">
               By signing up, you agree to our{" "}

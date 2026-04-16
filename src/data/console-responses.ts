@@ -1,4 +1,5 @@
 import type { ConsoleAction } from "@/types/console-actions";
+import { CONTACT } from "@/lib/contact";
 
 export type BriefingSection = {
   title: string;
@@ -186,14 +187,14 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
         {
           type: "calendar",
           label: "Book a Discovery Call",
-          url: "https://calendly.com/xeedly/discovery",
+          url: CONTACT.calendar,
           description: "30-minute call with Shad to map Growth Systems to your business",
         },
         {
           type: "contact_info",
           label: "Or reach us directly",
-          email: "hello@xeedly.com",
-          phone: "(801) 555-0199",
+          email: CONTACT.email,
+          phone: CONTACT.phone,
         },
       ],
     },
@@ -227,7 +228,7 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
         {
           type: "calendar",
           label: "Explore your vertical",
-          url: "https://calendly.com/xeedly/discovery",
+          url: CONTACT.calendar,
           description: "Let's map the signal engine to your operation",
         },
       ],
@@ -269,14 +270,14 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
         {
           type: "calendar",
           label: "Book a pricing conversation",
-          url: "https://calendly.com/xeedly/discovery",
+          url: CONTACT.calendar,
           description: "We'll scope the right tier for your operation",
         },
         {
           type: "contact_info",
           label: "Or reach us directly",
-          email: "hello@xeedly.com",
-          phone: "(801) 555-0199",
+          email: CONTACT.email,
+          phone: CONTACT.phone,
         },
       ],
     },

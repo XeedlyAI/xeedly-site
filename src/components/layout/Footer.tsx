@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { CONTACT, MAILTO, TEL } from "@/lib/contact";
 
 const PRODUCT_LINKS = [
   { href: "https://sovvrn.com", label: "Sovvrn", external: true },
@@ -34,7 +35,7 @@ export function Footer() {
       />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
-          <div className="md:col-span-5">
+          <div className="md:col-span-4">
             <Link href="/" className="inline-flex items-center mb-5" aria-label="XeedlyAI home">
               <Image
                 src="/images/logos/xeedly-logo-bright-blue.png"
@@ -50,9 +51,9 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="md:col-span-3 text-left">
+          <div className="md:col-span-2 text-left">
             <div
-              className="rounded-lg border px-4 py-3"
+              className="rounded-lg border px-4 py-3 h-full"
               style={{
                 background: "rgba(255,255,255,0.03)",
                 borderColor: "rgba(255,255,255,0.06)",
@@ -79,9 +80,9 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="md:col-span-4 text-left">
+          <div className="md:col-span-2 text-left">
             <div
-              className="rounded-lg border px-4 py-3"
+              className="rounded-lg border px-4 py-3 h-full"
               style={{
                 background: "rgba(255,255,255,0.03)",
                 borderColor: "rgba(255,255,255,0.06)",
@@ -101,6 +102,53 @@ export function Footer() {
                     </Link>
                   </li>
                 ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="md:col-span-4 text-left">
+            <div
+              className="rounded-lg border px-4 py-3 h-full"
+              style={{
+                background: "rgba(255,255,255,0.03)",
+                borderColor: "rgba(255,255,255,0.06)",
+              }}
+            >
+              <div className="font-mono text-[11px] font-semibold tracking-[0.08em] uppercase text-[#64748b] mb-3">
+                Contact
+              </div>
+              <ul className="space-y-2.5">
+                <li>
+                  <a
+                    href={MAILTO}
+                    className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[#f1f5f9] hover:text-[#38b6ff] transition-colors break-all"
+                  >
+                    {CONTACT.email}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={TEL}
+                    className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[#f1f5f9] hover:text-[#38b6ff] transition-colors"
+                  >
+                    {CONTACT.phone}
+                  </a>
+                </li>
+                <li>
+                  <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[#64748b]">
+                    {CONTACT.locationShort}
+                  </span>
+                </li>
+                <li>
+                  <a
+                    href={CONTACT.calendar}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[#38b6ff] hover:text-[#f1f5f9] transition-colors"
+                  >
+                    Book a Demo →
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

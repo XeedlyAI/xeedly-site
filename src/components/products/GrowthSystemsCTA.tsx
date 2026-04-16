@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { CONTACT } from "@/lib/contact";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -35,17 +36,19 @@ export function GrowthSystemsCTA() {
           transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
           className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3"
         >
-          <Link
-            href="/pricing"
+          <a
+            href={CONTACT.calendar}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center px-7 py-3 rounded-lg bg-[#38b6ff] hover:bg-[#0A8FD4] text-[#0f172a] font-semibold text-[14px] transition-all hover:brightness-105"
           >
-            See Pricing →
-          </Link>
+            Book a Discovery Call
+          </a>
           <Link
-            href="/platform"
-            className="text-[13px] font-semibold text-[#0A8FD4] hover:text-[#38b6ff] transition-colors"
+            href="/pricing"
+            className="inline-flex items-center px-7 py-3 rounded-lg border border-[#38b6ff]/50 hover:border-[#0A8FD4] hover:bg-[#38b6ff]/10 text-[#0A8FD4] font-semibold text-[14px] transition-all"
           >
-            Or explore the Intelligence Platform →
+            See Pricing →
           </Link>
         </motion.div>
         <motion.p

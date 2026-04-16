@@ -5,12 +5,14 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { CONTACT } from "@/lib/contact";
 
 const NAV_LINKS = [
   { href: "/platform", label: "Platform" },
   { href: "/products", label: "Products" },
   { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 // Bright-blue icon + medium-grey wordmark — works on both dark and light surfaces.
@@ -33,7 +35,7 @@ export function Navbar() {
         className={cn(
           "fixed z-50 transition-all duration-300 ease-out",
           scrolled
-            ? "top-3 left-1/2 -translate-x-1/2 w-[min(950px,calc(100%-16px))] rounded-full border border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.15),0_1px_4px_rgba(0,0,0,0.08)]"
+            ? "top-3 left-1/2 -translate-x-1/2 w-[min(1050px,calc(100%-16px))] rounded-full border border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.15),0_1px_4px_rgba(0,0,0,0.08)]"
             : "top-0 left-0 right-0 w-full border border-transparent",
         )}
         style={{
@@ -68,7 +70,7 @@ export function Navbar() {
           </Link>
 
           <nav
-            className="hidden md:flex items-center gap-6 px-4 py-2 rounded-lg border"
+            className="hidden md:flex items-center gap-5 px-4 py-2 rounded-lg border"
             style={{
               background: "rgba(255,255,255,0.03)",
               borderColor: "rgba(255,255,255,0.06)",
@@ -86,6 +88,14 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <a
+              href={CONTACT.calendar}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline-flex items-center px-3.5 py-2 rounded-full border border-white/20 hover:bg-white/[0.08] text-white text-[12px] font-semibold transition-colors"
+            >
+              Book Demo
+            </a>
             <Link
               href="/contact"
               className="hidden md:inline-flex items-center px-4 py-2 rounded-full bg-[#38b6ff] hover:bg-[#0A8FD4] text-[#0f172a] text-[13px] font-semibold transition-colors"
@@ -141,7 +151,16 @@ export function Navbar() {
                 </Link>
               ))}
             </nav>
-            <div className="p-5 border-t border-[#e2e8f0]">
+            <div className="p-5 border-t border-[#e2e8f0] flex flex-col gap-2.5">
+              <a
+                href={CONTACT.calendar}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="w-full inline-flex items-center justify-center px-4 py-3 rounded-full border border-[#0f172a]/15 hover:bg-[#0f172a]/[0.04] text-[#0f172a] text-[14px] font-semibold transition-colors"
+              >
+                Book Demo
+              </a>
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}

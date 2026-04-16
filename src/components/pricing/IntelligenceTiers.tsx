@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { CONTACT } from "@/lib/contact";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -177,6 +178,14 @@ export function IntelligenceTiers() {
               >
                 Talk to Us
               </Link>
+              <a
+                href={CONTACT.calendar}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 text-[11px] text-[#64748b] hover:text-[#0A8FD4] text-center transition-colors hover:underline"
+              >
+                or book a call directly →
+              </a>
               <p className="mt-2 text-[10px] text-[#94a3b8] text-center leading-[1.5]">
                 By signing up, you agree to our{" "}
                 <Link href="/terms" className="text-[#0A8FD4] hover:text-[#38b6ff] underline">
