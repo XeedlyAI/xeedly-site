@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { CONSOLE_QUERIES, type ConsoleResponse } from "@/data/console-responses";
+import {
+  ProcessingIndicator,
+  ResponseView,
+} from "@/components/shared/ConsoleResponseRenderer";
+import type { ConsoleAction } from "@/types/console-actions";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -17,7 +23,8 @@ export interface IntelligenceConsoleMiniProps {
   placeholder?: string;
   label?: string; // e.g. "xeedly://live"
   // If provided, called with either a known queryId or the freeform text.
-  // The parent is responsible for triggering the main console + scroll.
+  // When omitted, the mini console renders inline AND emits CONSOLE_EVENT
+  // so the full console below can mirror the same answer.
   onQuerySelect?: (payload: { queryId?: string; freeform?: string }) => void;
 }
 
@@ -48,30 +55,103 @@ export function IntelligenceConsoleMini({
   onQuerySelect,
 }: IntelligenceConsoleMiniProps) {
   const [freeform, setFreeform] = useState("");
-  const [status, setStatus] = useState<"idle" | "redirecting">("idle");
+  const [processing, setProcessing] = useState(false);
+  const [response, setResponse] = useState<ConsoleResponse | null>(null);
+  const [lastQuery, setLastQuery] = useState<string>("");
 
-  function triggerPill(id?: string, freeformText?: string) {
+  const hasResponse = Boolean(response) || processing;
+
+  function reset() {
+    setResponse(null);
+    setProcessing(false);
+    setLastQuery("");
+    setFreeform("");
+  }
+
+  function runPill(id: string, label: string) {
+    // If the parent handed us a handler, defer entirely to it.
     if (onQuerySelect) {
-      onQuerySelect({ queryId: id, freeform: freeformText });
+      onQuerySelect({ queryId: id });
       return;
     }
-    // Default behavior: dispatch event + smooth scroll to #console.
-    setStatus("redirecting");
-    if (id) {
-      dispatchConsoleQuery({ kind: "pill", id });
-    } else if (freeformText) {
-      dispatchConsoleQuery({ kind: "freeform", text: freeformText });
+    const q = CONSOLE_QUERIES.find((c) => c.id === id);
+    if (!q) return;
+    setLastQuery(label);
+    setProcessing(true);
+    setResponse(null);
+    const delay = 600 + Math.round(Math.random() * 400);
+    window.setTimeout(() => {
+      setResponse(q.response);
+      setProcessing(false);
+    }, delay);
+  }
+
+  async function runFreeform(text: string) {
+    if (onQuerySelect) {
+      onQuerySelect({ freeform: text });
+      return;
     }
-    scrollToConsole();
-    window.setTimeout(() => setStatus("idle"), 1500);
+    setLastQuery(text);
+    setProcessing(true);
+    setResponse(null);
+    try {
+      const res = await fetch("/api/query", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: text }),
+      });
+      if (!res.ok) throw new Error(`status ${res.status}`);
+      const data = (await res.json()) as {
+        content?: string;
+        actions?: ConsoleAction[];
+      };
+      setResponse({
+        type: "freeform",
+        body:
+          data.content ||
+          "Unable to process your query right now. Try one of the suggested queries above, or reach out to us directly.",
+        actions: Array.isArray(data.actions) ? data.actions : undefined,
+      });
+    } catch {
+      setResponse({
+        type: "freeform",
+        body:
+          "Unable to process your query right now. Try one of the suggested queries above, or reach out to us directly.",
+      });
+    } finally {
+      setProcessing(false);
+    }
+  }
+
+  function onSuggestionClick(s: ConsoleSuggestion) {
+    if (s.queryId) {
+      runPill(s.queryId, s.label);
+    } else {
+      runFreeform(s.label);
+    }
   }
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     const t = freeform.trim();
     if (!t) return;
-    triggerPill(undefined, t);
+    runFreeform(t);
     setFreeform("");
+  }
+
+  function seeFullResponse() {
+    // Mirror the query into the full console below and scroll.
+    if (lastQuery) {
+      const q = CONSOLE_QUERIES.find(
+        (c) => c.label === lastQuery || c.id === lastQuery,
+      );
+      if (q) {
+        dispatchConsoleQuery({ kind: "pill", id: q.id });
+      } else {
+        dispatchConsoleQuery({ kind: "freeform", text: lastQuery });
+      }
+    }
+    scrollToConsole();
   }
 
   return (
@@ -113,7 +193,7 @@ export function IntelligenceConsoleMini({
           <button
             key={s.label}
             type="button"
-            onClick={() => triggerPill(s.queryId, s.queryId ? undefined : s.label)}
+            onClick={() => onSuggestionClick(s)}
             className="group block w-full text-left py-1.5 text-[13px] text-[#38b6ff] hover:text-[#7dd3fc] transition-colors"
           >
             <span className="font-mono text-[#64748b] group-hover:text-[#94a3b8] mr-2">
@@ -142,26 +222,76 @@ export function IntelligenceConsoleMini({
         />
         <button
           type="submit"
-          disabled={!freeform.trim()}
+          disabled={!freeform.trim() || processing}
           className="px-4 font-mono text-[12px] font-semibold text-[#38b6ff] hover:bg-[#38b6ff]/10 disabled:opacity-40 transition-colors"
         >
           Query →
         </button>
       </form>
 
-      {/* Idle / redirecting status */}
-      <div className="mt-4 min-h-[18px]">
-        <motion.div
-          key={status}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, ease: EASE }}
-          className="font-mono text-[12px] italic text-[#64748b]"
-        >
-          {status === "idle"
-            ? "> awaiting query..."
-            : "> redirecting to console..."}
-        </motion.div>
+      {/* Inline response area — compact */}
+      <div className="mt-5">
+        <AnimatePresence mode="wait">
+          {!hasResponse ? (
+            <motion.div
+              key="idle"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: EASE }}
+              className="min-h-[18px] font-mono text-[12px] italic text-[#64748b]"
+            >
+              &gt; awaiting query...
+            </motion.div>
+          ) : (
+            <motion.div
+              key="response"
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: EASE }}
+            >
+              {/* Reset control */}
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#64748b]">
+                  {processing ? "Running" : "Response"}
+                </span>
+                <button
+                  type="button"
+                  onClick={reset}
+                  className="font-mono text-[10px] text-[#64748b] hover:text-[#94a3b8] transition-colors"
+                  aria-label="Clear response"
+                >
+                  ↻ clear
+                </button>
+              </div>
+
+              <div className="scrollbar-hero overflow-y-auto max-h-none md:max-h-[min(600px,70vh)] pr-1">
+                {processing ? (
+                  <div className="rounded-lg bg-white/5 border border-white/5 p-4">
+                    <ProcessingIndicator />
+                  </div>
+                ) : response ? (
+                  <ResponseView
+                    response={response}
+                    context={lastQuery}
+                    compact
+                  />
+                ) : null}
+              </div>
+
+              {!processing && response && (
+                <button
+                  type="button"
+                  onClick={seeFullResponse}
+                  className="mt-3 font-mono text-[11px] text-[#38b6ff] hover:text-[#7dd3fc] hover:italic hover:underline transition-all"
+                >
+                  See full response in the console ↓
+                </button>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Footer */}

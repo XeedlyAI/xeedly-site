@@ -103,3 +103,23 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+/* ---------- Thin dark-theme scrollbar for hero console response area ---------- */
+.scrollbar-hero {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 182, 255, 0.35) transparent;
+}
+.scrollbar-hero::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scrollbar-hero::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-hero::-webkit-scrollbar-thumb {
+  background: rgba(56, 182, 255, 0.3);
+  border-radius: 9999px;
+}
+.scrollbar-hero::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 182, 255, 0.55);
+}
