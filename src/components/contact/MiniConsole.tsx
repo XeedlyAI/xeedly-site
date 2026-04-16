@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ConsoleActions } from "@/components/shared/ConsoleActions";
+import type { ConsoleAction } from "@/types/console-actions";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -25,11 +27,14 @@ export function MiniConsole() {
   const [loading, setLoading] = useState(false);
   const [freeform, setFreeform] = useState("");
   const [freeformAnswer, setFreeformAnswer] = useState<string | null>(null);
+  const [freeformActions, setFreeformActions] = useState<ConsoleAction[]>([]);
   const [freeformActive, setFreeformActive] = useState(false);
+  const [lastQuery, setLastQuery] = useState("");
 
   const ask = (i: number) => {
     setFreeformActive(false);
     setFreeformAnswer(null);
+    setFreeformActions([]);
     setLoading(true);
     setActive(i);
     setTimeout(() => setLoading(false), 650 + Math.random() * 350);
@@ -42,6 +47,8 @@ export function MiniConsole() {
     setActive(null);
     setFreeformActive(true);
     setFreeformAnswer(null);
+    setFreeformActions([]);
+    setLastQuery(q);
     setLoading(true);
     try {
       const res = await fetch("/api/query", {
@@ -49,15 +56,20 @@ export function MiniConsole() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query: q }),
       });
-      const data = (await res.json()) as { content?: string };
+      const data = (await res.json()) as {
+        content?: string;
+        actions?: ConsoleAction[];
+      };
       setFreeformAnswer(
         data.content ||
           "Unable to process that right now — try one of the suggestions, or reach us at hello@xeedly.com.",
       );
+      setFreeformActions(Array.isArray(data.actions) ? data.actions : []);
     } catch {
       setFreeformAnswer(
         "Unable to process that right now — try one of the suggestions, or reach us at hello@xeedly.com.",
       );
+      setFreeformActions([]);
     } finally {
       setLoading(false);
     }
@@ -141,14 +153,21 @@ export function MiniConsole() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4, ease: EASE }}
-                className="rounded-lg border-l-2 border-[#8b5cf6] bg-[#8b5cf6]/10 px-3 py-2.5"
               >
-                <div className="font-mono text-[9px] font-semibold uppercase tracking-[0.12em] text-[#a78bfa]">
-                  ⚡ AI Response
+                <div className="rounded-lg border-l-2 border-[#8b5cf6] bg-[#8b5cf6]/10 px-3 py-2.5">
+                  <div className="font-mono text-[9px] font-semibold uppercase tracking-[0.12em] text-[#a78bfa]">
+                    ⚡ AI Response
+                  </div>
+                  <p className="mt-1.5 text-[12.5px] text-[#334155] leading-[1.65] whitespace-pre-line">
+                    {freeformAnswer}
+                  </p>
                 </div>
-                <p className="mt-1.5 text-[12.5px] text-[#334155] leading-[1.65] whitespace-pre-line">
-                  {freeformAnswer}
-                </p>
+                {freeformActions.length > 0 && (
+                  <ConsoleActions
+                    actions={freeformActions}
+                    context={lastQuery}
+                  />
+                )}
               </motion.div>
             )
           ) : active === null ? (
