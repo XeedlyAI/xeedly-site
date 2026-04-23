@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, Mail, ClipboardList, Zap, Check, ArrowRight } from "lucide-react";
@@ -108,6 +109,18 @@ function ActionCard({
 }
 
 function CalendarRenderer({ action }: { action: CalendarAction }) {
+  // Treat anything that isn't http(s) as an internal link (uses Next.js Link,
+  // same tab). External links keep target=_blank.
+  const isInternal = !/^https?:\/\//i.test(action.url);
+  const buttonClass =
+    "inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#38b6ff] hover:bg-[#0A8FD4] text-[#0f172a] text-[12px] font-semibold transition-all";
+  const label = (
+    <>
+      {isInternal ? "Pick a time" : "Open Calendar"}{" "}
+      <ArrowRight className="h-3.5 w-3.5" />
+    </>
+  );
+
   return (
     <ActionCard
       accent="blue"
@@ -115,14 +128,20 @@ function CalendarRenderer({ action }: { action: CalendarAction }) {
       title={action.label}
       description={action.description}
     >
-      <a
-        href={action.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#38b6ff] hover:bg-[#0A8FD4] text-[#0f172a] text-[12px] font-semibold transition-all"
-      >
-        Open Calendar <ArrowRight className="h-3.5 w-3.5" />
-      </a>
+      {isInternal ? (
+        <Link href={action.url} className={buttonClass}>
+          {label}
+        </Link>
+      ) : (
+        <a
+          href={action.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonClass}
+        >
+          {label}
+        </a>
+      )}
     </ActionCard>
   );
 }

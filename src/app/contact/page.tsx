@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContactHero } from "@/components/contact/ContactHero";
 import { ContactPanel } from "@/components/contact/ContactPanel";
 import { DirectContact } from "@/components/contact/DirectContact";
+import { ContactBooking } from "@/components/contact/ContactBooking";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -22,6 +23,7 @@ export default function ContactPage() {
       <ContactHero />
       <ContactPanel />
       <DirectContact />
+      <ContactBooking />
     </>
   );
 }

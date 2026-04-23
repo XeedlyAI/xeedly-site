@@ -9,8 +9,8 @@ export const CONTACT = {
   phone: "(801) 555-0199",
   /** tel: URI — digits only, E.164. */
   phoneHref: "+18015550199",
-  /** Calendly URL — used by calendar actions, Book Demo, all booking CTAs. */
-  calendar: "https://calendly.com/xeedly/discovery",
+  /** Internal booking page — used by calendar actions, Book Demo, all booking CTAs. */
+  calendar: "/booking",
   locationShort: "Salt Lake City, UT",
   locationLong: "Salt Lake City, Utah — Mountain Time (MST)",
   /** Founder direct-line hours, displayed beneath the phone card. */

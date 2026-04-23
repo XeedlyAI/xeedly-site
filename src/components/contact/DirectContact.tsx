@@ -41,7 +41,6 @@ const ITEMS: Item[] = [
       "For serious deployments — we'll walk the thesis and your vertical.",
     dataRow: "next available: today 2:00 PM MST",
     href: CONTACT.calendar,
-    external: true,
   },
   {
     icon: Phone,

@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/case-studies/core-hoa", priority: 0.75, changeFrequency: "monthly" },
     { path: "/case-studies/sovvrn", priority: 0.75, changeFrequency: "monthly" },
     { path: "/case-studies/xeedly-platform", priority: 0.7, changeFrequency: "monthly" },
+    { path: "/booking", priority: 0.8, changeFrequency: "monthly" },
     { path: "/pricing", priority: 0.8, changeFrequency: "monthly" },
     { path: "/about", priority: 0.6, changeFrequency: "monthly" },
     { path: "/contact", priority: 0.7, changeFrequency: "monthly" },
