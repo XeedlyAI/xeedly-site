@@ -6,9 +6,9 @@
 export const CONTACT = {
   email: "hello@xeedly.com",
   /** Human-readable phone for display. */
-  phone: "(801) 555-0199",
+  phone: "(801) 882-0094",
   /** tel: URI — digits only, E.164. */
-  phoneHref: "+18015550199",
+  phoneHref: "+18018820094",
   /** Internal booking page — used by calendar actions, Book Demo, all booking CTAs. */
   calendar: "/booking",
   locationShort: "Salt Lake City, UT",

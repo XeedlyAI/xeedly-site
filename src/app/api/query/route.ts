@@ -158,7 +158,7 @@ IMPORTANT: Include the actions block as a JSON code fence at the very end of you
 \`\`\`actions
 [
   { "type": "calendar", "label": "Book a Discovery Call", "url": "https://xeedly.com/booking", "description": "30-minute call with Shad" },
-  { "type": "contact_info", "label": "Email or call us", "email": "hello@xeedly.com", "phone": "(801) 555-0199" }
+  { "type": "contact_info", "label": "Email or call us", "email": "hello@xeedly.com", "phone": "(801) 882-0094" }
 ]
 \`\`\`
 
@@ -181,7 +181,7 @@ TONE FOR ACTIONS: Don't be salesy. Frame actions as helpful next steps, not push
 
 CANONICAL CONTACT DETAILS (use these exact values):
 - email: hello@xeedly.com
-- phone: (801) 555-0199
+- phone: (801) 882-0094
 - calendar url: https://xeedly.com/booking
 
 CRITICAL FORMAT: When you want to offer contact options, DO NOT describe them in prose. Instead, keep your main response focused on answering the question, then append a structured \`\`\`actions block at the very end with the available next steps. The frontend renders these as interactive cards — if you describe them as prose, the user can't click anything.
