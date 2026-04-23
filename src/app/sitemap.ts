@@ -11,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/case-studies", priority: 0.85, changeFrequency: "monthly" },
     { path: "/case-studies/pando", priority: 0.75, changeFrequency: "monthly" },
     { path: "/case-studies/core-hoa", priority: 0.75, changeFrequency: "monthly" },
+    { path: "/case-studies/propertydocz", priority: 0.75, changeFrequency: "monthly" },
+    { path: "/case-studies/propertyjobz", priority: 0.75, changeFrequency: "monthly" },
     { path: "/case-studies/sovvrn", priority: 0.75, changeFrequency: "monthly" },
     { path: "/case-studies/xeedly-platform", priority: 0.7, changeFrequency: "monthly" },
     { path: "/booking", priority: 0.8, changeFrequency: "monthly" },

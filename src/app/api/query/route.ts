@@ -36,7 +36,7 @@ AI-powered marketing and operations automation that replaces traditional agency 
 
 When prospects ask about specific industries, how the platform works in practice, or want proof — reference these real deployments. Use specific details (pipeline structure, build timeline, tech stack) not vague claims.
 
-### Pando Midwest Investments (Property Investment)
+### Pando Midwest Investments (Property Investment — CLIENT)
 - ownpando.com — LIVE
 - Full agent-to-investor deal pipeline
 - Agents submit properties → Admin reviews via four-zone decision surface → AI generates structured investment thesis → Investors browse deals room with lens scoring
@@ -44,13 +44,37 @@ When prospects ask about specific industries, how the platform works in practice
 - Magic link auth, persistent sessions, RSC-compliant Next.js 16
 - Stack: Next.js, Supabase, Claude API, Tailwind v4, Vercel
 
-### Core HOA (Property Management)
-- First client onboarding PropertyDocz + PropertyJobz + Propertyolio
-- 40 HOA associations configured
-- PropertyDocz: document ordering with subscription tiers ($149-$799/mo), automated PDF generation, revenue split tracking
-- PropertyJobz: vendor compliance, insurance tracking, AI assistant with Claude-powered briefings
-- Propertyolio: intelligence nerve center wrapping both products — event bus, signal engine, morning briefings
-- Stack: Next.js, Supabase, Stripe Connect, Typst, Claude API, Resend, Vercel
+### Core HOA (Property Management — CLIENT)
+- LIVE website rebuild with multi-tenant data layer architecture
+- Utah HOA management company running 40+ communities on one platform
+- Modern website replacing legacy Webflow site, 2-week build
+- Integrated natively with PropertyDocz (document ordering) and PropertyJobz (vendor portal) — homeowners experience these as features of Core HOA's site, not third-party tools
+- Core HOA is the FIRST CLIENT using PropertyDocz and PropertyJobz. They USE these products; XeedlyAI OWNS them.
+- Stack: Next.js, Tailwind, Vercel
+
+### PropertyDocz (XeedlyAI PRODUCT — Document Operations)
+- SHIPPING — multi-tenant HOA document ordering and fulfillment platform
+- Subdomain per tenant (e.g., corehoa.propertydocz.com). 4 subscription tiers: Free/pay-per-order, Agent Pro $149/mo, Broker Office $399/mo, Title Partner $799/mo
+- AI-powered field registry with three-tier confidence model (Claude Sonnet)
+- Typst-based automated PDF generation, per-association templates
+- Stripe Connect for payment + automated revenue splits
+- Core HOA is the first tenant. Launched to serve the HOA management industry state and nationwide.
+- Stack: Next.js 16, Supabase, Stripe Connect, Typst, Claude API, Resend
+
+### PropertyJobz (XeedlyAI PRODUCT — Vendor Management)
+- SHIPPING — HOA vendor compliance and management platform
+- Claude Sonnet-powered AI assistant on every admin and vendor dashboard (not a corner chatbot — an integrated briefing engine)
+- Multi-tenant with purple-accented platform admin layer: 7-step org onboarding wizard, org selector filtering all pages, revenue tracking by org, Stripe Connect OAuth
+- Vendor compliance engine: insurance tracking, license verification, automated expiry alerts
+- 30+ pages with full XeedlyAI design system — KPI tickers, left-border status accents, Framer Motion staggered animations
+- Core HOA is the first tenant.
+- Stack: Next.js 16, Supabase, Stripe Connect, Claude Sonnet, Framer Motion
+
+### Propertyolio (XeedlyAI PRODUCT — In Build)
+- Intelligence nerve center designed to correlate events across PropertyDocz and PropertyJobz
+- Example cross-system signal: a vendor's insurance expiring in PropertyJobz while pending document requests for the same community queue up in PropertyDocz
+- Event bus + signal engine + AI morning briefings for HOA managers
+- Currently in build — not yet deployed
 
 ### Sovvrn (Restaurant Intelligence)
 - sovvrn.vercel.app — LIVE
@@ -70,9 +94,10 @@ When prospects ask about specific industries, how the platform works in practice
 
 When referencing case studies in responses:
 - Use them as PROOF, not decoration. "We built a similar pipeline for a property investment company — agent submissions, AI-powered evaluation, investor deals room. Deployed in 5 sessions."
-- Match the case study to the prospect's industry/problem. Fleet management question → reference Sovvrn (multi-unit operations) and Pando (pipeline automation). Healthcare question → reference the cross-system pattern from Core HOA.
-- Include specific details: "13 database migrations", "four-zone review surface", "morning briefings delivered before first shift". Specifics build credibility.
-- Full briefs live at /case-studies/pando, /case-studies/core-hoa, /case-studies/sovvrn, /case-studies/xeedly-platform.
+- Match the case study to the prospect's industry/problem. Fleet management question → reference Sovvrn (multi-unit operations) and Pando (pipeline automation). Healthcare question → reference the cross-system pattern between PropertyDocz and PropertyJobz.
+- Include specific details: "13 database migrations", "four-zone review surface", "morning briefings delivered before first shift", "30+ pages with AI on every dashboard". Specifics build credibility.
+- When discussing property management, say "PropertyDocz and PropertyJobz (XeedlyAI products)" — NOT "Core HOA's products". Core HOA is a client USING those products; XeedlyAI owns and operates them.
+- Full briefs live at /case-studies/pando, /case-studies/core-hoa, /case-studies/propertydocz, /case-studies/propertyjobz, /case-studies/sovvrn, /case-studies/xeedly-platform.
 
 ## VERTICALS
 Proven: Restaurants, Property Management

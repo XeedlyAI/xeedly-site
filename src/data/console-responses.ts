@@ -66,7 +66,7 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
           title: "Intelligence Platforms",
           icon: "🧠",
           body:
-            "Sovvrn for restaurants (live — morning briefings, voice AI, command center). Propertyolio + PropertyDocz + PropertyJobz for property management (Core HOA onboarding — 40 associations). Pando for property investment (live — full agent-to-investor deal pipeline).",
+            "Sovvrn for restaurants (live — morning briefings, voice AI, command center). PropertyDocz (document operations) and PropertyJobz (vendor management) for property management — both shipping as XeedlyAI products, Core HOA is the first client on both. Propertyolio intelligence layer in build to correlate across the two. Pando for property investment (live — full agent-to-investor deal pipeline).",
         },
         {
           title: "Automated Growth Systems",
@@ -210,7 +210,7 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
           title: "Proven",
           icon: "✅",
           body:
-            "Restaurants (Sovvrn — live at sovvrn.vercel.app), Property Management (Core HOA — onboarding PropertyDocz + PropertyJobz + Propertyolio), and Property Investment (Pando Midwest Investments — live at ownpando.com). Three verticals, same architecture, all in production.",
+            "Restaurants (Sovvrn — live at sovvrn.vercel.app). Property Management (PropertyDocz + PropertyJobz shipping as XeedlyAI products — Core HOA is the first client on both, running 40+ communities). Property Investment (Pando Midwest Investments — live at ownpando.com). Three verticals, same architecture, all in production.",
         },
         {
           title: "High-Fit Candidates",

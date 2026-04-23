@@ -1,7 +1,7 @@
 import type { SignalAccent } from "@/components/shared/SignalCard";
 import type { Kpi } from "@/components/layout/KpiTicker";
 
-export type DeploymentStatus = "LIVE" | "ONBOARDING" | "META";
+export type DeploymentStatus = "LIVE" | "SHIPPING" | "ONBOARDING" | "META";
 
 export type DeploymentCardData = {
   slug: string;
@@ -203,76 +203,209 @@ export const CORE_HOA: CaseStudy = {
   slug: "core-hoa",
   clientName: "Core HOA",
   industry: "PROPERTY MANAGEMENT",
-  industryAccent: "blue",
+  industryAccent: "teal",
   summary:
-    "HOA document fulfillment and vendor compliance automation. First client onboarding PropertyDocz and PropertyJobz with Propertyolio intelligence layer wrapping the business.",
+    "Modern website rebuild with multi-tenant data layer architecture for a Utah HOA management company running dozens of communities. Integrated natively with PropertyDocz and PropertyJobz.",
   seoTitle: "Core HOA — Case Study",
   seoDescription:
-    "PropertyDocz, PropertyJobz, and Propertyolio deployed for Core HOA. 40 associations, automated document fulfillment, AI-powered vendor compliance, intelligence nerve center.",
+    "How XeedlyAI rebuilt Core HOA's website with a multi-tenant data layer serving 40+ communities, natively integrated with PropertyDocz document ordering and PropertyJobz vendor management.",
   card: {
     slug: "core-hoa",
     clientName: "Core HOA",
     industry: "PROPERTY MANAGEMENT",
-    status: "ONBOARDING",
-    statusAccent: "blue",
-    accentBorder: "#3b82f6",
+    status: "LIVE",
+    statusAccent: "teal",
+    accentBorder: "#14b8a6",
     description:
-      "HOA document fulfillment and vendor compliance automation. First client onboarding PropertyDocz and PropertyJobz with Propertyolio intelligence layer wrapping the business.",
+      "Modern HOA management website with multi-tenant data layer. 40+ communities on one platform, integrated with PropertyDocz and PropertyJobz.",
     dataRow: [
-      "associations: 40",
-      "products: 3",
-      "pipeline: docs + vendors + intel",
+      "communities: 40+",
+      "architecture: multi-tenant",
+      "integrations: PropertyDocz + PropertyJobz",
       "client: first",
     ],
   },
   headerMetrics: [
-    { label: "STATUS", value: "ONBOARDING" },
-    { label: "BUILD TIME", value: "ongoing" },
-    { label: "STACK", value: "Next.js · Supabase · Stripe Connect · Claude API" },
-    { label: "PRODUCTS", value: "PropertyDocz · PropertyJobz · Propertyolio" },
-    { label: "ASSOCIATIONS", value: "40" },
-    { label: "CLIENT TYPE", value: "first client" },
+    { label: "STATUS", value: "LIVE" },
+    { label: "BUILD TIME", value: "2 weeks" },
+    { label: "STACK", value: "Next.js · Tailwind · Vercel" },
+    { label: "COMMUNITIES", value: "40+" },
+    { label: "ARCHITECTURE", value: "Multi-tenant data layer" },
+    { label: "CLIENT TYPE", value: "First HOA management client" },
   ],
   problemSignals: [
     {
       accent: "red",
-      title: "Manual document fulfillment",
-      body: "HOA resale and refinance document packages assembled by hand. Turnaround unpredictable. No tracking, no automation, no revenue optimization.",
+      title: "Outdated web presence",
+      body: "Legacy Webflow site that didn't reflect the scale or professionalism of their operation. No community-specific portals, no self-serve for homeowners or board members.",
     },
     {
       accent: "amber",
-      title: "Spreadsheet vendor management",
-      body: "Vendor insurance, licenses, and compliance tracked in spreadsheets. Expiration dates missed. No automated alerts.",
+      title: "Manual community management",
+      body: "Dozens of communities managed without a unified system. Information scattered across emails, spreadsheets, and disconnected tools.",
     },
     {
       accent: "amber",
-      title: "No cross-system visibility",
-      body: "Document operations, vendor compliance, and community health existed in separate silos. No way to detect patterns across systems.",
+      title: "No integration with operational tools",
+      body: "Document ordering, vendor management, and community data lived in separate silos with no connection between them.",
     },
   ],
   pipelineStages: [
-    { label: "PROPERTYDOCZ", sublabel: "docs" },
-    { label: "PROPERTYJOBZ", sublabel: "vendors" },
-    { label: "PROPERTYOLIO", sublabel: "intelligence nerve center" },
+    { label: "WEBSITE REBUILD", sublabel: "foundation" },
+    { label: "MULTI-TENANT DATA LAYER", sublabel: "40+ communities" },
+    { label: "NATIVE PRODUCT INTEGRATIONS", sublabel: "PropertyDocz + PropertyJobz" },
   ],
   solutionFeatures: [
     {
-      title: "PropertyDocz",
+      title: "Modern Website Rebuild",
       description:
-        "Multi-tenant document ordering platform. Subscription tiers (Free to $799/mo), automated PDF generation via Typst, revenue split tracking, fulfillment ledger. Subdomain per tenant: corehoa.propertydocz.com.",
-      tags: ["Multi-tenant", "Stripe Connect", "Typst PDF"],
+        "Complete replacement of the legacy Webflow site. Built on Next.js with the XeedlyAI design system — consistent typography, signal-card patterns, and operational aesthetic that matches the scale of the business.",
+      tags: ["Next.js", "Tailwind", "XeedlyAI design system"],
     },
     {
-      title: "PropertyJobz",
+      title: "Multi-Tenant Data Layer",
       description:
-        "Vendor management with AI assistant. Compliance tracking, insurance expiry alerts, vendor matching, cascading clipboard brand identity. Claude-powered briefing + interactive chat.",
-      tags: ["Compliance", "Claude Sonnet", "AI Briefings"],
+        "Each community gets structured data management — board members, homeowners, documents, vendors. One platform serving 40+ communities without sacrificing community-specific context or branding.",
+      tags: ["Multi-tenant", "Structured data", "Per-community context"],
     },
     {
-      title: "Propertyolio",
+      title: "Native PropertyDocz Integration",
       description:
-        "The intelligence nerve center wrapping both products. Event bus ingests actions from Docz and Jobz, signal engine detects cross-product patterns, AI morning briefings delivered to managers.",
-      tags: ["Event bus", "Signal engine", "Morning briefings"],
+        "Homeowners and agents order resale and refinance documents through Core HOA's own site experience — PropertyDocz runs underneath but visitors never leave the Core HOA brand.",
+      tags: ["PropertyDocz", "Embedded flow", "Document operations"],
+    },
+    {
+      title: "Native PropertyJobz Integration",
+      description:
+        "Board members access vendor portals and compliance status without jumping to a separate tool. PropertyJobz is embedded as a native feature of the Core HOA experience.",
+      tags: ["PropertyJobz", "Vendor portal", "Compliance"],
+    },
+  ],
+  stackTags: [
+    "Next.js 16",
+    "Tailwind v4",
+    "shadcn/ui",
+    "Vercel",
+    "Multi-Tenant Architecture",
+    "PropertyDocz",
+    "PropertyJobz",
+  ],
+  outcomeKpis: [
+    { label: "Communities", value: "40+", target: 40, format: (n) => `${Math.round(n)}+` },
+    { label: "Build Time", value: "2 wks" },
+    { label: "Architecture", value: "Multi-tenant" },
+    { label: "Integrations", value: "Docz + Jobz" },
+    { label: "Status", value: "LIVE" },
+  ],
+  outcomeSignals: [
+    {
+      accent: "teal",
+      title: "40+ communities on one platform",
+      body: "Multi-tenant architecture serving dozens of HOA communities from a single deployment.",
+    },
+    {
+      accent: "teal",
+      title: "Seamless product integration",
+      body: "PropertyDocz document ordering and PropertyJobz vendor portals embedded as native features. Homeowners order documents without knowing they're using a separate platform.",
+    },
+    {
+      accent: "teal",
+      title: "First client in the property vertical",
+      body: "Core HOA validated the multi-tenant architecture pattern that now serves as the template for nationwide expansion.",
+    },
+  ],
+  intelligenceLayerText:
+    "Core HOA proved that a single multi-tenant architecture can serve dozens of communities without sacrificing community-specific customization. Their website integrates with PropertyDocz and PropertyJobz as native features — homeowners order documents and vendors access compliance portals without ever leaving Core HOA's brand experience. This integration pattern is the template for every HOA management company we onboard.",
+};
+
+export const PROPERTYDOCZ: CaseStudy = {
+  slug: "propertydocz",
+  clientName: "PropertyDocz",
+  industry: "DOCUMENT OPERATIONS",
+  industryAccent: "blue",
+  summary:
+    "Multi-tenant HOA document ordering and fulfillment platform. AI-powered data pipeline, automated PDF generation, subscription tiers with revenue split tracking.",
+  seoTitle: "PropertyDocz — Case Study",
+  seoDescription:
+    "Multi-tenant HOA document ordering platform. AI-powered data pipeline, Typst PDF generation, subscription tiers with automated revenue settlement. Built by XeedlyAI.",
+  card: {
+    slug: "propertydocz",
+    clientName: "PropertyDocz",
+    industry: "DOCUMENT OPERATIONS",
+    status: "SHIPPING",
+    statusAccent: "blue",
+    accentBorder: "#3b82f6",
+    description:
+      "Multi-tenant HOA document ordering and fulfillment. AI-powered data pipeline, automated PDF generation, subscription tiers with revenue split tracking.",
+    dataRow: [
+      "tenants: multi",
+      "tiers: 4",
+      "revenue: split-tracked",
+      "pdf: Typst automated",
+    ],
+  },
+  headerMetrics: [
+    { label: "STATUS", value: "SHIPPING" },
+    { label: "BUILD TIME", value: "6 weeks" },
+    { label: "STACK", value: "Next.js 16 · Supabase · Stripe Connect · Typst · Claude API · Resend" },
+    { label: "ARCHITECTURE", value: "Multi-tenant (subdomain per client)" },
+    { label: "TENANTS", value: "Core HOA (first)" },
+    { label: "SUBSCRIPTION TIERS", value: "4" },
+  ],
+  problemSignals: [
+    {
+      accent: "red",
+      title: "Industry-wide fulfillment bottleneck",
+      body: "HOA resale and refinance document packages assembled manually across the industry. Title companies, agents, and homeowners wait days for documents that should take hours.",
+    },
+    {
+      accent: "amber",
+      title: "No revenue optimization",
+      body: "Document fulfillment generates significant revenue but pricing, tracking, and settlement are handled through spreadsheets and manual invoicing. No subscription model, no automated revenue split.",
+    },
+    {
+      accent: "amber",
+      title: "Data confidence gap",
+      body: "HOA data comes from multiple sources with varying reliability. No system to track which fields are trustworthy and which need verification.",
+    },
+  ],
+  pipelineStages: [
+    { label: "AGENT / HOMEOWNER ORDERS", sublabel: "intake" },
+    { label: "AI DATA HARVEST", sublabel: "Claude-powered" },
+    { label: "TYPST PDF GENERATION", sublabel: "automated" },
+    { label: "FULFILLMENT TRACKING", sublabel: "ledger" },
+    { label: "REVENUE SETTLEMENT", sublabel: "Stripe Connect" },
+  ],
+  solutionFeatures: [
+    {
+      title: "Multi-Tenant Platform",
+      description:
+        "Each HOA management company gets a branded subdomain (e.g., corehoa.propertydocz.com). Tenant admins manage their own associations, agents, and pricing. Platform admin oversees all tenants.",
+      tags: ["Subdomains", "Tenant admin", "Platform admin"],
+    },
+    {
+      title: "Subscription Tiers",
+      description:
+        "Four tiers: Free/pay-per-order, Agent Pro $149/mo (3 packages), Broker Office $399/mo (10 packages), Title Partner $799/mo (25 packages). No rollover. Revenue split: 50/50 on pay-per-order, $10 fulfillment fee on subscriptions.",
+      tags: ["Stripe Connect", "Revenue split", "4 tiers"],
+    },
+    {
+      title: "Intelligent Data Pipeline",
+      description:
+        "AI-powered field registry with three-tier confidence model (static, periodic, transaction-specific). Claude API harvests data during onboarding, auto-fills known fields, flags low-confidence data for manual review.",
+      tags: ["Claude Sonnet", "Confidence model", "Field registry"],
+    },
+    {
+      title: "Automated PDF Generation",
+      description:
+        "Typst-based document generation produces professional HOA document packages in minutes. Templates configurable per association.",
+      tags: ["Typst", "Per-association templates", "Sub-minute generation"],
+    },
+    {
+      title: "Revenue Settlement",
+      description:
+        "Stripe Connect handles payment processing. Fulfillment ledger tracks every transaction. Monthly settlement calculates revenue splits automatically.",
+      tags: ["Stripe Connect", "Fulfillment ledger", "Automated splits"],
     },
   ],
   stackTags: [
@@ -283,34 +416,158 @@ export const CORE_HOA: CaseStudy = {
     "Claude Sonnet",
     "Resend",
     "Multi-Tenant",
-    "Vercel",
+    "Tailwind v4",
+    "shadcn/ui",
   ],
   outcomeKpis: [
-    { label: "Products", value: "3", target: 3, format: (n) => Math.round(n).toString() },
-    { label: "Associations", value: "40", target: 40, format: (n) => Math.round(n).toString() },
-    { label: "Pipeline", value: "Docs+Vendors+Intel" },
+    { label: "Tiers", value: "4", target: 4, format: (n) => Math.round(n).toString() },
+    { label: "Revenue Model", value: "Split-tracked" },
+    { label: "Pipeline", value: "Order→Harvest→Generate→Fulfill" },
     { label: "Tenants", value: "Multi" },
-    { label: "Revenue", value: "Split-tracked" },
+    { label: "PDF", value: "Typst automated" },
   ],
   outcomeSignals: [
     {
       accent: "teal",
-      title: "Three-product deployment",
-      body: "PropertyDocz, PropertyJobz, and Propertyolio deployed as an integrated suite. First client fully onboarded across all three.",
+      title: "End-to-end automation",
+      body: "From order placement to PDF generation to delivery to revenue settlement. Manual touchpoints reduced to edge cases.",
     },
     {
       accent: "teal",
-      title: "40 associations configured",
-      body: "Core HOA's full portfolio loaded into PropertyDocz. Document fulfillment pipeline automated.",
+      title: "Multi-tenant architecture",
+      body: "One codebase serving unlimited HOA management companies. Each tenant gets their own subdomain, branding context, and admin controls.",
     },
     {
-      accent: "blue",
-      title: "Intelligence layer in build",
-      body: "Propertyolio wrapping around Core HOA's operations. Event bus and signal engine connecting document and vendor data streams.",
+      accent: "teal",
+      title: "AI-powered data confidence",
+      body: "Three-tier confidence model means agents know exactly which HOA data to trust and which needs verification before closing.",
     },
   ],
   intelligenceLayerText:
-    "Core HOA is the proof case for the XeedlyAI property management vertical. PropertyDocz and PropertyJobz are operational tools that generate events — document requested, vendor insurance expired, job completed. Propertyolio ingests these events and correlates them: a vendor compliance gap coinciding with pending document requests becomes a high-severity signal. The manager gets a morning briefing, not a spreadsheet. Three products, one intelligence layer, one client.",
+    "PropertyDocz is a vertical SaaS product built on the XeedlyAI architecture pattern. Document orders are ingested events. Fulfillment status changes generate signals. Revenue settlement is automated intelligence. The multi-tenant architecture means every management company we onboard multiplies the data flowing through the system — more tenants, more events, more signal patterns. PropertyDocz doesn't just fulfill documents; it generates the operational data that Propertyolio will eventually correlate across the entire property management vertical.",
+};
+
+export const PROPERTYJOBZ: CaseStudy = {
+  slug: "propertyjobz",
+  clientName: "PropertyJobz",
+  industry: "VENDOR MANAGEMENT",
+  industryAccent: "blue",
+  summary:
+    "HOA vendor compliance and management platform. Claude-powered AI assistant on every dashboard, multi-tenant platform admin layer, full XeedlyAI design system.",
+  seoTitle: "PropertyJobz — Case Study",
+  seoDescription:
+    "HOA vendor compliance and management platform. Claude-powered AI assistant, multi-tenant platform admin, 30+ pages with XeedlyAI design system. Built by XeedlyAI.",
+  card: {
+    slug: "propertyjobz",
+    clientName: "PropertyJobz",
+    industry: "VENDOR MANAGEMENT",
+    status: "SHIPPING",
+    statusAccent: "blue",
+    accentBorder: "#3b82f6",
+    description:
+      "HOA vendor compliance and management platform. AI assistant on every dashboard, platform admin layer, 30+ pages with full design system.",
+    dataRow: [
+      "ai: every dashboard",
+      "pages: 30+",
+      "admin: platform + tenant",
+      "compliance: automated",
+    ],
+  },
+  headerMetrics: [
+    { label: "STATUS", value: "SHIPPING" },
+    { label: "BUILD TIME", value: "5 weeks" },
+    { label: "STACK", value: "Next.js 16 · Supabase · Stripe Connect · Claude · Framer" },
+    { label: "ARCHITECTURE", value: "Multi-tenant with Platform Admin" },
+    { label: "TENANTS", value: "Core HOA (first)" },
+    { label: "AI", value: "Claude-powered Assistant on every dashboard" },
+  ],
+  problemSignals: [
+    {
+      accent: "red",
+      title: "Vendor compliance is invisible",
+      body: "HOA management companies track vendor insurance, licenses, and certifications in spreadsheets or not at all. Expired insurance discovered only after an incident.",
+    },
+    {
+      accent: "amber",
+      title: "No vendor-community matching",
+      body: "Finding the right vendor for a specific community and job type requires manual searching through contacts and word of mouth. No structured vendor registry.",
+    },
+    {
+      accent: "amber",
+      title: "Disconnected workflows",
+      body: "Job requests, vendor assignments, compliance checks, and invoicing happen across email, phone, and paper. No single system connects the workflow.",
+    },
+  ],
+  pipelineStages: [
+    { label: "VENDOR ONBOARDING", sublabel: "registry" },
+    { label: "COMPLIANCE TRACKING", sublabel: "insurance · licenses" },
+    { label: "JOB MATCHING", sublabel: "community × trade" },
+    { label: "AI ASSISTANT", sublabel: "Claude-powered" },
+    { label: "PLATFORM ADMIN", sublabel: "multi-org oversight" },
+  ],
+  solutionFeatures: [
+    {
+      title: "Vendor Compliance Engine",
+      description:
+        "Insurance tracking, license verification, automated expiry alerts. The system knows which vendors are cleared to work before the first call goes out. Left-border status accents show compliance state at a glance.",
+      tags: ["Insurance tracking", "Expiry alerts", "Status accents"],
+    },
+    {
+      title: "AI Assistant",
+      description:
+        "Claude Sonnet-powered briefing and interactive chat on both admin and vendor dashboards. Ask about vendor status, compliance gaps, job history — the AI has full context across the platform.",
+      tags: ["Claude Sonnet", "Interactive chat", "Full-context briefings"],
+    },
+    {
+      title: "Multi-Tenant Platform Admin",
+      description:
+        "Purple-accented platform admin layer with organization onboarding wizard (7 steps including property upload), org selector filtering all pages, revenue tracking by org, and Stripe Connect OAuth.",
+      tags: ["7-step onboarding", "Org selector", "Stripe Connect OAuth"],
+    },
+    {
+      title: "KPI-Driven Dashboard",
+      description:
+        "KPI ticker strip on every page. Staggered Framer Motion animations. Left-border status accents on every card. The XeedlyAI design system applied across 30+ pages.",
+      tags: ["KPI tickers", "Framer Motion", "30+ pages"],
+    },
+  ],
+  stackTags: [
+    "Next.js 16",
+    "Supabase",
+    "Stripe Connect",
+    "Claude Sonnet",
+    "Framer Motion",
+    "Multi-Tenant",
+    "Platform Admin",
+    "Tailwind v4",
+    "shadcn/ui",
+  ],
+  outcomeKpis: [
+    { label: "AI", value: "Every Dashboard" },
+    { label: "Pages", value: "30+", target: 30, format: (n) => `${Math.round(n)}+` },
+    { label: "Admin", value: "Platform + Tenant" },
+    { label: "Compliance", value: "Automated" },
+    { label: "Design System", value: "Full XeedlyAI" },
+  ],
+  outcomeSignals: [
+    {
+      accent: "teal",
+      title: "AI on every surface",
+      body: "Claude-powered assistant available on both admin and vendor dashboards. Not a chatbot in the corner — a briefing engine integrated into the operational flow.",
+    },
+    {
+      accent: "teal",
+      title: "Platform admin layer",
+      body: "Purple-accented admin controls for managing multiple organizations. Onboarding wizard, org selector, revenue tracking. Built for scale from day one.",
+    },
+    {
+      accent: "teal",
+      title: "Design system proof",
+      body: "30+ pages with consistent KPI tickers, status accents, animations, and component patterns. PropertyJobz proved the XeedlyAI design system works at scale.",
+    },
+  ],
+  intelligenceLayerText:
+    "PropertyJobz generates the vendor compliance signals that Propertyolio will correlate with document operations data from PropertyDocz. A vendor's insurance expiring in PropertyJobz while three document requests are pending for the same community in PropertyDocz — that's a cross-system signal that no single product can detect alone. PropertyJobz is both a standalone vendor management platform and a critical event source for the intelligence layer.",
 };
 
 export const SOVVRN: CaseStudy = {
@@ -556,6 +813,8 @@ export const XEEDLY_PLATFORM: CaseStudy = {
 export const CASE_STUDIES: CaseStudy[] = [
   PANDO,
   CORE_HOA,
+  PROPERTYDOCZ,
+  PROPERTYJOBZ,
   SOVVRN,
   XEEDLY_PLATFORM,
 ];
@@ -563,9 +822,20 @@ export const CASE_STUDIES: CaseStudy[] = [
 export const CASE_STUDIES_BY_SLUG: Record<string, CaseStudy> = {
   pando: PANDO,
   "core-hoa": CORE_HOA,
+  propertydocz: PROPERTYDOCZ,
+  propertyjobz: PROPERTYJOBZ,
   sovvrn: SOVVRN,
   "xeedly-platform": XEEDLY_PLATFORM,
 };
+
+/** Slugs to show as the compact homepage preview. Rotate to spotlight the most
+ * interesting active deployments without cluttering the home page. */
+export const HOMEPAGE_PREVIEW_SLUGS = [
+  "pando",
+  "propertydocz",
+  "sovvrn",
+  "xeedly-platform",
+] as const;
 
 // ---------------------------------------------------------------------------
 // Aggregate KPIs for the /case-studies overview hero ticker
@@ -574,8 +844,8 @@ export const CASE_STUDIES_BY_SLUG: Record<string, CaseStudy> = {
 export const OVERVIEW_KPIS: Kpi[] = [
   {
     label: "Deployments Shipped",
-    value: "4",
-    target: 4,
+    value: "6",
+    target: 6,
     format: (n) => Math.round(n).toString(),
   },
   {

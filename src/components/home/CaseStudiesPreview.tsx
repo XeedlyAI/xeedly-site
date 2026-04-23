@@ -4,9 +4,16 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { DeploymentCard } from "@/components/case-studies/DeploymentCard";
 import { SectionReveal } from "@/components/shared/SectionReveal";
-import { CASE_STUDIES } from "@/data/case-studies";
+import {
+  CASE_STUDIES_BY_SLUG,
+  HOMEPAGE_PREVIEW_SLUGS,
+} from "@/data/case-studies";
 
 export function CaseStudiesPreview() {
+  const previewStudies = HOMEPAGE_PREVIEW_SLUGS.map(
+    (slug) => CASE_STUDIES_BY_SLUG[slug],
+  ).filter(Boolean);
+
   return (
     <section className="section-white py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -21,7 +28,7 @@ export function CaseStudiesPreview() {
             Proven in production.
           </h2>
           <p className="mt-4 text-[14px] leading-[1.6] text-[#334155] max-w-xl mx-auto">
-            Four deployments across property investment, property management,
+            Six deployments across property investment, property management,
             and restaurant intelligence. Same architecture, different verticals.
           </p>
         </SectionReveal>
@@ -35,7 +42,7 @@ export function CaseStudiesPreview() {
           }}
           className="grid grid-cols-1 md:grid-cols-2 gap-5"
         >
-          {CASE_STUDIES.map((cs) => (
+          {previewStudies.map((cs) => (
             <DeploymentCard key={cs.slug} data={cs.card} variant="compact" />
           ))}
         </motion.div>

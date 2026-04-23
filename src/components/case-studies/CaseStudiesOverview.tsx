@@ -75,7 +75,7 @@ export function CaseStudiesOverview() {
               className="mt-3 font-bold tracking-tight text-[#0f172a]"
               style={{ fontSize: "clamp(1.75rem, 3.2vw, 2rem)" }}
             >
-              Four deployments. Three verticals. One architecture.
+              Six deployments. Three verticals. One architecture.
             </h2>
           </SectionReveal>
 
@@ -84,9 +84,9 @@ export function CaseStudiesOverview() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={{
-              visible: { transition: { staggerChildren: 0.15 } },
+              visible: { transition: { staggerChildren: 0.12 } },
             }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-5"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
           >
             {CASE_STUDIES.map((cs) => (
               <DeploymentCard key={cs.slug} data={cs.card} />
