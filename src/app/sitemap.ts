@@ -8,6 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/", priority: 1.0, changeFrequency: "weekly" },
     { path: "/platform", priority: 0.9, changeFrequency: "weekly" },
     { path: "/products", priority: 0.9, changeFrequency: "weekly" },
+    { path: "/products/propertydocz", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/products/propertyjobz", priority: 0.8, changeFrequency: "monthly" },
     { path: "/case-studies", priority: 0.85, changeFrequency: "monthly" },
     { path: "/case-studies/pando", priority: 0.75, changeFrequency: "monthly" },
     { path: "/case-studies/core-hoa", priority: 0.75, changeFrequency: "monthly" },

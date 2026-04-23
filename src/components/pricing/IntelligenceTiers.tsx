@@ -58,21 +58,6 @@ const TIERS: Tier[] = [
     },
     accent: "teal",
   },
-  {
-    name: "Product Licenses",
-    price: "Custom",
-    unit: "",
-    tagline:
-      "Use our deployed products directly: Sovvrn (restaurants), Propertyolio + PropertyDocz + PropertyJobz (property management).",
-    features: [
-      "Per-location or per-door pricing",
-      "Fully hosted, nothing to deploy",
-      "Ongoing product updates included",
-      "Claude-powered briefings & chat",
-      "Starts at $499/mo per location",
-    ],
-    accent: "purple",
-  },
 ];
 
 const ACCENT: Record<Tier["accent"], { bar: string; chip: string; chipText: string }> = {
@@ -105,7 +90,7 @@ export function IntelligenceTiers() {
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
         variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
-        className="grid grid-cols-1 md:grid-cols-3 gap-5"
+        className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto"
       >
         {TIERS.map((t) => {
           const a = ACCENT[t.accent];

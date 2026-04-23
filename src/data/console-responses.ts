@@ -266,6 +266,12 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
           body:
             "Full intelligence deployment: $5K–$25K for most builds. Managed intelligence: $495–$995/mo. Event bus, signal engine, AI briefings, multi-channel delivery.",
         },
+        {
+          title: "Property Products",
+          icon: "🏘",
+          body:
+            "For HOA management companies: PropertyDocz (document fulfillment) and PropertyJobz (vendor management) are available with a $500 setup fee each (limited-time launch pricing, normally $1,500). No monthly platform fees — both run on a revenue-share model aligned with your success. Deploy both together for $1,000 combined setup.",
+        },
       ],
       actions: [
         {

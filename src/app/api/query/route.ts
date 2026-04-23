@@ -125,7 +125,12 @@ Deployment: 2-4 weeks for core + 1-2 weeks per integration + 3-5 days AI persona
 ### Intelligence Platforms
 - Intelligence Deployment: $5K-$25K for most deployments (2-4 week standup, 3-5 data sources). Complex builds may require additional investment.
 - Managed Intelligence: $495-$995/mo for most clients. High-volume environments quoted custom.
-- Product Licenses: SaaS pricing for Sovvrn and Propertyolio, starting at $499/mo per location.
+
+### Property Products (for HOA Management Companies)
+- PropertyDocz: $500 setup (limited-time, normally $1,500). Brings HOA document fulfillment in-house. AI-powered document generation, management company sets their own pricing, keeps the revenue. No monthly platform fees — revenue-share model aligned with success. Revenue details structured during onboarding.
+- PropertyJobz: $500 setup (limited-time, normally $1,500). Vendor verification + preferred vendor program + RFP/job management. Vendors pay for marketplace access. No monthly platform fees — revenue-share model. Revenue details structured during onboarding.
+- Combined: $1,000 setup for both (normally $3,000). Two independent revenue streams.
+- IMPORTANT: Never disclose specific revenue share percentages or Stripe settlement mechanics. These are determined during the sales process per client. Say "revenue-share model aligned with your success" or "details structured during onboarding."
 
 ### The Progression
 Growth Systems → immediate marketing automation.

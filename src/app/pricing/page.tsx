@@ -4,6 +4,7 @@ import { GrowthTiers } from "@/components/pricing/GrowthTiers";
 import { DigitalFoundation } from "@/components/pricing/DigitalFoundation";
 import { OperationalSystems } from "@/components/pricing/OperationalSystems";
 import { IntelligenceTiers } from "@/components/pricing/IntelligenceTiers";
+import { PropertyProducts } from "@/components/pricing/PropertyProducts";
 import { PricingFAQ } from "@/components/pricing/PricingFAQ";
 import { PRICING_FAQS } from "@/data/pricing-faqs";
 import { PricingCTA } from "@/components/pricing/PricingCTA";
@@ -59,6 +60,9 @@ export default function PricingPage() {
           <IntelligenceTiers />
         </div>
       </section>
+
+      {/* 5. Property Products — section-warm-wash (self-contained) */}
+      <PropertyProducts />
 
       <PricingFAQ />
       <PricingCTA />

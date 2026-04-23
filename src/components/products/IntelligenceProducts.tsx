@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   CodeBlock,
@@ -335,6 +336,39 @@ export function PropertyolioSection() {
   );
 }
 
+function SetupPriceBlock() {
+  return (
+    <div className="mt-8 flex flex-wrap items-center gap-4">
+      <div className="inline-flex items-baseline gap-2.5 flex-wrap">
+        <span className="font-mono text-[15px] font-semibold text-[#94a3b8] line-through tabular-nums">
+          $1,500
+        </span>
+        <span className="font-mono text-[24px] font-bold text-[#0f172a] tabular-nums leading-none">
+          $500
+        </span>
+        <span className="text-[13px] text-[#64748b]">setup</span>
+      </div>
+      <span className="font-mono text-[9px] font-semibold uppercase tracking-[0.1em] px-2 py-1 rounded-full bg-[#f59e0b]/10 text-[#b45309]">
+        Limited Time
+      </span>
+      <span className="text-[12px] text-[#64748b] italic">
+        No monthly platform fees — revenue-share model
+      </span>
+    </div>
+  );
+}
+
+function FullStoryLink({ href }: { href: string }) {
+  return (
+    <Link
+      href={href}
+      className="mt-5 inline-flex items-center text-[13px] font-semibold text-[#0A8FD4] hover:text-[#38b6ff] transition-colors"
+    >
+      See the full story →
+    </Link>
+  );
+}
+
 export function PropertyDoczSection() {
   return (
     <section
@@ -348,31 +382,33 @@ export function PropertyDoczSection() {
           verticalAccent="#3b82f6"
           status="Shipping"
           statusAccent="#3b82f6"
-          oneLiner="HOA document ordering and fulfillment. Multi-tenant, subscription-based, with automated PDF generation and revenue settlement."
+          oneLiner="Bring document fulfillment in-house. Your pricing. Your revenue. AI-powered document generation for HOA management companies — resale certificates, refinance packages, status letters — all generated automatically."
           link={{
             href: "https://propertydocz.com",
             label: "propertydocz.com →",
             external: true,
           }}
         />
+        <SetupPriceBlock />
+        <FullStoryLink href="/products/propertydocz" />
         <div className="mt-12">
           <FeatureGrid
             accent="#3b82f6"
             items={[
               {
-                title: "Multi-Tenant Platform",
+                title: "Your Pricing, Your Revenue",
                 body:
-                  "Each management company gets their own subdomain (e.g., corehoa.propertydocz.com). Tenant admins manage their own associations, agents, and pricing. Platform admin oversees everything.",
+                  "Set document prices that reflect your market. Revenue flows directly to your accounts — not to a middleman. Real-time, per-transaction. Stop splitting with third-party fulfillment companies.",
               },
               {
-                title: "Subscription Tiers",
+                title: "AI-Powered Pipeline",
                 body:
-                  "Four tiers from free/pay-per-order to Title Partner at $799/mo with 25 included packages. No rollover. Revenue split: 50/50 on pay-per-order, $10 fulfillment fee on subscription-covered orders.",
+                  "AI harvests, validates, and organizes community data. Three-tier confidence scoring so agents know exactly what to trust. Document packages generate automatically — no manual assembly.",
               },
               {
-                title: "Intelligent Pipeline",
+                title: "Your Brand, Your Subdomain",
                 body:
-                  "AI-powered field registry, document harvest, auto-fill, and gap analysis. Three-tier data confidence model (static → periodic → transaction-specific) with color indicators so agents know what to trust.",
+                  "Agents and homeowners order at your own subdomain (e.g., corehoa.propertydocz.com). The experience is yours. The platform runs invisibly behind it. Multi-tenant, built to scale.",
               },
             ]}
           />
@@ -395,34 +431,61 @@ export function PropertyJobzSection() {
           verticalAccent="#3b82f6"
           status="Shipping"
           statusAccent="#3b82f6"
-          oneLiner="Preferred vendor management for HOA management companies. AI-powered compliance tracking, vendor matching, and workforce intelligence."
+          oneLiner="Three systems on one platform — verification, preferred vendor program, and job management. A managed marketplace where vendors pay for verified access to your communities."
           link={{
             href: "https://propertyjobz.com",
             label: "propertyjobz.com →",
             external: true,
           }}
         />
+        <SetupPriceBlock />
+        <FullStoryLink href="/products/propertyjobz" />
         <div className="mt-12">
           <FeatureGrid
             accent="#3b82f6"
             items={[
               {
-                title: "Vendor Compliance",
+                title: "Vendor Verification",
                 body:
-                  "Insurance tracking, license verification, and automated expiry alerts. The system knows which vendors are cleared to work before the first call goes out.",
+                  "Every vendor verified for insurance, licensing, bonding, and certifications. Automated expiry tracking, renewal reminders, real-time compliance status visible to your team and your boards.",
               },
               {
-                title: "AI Assistant",
+                title: "Preferred Vendor Program",
                 body:
-                  "Claude-powered briefing and interactive chat on both admin and vendor dashboards. Ask about vendor status, compliance gaps, job history — the AI has full context.",
+                  "Verified vendors pay for access to your communities — because your communities represent guaranteed work. Homeowners and boards see only pre-approved vendors. You earn recurring revenue.",
               },
               {
-                title: "Multi-Tenant Admin",
+                title: "RFP + Job Management",
                 body:
-                  "Platform-level administration with organization onboarding wizard, Stripe Connect for payments, and a cascading clipboard logo that matches PropertyDocz's visual identity.",
+                  "Create an RFP, match qualified vendors, manage bids, assign the job, and track completion. AI assistant on every dashboard. Structured, fair, transparent — and fully automated.",
               },
             ]}
           />
+        </div>
+
+        {/* Combined offer — sits at the bottom of the PropertyJobz section since PropertyDocz is directly above */}
+        <div className="mt-16 mx-auto max-w-3xl">
+          <div
+            className="dash-card p-6 md:p-7 text-center"
+            style={{ borderLeft: "3px solid #14b8a6" }}
+          >
+            <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-[#0d9488]">
+              Combined Offer
+            </div>
+            <p className="mt-3 text-[14px] text-[#334155] leading-[1.7]">
+              Deploy both products together:{" "}
+              <span className="line-through text-[#94a3b8] font-mono">
+                $3,000
+              </span>{" "}
+              <span className="font-mono font-bold text-[#0f172a]">
+                $1,000 combined setup
+              </span>{" "}
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.1em] px-2 py-0.5 ml-1 rounded-full bg-[#f59e0b]/10 text-[#b45309]">
+                Limited Time
+              </span>
+              . Two revenue streams, one onboarding.
+            </p>
+          </div>
         </div>
       </div>
     </section>
