@@ -16,9 +16,8 @@ const NAV_LINKS = [
   { href: "/contact", label: "Contact" },
 ];
 
-// New XeedlyAI lockup — icon + wordmark. Rasterized from SVG at 2x (~40KB)
-// so retina displays look sharp without shipping the 526KB source SVG.
-const LOGO = "/images/logos/xeedly-logo-new@2x.png";
+// Bright-blue icon + medium-grey wordmark — works on both dark and light surfaces.
+const LOGO = "/images/logos/xeedly-logo-bright-blue.png";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -64,7 +63,10 @@ export function Navbar() {
               width={820}
               height={350}
               priority
-              className="h-[30px] md:h-9 w-auto transition-all duration-300"
+              className={cn(
+                "w-auto transition-all duration-300",
+                scrolled ? "h-9" : "h-10 md:h-11",
+              )}
             />
           </Link>
 

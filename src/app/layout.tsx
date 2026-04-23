@@ -83,7 +83,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "XeedlyAI",
   url: SITE_URL,
-  logo: `${SITE_URL}/images/logos/xeedly-logo-new@2x.png`,
+  logo: `${SITE_URL}/images/logos/xeedly-logo-bright-blue.png`,
   description:
     "AI-native intelligence platforms and automated growth systems for operational businesses.",
   sameAs: [],
