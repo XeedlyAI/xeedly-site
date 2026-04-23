@@ -66,7 +66,7 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
           title: "Intelligence Platforms",
           icon: "🧠",
           body:
-            "Sovvrn for restaurants. Propertyolio + PropertyDocz + PropertyJobz for property management. Event ingestion, signal engine, three-tier delivery — glance, briefing, deep.",
+            "Sovvrn for restaurants (live — morning briefings, voice AI, command center). Propertyolio + PropertyDocz + PropertyJobz for property management (Core HOA onboarding — 40 associations). Pando for property investment (live — full agent-to-investor deal pipeline).",
         },
         {
           title: "Automated Growth Systems",
@@ -209,7 +209,8 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
         {
           title: "Proven",
           icon: "✅",
-          body: "Restaurants and property management — live today.",
+          body:
+            "Restaurants (Sovvrn — live at sovvrn.vercel.app), Property Management (Core HOA — onboarding PropertyDocz + PropertyJobz + Propertyolio), and Property Investment (Pando Midwest Investments — live at ownpando.com). Three verticals, same architecture, all in production.",
         },
         {
           title: "High-Fit Candidates",

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
-type Kpi = {
+export type Kpi = {
   label: string;
   value: string;
   /** Numeric target for count-up. If omitted, the raw `value` is rendered as-is. */
@@ -13,7 +13,7 @@ type Kpi = {
   subtitle?: string;
 };
 
-const KPIS: Kpi[] = [
+const DEFAULT_KPIS: Kpi[] = [
   {
     label: "Platforms Deployed",
     value: "3",
@@ -51,6 +51,8 @@ const KPIS: Kpi[] = [
 type KpiTickerProps = {
   variant?: "dark" | "light";
   className?: string;
+  /** Override the default KPIs. When omitted, the default platform-wide set renders. */
+  kpis?: Kpi[];
 };
 
 function easeOutCubic(t: number) {
@@ -117,7 +119,12 @@ function KpiCell({ kpi, variant }: { kpi: Kpi; variant: "dark" | "light" }) {
   );
 }
 
-export function KpiTicker({ variant = "dark", className }: KpiTickerProps) {
+export function KpiTicker({
+  variant = "dark",
+  className,
+  kpis,
+}: KpiTickerProps) {
+  const data = kpis ?? DEFAULT_KPIS;
   const bg =
     variant === "dark"
       ? "bg-[#0f172a] text-[#f1f5f9]"
@@ -131,16 +138,20 @@ export function KpiTicker({ variant = "dark", className }: KpiTickerProps) {
       ? "divide-[rgba(255,255,255,0.06)]"
       : "divide-[rgba(15,23,42,0.06)]";
 
+  const gridCols =
+    data.length <= 2
+      ? "grid-cols-1 md:grid-cols-2"
+      : data.length === 3
+        ? "grid-cols-2 md:grid-cols-3"
+        : data.length === 4
+          ? "grid-cols-2 md:grid-cols-4"
+          : "grid-cols-2 md:grid-cols-5";
+
   return (
     <div className={cn("w-full border-b", bg, border, className)}>
       <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-6">
-        <div
-          className={cn(
-            "grid grid-cols-2 md:grid-cols-5 md:divide-x",
-            divider,
-          )}
-        >
-          {KPIS.map((kpi) => (
+        <div className={cn("grid", gridCols, "md:divide-x", divider)}>
+          {data.map((kpi) => (
             <KpiCell key={kpi.label} kpi={kpi} variant={variant} />
           ))}
         </div>
