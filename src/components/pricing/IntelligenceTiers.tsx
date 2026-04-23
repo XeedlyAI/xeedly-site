@@ -33,14 +33,14 @@ const TIERS: Tier[] = [
       "2–4 week standup",
     ],
     footnote: {
-      headline: "Complex builds: $35K–$50K",
-      detail: "6+ integrations, custom pipelines, multi-brand",
+      headline: "Complex deployments may require additional investment",
+      detail: "6+ integrations, custom pipelines, multi-brand architectures",
     },
     accent: "blue",
   },
   {
     name: "Managed Intelligence",
-    price: "$500–$3K",
+    price: "$495–$995",
     unit: "/mo",
     anchor: "most clients",
     tagline:
@@ -53,7 +53,7 @@ const TIERS: Tier[] = [
       "Priority escalation",
     ],
     footnote: {
-      headline: "High-volume: $5K–$7.5K/mo",
+      headline: "High-volume environments quoted custom",
       detail: "10+ integrations, daily rule adjustments",
     },
     accent: "teal",

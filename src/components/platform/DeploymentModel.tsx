@@ -27,11 +27,11 @@ const PLANS: Plan[] = [
       "Custom signal rules + AI persona",
     ],
     tags: ["One-time", "2–4 weeks"],
-    footnote: "Complex builds (6+ integrations, multi-brand): $35K–$50K",
+    footnote: "Complex deployments (6+ integrations, multi-brand) may require additional investment",
   },
   {
     name: "Managed Intelligence",
-    price: "$500–$3K",
+    price: "$495–$995",
     priceSuffix: "/mo",
     anchor: "most clients",
     items: [
@@ -41,7 +41,7 @@ const PLANS: Plan[] = [
       "Platform updates + monitoring",
     ],
     tags: ["Monthly", "Ongoing"],
-    footnote: "High-volume (10+ integrations, daily adjustments): $5K–$7.5K/mo",
+    footnote: "High-volume environments (10+ integrations, daily adjustments) quoted custom",
   },
   {
     name: "Product Licenses",

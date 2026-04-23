@@ -105,16 +105,34 @@ High-fit candidates: Fleet management, franchised retail, multi-site healthcare,
 Deployment: 2-4 weeks for core + 1-2 weeks per integration + 3-5 days AI persona training.
 
 ## PRICING
-### Intelligence Platforms
-- Intelligence Deployment: $5K-$25K for most deployments (2-4 week standup, 3-5 data sources). Complex builds with 6+ integrations: $35K-$50K.
-- Managed Intelligence: $500-$3K/mo for most clients. High-volume (10+ integrations): $5K-$7.5K/mo.
-- Product Licenses: SaaS pricing for Sovvrn and Propertyolio, starting at $499/mo per location.
 
 ### Growth Systems (Automated Marketing)
 - Starter: $297/mo — AI Ad Engine (1 platform), AI Chat Agent, Review Intelligence
 - Growth: $597/mo — AI Ads (Meta + Google), Voice + Chat AI, SEO Autopilot, Payment Automation
 - Scale: $997/mo — Everything in Growth + multi-location, custom AI voice, weekly briefing
 - All month-to-month, no contracts. Compare: traditional agencies charge $3K-$10K/mo
+
+### Digital Foundation (AI-Powered Websites)
+- $2,500 one-time + $199/mo maintenance
+- Modern website with data layer architecture, multi-tenant ready, integration-ready
+- 2-week delivery. Not a template — structured infrastructure.
+
+### Operational Systems (Custom Software)
+- $4K-$7K one-time for most builds + $199/mo maintenance
+- Custom software automating one business process. AI assistant built in. Multi-tenant.
+- 3-6 week delivery. Larger/complex systems may cost more.
+
+### Intelligence Platforms
+- Intelligence Deployment: $5K-$25K for most deployments (2-4 week standup, 3-5 data sources). Complex builds may require additional investment.
+- Managed Intelligence: $495-$995/mo for most clients. High-volume environments quoted custom.
+- Product Licenses: SaaS pricing for Sovvrn and Propertyolio, starting at $499/mo per location.
+
+### The Progression
+Growth Systems → immediate marketing automation.
+Digital Foundation → structured web infrastructure.
+Operational Systems → automate one manual process.
+Intelligence Platform → connect all systems, detect cross-system patterns, deliver proactive intelligence.
+Each tier is valuable standalone. Each also builds toward the next.
 
 ## HOW TO RESPOND
 - Be direct, confident, and specific. No filler, no hedging.

@@ -243,28 +243,28 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
       title: "Pricing",
       sections: [
         {
-          title: "Intelligence Deployment",
-          icon: "🏗",
-          body:
-            "Most deployments land between $5K and $25K — a 2–4 week standup with signal rules, AI persona, and delivery channels configured for your vertical. Complex builds with 6+ integrations or multi-brand architectures can reach $35K–$50K.",
-        },
-        {
-          title: "Managed Intelligence",
-          icon: "🛠",
-          body:
-            "Most clients pay $500–$3K/mo for ongoing signal tuning, platform updates, and support. High-volume environments with 10+ integrations and daily adjustments: $5K–$7.5K/mo.",
-        },
-        {
           title: "Growth Systems",
           icon: "📈",
           body:
-            "Starter $297/mo. Growth $597/mo. Scale $997/mo. AI-powered marketing automation, month-to-month.",
+            "AI-powered marketing automation. Starter $297/mo, Growth $597/mo, Scale $997/mo. Month-to-month, no contracts. Live in 72 hours.",
         },
         {
-          title: "Product Licenses",
-          icon: "🔑",
+          title: "Digital Foundation",
+          icon: "🏗",
           body:
-            "Sovvrn and Propertyolio as vertical SaaS. Per-location or per-org pricing, starting at $499/mo.",
+            "AI-powered website with data layer architecture. $2,500 one-time + $199/mo maintenance. Modern infrastructure, multi-tenant ready, built in 2 weeks. This is where most businesses start.",
+        },
+        {
+          title: "Operational Systems",
+          icon: "⚙️",
+          body:
+            "Custom software automating one business process. $4K–$7K for most builds + $199/mo maintenance. AI assistant built in, multi-tenant, delivered in 3–6 weeks.",
+        },
+        {
+          title: "Intelligence Platforms",
+          icon: "🧠",
+          body:
+            "Full intelligence deployment: $5K–$25K for most builds. Managed intelligence: $495–$995/mo. Event bus, signal engine, AI briefings, multi-channel delivery.",
         },
       ],
       actions: [

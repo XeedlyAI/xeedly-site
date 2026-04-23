@@ -36,7 +36,7 @@ export function PricingHero() {
           className="mt-5 font-bold text-white leading-[1.1] tracking-[-0.01em]"
           style={{ fontSize: "clamp(2rem, 5vw, 3.25rem)" }}
         >
-          Two product lines.
+          Four tiers. One trajectory.
           <br />
           <span className="text-[#38b6ff]">Transparent pricing.</span>
         </motion.h1>
@@ -46,10 +46,14 @@ export function PricingHero() {
           transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
           className="mt-6 text-[15px] text-[#94a3b8] max-w-2xl mx-auto leading-[1.7]"
         >
-          Automated Growth Systems start at{" "}
+          Growth Systems from{" "}
           <span className="font-mono font-semibold text-[#f1f5f9]">$297/mo</span>.
-          Intelligence Platforms are deployed per-vertical, with a capability
-          model that scales with you.
+          Digital Foundation from{" "}
+          <span className="font-mono font-semibold text-[#f1f5f9]">$2,500</span>.
+          Operational Systems from{" "}
+          <span className="font-mono font-semibold text-[#f1f5f9]">$4K</span>.
+          Intelligence Platforms deployed per-vertical. Each tier valuable
+          standalone, each builds toward the next.
         </motion.p>
       </div>
       <div
