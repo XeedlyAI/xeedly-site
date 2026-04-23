@@ -20,6 +20,30 @@ const GROWTH_TABS = [
   { id: "payment-automation", label: "Payment Automation" },
 ];
 
+// Shared event — consumed by the Transformation section to swap CHAOS/CLARITY content
+// when the user changes tabs. Growth sub-tabs collapse to the single "growth" product key.
+export const PRODUCT_TAB_EVENT = "xeedly:product-tab-change";
+
+export type ProductTabKey =
+  | "sovvrn"
+  | "propertyolio"
+  | "propertydocz"
+  | "propertyjobz"
+  | "growth";
+
+export type ProductTabDetail = { product: ProductTabKey };
+
+function dispatchProductTab(line: Line, subTab: string) {
+  if (typeof window === "undefined") return;
+  const product: ProductTabKey =
+    line === "growth" ? "growth" : (subTab as ProductTabKey);
+  window.dispatchEvent(
+    new CustomEvent<ProductTabDetail>(PRODUCT_TAB_EVENT, {
+      detail: { product },
+    }),
+  );
+}
+
 export function ProductNavigator() {
   const [line, setLine] = useState<Line>("intelligence");
   const [active, setActive] = useState<string>("sovvrn");
@@ -30,11 +54,17 @@ export function ProductNavigator() {
     setLine(next);
     const first = next === "intelligence" ? "sovvrn" : "ai-ad-engine";
     setActive(first);
-    scrollTo(first);
+    dispatchProductTab(next, first);
+    scrollToSection(first);
   }
 
-  function scrollTo(id: string) {
+  function selectTab(id: string) {
     setActive(id);
+    dispatchProductTab(line, id);
+    scrollToSection(id);
+  }
+
+  function scrollToSection(id: string) {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -81,7 +111,7 @@ export function ProductNavigator() {
               <button
                 key={t.id}
                 type="button"
-                onClick={() => scrollTo(t.id)}
+                onClick={() => selectTab(t.id)}
                 className={cn(
                   "px-3 py-1.5 rounded-md text-[12px] transition-all",
                   selected

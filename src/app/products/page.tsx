@@ -6,7 +6,7 @@ import {
   PropertyDoczSection,
   PropertyJobzSection,
 } from "@/components/products/IntelligenceProducts";
-import { ConnectionDiagram } from "@/components/products/ConnectionDiagram";
+import { Transformation } from "@/components/products/Transformation";
 import { GrowthDivider } from "@/components/products/GrowthDivider";
 import {
   AIAdEngine,
@@ -31,7 +31,7 @@ export default function ProductsPage() {
       <PropertyolioSection />
       <PropertyDoczSection />
       <PropertyJobzSection />
-      <ConnectionDiagram />
+      <Transformation />
       <GrowthDivider />
       <AIAdEngine />
       <SEOAutopilot />
