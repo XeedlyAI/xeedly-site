@@ -75,7 +75,7 @@ export function CaseStudiesOverview() {
               className="mt-3 font-bold tracking-tight text-[#0f172a]"
               style={{ fontSize: "clamp(1.75rem, 3.2vw, 2rem)" }}
             >
-              Six deployments. Three verticals. One architecture.
+              Six deployments. Five verticals. One architecture.
             </h2>
           </SectionReveal>
 

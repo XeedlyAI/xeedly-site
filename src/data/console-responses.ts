@@ -210,7 +210,7 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
           title: "Proven",
           icon: "✅",
           body:
-            "Restaurants (Sovvrn — live at sovvrn.vercel.app). Property Management (PropertyDocz + PropertyJobz shipping as XeedlyAI products — Core HOA is the first client on both, running 40+ communities). Property Investment (Pando Midwest Investments — live at ownpando.com). Three verticals, same architecture, all in production.",
+            "Restaurants (Sovvrn — live at sovvrn.vercel.app). Property Management (PropertyDocz + PropertyJobz shipping as XeedlyAI products). HOA Operations (Core HOA — first client on PropertyDocz + PropertyJobz, running 40+ communities). Property Investment (Pando Midwest Investments — live at ownpando.com). SaaS Infrastructure (XeedlyAI platform itself — event bus, signal engine, AI delivery layer). Five verticals, same architecture, all in production.",
         },
         {
           title: "High-Fit Candidates",

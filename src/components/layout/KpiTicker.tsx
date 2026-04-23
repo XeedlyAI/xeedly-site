@@ -16,8 +16,8 @@ export type Kpi = {
 const DEFAULT_KPIS: Kpi[] = [
   {
     label: "Platforms Deployed",
-    value: "3",
-    target: 3,
+    value: "6",
+    target: 6,
     format: (n) => Math.round(n).toString(),
   },
   {
@@ -29,10 +29,10 @@ const DEFAULT_KPIS: Kpi[] = [
   },
   {
     label: "Active Verticals",
-    value: "2",
-    target: 2,
+    value: "5",
+    target: 5,
     format: (n) => Math.round(n).toString(),
-    subtitle: "restaurants • property",
+    subtitle: "restaurants · property · investment · HOA · SaaS",
   },
   {
     label: "Avg Response",

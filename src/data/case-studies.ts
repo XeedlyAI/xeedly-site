@@ -850,10 +850,10 @@ export const OVERVIEW_KPIS: Kpi[] = [
   },
   {
     label: "Industries Covered",
-    value: "3",
-    target: 3,
+    value: "5",
+    target: 5,
     format: (n) => Math.round(n).toString(),
-    subtitle: "property • restaurants • investment",
+    subtitle: "restaurants · property · investment · HOA · SaaS",
   },
   {
     label: "Avg Build Time",

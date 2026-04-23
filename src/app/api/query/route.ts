@@ -100,7 +100,7 @@ When referencing case studies in responses:
 - Full briefs live at /case-studies/pando, /case-studies/core-hoa, /case-studies/propertydocz, /case-studies/propertyjobz, /case-studies/sovvrn, /case-studies/xeedly-platform.
 
 ## VERTICALS
-Proven: Restaurants, Property Management
+Proven (5 live verticals, 6 deployments): Restaurants (Sovvrn), Property Management (PropertyDocz + PropertyJobz), HOA Operations (Core HOA), Property Investment (Pando), SaaS Infrastructure (XeedlyAI platform itself).
 High-fit candidates: Fleet management, franchised retail, multi-site healthcare, construction/trades, commercial real estate.
 Deployment: 2-4 weeks for core + 1-2 weeks per integration + 3-5 days AI persona training.
 
