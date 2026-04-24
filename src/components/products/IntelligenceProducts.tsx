@@ -369,6 +369,26 @@ function FullStoryLink({ href }: { href: string }) {
   );
 }
 
+function RevenueCallout({
+  heading,
+  body,
+}: {
+  heading: string;
+  body: React.ReactNode;
+}) {
+  return (
+    <div
+      className="mt-10 dash-card p-6 md:p-7 max-w-3xl"
+      style={{ borderLeft: "3px solid #14b8a6" }}
+    >
+      <div className="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-[#0d9488]">
+        {heading}
+      </div>
+      <p className="mt-3 text-[14px] leading-[1.65] text-[#334155]">{body}</p>
+    </div>
+  );
+}
+
 export function PropertyDoczSection() {
   return (
     <section
@@ -382,7 +402,7 @@ export function PropertyDoczSection() {
           verticalAccent="#3b82f6"
           status="Shipping"
           statusAccent="#3b82f6"
-          oneLiner="Bring document fulfillment in-house. Your pricing. Your revenue. AI-powered document generation for HOA management companies — resale certificates, refinance packages, status letters — all generated automatically."
+          oneLiner="Every document request your communities generate is revenue — and right now, someone else is keeping it. PropertyDocz brings the entire fulfillment pipeline in-house. Your pricing. Your revenue. AI-generated packages for resale certificates, refinance documents, and status letters."
           link={{
             href: "https://propertydocz.com",
             label: "propertydocz.com →",
@@ -391,6 +411,25 @@ export function PropertyDoczSection() {
         />
         <SetupPriceBlock />
         <FullStoryLink href="/products/propertydocz" />
+        <RevenueCallout
+          heading="Your Documents. Your Revenue."
+          body={
+            <>
+              HOA management companies process hundreds of document requests
+              per year. At $150–$350 per package, that&apos;s a significant
+              revenue stream — one that&apos;s currently flowing to third-party
+              fulfillment companies. PropertyDocz brings it in-house. You set
+              the pricing. You keep the revenue. Setup:{" "}
+              <span className="font-mono text-[#94a3b8] line-through">
+                $1,500
+              </span>{" "}
+              <span className="font-mono font-semibold text-[#0f172a]">
+                $500
+              </span>
+              .
+            </>
+          }
+        />
         <div className="mt-12">
           <FeatureGrid
             accent="#3b82f6"
@@ -431,7 +470,7 @@ export function PropertyJobzSection() {
           verticalAccent="#3b82f6"
           status="Shipping"
           statusAccent="#3b82f6"
-          oneLiner="Three systems on one platform — verification, preferred vendor program, and job management. A managed marketplace where vendors pay for verified access to your communities."
+          oneLiner="You already manage vendor relationships. You already verify insurance. PropertyJobz turns that work into a revenue-generating marketplace — three systems on one platform: verification, preferred vendor program, and job management."
           link={{
             href: "https://propertyjobz.com",
             label: "propertyjobz.com →",
@@ -440,6 +479,24 @@ export function PropertyJobzSection() {
         />
         <SetupPriceBlock />
         <FullStoryLink href="/products/propertyjobz" />
+        <RevenueCallout
+          heading="Your Vendors. Your Marketplace. Your Revenue."
+          body={
+            <>
+              Vendors pay for verified access to your communities because
+              you&apos;ve built a system worth paying for — compliance
+              tracking, preferred status, job matching. That&apos;s new income
+              from work you&apos;re already doing. Setup:{" "}
+              <span className="font-mono text-[#94a3b8] line-through">
+                $1,500
+              </span>{" "}
+              <span className="font-mono font-semibold text-[#0f172a]">
+                $500
+              </span>
+              .
+            </>
+          }
+        />
         <div className="mt-12">
           <FeatureGrid
             accent="#3b82f6"
@@ -473,17 +530,17 @@ export function PropertyJobzSection() {
               Combined Offer
             </div>
             <p className="mt-3 text-[14px] text-[#334155] leading-[1.7]">
-              Deploy both products together:{" "}
+              Two apps. Two revenue streams. One setup:{" "}
               <span className="line-through text-[#94a3b8] font-mono">
                 $3,000
               </span>{" "}
               <span className="font-mono font-bold text-[#0f172a]">
-                $1,000 combined setup
+                $1,000
               </span>{" "}
               <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.1em] px-2 py-0.5 ml-1 rounded-full bg-[#f59e0b]/10 text-[#b45309]">
                 Limited Time
               </span>
-              . Two revenue streams, one onboarding.
+              . No monthly software fees. We only earn when you earn.
             </p>
           </div>
         </div>

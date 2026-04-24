@@ -8,7 +8,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 const HERO_SUGGESTIONS = [
   { label: "What does XeedlyAI build?", queryId: "what-we-build" },
-  { label: "How is this different from a dashboard?", queryId: "signal-engine" },
+  { label: "Revenue I'm leaving on the table?", queryId: "revenue-streams" },
   { label: "What would this look like for my industry?", queryId: "verticals" },
 ];
 

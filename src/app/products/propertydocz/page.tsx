@@ -115,10 +115,11 @@ export default function PropertyDoczPage() {
 
       {/* 7. Final CTA */}
       <LandingCTA
-        headlineBefore="Your communities. Your documents."
-        headlineAfter="Your revenue."
-        secondaryLabel="See PropertyDocz Case Study →"
-        secondaryHref="/case-studies/propertydocz"
+        headlineBefore="Ready to stop"
+        headlineAfter="giving away revenue?"
+        subhead="Two revenue streams. $1,000 combined setup. We only earn when you earn."
+        secondaryLabel="See Pricing →"
+        secondaryHref="/pricing"
       />
     </>
   );

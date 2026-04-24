@@ -4,7 +4,13 @@ import { motion } from "framer-motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-const ITEMS = [
+type Item = {
+  title: string;
+  body: string;
+  accent?: "info" | "good";
+};
+
+const ITEMS: Item[] = [
   {
     title: "Proactive, not reactive",
     body:
@@ -19,6 +25,12 @@ const ITEMS = [
     title: "Operator-first delivery",
     body:
       "Email, SMS, Slack, Teams, in-app. Intelligence meets you where you work — not behind a login.",
+  },
+  {
+    title: "Revenue, not just efficiency",
+    body:
+      "Most platforms save you time. Ours creates income. PropertyDocz and PropertyJobz turn existing operations into new revenue streams for your business. No software fees — we only earn when you earn.",
+    accent: "good",
   },
 ];
 
@@ -46,7 +58,7 @@ export function BuiltDifferent() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-5"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5"
         >
           {ITEMS.map((it) => (
             <motion.div
@@ -59,7 +71,9 @@ export function BuiltDifferent() {
                   transition: { duration: 0.5, ease: EASE },
                 },
               }}
-              className="dash-card status-info p-6 md:p-7"
+              className={`dash-card ${
+                it.accent === "good" ? "status-good" : "status-info"
+              } p-6 md:p-7`}
             >
               <h3 className="text-[15px] font-semibold text-[#0f172a]">
                 {it.title}

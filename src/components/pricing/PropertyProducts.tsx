@@ -20,7 +20,7 @@ const PRODUCTS: Product[] = [
     name: "PropertyDocz",
     subtitle: "Document Operations",
     description:
-      "Bring HOA document fulfillment in-house. Resale certificates, refinance packages, status letters — generated automatically with AI-powered data harvesting. Set your own pricing. Keep the revenue. Stop splitting with third-party fulfillment companies.",
+      "Your communities generate document requests every day. Right now, a third-party company fulfills them — and keeps the revenue. PropertyDocz brings the entire process in-house. AI-powered document generation, your pricing, your revenue. Stop splitting with middlemen.",
     features: [
       "AI-powered document generation",
       "Multi-tenant — your brand, your subdomain",
@@ -37,7 +37,7 @@ const PRODUCTS: Product[] = [
     name: "PropertyJobz",
     subtitle: "Vendor Management",
     description:
-      "Turn vendor management into a managed marketplace. Vendor verification, preferred vendor program, and complete RFP and job management — automated. Vendors pay for access to your communities because you've built a system worth paying for.",
+      "You already manage vendor relationships — verification, compliance, job assignments. PropertyJobz turns that work into a managed marketplace where vendors pay for access. New revenue from existing operations. No toll booth — real value, real income.",
     features: [
       "Vendor verification & compliance tracking",
       "Preferred vendor program management",
@@ -73,10 +73,11 @@ export function PropertyProducts() {
             New revenue streams.{" "}
             <span className="text-[#38b6ff]">Fully automated.</span>
           </h2>
-          <p className="mt-4 text-[14px] text-[#334155] max-w-2xl mx-auto leading-[1.7]">
-            Purpose-built platforms for HOA management companies. Each product
-            brings a process in-house, automates the work, and turns it into
-            revenue you control.
+          <p className="mt-4 text-[14.5px] text-[#334155] max-w-3xl mx-auto leading-[1.7]">
+            We don&apos;t sell you software. We build you revenue streams.
+            PropertyDocz and PropertyJobz turn work your company already does
+            into income you&apos;re not capturing — with zero monthly platform
+            fees and a revenue-share model that aligns our success with yours.
           </p>
         </motion.div>
 

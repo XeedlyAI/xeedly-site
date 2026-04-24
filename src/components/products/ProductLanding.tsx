@@ -258,11 +258,13 @@ export function SetupFeeSection({
 export function LandingCTA({
   headlineBefore,
   headlineAfter,
+  subhead,
   secondaryLabel,
   secondaryHref,
 }: {
   headlineBefore: string;
   headlineAfter: string;
+  subhead?: string;
   secondaryLabel: string;
   secondaryHref: string;
 }) {
@@ -293,6 +295,17 @@ export function LandingCTA({
           {headlineBefore}{" "}
           <span className="text-[#38b6ff]">{headlineAfter}</span>
         </motion.h2>
+        {subhead && (
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
+            className="mt-5 text-[15px] text-[#94a3b8] max-w-xl mx-auto leading-[1.7]"
+          >
+            {subhead}
+          </motion.p>
+        )}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}

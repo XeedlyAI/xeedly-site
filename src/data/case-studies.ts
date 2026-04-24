@@ -429,6 +429,11 @@ export const PROPERTYDOCZ: CaseStudy = {
   outcomeSignals: [
     {
       accent: "teal",
+      title: "New revenue stream activated",
+      body: "Document fulfillment revenue that previously flowed to third-party companies now stays with the management company. Pricing controlled by the operator, settled in real-time, no monthly settlement delays.",
+    },
+    {
+      accent: "teal",
       title: "End-to-end automation",
       body: "From order placement to PDF generation to delivery to revenue settlement. Manual touchpoints reduced to edge cases.",
     },
@@ -550,6 +555,11 @@ export const PROPERTYJOBZ: CaseStudy = {
     { label: "Design System", value: "Full XeedlyAI" },
   ],
   outcomeSignals: [
+    {
+      accent: "teal",
+      title: "Vendor marketplace revenue stream created",
+      body: "Vendors pay for verified access to communities through the Preferred Vendor Program. Management companies earn from a system they were managing manually — now automated and structured.",
+    },
     {
       accent: "teal",
       title: "AI on every surface",

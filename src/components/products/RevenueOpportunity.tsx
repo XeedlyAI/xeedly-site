@@ -26,6 +26,66 @@ export function RevenueOpportunity() {
           </h2>
         </motion.div>
 
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: EASE }}
+          className="text-center text-[15px] font-semibold text-[#0f172a] max-w-xl mx-auto mb-8"
+        >
+          The revenue is already there. It&apos;s just going to the wrong
+          company.
+        </motion.p>
+
+        {/* Mini KPI strip — the visual revenue gap */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: EASE }}
+          className="mb-8 grid grid-cols-1 md:grid-cols-3 gap-3"
+        >
+          <div className="rounded-xl bg-white border border-[#e2e8f0] p-5">
+            <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[#64748b]">
+              Avg Document Package
+            </div>
+            <div className="mt-2 font-mono text-[22px] font-bold text-[#0f172a] tabular-nums leading-none">
+              $150–$350
+            </div>
+            <div className="mt-2 font-mono text-[10px] text-[#94a3b8]">
+              market rate per request
+            </div>
+          </div>
+          <div
+            className="rounded-xl bg-white p-5"
+            style={{ borderLeft: "3px solid #ef4444", border: "1px solid #e2e8f0", borderLeftWidth: 3, borderLeftColor: "#ef4444" }}
+          >
+            <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[#64748b]">
+              Your Current Share
+            </div>
+            <div className="mt-2 font-mono text-[22px] font-bold tabular-nums leading-none text-[#ef4444]">
+              $0*
+            </div>
+            <div className="mt-2 font-mono text-[10px] text-[#94a3b8]">
+              *using 3rd-party fulfillment
+            </div>
+          </div>
+          <div
+            className="rounded-xl bg-white p-5"
+            style={{ border: "1px solid #e2e8f0", borderLeftWidth: 3, borderLeftColor: "#14b8a6" }}
+          >
+            <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[#0d9488]">
+              With PropertyDocz
+            </div>
+            <div className="mt-2 font-mono text-[22px] font-bold tabular-nums leading-none text-[#0f172a]">
+              YOU SET IT
+            </div>
+            <div className="mt-2 font-mono text-[10px] text-[#94a3b8]">
+              real-time, per transaction
+            </div>
+          </div>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}

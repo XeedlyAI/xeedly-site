@@ -79,10 +79,11 @@ export default function PropertyJobzPage() {
 
       {/* 7. Final CTA */}
       <LandingCTA
-        headlineBefore="Your vendors. Your marketplace."
-        headlineAfter="Your revenue."
-        secondaryLabel="See PropertyJobz Case Study →"
-        secondaryHref="/case-studies/propertyjobz"
+        headlineBefore="Ready to stop"
+        headlineAfter="giving away revenue?"
+        subhead="Two revenue streams. $1,000 combined setup. We only earn when you earn."
+        secondaryLabel="See Pricing →"
+        secondaryHref="/pricing"
       />
     </>
   );

@@ -152,6 +152,54 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
     },
   },
   {
+    id: "revenue-streams",
+    label: "Revenue I'm leaving on the table?",
+    response: {
+      type: "briefing",
+      title: "Revenue Streams You're Not Capturing",
+      sections: [
+        {
+          title: "Document Revenue — Currently Walking Out the Door",
+          icon: "📄",
+          body:
+            "Every resale certificate, refinance package, and status letter your communities generate is revenue. Right now, companies like CondoCerts and HomewiseDocs fulfill those documents — they control the pricing, the timeline, and they keep the lion's share of the money. You do the data work. They cash the check. PropertyDocz brings the entire process in-house. You set the prices. You keep the revenue. The AI handles the document generation. Setup: $500.",
+        },
+        {
+          title: "Vendor Marketplace — Revenue From Work You Already Manage",
+          icon: "🔧",
+          body:
+            "You already manage vendor relationships for your communities. You already verify insurance and track compliance. PropertyJobz turns that existing work into a structured marketplace where vendors pay for verified access to your communities. It's not a toll booth — it's a managed program with real value: compliance tracking, preferred status, job matching. Vendors pay because your system is worth paying for. Setup: $500.",
+        },
+        {
+          title: "The Math",
+          icon: "💰",
+          body:
+            "A management company with 30+ communities processing document requests at market rates of $150–$350 per package is looking at significant annual revenue — revenue that's currently flowing to a third party. Add vendor marketplace subscriptions on top of that, and you've created two independent income streams from work you're already doing. Combined setup: $1,000. No monthly platform fees. We only earn when you earn.",
+        },
+        {
+          title: "Zero Risk",
+          icon: "⚡",
+          body:
+            "No monthly software fees. No long-term contracts. Revenue-share model means our incentives are aligned — we built the platform, we maintain it, we only succeed when you succeed. $500 per app to set up, or $1,000 for both. The revenue starts flowing with your first document order and your first vendor enrollment.",
+        },
+      ],
+      actions: [
+        {
+          type: "calendar",
+          label: "See how it works for your company",
+          url: CONTACT.calendar,
+          description: "30-minute call — we'll map your revenue opportunity",
+        },
+        {
+          type: "contact_info",
+          label: "Quick questions",
+          email: CONTACT.email,
+          phone: CONTACT.phone,
+        },
+      ],
+    },
+  },
+  {
     id: "growth-systems",
     label: "What are Growth Systems?",
     response: {
