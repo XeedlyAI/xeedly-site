@@ -10,12 +10,19 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 // Paths where the widget is redundant or competes with a primary contact surface.
 const HIDDEN_ROUTES = new Set<string>(["/", "/contact"]);
+const HIDDEN_PREFIXES = ["/admin"];
 
 export function ContactWidget() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  if (pathname && HIDDEN_ROUTES.has(pathname)) return null;
+  if (
+    pathname &&
+    (HIDDEN_ROUTES.has(pathname) ||
+      HIDDEN_PREFIXES.some((p) => pathname.startsWith(p)))
+  ) {
+    return null;
+  }
 
   return (
     <div className="fixed bottom-6 right-6 z-40 print:hidden">
