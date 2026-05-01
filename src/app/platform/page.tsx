@@ -3,6 +3,7 @@ import { Pipeline } from "@/components/platform/Pipeline";
 import { LiveDemo } from "@/components/platform/LiveDemo";
 import { ThreeTiersDeep } from "@/components/platform/ThreeTiersDeep";
 import { DeploymentModel } from "@/components/platform/DeploymentModel";
+import { OperationsIsMarketing } from "@/components/platform/OperationsIsMarketing";
 import { PlatformCTA } from "@/components/platform/PlatformCTA";
 
 export const metadata = {
@@ -19,6 +20,7 @@ export default function PlatformPage() {
       <LiveDemo />
       <ThreeTiersDeep />
       <DeploymentModel />
+      <OperationsIsMarketing />
       <PlatformCTA />
     </>
   );

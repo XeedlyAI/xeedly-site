@@ -40,10 +40,10 @@ export function GrowthDivider() {
           transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
           className="mt-5 mx-auto max-w-[580px] text-[15px] leading-[1.6] text-[#94a3b8]"
         >
-          AI-powered systems that replace traditional marketing retainers.
-          Always-on automation starting at{" "}
+          AI-powered systems that make a business easy to find, fast to
+          respond, and impossible to forget. Three ongoing plans starting at{" "}
           <span className="font-mono font-semibold text-[#f1f5f9]">
-            $297/mo
+            $199/mo
           </span>
           {" "}— no contracts, no human bottlenecks, no $5K monthly invoices.
         </motion.p>
@@ -63,7 +63,7 @@ export function GrowthDivider() {
               Traditional Agency
             </div>
             <ul className="mt-3 space-y-1.5 text-[13px] text-[#94a3b8] leading-[1.55]">
-              <li><span className="font-mono text-[#f1f5f9]">$3K–$10K</span>/mo</li>
+              <li><span className="font-mono text-[#f1f5f9]">$1.5K–$3K</span>/mo</li>
               <li>6-month contracts</li>
               <li>Manual execution</li>
             </ul>
@@ -76,7 +76,7 @@ export function GrowthDivider() {
               XeedlyAI Growth Systems
             </div>
             <ul className="mt-3 space-y-1.5 text-[13px] text-[#94a3b8] leading-[1.55]">
-              <li><span className="font-mono text-[#f1f5f9]">$297–$997</span>/mo</li>
+              <li><span className="font-mono text-[#f1f5f9]">$199–$499</span>/mo</li>
               <li>Month-to-month</li>
               <li>AI-powered 24/7</li>
             </ul>

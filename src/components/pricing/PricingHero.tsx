@@ -46,10 +46,10 @@ export function PricingHero() {
           transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
           className="mt-6 text-[15px] text-[#94a3b8] max-w-2xl mx-auto leading-[1.7]"
         >
-          Growth Systems from{" "}
-          <span className="font-mono font-semibold text-[#f1f5f9]">$297/mo</span>.
           Digital Foundation from{" "}
           <span className="font-mono font-semibold text-[#f1f5f9]">$2,500</span>.
+          Ongoing plans from{" "}
+          <span className="font-mono font-semibold text-[#f1f5f9]">$199/mo</span>.
           Operational Systems from{" "}
           <span className="font-mono font-semibold text-[#f1f5f9]">$4K</span>.
           Intelligence Platforms deployed per-vertical. Each tier valuable

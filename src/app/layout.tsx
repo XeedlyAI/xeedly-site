@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s — XeedlyAI",
   },
   description:
-    "XeedlyAI builds AI-native intelligence platforms and automated growth systems. Sovvrn for restaurants, Propertyolio for property management, and growth systems starting at $297/mo.",
+    "XeedlyAI builds AI-native intelligence platforms and growth systems. Operations IS marketing — businesses that run better grow without trying. Digital Foundation, Get Found, Get Chosen, and Intelligence Platform deployments.",
   keywords: [
     "AI intelligence platform",
     "operational intelligence",

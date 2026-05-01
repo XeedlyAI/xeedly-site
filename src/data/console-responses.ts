@@ -72,7 +72,7 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
           title: "Automated Growth Systems",
           icon: "🚀",
           body:
-            "AI-powered marketing and operations automation — ad engines, SEO, voice AI, review management, payments. Replacing $5K–$10K/mo agency retainers at $297–$997/mo.",
+            "AI SEO, Google Business Profile, voice AI, chat agents, review intelligence, and AI-generated blogging. Three ongoing plans — Maintain ($199/mo), Get Found ($299/mo), Get Chosen ($499/mo). All start with a Digital Foundation build.",
         },
         {
           title: "The Through-Line",
@@ -207,28 +207,28 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
       title: "Automated Growth Systems",
       sections: [
         {
-          title: "What They Replace",
-          icon: "🧹",
+          title: "It Starts With the Website",
+          icon: "🧱",
           body:
-            "Traditional marketing agencies charge $3K–$10K/mo with long contracts, manual execution, and human bottlenecks. Growth Systems are AI-powered automation that runs 24/7 at a fraction of the cost.",
+            "Every growth path begins with a Digital Foundation — your website built as a structured data layer, not a brochure. $2,500 one-time, includes 9 SEO-optimized blog articles and a content strategy. From there, you choose how it grows.",
         },
         {
-          title: "The Systems",
-          icon: "🧩",
+          title: "Get Found — $299/mo",
+          icon: "🔍",
           body:
-            "AI Ad Engine (Meta + Google). SEO Autopilot for automated content and ranking. AI Communication for voice + chat. Review Intelligence for solicitation and response. Payment Automation for text-to-pay and invoicing.",
+            "The systems that make local businesses discoverable. AI-powered SEO, Google Business Profile optimization, local directory listings, review generation automation, AI chat agent, and monthly blogging. You show up when people search. You respond when they reach out.",
         },
         {
-          title: "Pricing",
-          icon: "💳",
+          title: "Get Chosen — $499/mo",
+          icon: "⭐",
           body:
-            "Three tiers — Starter $297/mo, Growth $597/mo, Scale $997/mo. Month-to-month. No long contracts.",
+            "Everything in Get Found plus the systems that convert visitors into customers who stay. AI voice agent that answers every call, review response management, 3x monthly blogging, agentic website features with Intelligence Console, and a dedicated monthly strategy review. You don't just get found — you become the obvious choice.",
         },
         {
-          title: "The Upgrade Path",
-          icon: "↗",
+          title: "Operations IS Marketing",
+          icon: "🔄",
           body:
-            "Businesses that start with Growth Systems often discover they need the intelligence layer to connect all their data. Growth Systems are the entry point. Intelligence Platforms are the destination.",
+            "The businesses that grow aren't the ones with the biggest ad budget. They're the ones where operations are so dialed in that customers come back and bring others. Our growth systems don't just generate leads — they make your business easy to find, fast to respond, and impossible to forget. That's not marketing. That's operational excellence. And it compounds.",
         },
       ],
       actions: [
@@ -294,7 +294,7 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
           title: "Growth Systems",
           icon: "📈",
           body:
-            "AI-powered marketing automation. Starter $297/mo, Growth $597/mo, Scale $997/mo. Month-to-month, no contracts. Live in 72 hours.",
+            "Three ongoing plans after your Digital Foundation is built. Maintain at $199/mo keeps the lights on. Get Found at $299/mo adds SEO, reviews, GBP, and AI chat. Get Chosen at $499/mo adds voice AI, agentic website features, 3x blogging, and strategy reviews. All month-to-month, no contracts.",
         },
         {
           title: "Digital Foundation",

@@ -110,9 +110,9 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   if (!deal) return;
 
   const isSubscription = [
-    "growth_starter",
-    "growth_growth",
-    "growth_scale",
+    "growth_maintain",
+    "growth_get_found",
+    "growth_get_chosen",
   ].includes(deal.deal_type);
   const isOneTime = [
     "propertydocz_setup",

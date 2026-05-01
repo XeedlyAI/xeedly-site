@@ -20,48 +20,6 @@ function IncludedIn({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function AIAdEngine() {
-  return (
-    <section id="ai-ad-engine" className="section-white py-24 md:py-28 scroll-mt-40">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <ProductHeader
-          name="AI Ad Engine"
-          vertical="Paid Advertising"
-          verticalAccent="#38b6ff"
-          oneLiner="Automated ad creation, targeting, and optimization across Meta and Google. AI writes the copy, selects creative, adjusts bids — and never takes a day off."
-        />
-        <div className="mt-12">
-          <FeatureGrid
-            accent="#38b6ff"
-            items={[
-              {
-                title: "Automated Campaign Management",
-                body:
-                  "AI creates and manages your ad campaigns across Facebook, Instagram, and Google. Targeting, bid optimization, and budget allocation happen automatically based on performance data.",
-              },
-              {
-                title: "AI-Generated Creative",
-                body:
-                  "Ad copy, headlines, and creative variations generated and tested continuously. No more waiting on a designer or copywriter — the system produces, tests, and iterates.",
-              },
-              {
-                title: "Performance Optimization",
-                body:
-                  "Real-time bid adjustments, audience refinement, and budget reallocation based on conversion data. The system gets smarter every day it runs.",
-              },
-            ]}
-          />
-        </div>
-        <IncludedIn>
-          Starter (<span className="font-semibold">$297/mo</span> — 1 platform),
-          Growth (<span className="font-semibold">$597/mo</span> — Meta + Google),
-          Scale (<span className="font-semibold">$997/mo</span> — Multi-location)
-        </IncludedIn>
-      </div>
-    </section>
-  );
-}
-
 export function SEOAutopilot() {
   return (
     <section
@@ -70,36 +28,36 @@ export function SEOAutopilot() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ProductHeader
-          name="SEO Autopilot"
+          name="AI SEO"
           vertical="Organic Search"
           verticalAccent="#14b8a6"
-          oneLiner="Automated content generation, technical optimization, and rank tracking. The SEO agency you'd pay $2K/mo for — automated."
+          oneLiner="A Core 30 keyword strategy mapped to your buyer personas, plus AI-generated content that publishes on schedule. The SEO agency you'd pay $1,500–$3,000/mo for — automated and built into your monthly plan."
         />
         <div className="mt-12">
           <FeatureGrid
             accent="#14b8a6"
             items={[
               {
-                title: "Content Generation",
+                title: "Core 30 Keyword Strategy",
                 body:
-                  "AI produces optimized blog posts, service pages, and location pages based on your keyword strategy. Published on schedule, internally linked, schema-marked.",
+                  "We map the 30 keywords that matter most to your business based on your buyer personas. Each keyword targets a specific stage of the customer journey — from discovery to ready-to-buy.",
               },
               {
-                title: "Technical Optimization",
+                title: "AI-Generated Blog Content",
                 body:
-                  "Automated site audits, meta tag optimization, structured data generation, and Core Web Vitals monitoring. The technical SEO checklist runs itself.",
+                  "Optimized blog posts, service pages, and location pages produced from your keyword strategy. Published on schedule, internally linked, schema-marked, and formatted for both search engines and humans.",
               },
               {
-                title: "Rank Tracking & Reporting",
+                title: "Local SEO + GBP",
                 body:
-                  "Keyword position tracking, competitor monitoring, and monthly performance reports. Know exactly where you stand without logging into another dashboard.",
+                  "Google Business Profile optimization, 10+ local directory listings, citation cleanup, and review-driven authority signals. The local search foundation your business needs to be found.",
               },
             ]}
           />
         </div>
         <IncludedIn>
-          Growth (<span className="font-semibold">$597/mo</span>), Scale (
-          <span className="font-semibold">$997/mo</span>)
+          Get Found (<span className="font-semibold">$299/mo</span> — 1 blog/mo),
+          Get Chosen (<span className="font-semibold">$499/mo</span> — 3 blogs/mo)
         </IncludedIn>
       </div>
     </section>
@@ -114,37 +72,36 @@ export function AICommunication() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ProductHeader
-          name="AI Communication"
-          vertical="Voice & Chat"
+          name="AI Voice + Chat"
+          vertical="Communication"
           verticalAccent="#8b5cf6"
-          oneLiner="AI voice agents and chat agents that handle inbound calls, answer questions, book appointments, and follow up — 24/7, under 60 seconds."
+          oneLiner="AI agents that handle inbound calls, website chat, missed-call text-back, and follow-up sequences — 24/7. Every lead answered in under 3 rings, every message responded to in under 60 seconds."
         />
         <div className="mt-12">
           <FeatureGrid
             accent="#8b5cf6"
             items={[
               {
-                title: "AI Voice Agent",
-                body:
-                  "Every inbound call answered in under 3 rings. Natural conversation, appointment booking, FAQ handling, call routing. Missed calls become a thing of the past.",
-              },
-              {
                 title: "AI Chat Agent",
                 body:
-                  "Website chat, SMS, and social media messaging handled by AI. Instant responses, lead qualification, and appointment scheduling — no human required for first contact.",
+                  "Website chat handled by AI from first contact. Instant responses, lead qualification, FAQ handling, and appointment booking. Included in Get Found and Get Chosen.",
+              },
+              {
+                title: "AI Voice Agent",
+                body:
+                  "Every inbound call answered in under 3 rings. Missed call text-back, 24/7 answering, natural appointment booking. Get Chosen tier — for businesses that can't afford to miss a call.",
               },
               {
                 title: "Follow-Up Automation",
                 body:
-                  "Automated nurture sequences via SMS and email. Leads that don't convert immediately get intelligent follow-up cadences that adapt based on engagement.",
+                  "SMS and email nurture sequences that adapt based on engagement. Leads that don't convert immediately get intelligent cadences. Built into every Growth Systems plan.",
               },
             ]}
           />
         </div>
         <IncludedIn>
-          Starter (<span className="font-semibold">$297/mo</span> — chat only),
-          Growth (<span className="font-semibold">$597/mo</span> — voice + chat),
-          Scale (<span className="font-semibold">$997/mo</span> — custom AI voice persona)
+          Get Found (<span className="font-semibold">$299/mo</span> — chat only),
+          Get Chosen (<span className="font-semibold">$499/mo</span> — voice + chat + appointment booking)
         </IncludedIn>
       </div>
     </section>

@@ -11,42 +11,58 @@ type Tier = {
   price: string;
   features: string[];
   tag: string;
+  accent: { border: string; tagBg: string; tagText: string };
   recommended?: boolean;
 };
 
 const TIERS: Tier[] = [
   {
-    name: "Starter",
-    price: "$297",
+    name: "Maintain",
+    price: "$199",
     features: [
-      "AI Ad Engine (1 platform)",
-      "AI Chat Agent",
-      "Review Intelligence",
+      "Hosting, SSL, security updates",
+      "1 website edit per month",
+      "Uptime monitoring + email support",
     ],
-    tag: "Most Popular for Single Locations",
+    tag: "For DIY marketers",
+    accent: {
+      border: "#3b82f6",
+      tagBg: "rgba(59,130,246,0.10)",
+      tagText: "#1d4ed8",
+    },
   },
   {
-    name: "Growth",
-    price: "$597",
+    name: "Get Found",
+    price: "$299",
     features: [
-      "AI Ads (Meta + Google)",
-      "Voice + Chat AI",
-      "SEO Autopilot",
-      "Payment Automation",
+      "Everything in Maintain",
+      "AI SEO + Google Business Profile",
+      "Review generation + AI chat agent",
+      "1 SEO blog post / month",
     ],
-    tag: "Best for Growing Businesses",
+    tag: "Most Popular",
+    accent: {
+      border: "#14b8a6",
+      tagBg: "rgba(20,184,166,0.10)",
+      tagText: "#0d9488",
+    },
     recommended: true,
   },
   {
-    name: "Scale",
-    price: "$997",
+    name: "Get Chosen",
+    price: "$499",
     features: [
-      "Everything in Growth",
-      "Multi-location support",
-      "Custom AI voice persona",
-      "Weekly AI briefing",
+      "Everything in Get Found",
+      "AI Voice Agent + review responses",
+      "3 blog posts / month + agentic site",
+      "Monthly strategy review",
     ],
-    tag: "Built for Multi-Unit Operators",
+    tag: "Be the obvious choice",
+    accent: {
+      border: "#38b6ff",
+      tagBg: "rgba(56,182,255,0.12)",
+      tagText: "#0A8FD4",
+    },
   },
 ];
 
@@ -62,19 +78,18 @@ export function GrowthSystems() {
           className="text-center mb-14"
         >
           <div className="text-[10px] font-mono font-semibold uppercase tracking-[0.15em] text-[#64748b]">
-            Automated Growth Systems
+            Growth Systems
           </div>
           <h2
             className="mt-3 font-bold tracking-tight text-[#0f172a]"
             style={{ fontSize: "clamp(1.75rem, 3.2vw, 2rem)" }}
           >
-            Agency-grade marketing.{" "}
-            <span className="text-[#38b6ff]">AI-powered pricing.</span>
+            Your website is step one.{" "}
+            <span className="text-[#38b6ff]">Growth is step two.</span>
           </h2>
-          <p className="mt-4 text-[14px] text-[#334155] max-w-2xl mx-auto">
-            Everything a traditional agency charges $5,000–$10,000/mo for —
-            automated, always-on, and starting at{" "}
-            <span className="font-mono font-semibold">$297/mo</span>.
+          <p className="mt-4 text-[14px] text-[#334155] max-w-2xl mx-auto leading-[1.7]">
+            Every path starts with a Digital Foundation. Then choose how it
+            grows — from basic maintenance to full AI-powered growth systems.
           </p>
         </motion.div>
 
@@ -98,17 +113,20 @@ export function GrowthSystems() {
               }}
               className={cn(
                 "dash-card p-7 relative overflow-hidden",
-                t.recommended && "md:-translate-y-2 shadow-md ring-1 ring-[#38b6ff]/25",
+                t.recommended &&
+                  "md:-translate-y-2 shadow-md ring-1 ring-[#14b8a6]/30",
               )}
+              style={{ borderLeft: `3px solid ${t.accent.border}` }}
             >
-              {/* Top accent bar */}
-              <div
-                aria-hidden
-                className="absolute left-0 right-0 top-0 h-[2px] bg-[#38b6ff]"
-              />
               {t.recommended && (
-                <span className="absolute top-3 right-3 font-mono text-[9px] font-semibold uppercase tracking-[0.12em] px-2 py-1 rounded-full bg-[#38b6ff]/10 text-[#0A8FD4]">
-                  Recommended
+                <span
+                  className="absolute top-3 right-3 font-mono text-[9px] font-semibold uppercase tracking-[0.12em] px-2 py-1 rounded-full"
+                  style={{
+                    background: t.accent.tagBg,
+                    color: t.accent.tagText,
+                  }}
+                >
+                  Most Popular
                 </span>
               )}
               <div className="text-[12px] font-semibold text-[#334155]">
@@ -133,7 +151,13 @@ export function GrowthSystems() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 inline-flex font-mono text-[10px] px-2.5 py-1 rounded-full bg-[#f1f5f9] text-[#64748b]">
+              <div
+                className="mt-6 inline-flex font-mono text-[10px] font-semibold uppercase tracking-[0.12em] px-2.5 py-1 rounded-full"
+                style={{
+                  background: t.accent.tagBg,
+                  color: t.accent.tagText,
+                }}
+              >
                 {t.tag}
               </div>
             </motion.div>
@@ -147,10 +171,9 @@ export function GrowthSystems() {
           transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
           className="mt-12 text-center"
         >
-          <p className="text-[13px] text-[#64748b] italic max-w-2xl mx-auto">
-            Traditional marketing agency: $3,000–$10,000/mo with 6-month
-            contracts. XeedlyAI Growth Systems: $297–$997/mo, month-to-month,
-            AI that never sleeps.
+          <p className="text-[13px] text-[#64748b] italic max-w-2xl mx-auto leading-[1.65]">
+            Traditional SEO agency: $1,500–$3,000/mo with 6-month contracts.
+            XeedlyAI Growth Systems: $299–$499/mo, month-to-month, AI-powered.
           </p>
           <Link
             href="/pricing"

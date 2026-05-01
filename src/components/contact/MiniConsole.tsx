@@ -10,15 +10,15 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const PROMPTS = [
   {
     q: "What fits a 12-location pizza chain?",
-    a: "Sovvrn + Growth Scale. Sovvrn gives you a morning briefing across all 12 locations — labor, sales, voids, voice-agent pickups. Growth Scale ($997/mo) handles Meta/Google ads and reviews for each location. Typical deployment: 3 weeks.",
+    a: "Sovvrn + Get Chosen. Sovvrn gives you a morning briefing across all 12 locations — labor, sales, voids, voice-agent pickups. Get Chosen ($499/mo) handles voice AI, review responses, SEO, and 3x monthly blogging for each location. Typical deployment: 3 weeks.",
   },
   {
     q: "I run a property management firm, 400 doors.",
     a: "Propertyolio — our intelligence hub for property management. It correlates PropertyDocz (document AI) and PropertyJobz (work orders) into a single briefing. Deployment is 2–4 weeks. Scales to multi-thousand-door portfolios.",
   },
   {
-    q: "I just need better ads, not a platform.",
-    a: "Growth Systems Starter ($297/mo) is built for exactly this. One ad platform, AI chat agent, review intelligence. No deployment. You're live in 48 hours.",
+    q: "I just need a better website and to get found.",
+    a: "Digital Foundation ($2,500 one-time, includes 9 SEO blog posts + content plan) plus Get Found ($299/mo) is built for exactly this. AI SEO, Google Business Profile, local directories, review generation, AI chat agent. Live in 2 weeks.",
   },
 ];
 

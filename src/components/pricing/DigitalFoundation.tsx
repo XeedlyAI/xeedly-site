@@ -12,6 +12,9 @@ const FEATURES = [
   "SEO optimization & structured data",
   "Mobile-first responsive design",
   "Integration-ready for operational systems",
+  "Content plan foundation + strategy",
+  "9 SEO-optimized blog articles included in build",
+  "Blog infrastructure set up and deployed",
   "2-week delivery timeline",
 ];
 
@@ -80,8 +83,10 @@ export function DigitalFoundation() {
             <div className="md:col-span-7">
               <p className="text-[13.5px] text-[#334155] leading-[1.6]">
                 Modern website with structured data architecture, multi-tenant
-                ready, integration points for future systems. SEO-optimized,
-                mobile-first, deployed on Vercel.
+                ready, integration points for future systems. Includes a
+                content foundation — 9 SEO-optimized blog articles and a
+                content strategy to launch from. SEO-optimized, mobile-first,
+                deployed on Vercel.
               </p>
               <ul className="mt-5 space-y-1.5">
                 {FEATURES.map((f) => (

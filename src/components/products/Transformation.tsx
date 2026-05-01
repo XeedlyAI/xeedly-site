@@ -197,10 +197,10 @@ const CONTENT: Record<ProductTabKey, ProductContent> = {
   growth: {
     engineLabel: "GROWTH SYSTEMS",
     chaos: [
-      { text: "manual ads", tone: "red", rotate: -3 },
+      { text: "buried in search", tone: "red", rotate: -3 },
       { text: "missed calls", tone: "amber", rotate: 2, offset: "ml-4" },
       { text: "no reviews", tone: "red", rotate: -1 },
-      { text: "agency invoice $8K", tone: "red", rotate: 3, offset: "-ml-3" },
+      { text: "agency invoice $3K", tone: "red", rotate: 3, offset: "-ml-3" },
       { text: "slow SEO", tone: "gray", rotate: -2 },
       { text: "unpaid invoices", tone: "amber", rotate: 2, offset: "ml-3" },
       { text: "no follow-up", tone: "amber", rotate: -4, offset: "-ml-4" },
@@ -210,8 +210,8 @@ const CONTENT: Record<ProductTabKey, ProductContent> = {
       {
         kind: "card",
         accent: "blue",
-        title: "AI Ads Running",
-        detail: "Meta + Google · optimizing",
+        title: "SEO Compounding",
+        detail: "Core 30 keywords · ranking",
       },
       {
         kind: "card",
@@ -227,7 +227,7 @@ const CONTENT: Record<ProductTabKey, ProductContent> = {
       },
       {
         kind: "kpi",
-        cells: ["leads: 142", "response: < 60s", "cost: $597/mo"],
+        cells: ["leads: 142", "response: < 60s", "cost: $299/mo"],
       },
     ],
   },

@@ -11,9 +11,9 @@ import { requireAdmin } from "@/lib/admin-auth";
 export const runtime = "nodejs";
 
 type DealType =
-  | "growth_starter"
-  | "growth_growth"
-  | "growth_scale"
+  | "growth_maintain"
+  | "growth_get_found"
+  | "growth_get_chosen"
   | "digital_foundation"
   | "operational_systems"
   | "intelligence_platform"
@@ -47,9 +47,9 @@ function siteUrl(): string {
 }
 
 const PRICE_IDS = () => ({
-  gs_starter: process.env.STRIPE_PRICE_GS_STARTER,
-  gs_growth: process.env.STRIPE_PRICE_GS_GROWTH,
-  gs_scale: process.env.STRIPE_PRICE_GS_SCALE,
+  gs_maintain: process.env.STRIPE_PRICE_GS_MAINTAIN,
+  gs_get_found: process.env.STRIPE_PRICE_GS_GET_FOUND,
+  gs_get_chosen: process.env.STRIPE_PRICE_GS_GET_CHOSEN,
   maintenance: process.env.STRIPE_PRICE_MAINTENANCE,
   docz_setup: process.env.STRIPE_PRICE_DOCZ_SETUP,
   jobz_setup: process.env.STRIPE_PRICE_JOBZ_SETUP,
@@ -136,33 +136,33 @@ export async function POST(request: NextRequest) {
     let productName: string;
 
     switch (dealType) {
-      // -- Growth Systems: full monthly subscription, no split --
-      case "growth_starter":
-        if (!prices.gs_starter)
-          throw new Error("STRIPE_PRICE_GS_STARTER not configured");
-        checkoutPriceId = prices.gs_starter;
+      // -- Growth Systems: ongoing monthly subscription, no split --
+      case "growth_maintain":
+        if (!prices.gs_maintain)
+          throw new Error("STRIPE_PRICE_GS_MAINTAIN not configured");
+        checkoutPriceId = prices.gs_maintain;
         checkoutMode = "subscription";
-        upfrontAmountCents = 29700;
-        totalAmountCents = 29700;
-        productName = "Growth Systems — Starter ($297/mo)";
+        upfrontAmountCents = 19900;
+        totalAmountCents = 19900;
+        productName = "Growth Systems — Maintain ($199/mo)";
         break;
-      case "growth_growth":
-        if (!prices.gs_growth)
-          throw new Error("STRIPE_PRICE_GS_GROWTH not configured");
-        checkoutPriceId = prices.gs_growth;
+      case "growth_get_found":
+        if (!prices.gs_get_found)
+          throw new Error("STRIPE_PRICE_GS_GET_FOUND not configured");
+        checkoutPriceId = prices.gs_get_found;
         checkoutMode = "subscription";
-        upfrontAmountCents = 59700;
-        totalAmountCents = 59700;
-        productName = "Growth Systems — Growth ($597/mo)";
+        upfrontAmountCents = 29900;
+        totalAmountCents = 29900;
+        productName = "Growth Systems — Get Found ($299/mo)";
         break;
-      case "growth_scale":
-        if (!prices.gs_scale)
-          throw new Error("STRIPE_PRICE_GS_SCALE not configured");
-        checkoutPriceId = prices.gs_scale;
+      case "growth_get_chosen":
+        if (!prices.gs_get_chosen)
+          throw new Error("STRIPE_PRICE_GS_GET_CHOSEN not configured");
+        checkoutPriceId = prices.gs_get_chosen;
         checkoutMode = "subscription";
-        upfrontAmountCents = 99700;
-        totalAmountCents = 99700;
-        productName = "Growth Systems — Scale ($997/mo)";
+        upfrontAmountCents = 49900;
+        totalAmountCents = 49900;
+        productName = "Growth Systems — Get Chosen ($499/mo)";
         break;
 
       // -- Digital Foundation: fixed $2,500 total, 50/50 split --

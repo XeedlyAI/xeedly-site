@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS deals (
   customer_id uuid REFERENCES customers(id) ON DELETE CASCADE,
 
   deal_type text NOT NULL CHECK (deal_type IN (
-    'growth_starter', 'growth_growth', 'growth_scale',
+    'growth_maintain', 'growth_get_found', 'growth_get_chosen',
     'digital_foundation',
     'operational_systems',
     'intelligence_platform',
@@ -97,3 +97,21 @@ CREATE INDEX IF NOT EXISTS idx_payment_events_deal ON payment_events(deal_id);
 ALTER TABLE customers ENABLE ROW LEVEL SECURITY;
 ALTER TABLE deals ENABLE ROW LEVEL SECURITY;
 ALTER TABLE payment_events ENABLE ROW LEVEL SECURITY;
+
+-- ---------------------------------------------------------------------------
+-- Migration: Growth Systems repackage (Maintain / Get Found / Get Chosen)
+-- ---------------------------------------------------------------------------
+-- Run this block ONCE if your `deals` table was created with the old
+-- starter/growth/scale enum. Safe to re-run: NOT VALID + drop-old-add-new
+-- pattern. Skip if you're applying this file fresh — the CREATE TABLE above
+-- already uses the new values.
+-- ---------------------------------------------------------------------------
+-- ALTER TABLE deals DROP CONSTRAINT IF EXISTS deals_deal_type_check;
+-- ALTER TABLE deals ADD CONSTRAINT deals_deal_type_check
+--   CHECK (deal_type IN (
+--     'growth_maintain', 'growth_get_found', 'growth_get_chosen',
+--     'digital_foundation',
+--     'operational_systems',
+--     'intelligence_platform',
+--     'propertydocz_setup', 'propertyjobz_setup', 'property_combined'
+--   ));

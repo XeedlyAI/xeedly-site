@@ -12,24 +12,24 @@ type Catalog = {
 };
 
 const CATALOG: Catalog[] = [
-  // Growth Systems
+  // Growth Systems — ongoing plans (after Digital Foundation)
   {
-    name: "Growth Systems — Starter",
-    price: 29700,
+    name: "Growth Systems — Maintain",
+    price: 19900,
     recurring: "month",
-    envKey: "STRIPE_PRICE_GS_STARTER",
+    envKey: "STRIPE_PRICE_GS_MAINTAIN",
   },
   {
-    name: "Growth Systems — Growth",
-    price: 59700,
+    name: "Growth Systems — Get Found",
+    price: 29900,
     recurring: "month",
-    envKey: "STRIPE_PRICE_GS_GROWTH",
+    envKey: "STRIPE_PRICE_GS_GET_FOUND",
   },
   {
-    name: "Growth Systems — Scale",
-    price: 99700,
+    name: "Growth Systems — Get Chosen",
+    price: 49900,
     recurring: "month",
-    envKey: "STRIPE_PRICE_GS_SCALE",
+    envKey: "STRIPE_PRICE_GS_GET_CHOSEN",
   },
 
   // Maintenance (shared $199/mo)

@@ -5,11 +5,12 @@ import { motion } from "framer-motion";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const PARAGRAPHS = [
-  "XeedlyAI started where a lot of companies start — solving problems that were right in front of us. We built marketing automation for small businesses: AI-powered ad campaigns, voice agents, review management. The systems worked. They replaced entire agency retainers at a fraction of the cost. But something bigger emerged.",
+  "XeedlyAI started where a lot of companies start — solving problems that were right in front of us. We built marketing automation for small businesses: AI-powered SEO, voice agents, review management. The systems worked. They replaced entire agency retainers at a fraction of the cost. But something bigger emerged.",
   "Every business we worked with had the same blind spot. They were generating thousands of events per day across dozens of systems — POS transactions, vendor communications, document requests, compliance deadlines, customer reviews, phone calls, scheduling changes. All of this data existed. Almost none of it became intelligence.",
   "The industry response has been dashboards — more screens, more logins, more data to interpret. But the people running these businesses aren't analysts. They're operators. They're on the floor, in the field, between locations. They need intelligence delivered to them, not waiting behind a browser tab.",
+  "We build both sides of the growth engine because we learned something most tech companies miss: operations IS marketing. The restaurants that grow aren't the ones with the biggest ad budget — they're the ones where the food is hot, the service is fast, and the experience is so good that customers come back and bring friends. That's not a marketing metric. That's an operations metric. But it drives more growth than any campaign ever will. This is true for every operational business — restaurants, property management, fleet operations, healthcare. When operations are dialed in, growth takes care of itself.",
   "XeedlyAI was built on a simple conviction: the pattern for turning operational data into daily intelligence is repeatable. Ingest events. Detect signals. Deliver briefings. The architecture works for restaurants. It works for property management. It works for any business where operational complexity creates information gaps.",
-  "So we build both: Automated Growth Systems that replace expensive agency retainers with AI-powered marketing automation, and Intelligence Platforms that turn operational chaos into daily decisions. One company, two product lines, one thesis — AI should do the work that humans shouldn't have to.",
+  "So we build both: Growth Systems that make a business easy to find and choose, and Intelligence Platforms that turn operational chaos into daily decisions. One company, two product lines, one thesis — when operations are excellent, growth follows.",
 ];
 
 export function Thesis() {

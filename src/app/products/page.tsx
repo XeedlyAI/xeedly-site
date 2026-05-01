@@ -9,7 +9,6 @@ import {
 import { Transformation } from "@/components/products/Transformation";
 import { GrowthDivider } from "@/components/products/GrowthDivider";
 import {
-  AIAdEngine,
   SEOAutopilot,
   AICommunication,
 } from "@/components/products/GrowthProducts";
@@ -19,7 +18,7 @@ import { GrowthSystemsCTA } from "@/components/products/GrowthSystemsCTA";
 export const metadata = {
   title: "Products — XeedlyAI",
   description:
-    "Purpose-built products. One intelligence architecture. Sovvrn, Propertyolio, PropertyDocz, PropertyJobz, plus Automated Growth Systems.",
+    "Purpose-built products. One intelligence architecture. Sovvrn, Propertyolio, PropertyDocz, PropertyJobz, plus AI-powered Growth Systems.",
 };
 
 export default function ProductsPage() {
@@ -33,7 +32,6 @@ export default function ProductsPage() {
       <PropertyJobzSection />
       <Transformation />
       <GrowthDivider />
-      <AIAdEngine />
       <SEOAutopilot />
       <AICommunication />
       <ReviewPayment />

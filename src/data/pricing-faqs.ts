@@ -33,6 +33,6 @@ export const PRICING_FAQS = [
   },
   {
     q: "Do you support custom integrations?",
-    a: "Yes. Every Intelligence deployment includes integration work. Operational Systems are built API-ready to connect to the intelligence layer. For Growth Systems, Scale tier includes custom integrations. Anything your business touches — POS, CRM, docs, field systems — we can ingest.",
+    a: "Yes. Every Intelligence deployment includes integration work. Operational Systems are built API-ready to connect to the intelligence layer. For Growth Systems, the Get Chosen tier includes custom integrations. Anything your business touches — POS, CRM, docs, field systems — we can ingest.",
   },
 ] as const;

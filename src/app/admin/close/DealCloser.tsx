@@ -11,9 +11,9 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 // ---------------------------------------------------------------------------
 
 type DealType =
-  | "growth_starter"
-  | "growth_growth"
-  | "growth_scale"
+  | "growth_maintain"
+  | "growth_get_found"
+  | "growth_get_chosen"
   | "digital_foundation"
   | "operational_systems"
   | "intelligence_platform"
@@ -37,31 +37,31 @@ type Product = {
 
 const PRODUCTS: Product[] = [
   {
-    id: "growth_starter",
-    name: "GS Starter",
-    sub: "$297/mo · subscription",
-    accent: "#38b6ff",
-    accentTint: "rgba(56,182,255,0.1)",
+    id: "growth_maintain",
+    name: "GS Maintain",
+    sub: "$199/mo · subscription",
+    accent: "#3b82f6",
+    accentTint: "rgba(59,130,246,0.1)",
     structure: "subscription",
-    fixedTotal: 297,
+    fixedTotal: 199,
   },
   {
-    id: "growth_growth",
-    name: "GS Growth",
-    sub: "$597/mo · subscription",
-    accent: "#38b6ff",
-    accentTint: "rgba(56,182,255,0.1)",
+    id: "growth_get_found",
+    name: "GS Get Found",
+    sub: "$299/mo · subscription",
+    accent: "#14b8a6",
+    accentTint: "rgba(20,184,166,0.1)",
     structure: "subscription",
-    fixedTotal: 597,
+    fixedTotal: 299,
   },
   {
-    id: "growth_scale",
-    name: "GS Scale",
-    sub: "$997/mo · subscription",
+    id: "growth_get_chosen",
+    name: "GS Get Chosen",
+    sub: "$499/mo · subscription",
     accent: "#38b6ff",
     accentTint: "rgba(56,182,255,0.1)",
     structure: "subscription",
-    fixedTotal: 997,
+    fixedTotal: 499,
   },
   {
     id: "digital_foundation",

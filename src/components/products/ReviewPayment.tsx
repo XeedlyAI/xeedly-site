@@ -21,19 +21,9 @@ const CARDS: Card[] = [
     category: "Reputation",
     accent: "#f59e0b",
     description:
-      "Automated review solicitation after every transaction. AI-generated responses to reviews — positive and negative — in your brand voice. Sentiment analysis feeds into the intelligence layer.",
+      "Automated review solicitation via SMS after every transaction. AI-generated responses to reviews — positive and negative — in your brand voice. Sentiment analysis feeds into the intelligence layer.",
     metrics: "Avg 3.2× increase in review volume. AI responds within 15 minutes.",
-    included: "All tiers",
-  },
-  {
-    id: "payment-automation",
-    name: "Payment Automation",
-    category: "Payments",
-    accent: "#14b8a6",
-    description:
-      "Text-to-pay invoicing, automated payment reminders, and recurring billing. Customers pay from their phone in 30 seconds. No app download, no login.",
-    metrics: "68% faster payment collection. 40% reduction in outstanding receivables.",
-    included: "Growth ($597/mo), Scale ($997/mo)",
+    included: "Get Found ($299/mo — generation), Get Chosen ($499/mo — generation + AI responses)",
   },
 ];
 
@@ -46,7 +36,7 @@ export function ReviewPayment() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-5"
+          className="grid grid-cols-1 gap-5 max-w-2xl mx-auto"
         >
           {CARDS.map((c) => (
             <motion.div

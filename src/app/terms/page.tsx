@@ -37,12 +37,13 @@ export default function TermsPage() {
 
         <H2>2. Description of Services</H2>
         <P>
-          <strong>Automated Growth Systems.</strong> AI-powered marketing and
-          operations automation including advertising management (AI Ad
-          Engine), search engine optimization (SEO Autopilot), voice and chat
-          AI communication agents, review intelligence and management, and
-          payment automation. Growth Systems are offered on a monthly
-          subscription basis.
+          <strong>Growth Systems.</strong> AI-powered marketing and
+          operations automation including search engine optimization, Google
+          Business Profile management, local directory listings, voice and
+          chat AI communication agents, review intelligence and response
+          management, AI-generated blog content, and SMS/email follow-up
+          automations. Growth Systems are offered on a monthly subscription
+          basis (Maintain, Get Found, or Get Chosen tiers).
         </P>
         <P>
           <strong>Intelligence Platforms.</strong> Custom-deployed AI

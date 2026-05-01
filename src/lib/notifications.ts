@@ -91,7 +91,7 @@ export async function sendEmail(
 
 /**
  * Deliver a payment link via SMS + email simultaneously.
- * `amount` is already formatted ("$1,250" or "$597/mo").
+ * `amount` is already formatted ("$1,250" or "$299/mo").
  */
 export async function sendPaymentLink(
   customer: { name: string; email: string; phone?: string | null },

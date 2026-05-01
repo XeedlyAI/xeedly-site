@@ -13,11 +13,9 @@ const INTEL_TABS = [
 ];
 
 const GROWTH_TABS = [
-  { id: "ai-ad-engine", label: "AI Ad Engine" },
-  { id: "seo-autopilot", label: "SEO Autopilot" },
-  { id: "ai-communication", label: "AI Communication" },
+  { id: "seo-autopilot", label: "AI SEO" },
+  { id: "ai-communication", label: "AI Voice + Chat" },
   { id: "review-intelligence", label: "Review Intelligence" },
-  { id: "payment-automation", label: "Payment Automation" },
 ];
 
 // Shared event — consumed by the Transformation section to swap CHAOS/CLARITY content
@@ -52,7 +50,7 @@ export function ProductNavigator() {
 
   function switchLine(next: Line) {
     setLine(next);
-    const first = next === "intelligence" ? "sovvrn" : "ai-ad-engine";
+    const first = next === "intelligence" ? "sovvrn" : "seo-autopilot";
     setActive(first);
     dispatchProductTab(next, first);
     scrollToSection(first);

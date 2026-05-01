@@ -67,9 +67,10 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
               className="mt-6 max-w-[580px] text-[16px] md:text-[17px] leading-[1.6] text-[#94a3b8]"
             >
-              We build AI intelligence platforms and automated growth systems.
-              From operational intelligence to AI-powered marketing — we replace
-              complexity with clarity and agencies with automation.
+              We build AI intelligence platforms and growth systems — because
+              the businesses that win aren&apos;t the ones with the biggest ad
+              budget. They&apos;re the ones where operations are so dialed in
+              that growth takes care of itself.
             </motion.p>
 
             <motion.div
