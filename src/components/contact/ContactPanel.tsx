@@ -36,6 +36,8 @@ const SUCCESS_ACTIONS: ConsoleAction[] = [
 
 export function ContactPanel() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -46,11 +48,31 @@ export function ContactPanel() {
     message: "",
   });
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In-site demo submission — logs for now.
-    console.info("contact_form_submit", form);
-    setSubmitted(true);
+    if (submitting) return;
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/intake", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, source: "contact_form" }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error || `Request failed (${res.status})`);
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again or email hello@xeedly.com.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -202,10 +224,16 @@ export function ContactPanel() {
 
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[#38b6ff] hover:bg-[#0A8FD4] text-[#0f172a] font-bold text-[14px] transition-all"
+                    disabled={submitting}
+                    className="w-full inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[#38b6ff] hover:bg-[#0A8FD4] disabled:opacity-60 disabled:cursor-not-allowed text-[#0f172a] font-bold text-[14px] transition-all"
                   >
-                    Send Message
+                    {submitting ? "Sending..." : "Send Message"}
                   </button>
+                  {error && (
+                    <p className="text-[12px] text-[#ef4444] text-center">
+                      {error}
+                    </p>
+                  )}
                   <p className="text-[11px] text-[#64748b] text-center leading-[1.55]">
                     We&apos;ll respond within one business day. No sales
                     sequences, no drip campaigns. By submitting, you agree to

@@ -4,8 +4,32 @@ import {
   getFreeBusy,
   MissingGoogleCredentialsError,
 } from "@/lib/google-calendar";
+import { sendEmail, sendSMS, escapeHtml } from "@/lib/notifications";
 
 export const runtime = "nodejs";
+
+function adminEmails(): string[] {
+  return (process.env.ADMIN_EMAILS || "shad@xeedly.com")
+    .split(",")
+    .map((e) => e.trim())
+    .filter(Boolean);
+}
+
+function fmtSlot(iso: string): string {
+  try {
+    return new Date(iso).toLocaleString("en-US", {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      timeZone: "America/Denver",
+      timeZoneName: "short",
+    });
+  } catch {
+    return iso;
+  }
+}
 
 const MEETING_DURATION_MINUTES = 30;
 
@@ -121,6 +145,44 @@ export async function POST(request: NextRequest) {
       }),
     );
 
+    // ----- Notifications ----------------------------------------------------
+    // Google Calendar already emails the attendee + Shad a calendar invite.
+    // This is the human-readable "you got a booking" admin email + SMS ping.
+    const slotFormatted = fmtSlot(start.toISOString());
+    const adminSubject = company
+      ? `New Booking — ${name} from ${company} · ${slotFormatted}`
+      : `New Booking — ${name} · ${slotFormatted}`;
+
+    const adminHtml = `
+      <div style="font-family: -apple-system, Segoe UI, Inter, sans-serif; max-width: 640px; margin: 0 auto; padding: 24px; color: #0f172a;">
+        <div style="font-family: ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #14b8a6;">XeedlyAI · Booking Confirmed</div>
+        <h1 style="margin: 12px 0 4px; font-size: 22px;">${escapeHtml(name)}${company ? ` <span style="color:#64748b; font-weight: 400;">· ${escapeHtml(company)}</span>` : ""}</h1>
+        <p style="margin: 0; color: #64748b; font-size: 14px;">${escapeHtml(slotFormatted)}</p>
+
+        <table cellpadding="0" cellspacing="0" style="margin-top: 24px; border-collapse: collapse; width: 100%; font-size: 14px;">
+          ${row("Name", name)}
+          ${row("Email", `<a href="mailto:${escapeHtml(email)}" style="color:#0A8FD4;">${escapeHtml(email)}</a>`)}
+          ${company ? row("Company", company) : ""}
+          ${topic ? row("Topic", topic) : ""}
+          ${row("Slot (MT)", slotFormatted)}
+          ${event.hangoutLink ? row("Meet Link", `<a href="${escapeHtml(event.hangoutLink)}" style="color:#0A8FD4;">${escapeHtml(event.hangoutLink)}</a>`) : ""}
+        </table>
+
+        <p style="margin-top: 24px; color: #94a3b8; font-size: 12px;">Calendar invite has been sent to both parties via Google Calendar.</p>
+      </div>
+    `;
+
+    const smsBody = company
+      ? `📅 Booking: ${name} (${company}) — ${slotFormatted}`
+      : `📅 Booking: ${name} — ${slotFormatted}`;
+
+    const adminPhone = process.env.TWILIO_ADMIN_NOTIFY_NUMBER;
+
+    await Promise.allSettled([
+      ...adminEmails().map((to) => sendEmail(to, adminSubject, adminHtml)),
+      adminPhone ? sendSMS(adminPhone, smsBody) : Promise.resolve(false),
+    ]);
+
     return NextResponse.json({
       success: true,
       eventId: event.id || null,
@@ -135,4 +197,13 @@ export async function POST(request: NextRequest) {
       { status: 500 },
     );
   }
+}
+
+function row(label: string, value: string): string {
+  return `
+    <tr>
+      <td style="padding: 6px 12px 6px 0; vertical-align: top; font-family: ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #64748b; white-space: nowrap;">${escapeHtml(label)}</td>
+      <td style="padding: 6px 0; vertical-align: top; color: #0f172a;">${value}</td>
+    </tr>
+  `;
 }
