@@ -12,6 +12,7 @@ import {
   CASE_STUDIES_BY_SLUG,
   type CaseStudy,
 } from "@/data/case-studies";
+import { ShowcaseSection } from "./ShowcaseSection";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -29,6 +30,7 @@ export function CaseStudyTemplate({ slug }: CaseStudyTemplateProps) {
   return (
     <>
       <DeploymentHeader data={data} industryStyle={industry} />
+      <ShowcaseSection slug={slug} />
       <ProblemSection data={data} />
       <SolutionSection data={data} />
       <StackSection data={data} />
