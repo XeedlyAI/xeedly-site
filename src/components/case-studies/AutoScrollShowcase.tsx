@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { BrowserMockup } from "./BrowserMockup";
@@ -11,9 +11,7 @@ type AutoScrollShowcaseProps = {
   url: string;
   width: number;
   height: number;
-  /** Visible viewport height inside the browser frame (px). */
   viewportHeight?: number;
-  /** How long the full scroll takes (seconds). */
   scrollDuration?: number;
   variant?: "light" | "dark";
   className?: string;
@@ -30,17 +28,28 @@ export function AutoScrollShowcase({
   variant = "dark",
   className = "",
 }: AutoScrollShowcaseProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: false, margin: "-100px" });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: false, margin: "-100px" });
   const [isPaused, setIsPaused] = useState(false);
+  const [imageHeight, setImageHeight] = useState(0);
 
-  const aspectRatio = height / width;
-  const innerWidth = 100;
-  const innerHeight = innerWidth * aspectRatio;
-  const scrollDistance = innerHeight - viewportHeight;
+  const imageRef = useCallback((node: HTMLImageElement | null) => {
+    if (!node) return;
+    const measure = () => setImageHeight(node.offsetHeight);
+    if (node.complete) {
+      measure();
+    } else {
+      node.addEventListener("load", measure, { once: true });
+    }
+    const ro = new ResizeObserver(measure);
+    ro.observe(node);
+    return () => ro.disconnect();
+  }, []);
+
+  const scrollDistance = Math.max(0, imageHeight - viewportHeight);
 
   return (
-    <div ref={ref} className={className}>
+    <div ref={containerRef} className={className}>
       <BrowserMockup url={url} variant={variant}>
         <div
           className="relative overflow-hidden cursor-pointer group"
@@ -58,14 +67,12 @@ export function AutoScrollShowcase({
         >
           <motion.div
             animate={
-              isInView && !isPaused
-                ? {
-                    y: [0, -scrollDistance, -scrollDistance, 0],
-                  }
+              isInView && !isPaused && scrollDistance > 0
+                ? { y: [0, -scrollDistance, -scrollDistance, 0] }
                 : { y: 0 }
             }
             transition={
-              isInView && !isPaused
+              isInView && !isPaused && scrollDistance > 0
                 ? {
                     y: {
                       duration: scrollDuration,
@@ -79,6 +86,7 @@ export function AutoScrollShowcase({
             style={{ width: "100%" }}
           >
             <Image
+              ref={imageRef}
               src={src}
               alt={alt}
               width={width}
