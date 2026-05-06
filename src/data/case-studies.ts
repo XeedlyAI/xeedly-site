@@ -820,9 +820,130 @@ export const XEEDLY_PLATFORM: CaseStudy = {
     "This is the meta case study. XeedlyAI's marketing website is itself a deployment of the intelligence platform architecture. The Intelligence Console on the homepage is a real query endpoint — same Claude API, same structured response format, same signal card rendering. The KPI ticker shows platform metrics. The contact routing system uses AI to qualify and route visitors. The site was built in a single day using 6 sequential Claude Code prompts — the same replicable deployment pattern used for client projects. If the architecture can power a marketing website, it can power anything.",
 };
 
+export const ZION_CONCRETE: CaseStudy = {
+  slug: "zion-concrete",
+  clientName: "Zion Concrete Specialists",
+  industry: "CONCRETE & CONSTRUCTION",
+  industryAccent: "teal",
+  summary:
+    "Full website build for a Utah flatwork contractor — 11 service pages, Intelligence Console with live AI, service area targeting across the Wasatch Front and St. George, and a five-phase process framework.",
+  seoTitle: "Zion Concrete Specialists — Case Study",
+  seoDescription:
+    "How XeedlyAI built Zion Concrete Specialists a high-converting website with Intelligence Console, 11 service pages, and multi-region SEO targeting across Utah.",
+  card: {
+    slug: "zion-concrete",
+    clientName: "Zion Concrete Specialists",
+    industry: "CONCRETE & CONSTRUCTION",
+    status: "SHIPPING",
+    statusAccent: "blue",
+    accentBorder: "#3b82f6",
+    description:
+      "Utah flatwork contractor website with Intelligence Console, 11 services, multi-region SEO, and AI-powered contact routing.",
+    dataRow: [
+      "services: 11",
+      "regions: Wasatch Front + St. George",
+      "ai: Intelligence Console",
+      "status: shipping",
+    ],
+  },
+  headerMetrics: [
+    { label: "STATUS", value: "SHIPPING" },
+    { label: "BUILD TIME", value: "1 week" },
+    { label: "STACK", value: "Next.js · Claude API · Tailwind · Vercel" },
+    { label: "DEPLOYED", value: "zioncs.com" },
+    { label: "SERVICES", value: "11 flatwork categories" },
+    { label: "REGIONS", value: "Wasatch Front + St. George" },
+  ],
+  problemSignals: [
+    {
+      accent: "red",
+      title: "No web presence",
+      body: "A strong local reputation with zero digital footprint. Referrals carried the business but left growth dependent on word of mouth alone.",
+    },
+    {
+      accent: "amber",
+      title: "No service area visibility",
+      body: "Operating across the Wasatch Front and St. George but invisible in local search for either region. Competitors with weaker crews ranked higher.",
+    },
+    {
+      accent: "amber",
+      title: "No structured intake",
+      body: "Project inquiries came through phone calls and texts with no qualification, no project details captured upfront, and no way to route by service type.",
+    },
+  ],
+  pipelineStages: [
+    { label: "WEBSITE BUILD", sublabel: "11 service pages" },
+    { label: "INTELLIGENCE CONSOLE", sublabel: "live AI" },
+    { label: "MULTI-REGION SEO", sublabel: "Wasatch + St. George" },
+    { label: "CONTACT ROUTING", sublabel: "AI-powered" },
+  ],
+  solutionFeatures: [
+    {
+      title: "Eleven Service Pages",
+      description:
+        "Every flatwork category — driveways, pool decks, sport courts, commercial slabs, stamped concrete, and more — gets a dedicated page with SEO-optimized content, structured data, and buyer-specific messaging.",
+      tags: ["11 pages", "JSON-LD", "Per-service SEO"],
+    },
+    {
+      title: "Intelligence Console",
+      description:
+        "The same live AI query interface deployed across XeedlyAI client sites. Visitors ask about services, timelines, and pricing. Responses include action cards that route to booking, calls, or intake forms.",
+      tags: ["Claude API", "Action cards", "Live AI"],
+    },
+    {
+      title: "Multi-Region Targeting",
+      description:
+        "Service area pages for both the Wasatch Front and St. George markets. Location-specific content, schema markup, and internal linking structure built for local search dominance.",
+      tags: ["Wasatch Front", "St. George", "Local SEO"],
+    },
+    {
+      title: "Five-Phase Process Framework",
+      description:
+        "A structured project timeline — from initial consultation through final walkthrough — that sets expectations and differentiates from competitors who wing it.",
+      tags: ["Process transparency", "Trust signals", "Conversion"],
+    },
+  ],
+  stackTags: [
+    "Next.js 15",
+    "Claude API",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Vercel",
+    "JSON-LD",
+    "Intelligence Console",
+  ],
+  outcomeKpis: [
+    { label: "Services", value: "11", target: 11, format: (n) => Math.round(n).toString() },
+    { label: "Build", value: "1 wk" },
+    { label: "Regions", value: "2", target: 2, format: (n) => Math.round(n).toString() },
+    { label: "AI", value: "Live Console" },
+    { label: "Status", value: "SHIPPING" },
+  ],
+  outcomeSignals: [
+    {
+      accent: "teal",
+      title: "From zero to full digital presence",
+      body: "Eleven service pages, two regional landing areas, and an AI-powered console — shipped in one week from a standing start.",
+    },
+    {
+      accent: "teal",
+      title: "Intelligence Console deployed",
+      body: "Live AI query endpoint on the site. Visitors get instant answers about services, timelines, and next steps. Same architecture as XeedlyAI and Sovvrn.",
+    },
+    {
+      accent: "teal",
+      title: "Local search foundation",
+      body: "Structured data, per-service pages, and multi-region content create the SEO architecture needed to rank in both the Wasatch Front and St. George markets.",
+    },
+  ],
+  intelligenceLayerText:
+    "Zion Concrete Specialists proves the XeedlyAI architecture works beyond tech platforms and property management. The Intelligence Console handles visitor questions about concrete services the same way it handles restaurant operations queries in Sovvrn or investment pipeline questions in Pando. The multi-region SEO structure mirrors the multi-tenant data layer pattern — same content architecture, different geographic context. Every service page is an entry point, every AI response is a qualification event, every booking is a conversion signal.",
+};
+
 export const CASE_STUDIES: CaseStudy[] = [
   PANDO,
   CORE_HOA,
+  ZION_CONCRETE,
   PROPERTYDOCZ,
   PROPERTYJOBZ,
   SOVVRN,
@@ -832,6 +953,7 @@ export const CASE_STUDIES: CaseStudy[] = [
 export const CASE_STUDIES_BY_SLUG: Record<string, CaseStudy> = {
   pando: PANDO,
   "core-hoa": CORE_HOA,
+  "zion-concrete": ZION_CONCRETE,
   propertydocz: PROPERTYDOCZ,
   propertyjobz: PROPERTYJOBZ,
   sovvrn: SOVVRN,
@@ -854,16 +976,16 @@ export const HOMEPAGE_PREVIEW_SLUGS = [
 export const OVERVIEW_KPIS: Kpi[] = [
   {
     label: "Deployments Shipped",
-    value: "6",
-    target: 6,
+    value: "7",
+    target: 7,
     format: (n) => Math.round(n).toString(),
   },
   {
     label: "Industries Covered",
-    value: "5",
-    target: 5,
+    value: "6",
+    target: 6,
     format: (n) => Math.round(n).toString(),
-    subtitle: "restaurants · property · investment · HOA · SaaS",
+    subtitle: "restaurants · property · investment · HOA · concrete · SaaS",
   },
   {
     label: "Avg Build Time",

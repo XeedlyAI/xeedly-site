@@ -42,6 +42,23 @@ export const SHOWCASE_ASSETS: Record<string, CaseStudyShowcase> = {
       },
     ],
   },
+  "zion-concrete": {
+    slug: "zion-concrete",
+    headline: "Built to convert.",
+    subheadline:
+      "Eleven service pages, two regions, one Intelligence Console — a flatwork contractor's entire digital presence, auto-scrolling below.",
+    assets: [
+      {
+        type: "auto-scroll",
+        src: "/showcase/zion-concrete/full-page.png",
+        alt: "Zion Concrete Specialists website — full page auto-scrolling preview showing hero, services, service areas, process, and contact sections",
+        url: "zioncs.com",
+        width: 1440,
+        height: 8800,
+        label: "Full Site Preview",
+      },
+    ],
+  },
   "xeedly-platform": {
     slug: "xeedly-platform",
     headline: "Experience the platform.",
