@@ -5,6 +5,7 @@ import {
   MissingGoogleCredentialsError,
 } from "@/lib/google-calendar";
 import { sendEmail, sendSMS, escapeHtml } from "@/lib/notifications";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 
 export const runtime = "nodejs";
 
@@ -55,6 +56,24 @@ export async function POST(request: NextRequest) {
     }
     if (!isValidEmail(email)) {
       return NextResponse.json({ error: "invalid email" }, { status: 400 });
+    }
+
+    // Honeypot
+    const website = typeof body?.website === "string" ? body.website : "";
+    if (website) {
+      return NextResponse.json({ success: true, eventId: null, meetLink: null, startUtc: datetime, endUtc: datetime });
+    }
+
+    // Turnstile verification
+    const cfToken = typeof body?.cfToken === "string" ? body.cfToken : "";
+    if (process.env.TURNSTILE_SECRET_KEY && !cfToken) {
+      return NextResponse.json({ error: "Verification required" }, { status: 400 });
+    }
+    if (cfToken) {
+      const valid = await verifyTurnstileToken(cfToken);
+      if (!valid) {
+        return NextResponse.json({ error: "Verification failed" }, { status: 403 });
+      }
     }
 
     const start = new Date(datetime);

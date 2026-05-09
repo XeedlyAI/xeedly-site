@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { MiniConsole } from "./MiniConsole";
 import { ConsoleActions } from "@/components/shared/ConsoleActions";
+import { Turnstile } from "@/components/shared/Turnstile";
 import type { ConsoleAction } from "@/types/console-actions";
 import { CONTACT } from "@/lib/contact";
 
@@ -38,6 +39,9 @@ export function ContactPanel() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState("");
+  const [cfToken, setCfToken] = useState("");
+  const onTurnstileToken = useCallback((t: string) => setCfToken(t), []);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -57,7 +61,7 @@ export function ContactPanel() {
       const res = await fetch("/api/intake", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, source: "contact_form" }),
+        body: JSON.stringify({ ...form, source: "contact_form", website: honeypot, cfToken }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -221,6 +225,23 @@ export function ContactPanel() {
                       className="w-full px-3 py-2.5 rounded-lg border border-[#e2e8f0] bg-white text-[14px] text-[#0f172a] outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/20 transition resize-none"
                     />
                   </Field>
+
+                  {/* Honeypot — hidden from real users */}
+                  <div className="absolute -left-[9999px]" aria-hidden="true">
+                    <label>
+                      Website
+                      <input
+                        type="text"
+                        name="website"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={honeypot}
+                        onChange={(e) => setHoneypot(e.target.value)}
+                      />
+                    </label>
+                  </div>
+
+                  <Turnstile onToken={onTurnstileToken} />
 
                   <button
                     type="submit"

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { rateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -243,6 +244,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: "Query too long (max 2000 chars)" },
         { status: 400 },
+      );
+    }
+
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+    const { ok } = rateLimit(`query:${ip}`, { maxRequests: 10, windowMs: 60_000 });
+    if (!ok) {
+      return NextResponse.json(
+        { error: "Too many requests. Please wait a moment." },
+        { status: 429 },
       );
     }
 

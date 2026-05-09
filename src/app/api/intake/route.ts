@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendEmail, sendSMS, escapeHtml } from "@/lib/notifications";
 import { CONTACT } from "@/lib/contact";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 
 export const runtime = "nodejs";
 
@@ -33,6 +34,24 @@ export async function POST(request: NextRequest) {
         { error: "Name and email required" },
         { status: 400 },
       );
+    }
+
+    // Honeypot — bots fill this hidden field, real users don't.
+    const website = typeof body?.website === "string" ? body.website : "";
+    if (website) {
+      return NextResponse.json({ success: true, message: "Received" });
+    }
+
+    // Turnstile verification
+    const cfToken = typeof body?.cfToken === "string" ? body.cfToken : "";
+    if (process.env.TURNSTILE_SECRET_KEY && !cfToken) {
+      return NextResponse.json({ error: "Verification required" }, { status: 400 });
+    }
+    if (cfToken) {
+      const valid = await verifyTurnstileToken(cfToken);
+      if (!valid) {
+        return NextResponse.json({ error: "Verification failed" }, { status: 403 });
+      }
     }
 
     const timestamp = new Date().toISOString();

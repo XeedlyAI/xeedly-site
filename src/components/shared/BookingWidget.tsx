@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Pencil, AlertCircle } from "lucide-react";
 import { formatInTimeZone } from "date-fns-tz";
+import { Turnstile } from "@/components/shared/Turnstile";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const TZ = "America/Denver";
@@ -490,6 +491,9 @@ function BookingForm({
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [topic, setTopic] = useState("");
+  const [honeypot, setHoneypot] = useState("");
+  const [cfToken, setCfToken] = useState("");
+  const onTurnstileToken = useCallback((t: string) => setCfToken(t), []);
   const [state, setState] = useState<"idle" | "sending" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
 
@@ -512,6 +516,8 @@ function BookingForm({
           email: email.trim(),
           company: company.trim() || undefined,
           topic: topic.trim() || undefined,
+          website: honeypot,
+          cfToken,
         }),
       });
       const data = (await res.json()) as { error?: string; code?: string } & BookingResult;
@@ -596,6 +602,23 @@ function BookingForm({
             className="w-full px-3 py-2.5 rounded-lg border border-[#e2e8f0] bg-white text-[13px] text-[#0f172a] placeholder:text-[#94a3b8] outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/20 transition resize-none"
           />
         </div>
+
+        {/* Honeypot */}
+        <div className="absolute -left-[9999px]" aria-hidden="true">
+          <label>
+            Website
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+            />
+          </label>
+        </div>
+
+        <Turnstile onToken={onTurnstileToken} />
 
         {error && state === "error" && (
           <div className="flex items-start gap-2 text-[12px] text-[#ef4444]">

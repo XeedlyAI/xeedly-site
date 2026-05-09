@@ -4,6 +4,7 @@ import {
   ADMIN_COOKIE_MAX_AGE_SECONDS,
   verifyAdminPin,
 } from "@/lib/admin-auth";
+import { rateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -18,6 +19,15 @@ export async function POST(request: NextRequest) {
   const pin = typeof body.pin === "string" ? body.pin.trim() : "";
   if (!pin) {
     return NextResponse.json({ error: "PIN required" }, { status: 400 });
+  }
+
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const { ok } = rateLimit(`admin-login:${ip}`, { maxRequests: 5, windowMs: 300_000 });
+  if (!ok) {
+    return NextResponse.json(
+      { error: "Too many attempts. Try again in a few minutes." },
+      { status: 429 },
+    );
   }
 
   if (!verifyAdminPin(pin)) {
