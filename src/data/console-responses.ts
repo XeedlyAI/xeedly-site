@@ -78,7 +78,7 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
           title: "The Through-Line",
           icon: "↘",
           body:
-            "Both product lines are built on the same thesis: AI systems that replace human bottlenecks, deliver faster, cost less, and never sleep.",
+            "Both product lines exist for one reason: to build businesses that run without you in the middle of everything. Not so you can step away — so you can lead, be present, and focus on what matters most. The business is the catalyst. Not the cage.",
         },
       ],
     },
@@ -182,6 +182,12 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
           body:
             "No monthly software fees. No long-term contracts. Revenue-share model means our incentives are aligned — we built the platform, we maintain it, we only succeed when you succeed. $500 per app to set up, or $1,000 for both. The revenue starts flowing with your first document order and your first vendor enrollment.",
         },
+        {
+          title: "Why This Matters",
+          icon: "↗",
+          body:
+            "More revenue from the work you're already doing means more margin in your business — and more margin means more freedom in your life. The point isn't bigger. The point is a business that runs without you in the middle of everything, so you can lead the company instead of just operating it.",
+        },
       ],
       actions: [
         {
@@ -228,7 +234,7 @@ export const CONSOLE_QUERIES: ConsoleQuery[] = [
           title: "Operations IS Marketing",
           icon: "🔄",
           body:
-            "The businesses that grow aren't the ones with the biggest ad budget. They're the ones where operations are so dialed in that customers come back and bring others. Our growth systems don't just generate leads — they make your business easy to find, fast to respond, and impossible to forget. That's not marketing. That's operational excellence. And it compounds.",
+            "The businesses that grow aren't the ones with the biggest ad budget. They're the ones where operations are so dialed in that customers come back and bring others. Our growth systems don't just generate leads — they make your business easy to find, fast to respond, and impossible to forget. That's not marketing. That's operational excellence. And it compounds — into margin, into freedom, into the kind of business that runs without you in the middle of everything.",
         },
       ],
       actions: [
