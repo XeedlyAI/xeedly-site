@@ -35,8 +35,8 @@ export function FooterCTA() {
           className="font-bold text-white leading-[1.1] tracking-[-0.01em]"
           style={{ fontSize: "clamp(1.75rem, 4vw, 2.25rem)" }}
         >
-          Ready to see what your data is{" "}
-          <span className="text-[#38b6ff]">trying to tell you?</span>
+          Build a business that runs without you in{" "}
+          <span className="text-[#38b6ff]">the middle of everything.</span>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 14 }}
@@ -45,8 +45,8 @@ export function FooterCTA() {
           transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
           className="mt-5 text-[15px] text-[#94a3b8] max-w-xl mx-auto"
         >
-          Tell us about your business. We&apos;ll show you what an intelligence
-          layer looks like for your industry.
+          Not so you can step away. So you can lead — and be present for the
+          people and the mission that matter most.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 14 }}

@@ -67,6 +67,10 @@ export function IntelligenceStack() {
           >
             Three tiers. Zero noise.
           </h2>
+          <p className="mt-4 text-[15px] text-[#475569] max-w-xl mx-auto">
+            Intelligence shouldn&apos;t require your attention. It should
+            protect it.
+          </p>
         </motion.div>
 
         <motion.div

@@ -23,8 +23,8 @@ export function PricingCTA() {
           className="font-bold text-white leading-[1.15]"
           style={{ fontSize: "clamp(1.75rem, 4vw, 2.25rem)" }}
         >
-          Not sure which fits?{" "}
-          <span className="text-[#38b6ff]">Ask the platform.</span>
+          The right tier isn&apos;t about features.{" "}
+          <span className="text-[#38b6ff]">It&apos;s about freedom.</span>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 14 }}
@@ -33,8 +33,9 @@ export function PricingCTA() {
           transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
           className="mt-5 text-[15px] text-[#94a3b8] max-w-xl mx-auto"
         >
-          Tell us about your business. We&apos;ll recommend the right product
-          line and tier — no sales call required.
+          Every tier moves you closer to a business that runs itself — so you
+          can run toward what matters most. Tell us about your business and
+          we&apos;ll recommend where to start.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 14 }}

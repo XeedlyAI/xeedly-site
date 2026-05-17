@@ -32,6 +32,11 @@ const ITEMS: Item[] = [
       "Most platforms save you time. Ours creates income. PropertyDocz and PropertyJobz turn existing operations into new revenue streams for your business. No software fees — we only earn when you earn.",
     accent: "good",
   },
+  {
+    title: "Margin that matters",
+    body:
+      "Efficiency creates margin. Not just financial margin — margin in your calendar, your attention, your presence. The businesses that scale best are the ones that free their operators to focus on what actually matters.",
+  },
 ];
 
 export function BuiltDifferent() {
@@ -58,7 +63,7 @@ export function BuiltDifferent() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5"
         >
           {ITEMS.map((it) => (
             <motion.div

@@ -1,6 +1,7 @@
 import { AboutHero } from "@/components/about/AboutHero";
 import { Thesis } from "@/components/about/Thesis";
 import { HowWeBuild } from "@/components/about/HowWeBuild";
+import { WhyThisMatters } from "@/components/about/WhyThisMatters";
 import { AboutCTA } from "@/components/about/AboutCTA";
 
 export const metadata = {
@@ -15,6 +16,7 @@ export default function AboutPage() {
       <AboutHero />
       <Thesis />
       <HowWeBuild />
+      <WhyThisMatters />
       <AboutCTA />
     </>
   );
