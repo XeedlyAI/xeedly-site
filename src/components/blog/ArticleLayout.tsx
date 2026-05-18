@@ -88,15 +88,15 @@ export function ArticleLayout({
       {/* Hero image */}
       {article.heroImage && (
         <section className="bg-white -mt-px">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-10 md:pt-12">
-            <div className="relative aspect-[21/9] w-full overflow-hidden rounded-xl bg-[#0f172a]">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 md:pt-12">
+            <div className="relative aspect-[21/9] w-full overflow-hidden rounded-xl bg-[#f1f5f9]">
               <Image
                 src={article.heroImage}
                 alt={article.title}
                 fill
                 priority
                 className="object-cover"
-                sizes="(max-width: 1200px) 100vw, 1200px"
+                sizes="(max-width: 1400px) 100vw, 1400px"
               />
             </div>
           </div>
