@@ -5,9 +5,11 @@ import { motion } from "framer-motion";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const PARAGRAPHS = [
-  "I've watched leaders build incredible businesses and lose themselves inside them. Every system they run, every question they answer, every fire they put out — it works, but it costs them the things no dashboard can measure.",
-  "Xeedly exists because I believe the best version of your business is the one that doesn't need you in the middle of everything. Not so the business is less — so you can be more. More present. More generous. More focused on the work only you can do.",
-  "We build intelligence layers so you can stop operating and start leading.",
+  "I've watched leaders build incredible businesses and lose themselves inside them. Every system they run, every question they answer, every fire they put out — it works. But it costs them the things no dashboard can measure.",
+  "Productivity is a real, God-given responsibility. To provide. To serve. To be self-sufficient. To use what we've been given. That obligation is honored by being productive — and the leaders I respect take it seriously.",
+  "But productivity isn't who you are. The moment it becomes the answer to \"who am I,\" you're one bad quarter, one health scare, or one season of rest away from an identity crisis you didn't see coming. The leader who can rest, fail, and be present is a different person than the leader for whom rest is fear and presence is impossible without something to produce.",
+  "Xeedly exists because the architectural fix is real. A business doesn't have to require you in the middle of everything. Intelligence layers route information to the people closest to it. Signal engines distinguish what needs you from what doesn't. Standards live in the system instead of in your head. With those in place, the business becomes a catalyst for the person who built it — not the cage that consumes them.",
+  "We build software for people who refuse to be built by what they built. So productivity stays a thing you do — and never becomes the thing you are.",
 ];
 
 export function WhyThisMatters() {
