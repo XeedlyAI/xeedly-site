@@ -33,6 +33,27 @@ Pick the background per article from this palette. Rotate so adjacent articles d
 
 ---
 
+## 2a. Hero Background Rule (CRITICAL)
+
+**Every article hero image sits directly beneath the article's dark navy title block.** If the hero is also dark navy, the two regions blend into one undifferentiated dark mass and the hero loses all impact.
+
+**Rule: hero image backgrounds are ALWAYS light.** Pick from the light variants of the palette:
+
+| Hero Background | Hex | Best For |
+|---|---|---|
+| **Pale blue wash** | `#F0F9FF` | PRINCIPAL-INTELLIGENCE — feels clean, technical, intelligence-platform-y |
+| **Off-white** | `#FAFAFA` | Default — neutral, document-like, works for anything |
+| **Soft cream** | `#FAF7F2` | PRINCIPAL-LIFE — warmer, more reflective, manifesto-adjacent |
+| **Mint wash** | `#F0FDFA` | Optional — use sparingly for upbeat / good-news articles |
+
+**Heroes alternate through these lights across the corpus** the same way thumbnails alternate dark/light. If the last 3 heroes were off-white, the next is pale blue or cream.
+
+**No dark navy heroes.** The article title block is dark navy; the hero must contrast.
+
+(Body images can be any background — they sit inside the white body, so dark backgrounds create good contrast there.)
+
+---
+
 ## 3. Composition — Thumbnail vs Hero
 
 ### Thumbnails (16:9, 1200×675)
