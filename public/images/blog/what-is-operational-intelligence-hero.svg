@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 686" width="1600" height="686" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="hero-title">
+  <title id="hero-title">What Is Operational Intelligence — Hero</title>
+  <defs>
+    <pattern id="hero-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#1e293b" stroke-width="0.6"/>
+    </pattern>
+    <linearGradient id="hero-glow" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#38b6ff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="686" fill="#0f172a"/>
+  <rect width="1600" height="686" fill="url(#hero-grid)"/>
+  <ellipse cx="800" cy="343" rx="700" ry="320" fill="url(#hero-glow)"/>
+
+  <!-- LEFT: pipeline diagram -->
+  <g transform="translate(120, 160)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#64748b" letter-spacing="0.15em">SIGNAL PIPELINE</text>
+
+    <!-- INGEST -->
+    <g transform="translate(0, 30)">
+      <rect width="180" height="84" rx="6" fill="#1e293b" stroke="#14b8a6" stroke-width="1.5"/>
+      <rect x="0" y="0" width="4" height="84" fill="#14b8a6"/>
+      <text x="20" y="32" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#14b8a6" font-weight="700" letter-spacing="0.1em">INGEST</text>
+      <text x="20" y="56" font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1">Event bus</text>
+      <text x="20" y="74" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8">12,847 EVENTS / HOUR</text>
+    </g>
+
+    <!-- arrow -->
+    <g transform="translate(180, 60)">
+      <line x1="0" y1="12" x2="48" y2="12" stroke="#38b6ff" stroke-width="2"/>
+      <polygon points="48,7 56,12 48,17" fill="#38b6ff"/>
+    </g>
+
+    <!-- DETECT -->
+    <g transform="translate(236, 30)">
+      <rect width="180" height="84" rx="6" fill="#1e293b" stroke="#38b6ff" stroke-width="1.5"/>
+      <rect x="0" y="0" width="4" height="84" fill="#38b6ff"/>
+      <text x="20" y="32" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.1em">DETECT</text>
+      <text x="20" y="56" font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1">Signal engine</text>
+      <text x="20" y="74" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8">37 ACTIVE RULES</text>
+    </g>
+
+    <g transform="translate(416, 60)">
+      <line x1="0" y1="12" x2="48" y2="12" stroke="#38b6ff" stroke-width="2"/>
+      <polygon points="48,7 56,12 48,17" fill="#38b6ff"/>
+    </g>
+
+    <!-- DELIVER -->
+    <g transform="translate(472, 30)">
+      <rect width="180" height="84" rx="6" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+      <rect x="0" y="0" width="4" height="84" fill="#8b5cf6"/>
+      <text x="20" y="32" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#8b5cf6" font-weight="700" letter-spacing="0.1em">DELIVER</text>
+      <text x="20" y="56" font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1">Multi-channel</text>
+      <text x="20" y="74" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8">EMAIL · SMS · SLACK</text>
+    </g>
+  </g>
+
+  <!-- Sample signal cards -->
+  <g transform="translate(120, 290)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#64748b" letter-spacing="0.15em">SAMPLE SIGNALS</text>
+
+    <g transform="translate(0, 24)">
+      <rect width="320" height="68" rx="6" fill="#1e293b" stroke="#ef4444" stroke-width="1"/>
+      <rect width="4" height="68" fill="#ef4444"/>
+      <text x="18" y="22" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#ef4444" font-weight="700" letter-spacing="0.1em">HIGH · CR-017</text>
+      <text x="18" y="42" font-family="Inter, sans-serif" font-size="13" fill="#f1f5f9" font-weight="600">Cross-system correlation detected</text>
+      <text x="18" y="59" font-family="Inter, sans-serif" font-size="11" fill="#94a3b8">Vendor insurance lapsed + 3 doc requests queued</text>
+    </g>
+
+    <g transform="translate(340, 24)">
+      <rect width="320" height="68" rx="6" fill="#1e293b" stroke="#f59e0b" stroke-width="1"/>
+      <rect width="4" height="68" fill="#f59e0b"/>
+      <text x="18" y="22" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#f59e0b" font-weight="700" letter-spacing="0.1em">MEDIUM · REV-008</text>
+      <text x="18" y="42" font-family="Inter, sans-serif" font-size="13" fill="#f1f5f9" font-weight="600">Revenue anomaly flagged</text>
+      <text x="18" y="59" font-family="Inter, sans-serif" font-size="11" fill="#94a3b8">Tuesday lunch down 18% vs 4-wk trend</text>
+    </g>
+  </g>
+
+  <!-- RIGHT: Title block -->
+  <g transform="translate(820, 180)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="600" letter-spacing="0.15em">PRINCIPAL-INTELLIGENCE · #001</text>
+
+    <text font-family="Inter, sans-serif" fill="#ffffff" font-weight="700" letter-spacing="-0.02em">
+      <tspan x="0" y="58" font-size="54">What Is</tspan>
+      <tspan x="0" y="118" font-size="54">Operational</tspan>
+      <tspan x="0" y="178" font-size="54" fill="#38b6ff">Intelligence?</tspan>
+    </text>
+
+    <text font-family="Inter, sans-serif" font-size="16" fill="#cbd5e1" letter-spacing="0">
+      <tspan x="0" y="226">And why dashboards don&apos;t deliver it.</tspan>
+    </text>
+
+    <g transform="translate(0, 252)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#64748b" letter-spacing="0.08em">— SHAD · FOUNDER · 7 MIN READ</text>
+    </g>
+  </g>
+
+  <!-- Footer mark -->
+  <g transform="translate(120, 630)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.12em">XEEDLY · THE BRIEFINGS</text>
+  </g>
+  <g transform="translate(1480, 630)" text-anchor="end">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.08em">SIGNAL-001 · LIVE</text>
+  </g>
+</svg>

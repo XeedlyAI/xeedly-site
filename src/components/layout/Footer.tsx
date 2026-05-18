@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { CONTACT, MAILTO, TEL } from "@/lib/contact";
+import { getRecentArticles } from "@/data/blog";
 
 const PRODUCT_LINKS = [
   { href: "https://sovvrn.com", label: "Sovvrn", external: true },
@@ -13,6 +14,7 @@ const COMPANY_LINKS = [
   { href: "/platform", label: "Platform" },
   { href: "/products", label: "Products" },
   { href: "/case-studies", label: "Case Studies" },
+  { href: "/blog", label: "Briefings" },
   { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
@@ -24,6 +26,7 @@ const LEGAL_LINKS = [
 ];
 
 export function Footer() {
+  const recentBriefings = getRecentArticles(3);
   return (
     <footer className="section-dark relative overflow-hidden">
       <div
@@ -36,7 +39,7 @@ export function Footer() {
       />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
-          <div className="md:col-span-4">
+          <div className="md:col-span-3">
             <Link href="/" className="inline-flex items-center mb-5" aria-label="XeedlyAI home">
               <Image
                 src="/images/logos/xeedly-logo-bright-blue.png"
@@ -47,8 +50,8 @@ export function Footer() {
               />
             </Link>
             <p className="mt-6 max-w-sm text-[14px] leading-relaxed text-[#94a3b8]">
-              AI-native intelligence platforms and automated growth systems
-              for operational businesses.
+              We build software for people who refuse to be built by their
+              businesses.
             </p>
           </div>
 
@@ -107,7 +110,41 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="md:col-span-4 text-left">
+          <div className="md:col-span-3 text-left">
+            <div
+              className="rounded-lg border px-4 py-3 h-full"
+              style={{
+                background: "rgba(255,255,255,0.03)",
+                borderColor: "rgba(255,255,255,0.06)",
+              }}
+            >
+              <div className="font-mono text-[11px] font-semibold tracking-[0.08em] uppercase text-[#64748b] mb-3">
+                Latest Briefings
+              </div>
+              <ul className="space-y-3">
+                {recentBriefings.map((b) => (
+                  <li key={b.slug}>
+                    <Link
+                      href={`/blog/${b.silo}/${b.slug}`}
+                      className="block text-[12px] leading-[1.45] text-[#f1f5f9] hover:text-[#38b6ff] transition-colors"
+                    >
+                      {b.title}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <Link
+                    href="/blog"
+                    className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[#38b6ff] hover:text-[#f1f5f9] transition-colors"
+                  >
+                    All briefings →
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="md:col-span-2 text-left">
             <div
               className="rounded-lg border px-4 py-3 h-full"
               style={{
@@ -134,11 +171,6 @@ export function Footer() {
                   >
                     {CONTACT.phone}
                   </a>
-                </li>
-                <li>
-                  <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[#64748b]">
-                    {CONTACT.locationShort}
-                  </span>
                 </li>
                 <li>
                   <a

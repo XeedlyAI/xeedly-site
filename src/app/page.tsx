@@ -6,6 +6,7 @@ import { Products } from "@/components/home/Products";
 import { CaseStudiesPreview } from "@/components/home/CaseStudiesPreview";
 import { GrowthSystems } from "@/components/home/GrowthSystems";
 import { BuiltDifferent } from "@/components/home/BuiltDifferent";
+import { RecentBriefings } from "@/components/home/RecentBriefings";
 import { FooterCTA } from "@/components/home/FooterCTA";
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function Home() {
       <CaseStudiesPreview />
       <GrowthSystems />
       <BuiltDifferent />
+      <RecentBriefings />
       <FooterCTA />
     </>
   );
