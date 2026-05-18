@@ -1,82 +1,88 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="thumb-title">
   <title id="thumb-title">What Is Operational Intelligence — Briefing thumbnail</title>
   <defs>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    <pattern id="thumb-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#e2e8f0" stroke-width="0.5" opacity="0.6"/>
     </pattern>
-    <linearGradient id="glow" x1="50%" y1="0%" x2="50%" y2="100%">
-      <stop offset="0%" stop-color="#38b6ff" stop-opacity="0.15"/>
-      <stop offset="100%" stop-color="#0f172a" stop-opacity="0"/>
-    </linearGradient>
   </defs>
 
-  <!-- Background -->
-  <rect width="1200" height="675" fill="#0f172a"/>
-  <rect width="1200" height="675" fill="url(#grid)"/>
-  <ellipse cx="600" cy="338" rx="500" ry="280" fill="url(#glow)"/>
+  <!-- Off-white background -->
+  <rect width="1200" height="675" fill="#FAFAFA"/>
+  <rect width="1200" height="675" fill="url(#thumb-grid)"/>
 
-  <!-- Title block -->
-  <g font-family="ui-monospace, 'JetBrains Mono', monospace" fill="#38b6ff" font-weight="600" letter-spacing="0.15em">
-    <text x="80" y="100" font-size="14">PRINCIPAL-INTELLIGENCE</text>
-    <text x="80" y="125" font-size="11" fill="#64748b">BRIEFING · FRONT-DOOR</text>
+  <!-- Silo tag (top-left) -->
+  <g transform="translate(80, 80)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">PRINCIPAL-INTELLIGENCE · #001</text>
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#64748b" letter-spacing="0.1em" y="22">FRONT-DOOR BRIEFING · 7 MIN</text>
   </g>
 
-  <!-- Three-tier stack visual -->
+  <!-- Right-side title (smaller, supporting role) -->
+  <g transform="translate(680, 220)">
+    <text font-family="Inter, sans-serif" fill="#0f172a" font-weight="800" letter-spacing="-0.02em">
+      <tspan x="0" y="0" font-size="42">What is</tspan>
+      <tspan x="0" y="50" font-size="42">operational</tspan>
+      <tspan x="0" y="100" font-size="42" fill="#38b6ff">intelligence?</tspan>
+    </text>
+    <text font-family="Inter, sans-serif" font-size="15" fill="#475569" letter-spacing="0" y="138">
+      <tspan x="0">And why dashboards</tspan>
+      <tspan x="0" y="158">don&apos;t deliver it.</tspan>
+    </text>
+  </g>
+
+  <!-- DOMINANT ELEMENT: Mock briefing card (left side) -->
   <g transform="translate(80, 180)">
-    <!-- GLANCE -->
-    <rect x="0" y="0" width="320" height="100" rx="4" fill="#1e293b" stroke="#14b8a6" stroke-width="2"/>
-    <rect x="0" y="0" width="4" height="100" fill="#14b8a6"/>
-    <text x="20" y="32" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#14b8a6" font-weight="700" letter-spacing="0.1em">GLANCE</text>
-    <text x="20" y="56" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8">0–5 SECONDS</text>
-    <text x="20" y="80" font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1">KPI ticker · ambient awareness</text>
+    <!-- Card shadow / depth -->
+    <rect x="2" y="2" width="540" height="380" rx="10" fill="#0f172a" opacity="0.04"/>
+    <!-- Card body -->
+    <rect width="540" height="380" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <!-- Left-border accent -->
+    <rect width="5" height="380" rx="0" fill="#38b6ff"/>
 
-    <!-- BRIEFING -->
-    <rect x="0" y="120" width="320" height="100" rx="4" fill="#1e293b" stroke="#38b6ff" stroke-width="2"/>
-    <rect x="0" y="120" width="4" height="100" fill="#38b6ff"/>
-    <text x="20" y="152" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.1em">BRIEFING</text>
-    <text x="20" y="176" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8">5–60 SECONDS</text>
-    <text x="20" y="200" font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1">AI morning briefing · prioritized</text>
+    <!-- Card header -->
+    <g transform="translate(28, 32)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#38b6ff" font-weight="700" letter-spacing="0.12em">DAILY BRIEFING · TUE · 06:00 AM</text>
+      <text font-family="Inter, sans-serif" font-size="18" fill="#0f172a" font-weight="700" y="28">Three signals need your attention</text>
+    </g>
 
-    <!-- DEEP -->
-    <rect x="0" y="240" width="320" height="100" rx="4" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
-    <rect x="0" y="240" width="4" height="100" fill="#8b5cf6"/>
-    <text x="20" y="272" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#8b5cf6" font-weight="700" letter-spacing="0.1em">DEEP</text>
-    <text x="20" y="296" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8">1–5 MINUTES</text>
-    <text x="20" y="320" font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1">Signal feed · AI concierge</text>
-  </g>
+    <!-- Divider -->
+    <line x1="28" y1="92" x2="512" y2="92" stroke="#e2e8f0" stroke-width="1"/>
 
-  <!-- Arrows + delivery -->
-  <g transform="translate(440, 240)">
-    <path d="M 0 60 L 80 60" stroke="#38b6ff" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
-    <path d="M 0 60 L 80 60" stroke="#38b6ff" stroke-width="2" fill="none"/>
-    <polygon points="80,55 88,60 80,65" fill="#38b6ff"/>
-  </g>
+    <!-- Signal row 1: CRIT -->
+    <g transform="translate(28, 112)">
+      <circle cx="6" cy="10" r="5" fill="#ef4444"/>
+      <text x="22" y="14" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#ef4444" font-weight="700" letter-spacing="0.1em">CRIT · CR-017</text>
+      <text x="22" y="36" font-family="Inter, sans-serif" font-size="14" fill="#0f172a" font-weight="600">Cross-system correlation detected</text>
+      <text x="22" y="56" font-family="Inter, sans-serif" font-size="12" fill="#64748b">Vendor lapse + 3 doc requests queued</text>
+    </g>
 
-  <!-- Headline -->
-  <g transform="translate(560, 200)">
-    <text font-family="Inter, sans-serif" fill="#ffffff" font-weight="700" font-size="44" letter-spacing="-0.02em">
-      <tspan x="0" y="0">What Is</tspan>
-      <tspan x="0" y="52">Operational</tspan>
-      <tspan x="0" y="104" fill="#38b6ff">Intelligence?</tspan>
-    </text>
-    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#94a3b8" letter-spacing="0.05em">
-      <tspan x="0" y="160">AND WHY DASHBOARDS</tspan>
-      <tspan x="0" y="180">DON'T DELIVER IT</tspan>
-    </text>
+    <!-- Signal row 2: WARN -->
+    <g transform="translate(28, 192)">
+      <circle cx="6" cy="10" r="5" fill="#f59e0b"/>
+      <text x="22" y="14" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#f59e0b" font-weight="700" letter-spacing="0.1em">WARN · REV-008</text>
+      <text x="22" y="36" font-family="Inter, sans-serif" font-size="14" fill="#0f172a" font-weight="600">Revenue anomaly flagged</text>
+      <text x="22" y="56" font-family="Inter, sans-serif" font-size="12" fill="#64748b">Tuesday lunch down 18% vs trend</text>
+    </g>
 
-    <!-- Status chip -->
-    <g transform="translate(0, 220)">
-      <rect width="180" height="28" rx="14" fill="none" stroke="#38b6ff" stroke-width="1"/>
-      <circle cx="14" cy="14" r="3" fill="#38b6ff"/>
-      <text x="26" y="19" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#38b6ff" font-weight="600" letter-spacing="0.08em">7 MIN BRIEFING</text>
+    <!-- Signal row 3: GOOD -->
+    <g transform="translate(28, 272)">
+      <circle cx="6" cy="10" r="5" fill="#10b981"/>
+      <text x="22" y="14" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#10b981" font-weight="700" letter-spacing="0.1em">GOOD · MS-014</text>
+      <text x="22" y="36" font-family="Inter, sans-serif" font-size="14" fill="#0f172a" font-weight="600">Milestone — fulfillment automated</text>
+      <text x="22" y="56" font-family="Inter, sans-serif" font-size="12" fill="#64748b">Core HOA reached 40 communities</text>
+    </g>
+
+    <!-- Card footer -->
+    <line x1="28" y1="340" x2="512" y2="340" stroke="#e2e8f0" stroke-width="1"/>
+    <g transform="translate(28, 358)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.08em">GENERATED BY XEEDLY AI · DELIVERED TO 12 RECIPIENTS</text>
     </g>
   </g>
 
-  <!-- Footer brand mark -->
-  <g transform="translate(80, 610)">
-    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.12em">XEEDLY · THE BRIEFINGS</text>
+  <!-- Footer mark -->
+  <g transform="translate(80, 620)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.12em">XEEDLY · THE BRIEFINGS</text>
   </g>
-  <g transform="translate(1120, 610)" text-anchor="end">
-    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.08em">SIGNAL-001</text>
+  <g transform="translate(1120, 620)" text-anchor="end">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.08em">BRIEFING-001 · LIVE</text>
   </g>
 </svg>

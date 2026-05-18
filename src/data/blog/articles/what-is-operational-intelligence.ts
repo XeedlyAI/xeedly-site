@@ -103,6 +103,13 @@ export const article: Article = {
           text: "A well-designed intelligence layer delivers at three depths, because different decisions need different time budgets:",
         },
         {
+          type: "image",
+          src: "/images/blog/what-is-operational-intelligence-body-tiers.svg",
+          alt: "The three depths of intelligence — GLANCE (KPI ticker, 0–5 seconds), BRIEFING (AI morning briefing, 5–60 seconds), DEEP (signal feed and AI concierge, 1–5 minutes)",
+          caption: "Figure 1 — The XeedlyAI three-tier intelligence architecture",
+          aspect: "16:9",
+        },
+        {
           type: "table",
           headers: ["Depth", "Time Budget", "Use Case"],
           rows: [

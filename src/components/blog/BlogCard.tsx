@@ -33,7 +33,7 @@ export function BlogCard({
       className="group dash-card status-info overflow-hidden flex flex-col"
     >
       <Link href={href} className="block">
-        <div className="relative w-full aspect-[16/9] bg-[#0f172a] overflow-hidden">
+        <div className="relative w-full aspect-[16/9] bg-[#f1f5f9] overflow-hidden">
           <Image
             src={article.thumbnailImage}
             alt={article.title}
