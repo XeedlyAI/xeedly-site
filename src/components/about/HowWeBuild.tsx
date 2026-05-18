@@ -13,7 +13,7 @@ const ITEMS = [
   {
     title: "Design System DNA",
     body:
-      "One design system across every product. Inter + JetBrains Mono. Primary blue + status colors. KPI tickers, signal cards, briefing panels — a visual language that operators learn once and recognize everywhere.",
+      "One design system across every product. Inter + JetBrains Mono. Primary blue + status colors. KPI tickers, signal cards, briefing panels — a visual language that leaders learn once and recognize everywhere.",
   },
   {
     title: "Rapid Vertical Deployment",

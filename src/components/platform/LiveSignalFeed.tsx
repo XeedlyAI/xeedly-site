@@ -64,7 +64,7 @@ const POOL: Signal[] = [
     severity: "info",
     title: "Daily Digest Delivered",
     body:
-      "Morning briefing sent to 12 operators across 3 organizations. 94% open rate, 3 drill-down queries initiated.",
+      "Morning briefing sent to 12 principals across 3 organizations. 94% open rate, 3 drill-down queries initiated.",
     source: "propertyolio",
   },
   {

@@ -90,7 +90,7 @@ Voice is constant. Tone shifts by context.
 | **Presence** | What efficiency unlocks |
 | **Become / becoming** | Customers are becoming someone, not just running something |
 | **Lead** | The opposite of operate. The goal. |
-| **Operator** | What we call the customer — respectful, accurate |
+| **Principal / Leader / Builder** | The three universal terms for the customer at the brand level — pick by register: **Principal** for formal/professional copy, **Leader** for conviction prose, **Builder** for catalyst-aligned/active framing. In vertical-specific content use the industry-native term: **operator** (restaurants), **principal** (property management / HOA / real estate), **sponsor** (real estate investing). When possible, drop the noun entirely and use **"you"** or descriptive phrases ("the people who built it"). |
 | **Run** | The business runs. You don't run it. |
 | **Freedom** | Specifically: freedom of attention, freedom to choose |
 | **Build / built** | Active, intentional construction |

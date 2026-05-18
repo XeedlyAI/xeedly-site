@@ -11,7 +11,7 @@ type Block = {
 
 const BLOCKS: Block[] = [
   {
-    heading: "Most operators don't lose themselves all at once.",
+    heading: "Most leaders don't lose themselves all at once.",
     paragraphs: [
       "It happens slowly. You build a system. The system works. So you build another one. Then another. Then the systems start producing problems faster than you can solve them, and you become the bottleneck in your own success.",
       "You wake up one day and realize the business you built to give you a better life is the thing standing between you and the life you wanted.",
@@ -28,7 +28,7 @@ const BLOCKS: Block[] = [
   {
     heading: "The business is the catalyst. Not the cage.",
     paragraphs: [
-      "When success finally arrives — and for many operators, it does — most discover that success is insufficient to define who they are. The wins are real, but they're temporary. The trophies fade. The dopamine doesn't last.",
+      "When success finally arrives — and for many of those who build, it does — most discover that success is insufficient to define who they are. The wins are real, but they're temporary. The trophies fade. The dopamine doesn't last.",
       "What lasts is family. Relationships. Service to others. Faith. The work only you can do — the work no business can do for you.",
       "We don't build software to make your business bigger. We build software to make your business run without you in the middle of everything. So that what you do with the margin — the time, the attention, the presence — can be the actual point.",
       "Lifestyle income. Freedom of attention. Space to become.",
@@ -37,7 +37,7 @@ const BLOCKS: Block[] = [
   {
     heading: "This is who we build for.",
     paragraphs: [
-      "Operators who refuse to be built by their businesses.",
+      "Builders who refuse to be built by what they built.",
       "Founders who want their work to count for something more than its own continuation.",
       "Leaders who know that the chain — desire, priorities, decisions, actions — only delivers happiness when it's walked in the right direction. And who are willing to build the business that makes walking it possible.",
       "That's who we build for. That's why we build.",

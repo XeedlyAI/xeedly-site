@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const PARAGRAPHS = [
-  "I've watched operators build incredible businesses and lose themselves inside them. Every system they run, every question they answer, every fire they put out — it works, but it costs them the things no dashboard can measure.",
+  "I've watched leaders build incredible businesses and lose themselves inside them. Every system they run, every question they answer, every fire they put out — it works, but it costs them the things no dashboard can measure.",
   "Xeedly exists because I believe the best version of your business is the one that doesn't need you in the middle of everything. Not so the business is less — so you can be more. More present. More generous. More focused on the work only you can do.",
-  "We build intelligence layers so that operators can stop operating and start leading.",
+  "We build intelligence layers so you can stop operating and start leading.",
 ];
 
 export function WhyThisMatters() {

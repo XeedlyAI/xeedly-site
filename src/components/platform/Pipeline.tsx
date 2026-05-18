@@ -61,7 +61,7 @@ const STAGES: Stage[] = [
     accent: "#38b6ff",
     title: "Intelligence Delivery",
     body:
-      "Signals become morning briefings, real-time alerts, and deep-dive analysis — delivered via email, SMS, Slack, Teams, or in-app. Intelligence meets operators where they are, not behind a dashboard login.",
+      "Signals become morning briefings, real-time alerts, and deep-dive analysis — delivered via email, SMS, Slack, Teams, or in-app. Intelligence meets leaders where they are, not behind a dashboard login.",
     technical: "channels: [email, sms, slack, teams, in-app]",
     Icon: Send,
     channels: ["Email", "SMS", "Slack", "Teams", "In-App"],

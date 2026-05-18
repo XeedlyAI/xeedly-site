@@ -165,7 +165,7 @@ export function ContactPanel() {
                     <Field label="Role">
                       <input
                         type="text"
-                        placeholder="Owner, Operator, CTO…"
+                        placeholder="Owner, Principal, Operator, CTO…"
                         value={form.role}
                         onChange={(e) => setForm({ ...form, role: e.target.value })}
                         className="w-full px-3 py-2.5 rounded-lg border border-[#e2e8f0] bg-white text-[14px] text-[#0f172a] outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/20 transition"

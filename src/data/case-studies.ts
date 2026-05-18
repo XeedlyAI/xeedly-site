@@ -430,7 +430,7 @@ export const PROPERTYDOCZ: CaseStudy = {
     {
       accent: "teal",
       title: "New revenue stream activated",
-      body: "Document fulfillment revenue that previously flowed to third-party companies now stays with the management company. Pricing controlled by the operator, settled in real-time, no monthly settlement delays.",
+      body: "Document fulfillment revenue that previously flowed to third-party companies now stays with the management company. Pricing controlled by the principal, settled in real-time, no monthly settlement delays.",
     },
     {
       accent: "teal",
@@ -773,7 +773,7 @@ export const XEEDLY_PLATFORM: CaseStudy = {
     {
       title: "Platform-as-Website",
       description:
-        "KPI tickers, signal cards, left-border accents, JetBrains Mono data typography. The site IS an instance of the product. The design language is the same one operators see in Sovvrn and PropertyJobz.",
+        "KPI tickers, signal cards, left-border accents, JetBrains Mono data typography. The site IS an instance of the product. The design language is the same one leaders see in Sovvrn and PropertyJobz.",
       tags: ["Design system", "KPI tickers", "Signal UI"],
     },
     {

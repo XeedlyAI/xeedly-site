@@ -22,7 +22,7 @@ const ITEMS: Item[] = [
       "Events from every connected system analyzed together. Patterns spanning tools are the ones humans miss.",
   },
   {
-    title: "Operator-first delivery",
+    title: "Leader-first delivery",
     body:
       "Email, SMS, Slack, Teams, in-app. Intelligence meets you where you work — not behind a login.",
   },
@@ -35,7 +35,7 @@ const ITEMS: Item[] = [
   {
     title: "Margin that matters",
     body:
-      "Efficiency creates margin. Not just financial margin — margin in your calendar, your attention, your presence. The businesses that scale best are the ones that free their operators to focus on what actually matters.",
+      "Efficiency creates margin. Not just financial margin — margin in your calendar, your attention, your presence. The businesses that scale best are the ones that free their leaders to focus on what actually matters.",
   },
 ];
 
