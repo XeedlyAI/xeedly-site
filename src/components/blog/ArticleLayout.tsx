@@ -8,6 +8,7 @@ import type { Article } from "@/types/blog";
 import { SILOS } from "@/types/blog";
 import { ArticleBody } from "./ArticleRenderer";
 import { BlogCard } from "./BlogCard";
+import { BlogConsole } from "./BlogConsole";
 import { CONTACT } from "@/lib/contact";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -172,6 +173,18 @@ export function ArticleLayout({
               </dl>
             </section>
           )}
+
+          {/* Article-scoped Intelligence Console */}
+          <section className="mt-14 pt-10 border-t border-[#e2e8f0]">
+            <div className="rounded-xl border border-[#e2e8f0] bg-[#f8fafc] p-6 md:p-7">
+              <BlogConsole
+                articleSlug={article.slug}
+                heading="Ask anything about this briefing."
+                subheading="I've read it. I can synthesize, expand on any section, or point you to related briefings."
+                placeholder="Ask about this briefing..."
+              />
+            </div>
+          </section>
 
           {/* CTA */}
           <section className="mt-12">

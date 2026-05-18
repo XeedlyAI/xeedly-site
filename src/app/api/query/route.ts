@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { rateLimit } from "@/lib/rate-limit";
+import { ARTICLES, ARTICLES_BY_SLUG } from "@/data/blog";
+import { SILOS } from "@/types/blog";
+import type { Article } from "@/types/blog";
 
 export const runtime = "nodejs";
 
@@ -297,10 +300,120 @@ NEVER write "I can help you book a call" or "you can reach us at hello@xeedly.co
 
 type AnthropicContentBlock = { type: string; text?: string };
 
+// =============================================================
+// BLOG CONTEXT MODE — extension for the Xeedly Briefings console
+// =============================================================
+
+const BLOG_SYSTEM_PROMPT_ADDITION = `
+
+## BLOG MODE — XEEDLY BRIEFINGS CONSOLE
+
+You are also the AI concierge for The Xeedly Briefings — the blog at /blog. Visitors can ask you questions about anything covered in the published briefings, and you can synthesize across articles and route them to the specific briefing that goes deepest on their question.
+
+### How to respond in blog mode
+
+1. **Answer the question first.** Synthesize across the article corpus. Use the article briefs and key concepts provided below.
+2. **Then surface relevant articles** as \`article_link\` actions so the visitor can read deeper.
+3. **Keep responses tight** — 120–250 words for synthesis, then the action block.
+4. **Coaching posture still applies.** You're not a search engine — you're a coach who's read everything and points them to what matters.
+
+### article_link action format
+
+When you reference a specific briefing, include it as an action card at the end:
+
+\`\`\`actions
+[
+  { "type": "article_link", "label": "What Is Operational Intelligence", "url": "/blog/principal-intelligence/what-is-operational-intelligence", "silo": "PRINCIPAL-INTELLIGENCE", "description": "Why dashboards don't deliver it." }
+]
+\`\`\`
+
+You can include 1–3 article_link actions per response. Order them by relevance. The frontend renders these as clickable cards.
+
+### When to mix action types in blog mode
+
+- Pure content question → article_link actions only
+- Content question + explicit interest in a product/service → article_link + calendar
+- Vendor-specific objection or pricing question → calendar (treat like the regular console)
+`;
+
+const ARTICLE_SCOPED_PROMPT_ADDITION = `
+
+## ARTICLE-SCOPED MODE
+
+The visitor is currently reading a specific briefing. You have full access to that briefing's content below. When they ask questions:
+
+1. **Treat questions as in-context follow-ups** to what they're reading, not generic queries
+2. **Quote specific passages** when relevant ("In the section on X, the briefing argues that...")
+3. **Reference related briefings** in the same silo for deeper exploration
+4. **Don't repeat the article verbatim** — they can scroll. Add interpretation, application, or context they wouldn't get from just reading.
+
+When suggesting related articles, prefer lateral siblings (same silo) over cross-silo links.
+`;
+
+function buildArticleCorpusContext(): string {
+  // List every published briefing with its silo, brief, key concepts
+  return ARTICLES.map((a) => {
+    const silo = SILOS[a.silo].name;
+    const url = `/blog/${a.silo}/${a.slug}`;
+    return `- **${a.title}** [${silo}] (${url})\n  Brief: ${a.directAnswer}\n  Keywords: ${a.targetKeyword}, ${a.secondaryKeywords.slice(0, 2).join(", ")}\n  Pillar: ${a.internalLinks.pillar}`;
+  }).join("\n\n");
+}
+
+function buildArticleContentContext(article: Article): string {
+  // Full content of a specific article for article-scoped mode
+  const sections = article.sections
+    .map((s) => {
+      const body = s.blocks
+        .map((b) => {
+          if (b.type === "paragraph") return b.text;
+          if (b.type === "heading3") return `### ${b.text}`;
+          if (b.type === "list")
+            return b.items.map((i) => `- ${i}`).join("\n");
+          if (b.type === "callout") return `[${b.title}] ${b.body}`;
+          if (b.type === "quote") return `> "${b.text}"`;
+          if (b.type === "table")
+            return [
+              `| ${b.headers.join(" | ")} |`,
+              `| ${b.headers.map(() => "---").join(" | ")} |`,
+              ...b.rows.map((r) => `| ${r.join(" | ")} |`),
+            ].join("\n");
+          return "";
+        })
+        .filter(Boolean)
+        .join("\n\n");
+      return `## ${s.heading}\n\n${body}`;
+    })
+    .join("\n\n");
+
+  const faq = article.faq
+    .map((f) => `**Q: ${f.q}**\nA: ${f.a}`)
+    .join("\n\n");
+
+  return `# ${article.title}
+
+**Silo:** ${SILOS[article.silo].name}
+**Reading time:** ${article.readingTimeMinutes} min
+**Published:** ${article.publishDate}
+
+## Direct Answer
+${article.directAnswer}
+
+${sections}
+
+## Trust Signals — ${article.trustSignals.heading}
+${article.trustSignals.body}
+
+## FAQ
+${faq}`;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json().catch(() => ({}));
     const query = typeof body?.query === "string" ? body.query : "";
+    const context = typeof body?.context === "string" ? body.context : "general";
+    const articleSlug =
+      typeof body?.articleSlug === "string" ? body.articleSlug : "";
 
     if (!query || query.trim().length === 0) {
       return NextResponse.json(
@@ -333,6 +446,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Build system prompt based on context
+    let systemPrompt = SYSTEM_PROMPT;
+    if (context === "blog") {
+      systemPrompt =
+        SYSTEM_PROMPT +
+        BLOG_SYSTEM_PROMPT_ADDITION +
+        `\n\n## PUBLISHED BRIEFINGS CORPUS\n\n${buildArticleCorpusContext()}`;
+
+      // If a specific article is in context, add its full content
+      if (articleSlug && ARTICLES_BY_SLUG[articleSlug]) {
+        const article = ARTICLES_BY_SLUG[articleSlug];
+        systemPrompt +=
+          ARTICLE_SCOPED_PROMPT_ADDITION +
+          `\n\n## CURRENT BRIEFING (the visitor is reading this now)\n\n${buildArticleContentContext(article)}`;
+      }
+    }
+
     const upstream = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: {
@@ -343,7 +473,7 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify({
         model: "claude-sonnet-4-20250514",
         max_tokens: 1024,
-        system: SYSTEM_PROMPT,
+        system: systemPrompt,
         messages: [{ role: "user", content: query }],
       }),
     });

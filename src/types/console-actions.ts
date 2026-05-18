@@ -25,8 +25,17 @@ export type DirectChatAction = {
   description?: string;
 };
 
+export type ArticleLinkAction = {
+  type: "article_link";
+  label: string;       // article title
+  url: string;         // /blog/[silo]/[slug]
+  silo?: string;       // e.g., "PRINCIPAL-INTELLIGENCE"
+  description?: string; // 1-line excerpt
+};
+
 export type ConsoleAction =
   | CalendarAction
   | ContactInfoAction
   | IntakeAction
-  | DirectChatAction;
+  | DirectChatAction
+  | ArticleLinkAction;

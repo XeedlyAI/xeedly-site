@@ -3,13 +3,22 @@
 import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, Mail, ClipboardList, Zap, Check, ArrowRight } from "lucide-react";
+import {
+  Calendar,
+  Mail,
+  ClipboardList,
+  Zap,
+  Check,
+  ArrowRight,
+  BookOpen,
+} from "lucide-react";
 import type {
   ConsoleAction,
   CalendarAction,
   ContactInfoAction,
   IntakeAction,
   DirectChatAction,
+  ArticleLinkAction,
 } from "@/types/console-actions";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -53,10 +62,43 @@ export function ConsoleActions({ actions, context, knownContact }: ConsoleAction
                 contact={intakeContact}
               />
             )}
+            {a.type === "article_link" && <ArticleLinkRenderer action={a} />}
           </motion.div>
         ))}
       </div>
     </div>
+  );
+}
+
+function ArticleLinkRenderer({ action }: { action: ArticleLinkAction }) {
+  return (
+    <Link
+      href={action.url}
+      className="group flex items-start gap-3 rounded-lg border border-[#e2e8f0] hover:border-[#38b6ff] bg-white p-4 transition-colors"
+    >
+      <div
+        className="flex-shrink-0 w-9 h-9 rounded-md flex items-center justify-center"
+        style={{ background: "rgba(56,182,255,0.10)", color: "#38b6ff" }}
+      >
+        <BookOpen className="w-4 h-4" />
+      </div>
+      <div className="flex-1 min-w-0">
+        {action.silo && (
+          <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-[#0A8FD4] mb-1">
+            {action.silo}
+          </div>
+        )}
+        <div className="text-[14px] font-semibold text-[#0f172a] leading-[1.35] group-hover:text-[#0A8FD4] transition-colors">
+          {action.label}
+        </div>
+        {action.description && (
+          <div className="mt-1 text-[12px] text-[#475569] leading-[1.45]">
+            {action.description}
+          </div>
+        )}
+      </div>
+      <ArrowRight className="flex-shrink-0 w-4 h-4 text-[#94a3b8] group-hover:text-[#38b6ff] transition-colors mt-1" />
+    </Link>
   );
 }
 

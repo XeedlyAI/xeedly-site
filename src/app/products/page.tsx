@@ -14,6 +14,8 @@ import {
 } from "@/components/products/GrowthProducts";
 import { ReviewPayment } from "@/components/products/ReviewPayment";
 import { GrowthSystemsCTA } from "@/components/products/GrowthSystemsCTA";
+import { BlogPostsCallout } from "@/components/blog/BlogPostsCallout";
+import { ARTICLES } from "@/data/blog";
 
 export const metadata = {
   title: "Products — XeedlyAI",
@@ -30,6 +32,15 @@ export default function ProductsPage() {
       <PropertyolioSection />
       <PropertyDoczSection />
       <PropertyJobzSection />
+      <BlogPostsCallout
+        articles={ARTICLES}
+        silo="multi-unit-ops"
+        eyebrow="Deep Dives"
+        heading="How leaders actually use these products."
+        body="Briefings on the operational problems these products solve — from document revenue capture to vendor compliance at scale to the multi-unit bottleneck."
+        theme="wash"
+        seeAllLabel="Read MULTI-UNIT-OPS"
+      />
       <Transformation />
       <GrowthDivider />
       <SEOAutopilot />
