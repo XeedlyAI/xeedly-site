@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img"><title>CRM-as-truth vs event-bus-as-truth</title>
+<defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/></pattern></defs>
+<rect width="1200" height="675" fill="#0f172a"/><rect width="1200" height="675" fill="url(#g)"/>
+
+<g transform="translate(80, 70)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">SINGLE SOURCE OF TRUTH · TWO ARCHITECTURES</text>
+  <text font-family="Inter, sans-serif" font-size="22" fill="#f1f5f9" font-weight="700" y="32">CRM-as-truth vs event-bus-as-truth</text>
+</g>
+
+<!-- LEFT: CRM-as-truth (wrong) -->
+<g transform="translate(80, 180)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#ef4444" letter-spacing="0.12em" font-weight="700">✗ CRM AS SOURCE OF TRUTH</text>
+
+  <g transform="translate(0, 28)">
+    <rect width="500" height="380" rx="12" fill="#1e293b" stroke="#ef4444" stroke-width="1.5"/>
+
+    <!-- Source systems around the edge -->
+    <g font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.05em">
+      <rect x="40" y="40" width="120" height="36" rx="4" fill="#0f172a" stroke="#475569"/><text x="100" y="62" text-anchor="middle">ACCOUNTING</text>
+      <rect x="340" y="40" width="120" height="36" rx="4" fill="#0f172a" stroke="#475569"/><text x="400" y="62" text-anchor="middle">VENDOR</text>
+      <rect x="40" y="290" width="120" height="36" rx="4" fill="#0f172a" stroke="#475569"/><text x="100" y="312" text-anchor="middle">PAYMENTS</text>
+      <rect x="340" y="290" width="120" height="36" rx="4" fill="#0f172a" stroke="#475569"/><text x="400" y="312" text-anchor="middle">VOICE</text>
+    </g>
+
+    <!-- Brittle integrations -->
+    <g stroke="#ef4444" stroke-width="1.5" fill="none" opacity="0.7" stroke-dasharray="3 4">
+      <line x1="100" y1="76" x2="240" y2="180"/>
+      <line x1="400" y1="76" x2="260" y2="180"/>
+      <line x1="100" y1="290" x2="240" y2="200"/>
+      <line x1="400" y1="290" x2="260" y2="200"/>
+    </g>
+
+    <!-- CRM hub at center -->
+    <rect x="180" y="160" width="140" height="60" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="2"/>
+    <text x="250" y="186" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#ef4444" font-weight="700">CRM</text>
+    <text x="250" y="206" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">STALE PARTIAL COPIES</text>
+
+    <text x="250" y="360" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#ef4444" letter-spacing="0.1em" font-weight="700">NIGHTLY SYNCS · WRONG DATA MODEL · BRITTLE</text>
+  </g>
+</g>
+
+<!-- RIGHT: Event bus (right) -->
+<g transform="translate(620, 180)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#10b981" letter-spacing="0.12em" font-weight="700">✓ EVENT BUS AS SOURCE OF TRUTH</text>
+
+  <g transform="translate(0, 28)">
+    <rect width="500" height="380" rx="12" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+
+    <!-- Source systems at top (independent) -->
+    <g font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.05em">
+      <rect x="20" y="32" width="100" height="36" rx="4" fill="#0f172a" stroke="#475569"/><text x="70" y="54" text-anchor="middle">CRM</text>
+      <rect x="140" y="32" width="100" height="36" rx="4" fill="#0f172a" stroke="#475569"/><text x="190" y="54" text-anchor="middle">ACCT</text>
+      <rect x="260" y="32" width="100" height="36" rx="4" fill="#0f172a" stroke="#475569"/><text x="310" y="54" text-anchor="middle">VENDOR</text>
+      <rect x="380" y="32" width="100" height="36" rx="4" fill="#0f172a" stroke="#475569"/><text x="430" y="54" text-anchor="middle">VOICE</text>
+    </g>
+
+    <g transform="translate(70, 82)" stroke="#10b981" stroke-width="1.5" fill="none">
+      <line x1="0" y1="0" x2="0" y2="30"/><line x1="120" y1="0" x2="120" y2="30"/><line x1="240" y1="0" x2="240" y2="30"/><line x1="360" y1="0" x2="360" y2="30"/>
+    </g>
+
+    <!-- Event bus -->
+    <rect x="20" y="120" width="460" height="60" rx="8" fill="#10b981"/>
+    <text x="250" y="146" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#ffffff" font-weight="800">Event Bus</text>
+    <text x="250" y="166" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#a7f3d0" letter-spacing="0.1em">REAL-TIME · DECOUPLED · CANONICAL</text>
+
+    <g transform="translate(70, 180)" stroke="#0f172a" stroke-width="1.5" fill="none">
+      <line x1="60" y1="0" x2="60" y2="30"/><line x1="180" y1="0" x2="180" y2="30"/><line x1="300" y1="0" x2="300" y2="30"/>
+    </g>
+
+    <!-- Consumers -->
+    <g font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#cbd5e1" letter-spacing="0.05em">
+      <rect x="60" y="220" width="120" height="48" rx="4" fill="#0f172a" stroke="#14b8a6"/><text x="120" y="242" text-anchor="middle" fill="#14b8a6" font-weight="700">SIGNALS</text>
+      <rect x="200" y="220" width="120" height="48" rx="4" fill="#0f172a" stroke="#38b6ff"/><text x="260" y="242" text-anchor="middle" fill="#38b6ff" font-weight="700">BRIEFINGS</text>
+      <rect x="340" y="220" width="120" height="48" rx="4" fill="#0f172a" stroke="#8b5cf6"/><text x="400" y="242" text-anchor="middle" fill="#8b5cf6" font-weight="700">DASHBOARDS</text>
+    </g>
+
+    <text x="250" y="360" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#10b981" letter-spacing="0.1em" font-weight="700">CROSS-SYSTEM SIGNALS NATIVE · NO BRITTLE INTEGRATIONS</text>
+  </g>
+</g>
+
+<g transform="translate(80, 638)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.12em">FIGURE 1 · CRM-AS-TRUTH VS EVENT-BUS-AS-TRUTH</text></g>
+</svg>

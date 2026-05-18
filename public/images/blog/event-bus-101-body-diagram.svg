@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img"><title>Event bus diagram</title>
+<defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/></pattern></defs>
+<rect width="1200" height="675" fill="#0f172a"/><rect width="1200" height="675" fill="url(#g)"/>
+<g transform="translate(80, 70)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">EVENT BUS ARCHITECTURE</text>
+  <text font-family="Inter, sans-serif" font-size="22" fill="#f1f5f9" font-weight="700" y="32">5 source systems · 1 unified stream · 4 consumers</text>
+</g>
+
+<!-- Source systems publishing -->
+<g transform="translate(100, 170)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.1em" font-weight="700">SOURCES PUBLISHING EVENTS</text>
+  <g transform="translate(0, 16)" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">
+    <rect width="170" height="56" rx="6" fill="#1e293b" stroke="#475569"/><text x="85" y="24" text-anchor="middle" font-weight="700">CRM</text><text x="85" y="42" text-anchor="middle" fill="#94a3b8" font-size="10">customer events</text>
+    <rect x="190" width="170" height="56" rx="6" fill="#1e293b" stroke="#475569"/><text x="275" y="24" text-anchor="middle" font-weight="700">ACCOUNTING</text><text x="275" y="42" text-anchor="middle" fill="#94a3b8" font-size="10">financial events</text>
+    <rect x="380" width="170" height="56" rx="6" fill="#1e293b" stroke="#475569"/><text x="465" y="24" text-anchor="middle" font-weight="700">VENDOR</text><text x="465" y="42" text-anchor="middle" fill="#94a3b8" font-size="10">compliance events</text>
+    <rect x="570" width="170" height="56" rx="6" fill="#1e293b" stroke="#475569"/><text x="655" y="24" text-anchor="middle" font-weight="700">PAYMENTS</text><text x="655" y="42" text-anchor="middle" fill="#94a3b8" font-size="10">stripe events</text>
+    <rect x="760" width="170" height="56" rx="6" fill="#1e293b" stroke="#475569"/><text x="845" y="24" text-anchor="middle" font-weight="700">VOICE</text><text x="845" y="42" text-anchor="middle" fill="#94a3b8" font-size="10">call events</text>
+  </g>
+</g>
+
+<g transform="translate(185, 246)" stroke="#38b6ff" stroke-width="2" fill="none">
+  <line x1="0" y1="0" x2="0" y2="36"/><polygon points="-5,32 0,42 5,32" fill="#38b6ff" stroke="none"/>
+  <line x1="190" y1="0" x2="190" y2="36"/><polygon points="185,32 190,42 195,32" fill="#38b6ff" stroke="none"/>
+  <line x1="380" y1="0" x2="380" y2="36"/><polygon points="375,32 380,42 385,32" fill="#38b6ff" stroke="none"/>
+  <line x1="570" y1="0" x2="570" y2="36"/><polygon points="565,32 570,42 575,32" fill="#38b6ff" stroke="none"/>
+  <line x1="760" y1="0" x2="760" y2="36"/><polygon points="755,32 760,42 765,32" fill="#38b6ff" stroke="none"/>
+</g>
+
+<!-- The bus -->
+<g transform="translate(100, 300)">
+  <rect width="930" height="80" rx="10" fill="#38b6ff"/>
+  <text x="465" y="36" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" fill="#ffffff" font-weight="800">Unified Event Bus</text>
+  <text x="465" y="60" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#bae6fd" letter-spacing="0.12em">CANONICAL SCHEMA · REAL-TIME · DECOUPLED · AUDITABLE</text>
+</g>
+
+<g transform="translate(185, 380)" stroke="#0f172a" stroke-width="2" fill="none">
+  <line x1="0" y1="0" x2="0" y2="36"/><polygon points="-5,32 0,42 5,32" fill="#0f172a" stroke="none"/>
+  <line x1="285" y1="0" x2="285" y2="36"/><polygon points="280,32 285,42 290,32" fill="#0f172a" stroke="none"/>
+  <line x1="570" y1="0" x2="570" y2="36"/><polygon points="565,32 570,42 575,32" fill="#0f172a" stroke="none"/>
+  <line x1="760" y1="0" x2="760" y2="36"/><polygon points="755,32 760,42 765,32" fill="#0f172a" stroke="none"/>
+</g>
+
+<!-- Consumers subscribing -->
+<g transform="translate(100, 440)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.1em" font-weight="700">CONSUMERS SUBSCRIBING</text>
+  <g transform="translate(0, 16)" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">
+    <rect width="220" height="76" rx="6" fill="#1e293b" stroke="#14b8a6"/><text x="110" y="28" text-anchor="middle" fill="#14b8a6" font-weight="700">SIGNAL ENGINE</text><text x="110" y="50" text-anchor="middle" fill="#94a3b8" font-size="10">anomaly detection</text>
+    <rect x="240" width="220" height="76" rx="6" fill="#1e293b" stroke="#38b6ff"/><text x="350" y="28" text-anchor="middle" fill="#38b6ff" font-weight="700">BRIEFINGS</text><text x="350" y="50" text-anchor="middle" fill="#94a3b8" font-size="10">morning summary</text>
+    <rect x="480" width="220" height="76" rx="6" fill="#1e293b" stroke="#8b5cf6"/><text x="590" y="28" text-anchor="middle" fill="#8b5cf6" font-weight="700">AI AGENTS</text><text x="590" y="50" text-anchor="middle" fill="#94a3b8" font-size="10">freeform queries</text>
+    <rect x="720" width="210" height="76" rx="6" fill="#1e293b" stroke="#f59e0b"/><text x="825" y="28" text-anchor="middle" fill="#f59e0b" font-weight="700">DASHBOARDS</text><text x="825" y="50" text-anchor="middle" fill="#94a3b8" font-size="10">live KPI tickers</text>
+  </g>
+</g>
+
+<g transform="translate(80, 638)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.12em">FIGURE 1 · EVENT BUS AS UNIFIED SUBSTRATE</text></g>
+</svg>

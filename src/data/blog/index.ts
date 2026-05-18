@@ -4,6 +4,14 @@
 
 import type { Article, SiloId } from "@/types/blog";
 
+// Newest batch — matrix completers
+import { article as singleSourceOfTruth } from "./articles/single-source-of-truth-problem";
+import { article as leadingVsOperating } from "./articles/leading-vs-operating";
+import { article as founderModeTrap } from "./articles/founder-mode-trap";
+import { article as chainFramework } from "./articles/desire-priorities-decisions-actions-happiness";
+import { article as eventBus101 } from "./articles/event-bus-101";
+import { article as crossSystemCorrelation } from "./articles/cross-system-correlation";
+
 // Home Services Operator articles (HS-1 through HS-8)
 import { article as contractorOperatingStack } from "./articles/contractor-operating-stack";
 import { article as reviewsRoutingResponseTime } from "./articles/reviews-routing-response-time";
@@ -25,6 +33,12 @@ import { article as hoaDocumentRevenue } from "./articles/hoa-document-revenue-m
 import { article as whatIsOperationalIntelligence } from "./articles/what-is-operational-intelligence";
 
 export const ARTICLES: Article[] = [
+  singleSourceOfTruth,
+  leadingVsOperating,
+  founderModeTrap,
+  chainFramework,
+  eventBus101,
+  crossSystemCorrelation,
   contractorOperatingStack,
   reviewsRoutingResponseTime,
   aiVoiceAgentsHomeServices,

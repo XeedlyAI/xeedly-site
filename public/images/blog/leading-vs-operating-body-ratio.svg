@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img"><title>Leading-to-operating ratio</title>
+<defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/></pattern></defs>
+<rect width="1200" height="675" fill="#0f172a"/><rect width="1200" height="675" fill="url(#g)"/>
+
+<g transform="translate(80, 70)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">LEAD-TO-OPERATE RATIO · WHAT IT PREDICTS</text>
+  <text font-family="Inter, sans-serif" font-size="22" fill="#f1f5f9" font-weight="700" y="32">Where principals actually sit on the spectrum</text>
+</g>
+
+<!-- 3 ratio scenarios as stacked bars -->
+<g transform="translate(100, 200)">
+  <!-- TRAPPED -->
+  <g>
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#ef4444" font-weight="700" letter-spacing="0.1em">TRAPPED · 10/90</text>
+    <g transform="translate(0, 24)">
+      <rect width="940" height="56" rx="6" fill="#fee2e2" opacity="0.1"/>
+      <rect width="846" height="56" rx="6" fill="#ef4444"/>
+      <rect x="846" width="94" height="56" rx="6" fill="#10b981"/>
+      <text x="423" y="33" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#ffffff" font-weight="700">90% OPERATING — burnout, plateau, ceiling</text>
+      <text x="893" y="33" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#ffffff" font-weight="700">10%</text>
+    </g>
+  </g>
+
+  <!-- STRAINED -->
+  <g transform="translate(0, 110)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#f59e0b" font-weight="700" letter-spacing="0.1em">STRAINED · 30/70</text>
+    <g transform="translate(0, 24)">
+      <rect width="940" height="56" rx="6" fill="#fef3c7" opacity="0.1"/>
+      <rect width="658" height="56" rx="6" fill="#f59e0b"/>
+      <rect x="658" width="282" height="56" rx="6" fill="#10b981"/>
+      <text x="329" y="33" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#ffffff" font-weight="700">70% OPERATING — workable but plateau ahead</text>
+      <text x="799" y="33" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#ffffff" font-weight="700">30% LEADING</text>
+    </g>
+  </g>
+
+  <!-- HEALTHY -->
+  <g transform="translate(0, 220)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#10b981" font-weight="700" letter-spacing="0.1em">HEALTHY · 60/40</text>
+    <g transform="translate(0, 24)">
+      <rect width="940" height="56" rx="6" fill="#dcfce7" opacity="0.1"/>
+      <rect width="376" height="56" rx="6" fill="#94a3b8"/>
+      <rect x="376" width="564" height="56" rx="6" fill="#10b981"/>
+      <text x="188" y="33" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#ffffff" font-weight="700">40% OPERATING</text>
+      <text x="658" y="33" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#ffffff" font-weight="700">60% LEADING — compounds over time</text>
+    </g>
+  </g>
+</g>
+
+<g transform="translate(100, 530)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.1em" font-weight="700">THE TRUTH</text>
+  <text font-family="Inter, sans-serif" font-size="15" fill="#cbd5e1" y="24">Most principals are at 10/90 or worse and describe themselves as leaders.</text>
+  <text font-family="Inter, sans-serif" font-size="15" fill="#cbd5e1" y="46">The shift to 60/40 isn&apos;t willpower — it&apos;s architecture absorbing the operating work.</text>
+</g>
+
+<g transform="translate(80, 638)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.12em">FIGURE 1 · LEAD-TO-OPERATE RATIO</text></g>
+</svg>
