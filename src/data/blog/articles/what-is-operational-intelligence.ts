@@ -23,7 +23,7 @@ export const article: Article = {
   lastReviewedDate: "2026-05-17",
   author: "Shad",
   readingTimeMinutes: 7,
-  heroImage: "/images/blog/what-is-operational-intelligence-hero.svg",
+  heroImage: "/images/blog/what-is-operational-intelligence-hero.png",
   thumbnailImage:
     "/images/blog/what-is-operational-intelligence-thumb.svg",
 
