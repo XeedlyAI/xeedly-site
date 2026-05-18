@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="t15-title">
+  <title id="t15-title">Reviews Routing Response Time — thumbnail</title>
+  <defs><pattern id="t15-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/></pattern></defs>
+  <rect width="1200" height="675" fill="#0f172a"/><rect width="1200" height="675" fill="url(#t15-grid)"/>
+  <g transform="translate(80, 80)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">MULTI-UNIT-OPS · HS-7</text>
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#64748b" letter-spacing="0.1em" y="22">HIGH-INTENT COMMERCIAL · 7 MIN</text>
+  </g>
+  <!-- Three lever cards horizontally -->
+  <g transform="translate(80, 200)">
+    <!-- Lever 1: Reviews -->
+    <g>
+      <rect width="170" height="320" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+      <rect width="5" height="320" fill="#10b981"/>
+      <g transform="translate(18, 28)">
+        <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#10b981" font-weight="700" letter-spacing="0.1em">LEVER 01</text>
+        <text font-family="Inter, sans-serif" font-size="22" fill="#f1f5f9" font-weight="800" y="32">REVIEWS</text>
+        <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.08em" y="54">VOLUME · RECENCY</text>
+        <text font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" y="92">Drives Google rank.</text>
+        <text font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" y="112">More recent = better.</text>
+        <text font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" y="132">Auto-solicit post-job.</text>
+        <g transform="translate(0, 180)">
+          <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#10b981" letter-spacing="0.08em" font-weight="700">METRIC TO TRACK</text>
+          <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#f1f5f9" y="20" font-weight="700">REVIEWS / WK</text>
+        </g>
+      </g>
+    </g>
+    <!-- Lever 2: Routing -->
+    <g transform="translate(190, 0)">
+      <rect width="170" height="320" rx="10" fill="#1e293b" stroke="#38b6ff" stroke-width="1.5"/>
+      <rect width="5" height="320" fill="#38b6ff"/>
+      <g transform="translate(18, 28)">
+        <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#38b6ff" font-weight="700" letter-spacing="0.1em">LEVER 02</text>
+        <text font-family="Inter, sans-serif" font-size="22" fill="#f1f5f9" font-weight="800" y="32">ROUTING</text>
+        <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.08em" y="54">DENSITY · CLUSTERING</text>
+        <text font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" y="92">Drives margin per hour.</text>
+        <text font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" y="112">Cluster by geography.</text>
+        <text font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" y="132">HOAs are gold here.</text>
+        <g transform="translate(0, 180)">
+          <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#38b6ff" letter-spacing="0.08em" font-weight="700">METRIC TO TRACK</text>
+          <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#f1f5f9" y="20" font-weight="700">JOBS / RADIUS</text>
+        </g>
+      </g>
+    </g>
+    <!-- Lever 3: Response -->
+    <g transform="translate(380, 0)">
+      <rect width="170" height="320" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+      <rect width="5" height="320" fill="#8b5cf6"/>
+      <g transform="translate(18, 28)">
+        <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#8b5cf6" font-weight="700" letter-spacing="0.1em">LEVER 03</text>
+        <text font-family="Inter, sans-serif" font-size="22" fill="#f1f5f9" font-weight="800" y="32">RESPONSE</text>
+        <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.08em" y="54">SPEED TO QUOTE</text>
+        <text font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" y="92">Drives close rate.</text>
+        <text font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" y="112">Same-day = 2–3× wins.</text>
+        <text font-family="Inter, sans-serif" font-size="12" fill="#cbd5e1" y="132">AI agents answer 24/7.</text>
+        <g transform="translate(0, 180)">
+          <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#8b5cf6" letter-spacing="0.08em" font-weight="700">METRIC TO TRACK</text>
+          <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#f1f5f9" y="20" font-weight="700">FIRST-RESP HRS</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(700, 230)">
+    <text font-family="Inter, sans-serif" fill="#ffffff" font-weight="800" letter-spacing="-0.02em">
+      <tspan x="0" y="0" font-size="34">Reviews.</tspan>
+      <tspan x="0" y="42" font-size="34">Routing.</tspan>
+      <tspan x="0" y="84" font-size="34" fill="#38b6ff">Response time.</tspan>
+    </text>
+    <text font-family="Inter, sans-serif" font-size="13" fill="#94a3b8" y="124"><tspan x="0">The three operational levers</tspan><tspan x="0" y="20">that drive home services</tspan><tspan x="0" y="40">growth more than any ad.</tspan></text>
+  </g>
+  <g transform="translate(80, 620)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.12em">XEEDLY · THE BRIEFINGS</text></g>
+  <g transform="translate(1120, 620)" text-anchor="end"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.08em">BRIEFING HS-7 · LIVE</text></g>
+</svg>

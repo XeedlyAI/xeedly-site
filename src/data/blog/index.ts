@@ -3,6 +3,18 @@
 // Newest first so the list flows in reverse-chronological order by default.
 
 import type { Article, SiloId } from "@/types/blog";
+
+// Home Services Operator articles (HS-1 through HS-8)
+import { article as contractorOperatingStack } from "./articles/contractor-operating-stack";
+import { article as reviewsRoutingResponseTime } from "./articles/reviews-routing-response-time";
+import { article as aiVoiceAgentsHomeServices } from "./articles/ai-voice-agents-home-services";
+import { article as vendorComplianceContractorSide } from "./articles/vendor-compliance-contractor-side";
+import { article as multiCrewQuoteToCash } from "./articles/multi-crew-quote-to-cash";
+import { article as fieldServiceIntelligence } from "./articles/field-service-intelligence";
+import { article as getOnHoaPreferredVendorList } from "./articles/get-on-hoa-preferred-vendor-list";
+import { article as multiTruckOperationsTrap } from "./articles/multi-truck-operations-trap";
+
+// Multi-Unit Principal articles (#1 through #8)
 import { article as vendorCompliance } from "./articles/vendor-compliance-at-scale-property-management";
 import { article as buildVsBuy } from "./articles/building-intelligence-platforms-vs-buying-bi-tools";
 import { article as catalystNotCage } from "./articles/catalyst-not-cage-business-purpose";
@@ -13,6 +25,14 @@ import { article as hoaDocumentRevenue } from "./articles/hoa-document-revenue-m
 import { article as whatIsOperationalIntelligence } from "./articles/what-is-operational-intelligence";
 
 export const ARTICLES: Article[] = [
+  contractorOperatingStack,
+  reviewsRoutingResponseTime,
+  aiVoiceAgentsHomeServices,
+  vendorComplianceContractorSide,
+  multiCrewQuoteToCash,
+  fieldServiceIntelligence,
+  getOnHoaPreferredVendorList,
+  multiTruckOperationsTrap,
   vendorCompliance,
   buildVsBuy,
   catalystNotCage,

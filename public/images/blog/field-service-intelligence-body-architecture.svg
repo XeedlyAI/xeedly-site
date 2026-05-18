@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="b11-title">
+  <title id="b11-title">Field service intelligence architecture</title>
+  <defs><pattern id="b11-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/></pattern></defs>
+  <rect width="1200" height="675" fill="#0f172a"/><rect width="1200" height="675" fill="url(#b11-grid)"/>
+
+  <g transform="translate(80, 70)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">ARCHITECTURE · FIELD SERVICE INTELLIGENCE</text>
+    <text font-family="Inter, sans-serif" font-size="22" fill="#f1f5f9" font-weight="700" y="32">The intelligence layer above CRM and field tools</text>
+  </g>
+
+  <!-- Top tier: outputs -->
+  <g transform="translate(120, 180)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#64748b" letter-spacing="0.12em">SIGNALS → DELIVERED</text>
+    <g transform="translate(0, 24)">
+      <rect width="180" height="48" rx="6" fill="#1e293b" stroke="#38b6ff"/><text x="90" y="20" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#38b6ff" font-weight="700">MORNING BRIEFING</text><text x="90" y="36" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">EMAIL · 6 AM</text>
+      <rect x="195" width="180" height="48" rx="6" fill="#1e293b" stroke="#ef4444"/><text x="285" y="20" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#ef4444" font-weight="700">CRITICAL ALERT</text><text x="285" y="36" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">SMS · IMMEDIATE</text>
+      <rect x="390" width="180" height="48" rx="6" fill="#1e293b" stroke="#10b981"/><text x="480" y="20" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#10b981" font-weight="700">AR ESCALATION</text><text x="480" y="36" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">SLACK · 30 DAYS</text>
+      <rect x="585" width="180" height="48" rx="6" fill="#1e293b" stroke="#f59e0b"/><text x="675" y="20" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#f59e0b" font-weight="700">CERT EXPIRING</text><text x="675" y="36" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">EMAIL · 30/60D</text>
+      <rect x="780" width="180" height="48" rx="6" fill="#1e293b" stroke="#8b5cf6"/><text x="870" y="20" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#8b5cf6" font-weight="700">QUALITY PATTERN</text><text x="870" y="36" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">DASHBOARD</text>
+    </g>
+  </g>
+
+  <!-- Up arrows -->
+  <g transform="translate(120, 270)" stroke="#475569" stroke-width="1.5" fill="none" stroke-dasharray="3 4">
+    <line x1="90" y1="0" x2="90" y2="50"/>
+    <line x1="285" y1="0" x2="285" y2="50"/>
+    <line x1="480" y1="0" x2="480" y2="50"/>
+    <line x1="675" y1="0" x2="675" y2="50"/>
+    <line x1="870" y1="0" x2="870" y2="50"/>
+  </g>
+
+  <!-- Middle tier: Intelligence Layer -->
+  <g transform="translate(120, 320)">
+    <rect width="960" height="80" rx="10" fill="#38b6ff"/>
+    <text x="480" y="32" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#ffffff" font-weight="700" letter-spacing="0.15em">INTELLIGENCE LAYER</text>
+    <text x="480" y="58" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#bae6fd" letter-spacing="0.1em">EVENT BUS · SIGNAL ENGINE · AI CORRELATION · MULTI-CHANNEL DELIVERY</text>
+  </g>
+
+  <!-- Up arrows -->
+  <g transform="translate(120, 400)" stroke="#475569" stroke-width="1.5" fill="none" stroke-dasharray="3 4">
+    <line x1="90" y1="0" x2="90" y2="40"/>
+    <line x1="285" y1="0" x2="285" y2="40"/>
+    <line x1="480" y1="0" x2="480" y2="40"/>
+    <line x1="675" y1="0" x2="675" y2="40"/>
+    <line x1="870" y1="0" x2="870" y2="40"/>
+  </g>
+
+  <!-- Bottom tier: Existing tools -->
+  <g transform="translate(120, 440)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#64748b" letter-spacing="0.12em">EXISTING SOURCES · EVENTS IN</text>
+    <g transform="translate(0, 24)">
+      <rect width="180" height="60" rx="6" fill="#ffffff" stroke="#94a3b8"/><text x="90" y="26" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#475569" font-weight="700">JOBBER / HCP</text><text x="90" y="44" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">JOBS · QUOTES</text>
+      <rect x="195" width="180" height="60" rx="6" fill="#ffffff" stroke="#94a3b8"/><text x="285" y="26" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#475569" font-weight="700">QUICKBOOKS</text><text x="285" y="44" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">AR · AP · P&amp;L</text>
+      <rect x="390" width="180" height="60" rx="6" fill="#ffffff" stroke="#94a3b8"/><text x="480" y="26" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#475569" font-weight="700">STRIPE</text><text x="480" y="44" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">PAYMENTS · ACH</text>
+      <rect x="585" width="180" height="60" rx="6" fill="#ffffff" stroke="#94a3b8"/><text x="675" y="26" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#475569" font-weight="700">PROPERTYJOBZ</text><text x="675" y="44" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">VENDOR · COMPLIANCE</text>
+      <rect x="780" width="180" height="60" rx="6" fill="#ffffff" stroke="#94a3b8"/><text x="870" y="26" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#475569" font-weight="700">VOICE AGENT</text><text x="870" y="44" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">CALLS · LEADS</text>
+    </g>
+  </g>
+
+  <g transform="translate(80, 638)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.12em">FIGURE 1 · FIELD SERVICE INTELLIGENCE ARCHITECTURE</text></g>
+</svg>

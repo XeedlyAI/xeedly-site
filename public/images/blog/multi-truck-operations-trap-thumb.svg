@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="t9-title">
+  <title id="t9-title">The Multi-Truck Operations Trap — thumbnail</title>
+  <defs>
+    <pattern id="t9-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#e2e8f0" stroke-width="0.5" opacity="0.6"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="#FAFAFA"/>
+  <rect width="1200" height="675" fill="url(#t9-grid)"/>
+
+  <g transform="translate(80, 80)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">MULTI-UNIT-OPS · HS-1</text>
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#64748b" letter-spacing="0.1em" y="22">FRONT-DOOR · HOME SERVICES · 8 MIN</text>
+  </g>
+
+  <!-- DOMINANT: 5-truck breakdown chart -->
+  <g transform="translate(80, 180)">
+    <rect x="2" y="2" width="540" height="380" rx="10" fill="#0f172a" opacity="0.04"/>
+    <rect width="540" height="380" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <rect width="5" height="380" fill="#ef4444"/>
+
+    <g transform="translate(28, 32)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#ef4444" font-weight="700" letter-spacing="0.12em">THE BREAKING POINT · 3 TO 6 CREWS</text>
+      <text font-family="Inter, sans-serif" font-size="18" fill="#0f172a" font-weight="700" y="28">5 things that break, in order</text>
+    </g>
+
+    <line x1="28" y1="92" x2="512" y2="92" stroke="#e2e8f0" stroke-width="1"/>
+
+    <g transform="translate(28, 112)" font-family="Inter, sans-serif" font-size="14" fill="#334155">
+      <g><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#ef4444" font-weight="700">01</text><text x="32" y="0">Quote response time slows</text></g>
+      <g transform="translate(0, 36)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#ef4444" font-weight="700">02</text><text x="32" y="0">Schedule reliability drifts</text></g>
+      <g transform="translate(0, 72)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#ef4444" font-weight="700">03</text><text x="32" y="0">Quality consistency drops</text></g>
+      <g transform="translate(0, 108)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#ef4444" font-weight="700">04</text><text x="32" y="0">Cash flow gets unpredictable</text></g>
+      <g transform="translate(0, 144)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#ef4444" font-weight="700">05</text><text x="32" y="0">Owner availability collapses</text></g>
+    </g>
+
+    <line x1="28" y1="320" x2="512" y2="320" stroke="#e2e8f0" stroke-width="1"/>
+    <g transform="translate(28, 344)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.08em">FIX IS ARCHITECTURAL · NOT HEADCOUNT</text>
+    </g>
+  </g>
+
+  <g transform="translate(680, 220)">
+    <text font-family="Inter, sans-serif" fill="#0f172a" font-weight="800" letter-spacing="-0.02em">
+      <tspan x="0" y="0" font-size="40">The Multi-</tspan>
+      <tspan x="0" y="48" font-size="40">Truck</tspan>
+      <tspan x="0" y="96" font-size="40" fill="#ef4444">Operations</tspan>
+      <tspan x="0" y="144" font-size="40" fill="#ef4444">Trap.</tspan>
+    </text>
+    <text font-family="Inter, sans-serif" font-size="13" fill="#64748b" y="182">
+      <tspan x="0">Why scaling past 3 crews</tspan>
+      <tspan x="0" y="200">breaks everything.</tspan>
+    </text>
+  </g>
+
+  <g transform="translate(80, 620)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.12em">XEEDLY · THE BRIEFINGS</text></g>
+  <g transform="translate(1120, 620)" text-anchor="end"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.08em">BRIEFING HS-1 · LIVE</text></g>
+</svg>

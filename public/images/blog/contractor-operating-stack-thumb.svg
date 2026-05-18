@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="t16-title">
+  <title id="t16-title">The Contractor's Operating Stack — thumbnail</title>
+  <defs><pattern id="t16-grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M 48 0 L 0 0 0 48" fill="none" stroke="#e7e1d6" stroke-width="0.5" opacity="0.6"/></pattern></defs>
+  <rect width="1200" height="675" fill="#FAF7F2"/><rect width="1200" height="675" fill="url(#t16-grid)"/>
+  <g transform="translate(80, 80)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">MULTI-UNIT-OPS · HS-8</text>
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#64748b" letter-spacing="0.1em" y="22">COMPLETER · 7 MIN</text>
+  </g>
+  <!-- 5-layer stack diagram -->
+  <g transform="translate(80, 180)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#64748b" letter-spacing="0.12em">THE 5-LAYER OPERATING STACK</text>
+
+    <!-- Integration layer (top, primary blue) -->
+    <g transform="translate(0, 24)">
+      <rect width="540" height="40" rx="6" fill="#38b6ff"/>
+      <text x="20" y="25" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#ffffff" font-weight="700" letter-spacing="0.12em">INTEGRATION LAYER · $2K–$5K BUILD</text>
+    </g>
+
+    <!-- 5 stack layers -->
+    <g transform="translate(0, 80)">
+      <rect width="540" height="50" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+      <rect width="5" height="50" fill="#14b8a6"/>
+      <text x="20" y="22" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#0F766E" font-weight="700">LAYER 1 · FIELD SERVICE CRM</text>
+      <text x="20" y="40" font-family="Inter, sans-serif" font-size="12" fill="#64748b">Jobber / Housecall Pro · $200–$500/mo</text>
+    </g>
+    <g transform="translate(0, 138)">
+      <rect width="540" height="50" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+      <rect width="5" height="50" fill="#38b6ff"/>
+      <text x="20" y="22" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#0A8FD4" font-weight="700">LAYER 2 · ACCOUNTING</text>
+      <text x="20" y="40" font-family="Inter, sans-serif" font-size="12" fill="#64748b">QuickBooks Online · $90–$200/mo</text>
+    </g>
+    <g transform="translate(0, 196)">
+      <rect width="540" height="50" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+      <rect width="5" height="50" fill="#8b5cf6"/>
+      <text x="20" y="22" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#7C3AED" font-weight="700">LAYER 3 · PAYMENTS</text>
+      <text x="20" y="40" font-family="Inter, sans-serif" font-size="12" fill="#64748b">Stripe · 2.9% + 30¢ · ACH ~$0.80</text>
+    </g>
+    <g transform="translate(0, 254)">
+      <rect width="540" height="50" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+      <rect width="5" height="50" fill="#f59e0b"/>
+      <text x="20" y="22" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#d97706" font-weight="700">LAYER 4 · AI VOICE AGENT</text>
+      <text x="20" y="40" font-family="Inter, sans-serif" font-size="12" fill="#64748b">Vapi + ElevenLabs + Twilio · $200–$500/mo</text>
+    </g>
+    <g transform="translate(0, 312)">
+      <rect width="540" height="50" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+      <rect width="5" height="50" fill="#10b981"/>
+      <text x="20" y="22" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#10b981" font-weight="700">LAYER 5 · VENDOR MARKETPLACE</text>
+      <text x="20" y="40" font-family="Inter, sans-serif" font-size="12" fill="#64748b">PropertyJobz · $0/mo · revenue-share</text>
+    </g>
+  </g>
+
+  <g transform="translate(680, 230)">
+    <text font-family="Inter, sans-serif" fill="#0f172a" font-weight="800" letter-spacing="-0.02em">
+      <tspan x="0" y="0" font-size="40">The</tspan>
+      <tspan x="0" y="48" font-size="40">Contractor&apos;s</tspan>
+      <tspan x="0" y="96" font-size="40" fill="#38b6ff">Operating</tspan>
+      <tspan x="0" y="144" font-size="40" fill="#38b6ff">Stack.</tspan>
+    </text>
+    <text font-family="Inter, sans-serif" font-size="13" fill="#64748b" y="178"><tspan x="0">$490–$1,200/mo to run</tspan><tspan x="0" y="20">12 jobs/week without the</tspan><tspan x="0" y="40">owner in the middle.</tspan></text>
+  </g>
+  <g transform="translate(80, 620)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.12em">XEEDLY · THE BRIEFINGS</text></g>
+  <g transform="translate(1120, 620)" text-anchor="end"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.08em">BRIEFING HS-8 · LIVE</text></g>
+</svg>
