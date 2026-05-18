@@ -4,7 +4,17 @@
 
 import type { Article, SiloId } from "@/types/blog";
 
-// Newest batch — matrix completers
+// Newest batch — Phase 1 matrix final completers
+import { article as marginEquation } from "./articles/margin-equation";
+import { article as productivityNotIdentity } from "./articles/productivity-responsibility-not-identity";
+import { article as whySuccessDoesntFulfill } from "./articles/why-success-doesnt-fulfill";
+import { article as restaurantOperatorMorningBriefing } from "./articles/restaurant-operator-morning-briefing";
+import { article as realEstatePipelineIntelligence } from "./articles/real-estate-pipeline-intelligence";
+import { article as signalEnginesVsReports } from "./articles/signal-engines-vs-reports";
+import { article as morningBriefingReplaces7am } from "./articles/morning-briefing-replaces-7am-meeting";
+import { article as businessSignalsMostMissed } from "./articles/business-signals-most-missed";
+
+// Previous matrix completers
 import { article as singleSourceOfTruth } from "./articles/single-source-of-truth-problem";
 import { article as leadingVsOperating } from "./articles/leading-vs-operating";
 import { article as founderModeTrap } from "./articles/founder-mode-trap";
@@ -33,6 +43,14 @@ import { article as hoaDocumentRevenue } from "./articles/hoa-document-revenue-m
 import { article as whatIsOperationalIntelligence } from "./articles/what-is-operational-intelligence";
 
 export const ARTICLES: Article[] = [
+  marginEquation,
+  productivityNotIdentity,
+  whySuccessDoesntFulfill,
+  restaurantOperatorMorningBriefing,
+  realEstatePipelineIntelligence,
+  signalEnginesVsReports,
+  morningBriefingReplaces7am,
+  businessSignalsMostMissed,
   singleSourceOfTruth,
   leadingVsOperating,
   founderModeTrap,

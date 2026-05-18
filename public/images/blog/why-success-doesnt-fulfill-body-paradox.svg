@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img"><title>Success paradox</title>
+<defs><pattern id="g" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M 48 0 L 0 0 0 48" fill="none" stroke="#e7e1d6" stroke-width="0.5" opacity="0.6"/></pattern></defs>
+<rect width="1200" height="675" fill="#FAF7F2"/><rect width="1200" height="675" fill="url(#g)"/>
+<g transform="translate(80, 70)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">THE SUCCESS PARADOX</text>
+  <text font-family="Inter, sans-serif" font-size="22" fill="#0f172a" font-weight="700" y="32">What success was supposed to deliver vs what got built</text>
+</g>
+<g transform="translate(80, 180)">
+  <!-- INTENDED -->
+  <g>
+    <rect width="520" height="200" rx="12" fill="#ffffff" stroke="#10b981" stroke-width="1.5"/>
+    <rect width="6" height="200" fill="#10b981"/>
+    <g transform="translate(28, 36)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#10b981" font-weight="700" letter-spacing="0.12em">WHAT WAS INTENDED</text>
+      <text font-family="Inter, sans-serif" font-size="18" fill="#0f172a" font-weight="700" y="30">Success that produces fulfillment</text>
+    </g>
+    <g transform="translate(28, 110)" font-family="Inter, sans-serif" font-size="14" fill="#334155">
+      <g><circle cx="6" cy="-4" r="4" fill="#10b981"/><text x="22" y="0">Time with family</text></g>
+      <g transform="translate(0, 24)"><circle cx="6" cy="-4" r="4" fill="#10b981"/><text x="22" y="0">Financial freedom</text></g>
+      <g transform="translate(0, 48)"><circle cx="6" cy="-4" r="4" fill="#10b981"/><text x="22" y="0">Meaningful work</text></g>
+    </g>
+  </g>
+
+  <!-- WHAT GOT BUILT (mirror) -->
+  <g transform="translate(560, 0)">
+    <rect width="480" height="200" rx="12" fill="#ffffff" stroke="#ef4444" stroke-width="1.5"/>
+    <rect width="6" height="200" fill="#ef4444"/>
+    <g transform="translate(28, 36)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#ef4444" font-weight="700" letter-spacing="0.12em">WHAT GOT BUILT</text>
+      <text font-family="Inter, sans-serif" font-size="18" fill="#0f172a" font-weight="700" y="30">Success that excludes its purpose</text>
+    </g>
+    <g transform="translate(28, 110)" font-family="Inter, sans-serif" font-size="14" fill="#334155">
+      <g><circle cx="6" cy="-4" r="4" fill="#ef4444"/><text x="22" y="0">70-hour weeks excluding family</text></g>
+      <g transform="translate(0, 24)"><circle cx="6" cy="-4" r="4" fill="#ef4444"/><text x="22" y="0">A cage requiring the financial output</text></g>
+      <g transform="translate(0, 48)"><circle cx="6" cy="-4" r="4" fill="#ef4444"/><text x="22" y="0">Work that consumes the producer</text></g>
+    </g>
+  </g>
+</g>
+<g transform="translate(80, 420)">
+  <rect width="1040" height="80" rx="10" fill="#ffffff" stroke="#38b6ff" stroke-width="1.5"/>
+  <rect width="6" height="80" fill="#38b6ff"/>
+  <g transform="translate(28, 28)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#38b6ff" font-weight="700" letter-spacing="0.12em">THE RECONCILIATION</text>
+    <text font-family="Inter, sans-serif" font-size="18" fill="#0f172a" font-weight="700" y="30">Architect the business so success includes — not excludes — the fulfillment it was supposed to create.</text>
+  </g>
+</g>
+<g transform="translate(80, 638)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.12em">FIGURE 1 · THE SUCCESS-FULFILLMENT PARADOX</text></g>
+</svg>

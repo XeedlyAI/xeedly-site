@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img"><title>Real estate pipeline intelligence flow</title>
+<defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/></pattern></defs>
+<rect width="1200" height="675" fill="#0f172a"/><rect width="1200" height="675" fill="url(#g)"/>
+<g transform="translate(80, 70)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">PIPELINE INTELLIGENCE FLOW · PANDO ARCHITECTURE</text>
+  <text font-family="Inter, sans-serif" font-size="22" fill="#f1f5f9" font-weight="700" y="32">Agent submission → AI analysis → lens matching → investor</text>
+</g>
+<!-- 5 stages horizontal -->
+<g transform="translate(80, 200)">
+  <g>
+    <rect width="200" height="120" rx="10" fill="#1e293b" stroke="#38b6ff" stroke-width="1.5"/>
+    <rect width="5" height="120" fill="#38b6ff"/>
+    <g transform="translate(20, 32)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.1em">01</text>
+      <text font-family="Inter, sans-serif" font-size="16" fill="#f1f5f9" font-weight="700" y="28">Agent submits</text>
+      <text font-family="Inter, sans-serif" font-size="12" fill="#94a3b8" y="50">Structured portal</text>
+      <text font-family="Inter, sans-serif" font-size="12" fill="#94a3b8" y="68">Photos · financials</text>
+    </g>
+  </g>
+  <g transform="translate(212, 60)" stroke="#475569" stroke-width="2"><line x1="0" y1="0" x2="32" y2="0"/><polygon points="32,-4 40,0 32,4" fill="#475569"/></g>
+  <g transform="translate(256, 0)">
+    <rect width="200" height="120" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+    <rect width="5" height="120" fill="#10b981"/>
+    <g transform="translate(20, 32)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#10b981" font-weight="700" letter-spacing="0.1em">02</text>
+      <text font-family="Inter, sans-serif" font-size="16" fill="#f1f5f9" font-weight="700" y="28">AI analysis</text>
+      <text font-family="Inter, sans-serif" font-size="12" fill="#94a3b8" y="50">Comps · metrics</text>
+      <text font-family="Inter, sans-serif" font-size="12" fill="#94a3b8" y="68">Thesis brief</text>
+    </g>
+  </g>
+  <g transform="translate(468, 60)" stroke="#475569" stroke-width="2"><line x1="0" y1="0" x2="32" y2="0"/><polygon points="32,-4 40,0 32,4" fill="#475569"/></g>
+  <g transform="translate(512, 0)">
+    <rect width="200" height="120" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect width="5" height="120" fill="#f59e0b"/>
+    <g transform="translate(20, 32)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#f59e0b" font-weight="700" letter-spacing="0.1em">03</text>
+      <text font-family="Inter, sans-serif" font-size="16" fill="#f1f5f9" font-weight="700" y="28">Confidence</text>
+      <text font-family="Inter, sans-serif" font-size="12" fill="#94a3b8" y="50">Multi-factor</text>
+      <text font-family="Inter, sans-serif" font-size="12" fill="#94a3b8" y="68">Ranked by score</text>
+    </g>
+  </g>
+  <g transform="translate(724, 60)" stroke="#475569" stroke-width="2"><line x1="0" y1="0" x2="32" y2="0"/><polygon points="32,-4 40,0 32,4" fill="#475569"/></g>
+  <g transform="translate(768, 0)">
+    <rect width="200" height="120" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+    <rect width="5" height="120" fill="#8b5cf6"/>
+    <g transform="translate(20, 32)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#8b5cf6" font-weight="700" letter-spacing="0.1em">04</text>
+      <text font-family="Inter, sans-serif" font-size="16" fill="#f1f5f9" font-weight="700" y="28">Lens routing</text>
+      <text font-family="Inter, sans-serif" font-size="12" fill="#94a3b8" y="50">Per investor</text>
+      <text font-family="Inter, sans-serif" font-size="12" fill="#94a3b8" y="68">Auto-match</text>
+    </g>
+  </g>
+</g>
+<g transform="translate(80, 360)" stroke="#475569" stroke-width="2"><line x1="484" y1="0" x2="484" y2="32"/><polygon points="480,28 484,40 488,28" fill="#475569"/></g>
+<g transform="translate(380, 410)">
+  <rect width="440" height="120" rx="10" fill="#0f172a" stroke="#38b6ff" stroke-width="2"/>
+  <rect width="5" height="120" fill="#38b6ff"/>
+  <g transform="translate(28, 32)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.1em">05 · INVESTOR DEALS ROOM</text>
+    <text font-family="Inter, sans-serif" font-size="18" fill="#f1f5f9" font-weight="700" y="32">Each investor sees only what fits their lens</text>
+    <text font-family="Inter, sans-serif" font-size="14" fill="#94a3b8" y="58">Principal not required for routing · pipeline runs without bottleneck</text>
+  </g>
+</g>
+<g transform="translate(80, 638)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.12em">FIGURE 1 · PIPELINE INTELLIGENCE FLOW</text></g>
+</svg>

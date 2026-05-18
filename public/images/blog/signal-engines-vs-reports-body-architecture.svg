@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img"><title>Reports vs signal engine latency</title>
+<defs><pattern id="g" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M 48 0 L 0 0 0 48" fill="none" stroke="#bae6fd" stroke-width="0.5" opacity="0.5"/></pattern></defs>
+<rect width="1200" height="675" fill="#F0F9FF"/><rect width="1200" height="675" fill="url(#g)"/>
+<g transform="translate(80, 70)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#0A8FD4" font-weight="700" letter-spacing="0.15em">LATENCY COMPARISON · DAYS VS MINUTES</text>
+  <text font-family="Inter, sans-serif" font-size="22" fill="#0f172a" font-weight="700" y="32">Same event. Different architectures. Different response.</text>
+</g>
+<!-- TOP: REPORT path -->
+<g transform="translate(100, 180)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#ef4444" font-weight="700" letter-spacing="0.12em">✗ REPORT PATH · LATENCY: 24-72 HOURS</text>
+  <g transform="translate(0, 28)" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#475569">
+    <g><rect width="120" height="60" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="60" y="32" text-anchor="middle" font-weight="700">EVENT</text><text x="60" y="48" text-anchor="middle" fill="#94a3b8">happens</text></g>
+    <g transform="translate(120, 30)" stroke="#94a3b8" stroke-width="1.5"><line x1="0" y1="0" x2="20" y2="0"/><polygon points="20,-4 28,0 20,4" fill="#94a3b8"/></g>
+    <g transform="translate(160, 0)"><rect width="120" height="60" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="60" y="32" text-anchor="middle" font-weight="700">ETL JOB</text><text x="60" y="48" text-anchor="middle" fill="#94a3b8">nightly</text></g>
+    <g transform="translate(280, 30)" stroke="#94a3b8" stroke-width="1.5"><line x1="0" y1="0" x2="20" y2="0"/><polygon points="20,-4 28,0 20,4" fill="#94a3b8"/></g>
+    <g transform="translate(320, 0)"><rect width="120" height="60" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="60" y="32" text-anchor="middle" font-weight="700">WAREHOUSE</text><text x="60" y="48" text-anchor="middle" fill="#94a3b8">stores data</text></g>
+    <g transform="translate(440, 30)" stroke="#94a3b8" stroke-width="1.5"><line x1="0" y1="0" x2="20" y2="0"/><polygon points="20,-4 28,0 20,4" fill="#94a3b8"/></g>
+    <g transform="translate(480, 0)"><rect width="120" height="60" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="60" y="32" text-anchor="middle" font-weight="700">REPORT</text><text x="60" y="48" text-anchor="middle" fill="#94a3b8">on demand</text></g>
+    <g transform="translate(600, 30)" stroke="#94a3b8" stroke-width="1.5"><line x1="0" y1="0" x2="20" y2="0"/><polygon points="20,-4 28,0 20,4" fill="#94a3b8"/></g>
+    <g transform="translate(640, 0)"><rect width="120" height="60" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="60" y="32" text-anchor="middle" font-weight="700">REVIEW</text><text x="60" y="48" text-anchor="middle" fill="#94a3b8">someday</text></g>
+    <g transform="translate(760, 30)" stroke="#94a3b8" stroke-width="1.5"><line x1="0" y1="0" x2="20" y2="0"/><polygon points="20,-4 28,0 20,4" fill="#94a3b8"/></g>
+    <g transform="translate(800, 0)"><rect width="120" height="60" rx="6" fill="#fee2e2" stroke="#ef4444"/><text x="60" y="32" text-anchor="middle" font-weight="700" fill="#ef4444">ACTION</text><text x="60" y="48" text-anchor="middle" fill="#ef4444">finally</text></g>
+  </g>
+</g>
+<!-- BOTTOM: SIGNAL ENGINE path -->
+<g transform="translate(100, 380)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#10b981" font-weight="700" letter-spacing="0.12em">✓ SIGNAL ENGINE PATH · LATENCY: SECONDS-MINUTES</text>
+  <g transform="translate(0, 28)" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#475569">
+    <g><rect width="180" height="60" rx="6" fill="#fff" stroke="#cbd5e1"/><text x="90" y="32" text-anchor="middle" font-weight="700">EVENT</text><text x="90" y="48" text-anchor="middle" fill="#94a3b8">happens</text></g>
+    <g transform="translate(180, 30)" stroke="#10b981" stroke-width="2"><line x1="0" y1="0" x2="20" y2="0"/><polygon points="20,-4 28,0 20,4" fill="#10b981"/></g>
+    <g transform="translate(220, 0)"><rect width="180" height="60" rx="6" fill="#fff" stroke="#10b981" stroke-width="1.5"/><text x="90" y="32" text-anchor="middle" font-weight="700" fill="#10b981">EVENT BUS</text><text x="90" y="48" text-anchor="middle" fill="#94a3b8">real-time</text></g>
+    <g transform="translate(400, 30)" stroke="#10b981" stroke-width="2"><line x1="0" y1="0" x2="20" y2="0"/><polygon points="20,-4 28,0 20,4" fill="#10b981"/></g>
+    <g transform="translate(440, 0)"><rect width="180" height="60" rx="6" fill="#fff" stroke="#10b981" stroke-width="1.5"/><text x="90" y="32" text-anchor="middle" font-weight="700" fill="#10b981">SIGNAL ENGINE</text><text x="90" y="48" text-anchor="middle" fill="#94a3b8">rules + AI</text></g>
+    <g transform="translate(620, 30)" stroke="#10b981" stroke-width="2"><line x1="0" y1="0" x2="20" y2="0"/><polygon points="20,-4 28,0 20,4" fill="#10b981"/></g>
+    <g transform="translate(660, 0)"><rect width="180" height="60" rx="6" fill="#fff" stroke="#10b981" stroke-width="1.5"/><text x="90" y="32" text-anchor="middle" font-weight="700" fill="#10b981">PUSH DELIVERY</text><text x="90" y="48" text-anchor="middle" fill="#94a3b8">to right person</text></g>
+    <g transform="translate(840, 30)" stroke="#10b981" stroke-width="2"><line x1="0" y1="0" x2="20" y2="0"/><polygon points="20,-4 28,0 20,4" fill="#10b981"/></g>
+    <g transform="translate(880, 0)"><rect width="120" height="60" rx="6" fill="#dcfce7" stroke="#10b981"/><text x="60" y="32" text-anchor="middle" font-weight="700" fill="#10b981">ACTION</text><text x="60" y="48" text-anchor="middle" fill="#10b981">minutes</text></g>
+  </g>
+</g>
+<g transform="translate(100, 540)">
+  <rect width="960" height="64" rx="8" fill="#0f172a"/>
+  <text x="20" y="26" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#38b6ff" font-weight="700" letter-spacing="0.12em">THE LATENCY DIFFERENCE</text>
+  <text x="20" y="48" font-family="Inter, sans-serif" font-size="14" fill="#f1f5f9" font-weight="600">Same event. Reports get reviewed days later. Signal engines fire minutes later. Different decisions follow.</text>
+</g>
+<g transform="translate(80, 638)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.12em">FIGURE 1 · REPORT VS SIGNAL ENGINE LATENCY</text></g>
+</svg>
