@@ -1,12 +1,26 @@
 // Articles registry — add new articles here as they ship.
 // Source: docs/content/EDITORIAL-CALENDAR.md
+// Newest first so the list flows in reverse-chronological order by default.
 
 import type { Article, SiloId } from "@/types/blog";
+import { article as vendorCompliance } from "./articles/vendor-compliance-at-scale-property-management";
+import { article as buildVsBuy } from "./articles/building-intelligence-platforms-vs-buying-bi-tools";
+import { article as catalystNotCage } from "./articles/catalyst-not-cage-business-purpose";
+import { article as multiUnitBottleneck } from "./articles/multi-unit-bottleneck-constraint-at-five-units";
+import { article as threeTierModel } from "./articles/three-tier-intelligence-model-glance-briefing-deep";
+import { article as buildBusinessRunsWithoutYou } from "./articles/build-a-business-that-runs-without-you";
+import { article as hoaDocumentRevenue } from "./articles/hoa-document-revenue-management-companies-lose";
 import { article as whatIsOperationalIntelligence } from "./articles/what-is-operational-intelligence";
 
 export const ARTICLES: Article[] = [
+  vendorCompliance,
+  buildVsBuy,
+  catalystNotCage,
+  multiUnitBottleneck,
+  threeTierModel,
+  buildBusinessRunsWithoutYou,
+  hoaDocumentRevenue,
   whatIsOperationalIntelligence,
-  // Add new articles here in publishing order (newest first for display).
 ];
 
 export const ARTICLES_BY_SLUG: Record<string, Article> = ARTICLES.reduce(
