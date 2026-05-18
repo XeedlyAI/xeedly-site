@@ -3,68 +3,47 @@
   <defs><pattern id="t12-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="0.5" opacity="0.6"/></pattern></defs>
   <rect width="1200" height="675" fill="#FAFAFA"/><rect width="1200" height="675" fill="url(#t12-grid)"/>
   <g transform="translate(80, 80)">
-    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">MULTI-UNIT-OPS · HS-4</text>
-    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#64748b" letter-spacing="0.1em" y="22">MAGNETIZER · 7 MIN</text>
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">MULTI-UNIT-OPS · HS-4</text>
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#64748b" letter-spacing="0.1em" y="24">MAGNETIZER · 7 MIN</text>
   </g>
-  <!-- 5-stage funnel visualization with leak indicators -->
-  <g transform="translate(80, 180)">
-    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#ef4444" font-weight="700" letter-spacing="0.12em">5 LEAK POINTS · QUOTE TO CASH</text>
 
-    <!-- Stages -->
-    <g transform="translate(0, 30)" font-family="Inter, sans-serif">
-      <!-- Stage 1: Quote -->
-      <rect width="540" height="56" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
-      <rect width="4" height="56" fill="#ef4444"/>
-      <text x="20" y="22" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#ef4444" font-weight="700">LEAK 1 · LATE QUOTE</text>
-      <text x="20" y="42" font-family="Inter, sans-serif" font-size="13" fill="#334155">Same-day quotes close 2–3× higher</text>
-      <text x="490" y="36" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#ef4444" font-weight="700">−40%</text>
+  <!-- LEFT: Single big stat card with one hero number -->
+  <g transform="translate(80, 200)">
+    <rect x="3" y="3" width="540" height="380" rx="14" fill="#0f172a" opacity="0.05"/>
+    <rect width="540" height="380" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <rect width="8" height="380" fill="#ef4444"/>
 
-      <!-- Stage 2: Lost quote -->
-      <g transform="translate(0, 68)">
-        <rect width="500" height="56" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
-        <rect width="4" height="56" fill="#f59e0b"/>
-        <text x="20" y="22" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#d97706" font-weight="700">LEAK 2 · LOST QUOTE</text>
-        <text x="20" y="42" font-family="Inter, sans-serif" font-size="13" fill="#334155">No follow-up = forgotten quote</text>
-        <text x="450" y="36" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#d97706" font-weight="700">−25%</text>
-      </g>
+    <g transform="translate(40, 56)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#ef4444" font-weight="700" letter-spacing="0.15em">QUOTE-TO-CASH LEAKAGE</text>
+    </g>
 
-      <!-- Stage 3: Schedule -->
-      <g transform="translate(0, 136)">
-        <rect width="460" height="56" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
-        <rect width="4" height="56" fill="#f59e0b"/>
-        <text x="20" y="22" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#d97706" font-weight="700">LEAK 3 · SLOW SCHEDULE</text>
-        <text x="20" y="42" font-family="Inter, sans-serif" font-size="13" fill="#334155">4-week wait kills enthusiasm</text>
-        <text x="410" y="36" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#d97706" font-weight="700">−15%</text>
-      </g>
+    <!-- Big hero number -->
+    <g transform="translate(40, 196)">
+      <text font-family="Inter, sans-serif" font-size="140" fill="#ef4444" font-weight="900" letter-spacing="-0.04em">−66%</text>
+    </g>
 
-      <!-- Stage 4: Invoice -->
-      <g transform="translate(0, 204)">
-        <rect width="420" height="56" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
-        <rect width="4" height="56" fill="#f59e0b"/>
-        <text x="20" y="22" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#d97706" font-weight="700">LEAK 4 · DELAYED INVOICE</text>
-        <text x="20" y="42" font-family="Inter, sans-serif" font-size="13" fill="#334155">5-day float to customer</text>
-        <text x="370" y="36" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#d97706" font-weight="700">−10%</text>
-      </g>
+    <g transform="translate(40, 230)">
+      <text font-family="Inter, sans-serif" font-size="20" fill="#0f172a" font-weight="700">of leads lost between</text>
+      <text font-family="Inter, sans-serif" font-size="20" fill="#0f172a" font-weight="700" y="28">quote and paid invoice</text>
+    </g>
 
-      <!-- Stage 5: AR -->
-      <g transform="translate(0, 272)">
-        <rect width="380" height="56" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
-        <rect width="4" height="56" fill="#ef4444"/>
-        <text x="20" y="22" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#ef4444" font-weight="700">LEAK 5 · AGED AR</text>
-        <text x="20" y="42" font-family="Inter, sans-serif" font-size="13" fill="#334155">Bad debt write-offs</text>
-        <text x="330" y="36" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#ef4444" font-weight="700">−10%</text>
-      </g>
+    <line x1="40" y1="296" x2="500" y2="296" stroke="#e2e8f0"/>
+
+    <g transform="translate(40, 322)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#64748b" letter-spacing="0.1em" font-weight="700">5 LEAK POINTS · 1 PIPELINE</text>
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#10b981" letter-spacing="0.1em" font-weight="700" y="24">FIX = +8–15% REVENUE</text>
     </g>
   </g>
 
-  <g transform="translate(680, 200)">
+  <!-- RIGHT: Big title -->
+  <g transform="translate(700, 230)">
     <text font-family="Inter, sans-serif" fill="#0f172a" font-weight="800" letter-spacing="-0.02em">
-      <tspan x="0" y="0" font-size="40">Where Home</tspan>
-      <tspan x="0" y="48" font-size="40">Services</tspan>
-      <tspan x="0" y="96" font-size="40" fill="#ef4444">Leak Money.</tspan>
+      <tspan x="0" y="0" font-size="50">Where</tspan>
+      <tspan x="0" y="60" font-size="50">Home Services</tspan>
+      <tspan x="0" y="144" font-size="50" fill="#ef4444">Leak Money.</tspan>
     </text>
-    <text font-family="Inter, sans-serif" font-size="13" fill="#64748b" y="138"><tspan x="0">Plug all 5 leaks =</tspan><tspan x="0" y="20">8–15% revenue lift</tspan><tspan x="0" y="40">from same footprint.</tspan></text>
   </g>
+
   <g transform="translate(80, 620)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.12em">XEEDLY · THE BRIEFINGS</text></g>
   <g transform="translate(1120, 620)" text-anchor="end"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.08em">BRIEFING HS-4 · LIVE</text></g>
 </svg>
