@@ -18,13 +18,13 @@
     </g>
 
     <!-- Big hero number -->
-    <g transform="translate(40, 196)">
-      <text font-family="Inter, sans-serif" font-size="140" fill="#ef4444" font-weight="900" letter-spacing="-0.04em">−66%</text>
+    <g transform="translate(40, 170)">
+      <text font-family="Inter, sans-serif" font-size="100" fill="#ef4444" font-weight="900" letter-spacing="-0.04em">−66%</text>
     </g>
 
-    <g transform="translate(40, 230)">
-      <text font-family="Inter, sans-serif" font-size="20" fill="#0f172a" font-weight="700">of leads lost between</text>
-      <text font-family="Inter, sans-serif" font-size="20" fill="#0f172a" font-weight="700" y="28">quote and paid invoice</text>
+    <g transform="translate(40, 220)">
+      <text font-family="Inter, sans-serif" font-size="18" fill="#0f172a" font-weight="700">of leads lost between</text>
+      <text font-family="Inter, sans-serif" font-size="18" fill="#0f172a" font-weight="700" y="26">quote and paid invoice</text>
     </g>
 
     <line x1="40" y1="296" x2="500" y2="296" stroke="#e2e8f0"/>

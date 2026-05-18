@@ -42,9 +42,9 @@
       <tspan x="0" y="62" font-size="52">Multi-Truck</tspan>
       <tspan x="0" y="124" font-size="52" fill="#ef4444">Trap.</tspan>
     </text>
-    <text font-family="Inter, sans-serif" font-size="15" fill="#64748b" y="170">
-      <tspan x="0">Why scaling past 3 crews</tspan>
-      <tspan x="0" y="22">breaks everything.</tspan>
+    <text font-family="Inter, sans-serif" font-size="15" fill="#64748b">
+      <tspan x="0" y="180">Why scaling past 3 crews</tspan>
+      <tspan x="0" y="202">breaks everything.</tspan>
     </text>
   </g>
 
