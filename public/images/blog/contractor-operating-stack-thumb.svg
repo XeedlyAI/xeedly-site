@@ -40,11 +40,12 @@
   </g>
 
   <!-- RIGHT: Big title + tagline -->
-  <g transform="translate(720, 240)">
+  <g transform="translate(720, 260)">
     <text font-family="Inter, sans-serif" fill="#0f172a" font-weight="800" letter-spacing="-0.02em">
       <tspan x="0" y="0" font-size="48">The</tspan>
       <tspan x="0" y="58" font-size="48">Contractor&apos;s</tspan>
-      <tspan x="0" y="142" font-size="48" fill="#38b6ff">Operating Stack.</tspan>
+      <tspan x="0" y="116" font-size="48" fill="#38b6ff">Operating</tspan>
+      <tspan x="0" y="174" font-size="48" fill="#38b6ff">Stack.</tspan>
     </text>
   </g>
 

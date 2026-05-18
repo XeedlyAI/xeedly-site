@@ -43,11 +43,11 @@
   </g>
 
   <!-- RIGHT: Big title -->
-  <g transform="translate(720, 260)">
+  <g transform="translate(720, 270)">
     <text font-family="Inter, sans-serif" fill="#0f172a" font-weight="800" letter-spacing="-0.02em">
       <tspan x="0" y="0" font-size="56">Field</tspan>
-      <tspan x="0" y="68" font-size="56">Service</tspan>
-      <tspan x="0" y="146" font-size="56" fill="#38b6ff">Intelligence.</tspan>
+      <tspan x="0" y="66" font-size="56">Service</tspan>
+      <tspan x="0" y="132" font-size="56" fill="#38b6ff">Intelligence.</tspan>
     </text>
   </g>
 

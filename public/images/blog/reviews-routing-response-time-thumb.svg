@@ -44,11 +44,11 @@
   </g>
 
   <!-- RIGHT: Big title -->
-  <g transform="translate(720, 240)">
+  <g transform="translate(720, 260)">
     <text font-family="Inter, sans-serif" fill="#ffffff" font-weight="800" letter-spacing="-0.02em">
       <tspan x="0" y="0" font-size="44">The Three</tspan>
       <tspan x="0" y="54" font-size="44">Operational</tspan>
-      <tspan x="0" y="138" font-size="44" fill="#38b6ff">Growth Levers.</tspan>
+      <tspan x="0" y="108" font-size="44" fill="#38b6ff">Growth Levers.</tspan>
     </text>
   </g>
 
