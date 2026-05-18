@@ -6,7 +6,7 @@
 3. Read this file (CLAUDE.md)
 4. Identify the project type from the brief: Website or Landing Page
 5. Read the skill files:
-   - ALWAYS read: skills/CONTENT.md, skills/WEBDEV.md, skills/DESIGN.md, skills/DEPLOY.md
+   - ALWAYS read: skills/CONTENT.md, skills/WEBDEV.md, skills/DESIGN.md, skills/DEPLOY.md, skills/SIGNATURE-COMPONENTS.md
    - If Website: ALSO read skills/SEO-ARCHITECTURE.md
    - If Landing Page: ALSO read skills/LANDING-PAGE.md
    - **Advanced Design Skills** (read when brief requires high design quality):
