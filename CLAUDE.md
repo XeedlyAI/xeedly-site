@@ -34,8 +34,13 @@
 - Never run `npm run dev` — verify via build only, check on Vercel
 
 ## Git Rules
-- Always work on main branch
-- Never use git worktrees
+- Default branch: main — simple changes go directly on main
+- Worktrees: allowed for risky experiments, large features, or agent-spawned parallel work
+  - NEVER delete a worktree without merging to main or explicit user confirmation to discard
+  - ALWAYS commit all work inside a worktree before any cleanup
+  - Run `git worktree list` at session start and session end — clean up orphans
+  - Worktree branch naming: `wt/<short-description>` (e.g. `wt/data-overlay-components`)
+  - When finished: merge to main, push, then remove the worktree
 - Commit messages: descriptive, prefixed with [feat], [fix], [content], [style], [setup]
 - Push to origin/main after every verified build
 
