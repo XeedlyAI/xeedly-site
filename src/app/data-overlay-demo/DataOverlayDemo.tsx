@@ -1,6 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import {
+  AppShell,
+  TabBar,
   KpiRow,
   TimeSeriesChart,
   DataTable,
@@ -11,10 +14,48 @@ import {
   type KpiCardData,
   type DataPoint,
   type ColumnDef,
+  type SidebarItem,
+  type Tab,
 } from "@/components/data-overlay";
 
-// ── Sample KPI data ────────────────────────────────────────────────
-const KPIS: KpiCardData[] = [
+// ═══════════════════════════════════════════════════════════════════
+// SIDEBAR CONFIG
+// ═══════════════════════════════════════════════════════════════════
+const SIDEBAR_ITEMS: SidebarItem[] = [
+  { id: "decisions", label: "Decisions", badge: 12, section: "Workspace" },
+  { id: "trust", label: "Trust" },
+  { id: "controls", label: "Controls" },
+  { id: "revitalize", label: "(NEW) Revitalize Concrete", section: "Clients" },
+  { id: "new-client", label: "New client" },
+  { id: "activity", label: "Activity", section: "System" },
+  { id: "api-health", label: "API Health" },
+  { id: "settings", label: "Settings" },
+];
+
+// ═══════════════════════════════════════════════════════════════════
+// TAB DEFINITIONS — 14 tabs like Meta Ads OS
+// ═══════════════════════════════════════════════════════════════════
+const TABS: Tab[] = [
+  { id: "overview", label: "Overview", badge: 3, badgeVariant: "warn" },
+  { id: "performance", label: "Performance" },
+  { id: "campaigns", label: "Campaigns" },
+  { id: "ad-sets", label: "Ad Sets" },
+  { id: "ads", label: "Ads" },
+  { id: "creatives", label: "Creatives" },
+  { id: "leads", label: "Leads" },
+  { id: "audit", label: "Audit", badge: 1, badgeVariant: "error" },
+  { id: "competitors", label: "Competitors" },
+  { id: "products", label: "Products" },
+  { id: "catalogs", label: "Catalogs" },
+  { id: "brand", label: "Brand" },
+  { id: "workflows", label: "Workflows" },
+  { id: "settings", label: "Settings" },
+];
+
+// ═══════════════════════════════════════════════════════════════════
+// PERFORMANCE TAB DATA
+// ═══════════════════════════════════════════════════════════════════
+const PERF_KPIS: KpiCardData[] = [
   {
     label: "Spend",
     value: "$870.66",
@@ -23,16 +64,9 @@ const KPIS: KpiCardData[] = [
     status: "warning",
     subtitle: "30d",
   },
-  {
-    label: "Conv",
-    value: "0",
-    status: "neutral",
-  },
-  {
-    label: "ROAS",
-    value: "0.0x",
-    status: "neutral",
-  },
+  { label: "Conv", value: "0", status: "neutral" },
+  { label: "ROAS", value: "0.0x", status: "neutral" },
+  { label: "CPA", value: "—", status: "neutral" },
   {
     label: "CTR",
     value: "7.2%",
@@ -61,16 +95,8 @@ const KPIS: KpiCardData[] = [
     sparkline: [200, 800, 2400, 3600, 4800, 5200, 5600, 5400, 5800, 5600, 5900, 6000],
     status: "positive",
   },
-  {
-    label: "Reach",
-    value: "55,444",
-    trend: { value: 1752.5, suffix: "%" },
-    sparkline: [180, 700, 2100, 3200, 4200, 4600, 4800, 4600, 5000, 5200, 5400, 5500],
-    status: "positive",
-  },
 ];
 
-// ── Time series data ───────────────────────────────────────────────
 const DAILY_SPEND: DataPoint[] = [
   { label: "Apr 22", value: 24.5 },
   { label: "Apr 23", value: 26.1 },
@@ -103,7 +129,6 @@ const DAILY_SPEND: DataPoint[] = [
   { label: "May 20", value: 27.0 },
 ];
 
-// ── Campaign table data ────────────────────────────────────────────
 type CampaignRow = {
   name: string;
   spend: number;
@@ -118,62 +143,32 @@ type CampaignRow = {
 
 const CAMPAIGNS: CampaignRow[] = [
   {
-    name: "Concrete Services — Broad",
-    spend: 412.33,
-    delta: 1450.2,
+    name: "120246496262770140",
+    spend: 870.66,
+    delta: 1269.8,
     conv: 0,
     roas: 0,
-    ctr: 8.1,
-    cpm: 12.45,
-    clicks: 2310,
-    sparkline: [5, 12, 18, 22, 20, 24, 21, 19, 23, 25, 22, 20],
-  },
-  {
-    name: "Foundation Repair — Local",
-    spend: 258.14,
-    delta: 980.5,
-    conv: 0,
-    roas: 0,
-    ctr: 6.8,
-    cpm: 14.2,
-    clicks: 1420,
-    sparkline: [3, 8, 14, 16, 15, 18, 16, 14, 17, 19, 16, 15],
-  },
-  {
-    name: "Driveway Resurfacing — Retarget",
-    spend: 124.88,
-    delta: 2100.3,
-    conv: 0,
-    roas: 0,
-    ctr: 5.9,
-    cpm: 15.8,
-    clicks: 620,
-    sparkline: [2, 4, 6, 8, 7, 9, 8, 7, 8, 10, 9, 8],
-  },
-  {
-    name: "Stamped Concrete — Lookalike",
-    spend: 75.31,
-    delta: 890.1,
-    conv: 0,
-    roas: 0,
-    ctr: 6.2,
-    cpm: 11.9,
-    clicks: 359,
-    sparkline: [1, 3, 5, 6, 5, 7, 6, 5, 7, 8, 7, 6],
+    ctr: 7.2,
+    cpm: 13.37,
+    clicks: 4709,
+    sparkline: [8, 12, 25, 30, 38, 42, 35, 28, 32, 36, 34, 30],
   },
 ];
 
-const COLUMNS: ColumnDef<CampaignRow>[] = [
+const CAMPAIGN_COLS: ColumnDef<CampaignRow>[] = [
   {
     key: "name",
     label: "Campaign",
     render: (row) => (
-      <span className="text-slate-200 font-medium text-xs">{row.name}</span>
+      <div className="flex flex-col">
+        <span className="text-slate-200 font-medium text-xs">{row.name} ›</span>
+        <span className="text-[10px] text-slate-600 font-mono">{row.name}</span>
+      </div>
     ),
   },
   {
     key: "spend",
-    label: "Spend",
+    label: "↓ Spend",
     align: "right",
     sortable: true,
     sortValue: (row) => row.spend,
@@ -181,7 +176,7 @@ const COLUMNS: ColumnDef<CampaignRow>[] = [
   },
   {
     key: "delta",
-    label: "Δ",
+    label: "↕ Δ",
     align: "right",
     sortable: true,
     sortValue: (row) => row.delta,
@@ -189,37 +184,31 @@ const COLUMNS: ColumnDef<CampaignRow>[] = [
   },
   {
     key: "conv",
-    label: "Conv",
+    label: "↕ Conv",
     align: "right",
     sortable: true,
-    render: (row) => (
-      <span className="text-slate-500">{row.conv || "—"}</span>
-    ),
+    render: (row) => <span className="text-slate-500">{row.conv || "—"}</span>,
   },
   {
     key: "roas",
-    label: "ROAS",
+    label: "↕ ROAS",
     align: "right",
     sortable: true,
     render: (row) => (
-      <span className="text-slate-500">
-        {row.roas ? `${row.roas}x` : "—"}
-      </span>
+      <span className="text-slate-500">{row.roas ? `${row.roas}x` : "—"}</span>
     ),
   },
   {
     key: "ctr",
-    label: "CTR",
+    label: "↕ CTR",
     align: "right",
     sortable: true,
     sortValue: (row) => row.ctr,
-    render: (row) => (
-      <span className="font-mono text-slate-300">{row.ctr}%</span>
-    ),
+    render: (row) => <span className="font-mono text-slate-300">{row.ctr}%</span>,
   },
   {
     key: "cpm",
-    label: "CPM",
+    label: "↕ CPM",
     align: "right",
     sortable: true,
     sortValue: (row) => row.cpm,
@@ -227,7 +216,7 @@ const COLUMNS: ColumnDef<CampaignRow>[] = [
   },
   {
     key: "clicks",
-    label: "Clicks",
+    label: "↕ Clicks",
     align: "right",
     sortable: true,
     sortValue: (row) => row.clicks,
@@ -237,186 +226,443 @@ const COLUMNS: ColumnDef<CampaignRow>[] = [
       </span>
     ),
   },
+];
+
+// ═══════════════════════════════════════════════════════════════════
+// OVERVIEW TAB DATA
+// ═══════════════════════════════════════════════════════════════════
+const OVERVIEW_KPIS: KpiCardData[] = [
   {
-    key: "sparkline",
-    label: "Trend",
-    align: "center",
-    render: (row) => renderSparkline(row.sparkline, "#f59e0b"),
+    label: "Active Campaigns",
+    value: "4",
+    sparkline: [1, 1, 2, 2, 3, 3, 4, 4, 4, 4, 4, 4],
+    status: "positive",
+  },
+  {
+    label: "Total Spend (MTD)",
+    value: "$870.66",
+    trend: { value: 1269.8, suffix: "%" },
+    status: "warning",
+  },
+  {
+    label: "Avg CTR",
+    value: "7.2%",
+    trend: { value: 113.7, suffix: "%" },
+    sparkline: [3.2, 4.1, 5.8, 6.2, 7.0, 6.5, 7.2],
+    status: "positive",
   },
 ];
 
-// ── Operational KPIs (light variant demo) ──────────────────────────
-const OPS_KPIS: KpiCardData[] = [
+// ═══════════════════════════════════════════════════════════════════
+// LEADS TAB DATA
+// ═══════════════════════════════════════════════════════════════════
+type LeadRow = {
+  name: string;
+  source: string;
+  status: string;
+  value: number;
+  date: string;
+  score: number;
+};
+
+const LEADS: LeadRow[] = [
+  { name: "John Martinez", source: "Facebook Lead Form", status: "New", value: 4200, date: "May 20", score: 85 },
+  { name: "Sarah Chen", source: "Website — Contact", status: "Contacted", value: 8500, date: "May 19", score: 72 },
+  { name: "Mike Thompson", source: "Google Ads", status: "Qualified", value: 12000, date: "May 18", score: 91 },
+  { name: "Lisa Park", source: "Referral", status: "Proposal", value: 15000, date: "May 17", score: 95 },
+  { name: "David Wilson", source: "Facebook Lead Form", status: "New", value: 3800, date: "May 17", score: 68 },
+  { name: "Amy Rodriguez", source: "Website — Chat", status: "Contacted", value: 6200, date: "May 16", score: 77 },
+];
+
+const LEAD_COLS: ColumnDef<LeadRow>[] = [
   {
-    label: "Reviews Captured",
-    value: "247",
-    trend: { value: 32.4 },
-    sparkline: [12, 18, 22, 28, 34, 30, 36, 42, 38, 40, 44, 48],
-    status: "positive",
-    subtitle: "this month",
+    key: "name",
+    label: "Lead",
+    render: (row) => <span className="text-slate-200 font-medium text-xs">{row.name}</span>,
   },
   {
-    label: "Avg Rating",
-    value: "4.8",
-    trend: { value: 0.3, suffix: " pts" },
-    sparkline: [4.5, 4.6, 4.5, 4.7, 4.6, 4.8, 4.7, 4.8, 4.9, 4.8, 4.8, 4.8],
-    status: "positive",
-    subtitle: "Google Business",
+    key: "source",
+    label: "Source",
+    render: (row) => <span className="text-slate-400 text-xs">{row.source}</span>,
   },
   {
-    label: "Response Time",
-    value: "< 4min",
-    trend: { value: -45.2 },
-    status: "positive",
-    subtitle: "signal to action",
+    key: "status",
+    label: "Status",
+    render: (row) => {
+      const colors: Record<string, string> = {
+        New: "bg-sky-400/15 text-sky-400",
+        Contacted: "bg-amber-400/15 text-amber-400",
+        Qualified: "bg-emerald-400/15 text-emerald-400",
+        Proposal: "bg-violet-400/15 text-violet-400",
+      };
+      return (
+        <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${colors[row.status] ?? "bg-slate-500/15 text-slate-400"}`}>
+          {row.status}
+        </span>
+      );
+    },
   },
   {
-    label: "Pipeline Value",
-    value: "$142K",
-    trend: { value: 89.3 },
-    sparkline: [45, 52, 68, 74, 82, 88, 95, 102, 118, 125, 134, 142],
-    status: "positive",
-    subtitle: "active opportunities",
+    key: "value",
+    label: "Value",
+    align: "right",
+    sortable: true,
+    sortValue: (row) => row.value,
+    render: (row) => renderMoney(row.value),
+  },
+  {
+    key: "date",
+    label: "Date",
+    align: "right",
+    render: (row) => <span className="text-slate-500 text-xs font-mono">{row.date}</span>,
+  },
+  {
+    key: "score",
+    label: "Score",
+    align: "right",
+    sortable: true,
+    sortValue: (row) => row.score,
+    render: (row) => (
+      <div className="flex items-center gap-2 justify-end">
+        <StatusBar value={row.score} color={row.score >= 80 ? "green" : row.score >= 60 ? "amber" : "red"} className="w-16" />
+        <span className="text-xs font-mono text-slate-400 w-6 text-right">{row.score}</span>
+      </div>
+    ),
   },
 ];
 
-// ── Component ──────────────────────────────────────────────────────
-export function DataOverlayDemo() {
+// ═══════════════════════════════════════════════════════════════════
+// AUDIT TAB DATA
+// ═══════════════════════════════════════════════════════════════════
+type AuditRow = {
+  issue: string;
+  severity: string;
+  affected: string;
+  impact: string;
+  status: string;
+};
+
+const AUDIT_ITEMS: AuditRow[] = [
+  { issue: "No conversion pixel detected", severity: "Critical", affected: "All campaigns", impact: "Cannot track ROAS", status: "Open" },
+  { issue: "Ad frequency > 3x in 7d", severity: "Warning", affected: "Foundation Repair — Local", impact: "Ad fatigue risk", status: "Monitoring" },
+  { issue: "Landing page load > 4s", severity: "Warning", affected: "Driveway Resurfacing", impact: "Higher bounce rate", status: "Open" },
+  { issue: "Budget underspend > 40%", severity: "Info", affected: "Stamped Concrete", impact: "Missed impressions", status: "Acknowledged" },
+];
+
+const AUDIT_COLS: ColumnDef<AuditRow>[] = [
+  {
+    key: "issue",
+    label: "Issue",
+    render: (row) => <span className="text-slate-200 text-xs font-medium">{row.issue}</span>,
+  },
+  {
+    key: "severity",
+    label: "Severity",
+    render: (row) => {
+      const c: Record<string, string> = {
+        Critical: "bg-red-400/15 text-red-400",
+        Warning: "bg-amber-400/15 text-amber-400",
+        Info: "bg-sky-400/15 text-sky-400",
+      };
+      return (
+        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${c[row.severity] ?? ""}`}>
+          {row.severity}
+        </span>
+      );
+    },
+  },
+  {
+    key: "affected",
+    label: "Affected",
+    render: (row) => <span className="text-slate-400 text-xs">{row.affected}</span>,
+  },
+  {
+    key: "impact",
+    label: "Impact",
+    render: (row) => <span className="text-slate-500 text-xs">{row.impact}</span>,
+  },
+  {
+    key: "status",
+    label: "Status",
+    render: (row) => {
+      const c: Record<string, string> = {
+        Open: "text-red-400",
+        Monitoring: "text-amber-400",
+        Acknowledged: "text-slate-500",
+      };
+      return <span className={`text-xs font-medium ${c[row.status] ?? "text-slate-400"}`}>{row.status}</span>;
+    },
+  },
+];
+
+// ═══════════════════════════════════════════════════════════════════
+// CREATIVES TAB — grid of ad creative cards
+// ═══════════════════════════════════════════════════════════════════
+const CREATIVES = [
+  { id: 1, name: "Foundation Repair — Before/After", format: "Image", ctr: 9.2, spend: 182.40, status: "Active" },
+  { id: 2, name: "Driveway Resurfacing — Testimonial", format: "Video", ctr: 6.8, spend: 124.88, status: "Active" },
+  { id: 3, name: "Concrete Services — Hero Banner", format: "Image", ctr: 7.5, spend: 218.50, status: "Active" },
+  { id: 4, name: "Stamped Concrete — Gallery", format: "Carousel", ctr: 5.1, spend: 75.31, status: "Paused" },
+  { id: 5, name: "Emergency Repair — Urgency", format: "Image", ctr: 11.3, spend: 156.20, status: "Active" },
+  { id: 6, name: "Seasonal Promo — Spring 2026", format: "Video", ctr: 4.2, spend: 113.37, status: "Draft" },
+];
+
+// ═══════════════════════════════════════════════════════════════════
+// TAB CONTENT COMPONENTS
+// ═══════════════════════════════════════════════════════════════════
+
+function PerformanceTab() {
   return (
-    <div className="min-h-screen bg-[#080e1a]">
-      {/* Header */}
-      <div className="border-b border-white/[0.06] bg-[#0f172a]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-baseline gap-3">
-            <h1 className="text-xl font-semibold text-slate-100">
-              Data Overlay Components
-            </h1>
-            <span className="text-xs font-mono text-slate-600">
-              v1.0 — component reference
-            </span>
-          </div>
-          <p className="mt-1 text-sm text-slate-500">
-            Premium data visualization components inspired by Meta Ads OS / Upward Engine.
-          </p>
-        </div>
+    <div className="space-y-0">
+      {/* KPI row — flush edge to edge */}
+      <KpiRow kpis={PERF_KPIS} variant="dark" className="rounded-none border-x-0 border-t-0" />
+
+      {/* Chart */}
+      <div className="px-5 pt-4">
+        <TimeSeriesChart
+          title="Daily Spend"
+          total="$870.66"
+          peak="$46.55"
+          latest="$27.00"
+          period="Apr 22 → May 20"
+          data={DAILY_SPEND}
+          color="#f59e0b"
+          variant="dark"
+        />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 space-y-10">
-
-        {/* ── Section: Dark KPI Row (8 metrics) ── */}
-        <section>
-          <SectionLabel>KPI Row — Dark (8 metrics)</SectionLabel>
-          <KpiRow kpis={KPIS} variant="dark" />
-        </section>
-
-        {/* ── Section: Time Series Chart ── */}
-        <section>
-          <SectionLabel>Time Series Chart</SectionLabel>
-          <TimeSeriesChart
-            title="Daily Spend"
-            total="$870.66"
-            peak="$46.55"
-            latest="$27.00"
-            period="Apr 22 → May 20"
-            data={DAILY_SPEND}
-            color="#f59e0b"
-            variant="dark"
-          />
-        </section>
-
-        {/* ── Section: Data Table ── */}
-        <section>
-          <SectionLabel>Campaign Table — Sortable</SectionLabel>
-          <DataTable
-            columns={COLUMNS}
-            rows={CAMPAIGNS}
-            variant="dark"
-          />
-        </section>
-
-        {/* ── Section: Status Bars ── */}
-        <section>
-          <SectionLabel>Status Bars</SectionLabel>
-          <div className="rounded-lg border border-white/[0.06] bg-[#0f172a] p-5 space-y-4">
-            <StatusRow label="Budget Utilization" value={72} color="amber" />
-            <StatusRow label="CTR Performance" value={92} color="green" />
-            <StatusRow label="Conversion Rate" value={0} color="red" />
-            <StatusRow label="Quality Score" value={85} color="blue" />
-          </div>
-        </section>
-
-        {/* ── Section: Light Variant ── */}
-        <section>
-          <SectionLabel>Light Variant — Operational KPIs</SectionLabel>
-          <div className="rounded-xl bg-white p-1">
-            <KpiRow kpis={OPS_KPIS} variant="light" />
-          </div>
-        </section>
-
-        {/* ── Section: Compact KPI Row (3 metrics) ── */}
-        <section>
-          <SectionLabel>Compact KPI Row (3 metrics)</SectionLabel>
-          <KpiRow
-            kpis={[
-              {
-                label: "Signals / Day",
-                value: "473",
-                trend: { value: 22.1 },
-                sparkline: [280, 310, 340, 380, 420, 410, 450, 460, 470, 480, 475, 473],
-                status: "positive",
-              },
-              {
-                label: "Avg Latency",
-                value: "1.2s",
-                trend: { value: -18.4 },
-                sparkline: [2.1, 1.9, 1.8, 1.6, 1.5, 1.4, 1.3, 1.3, 1.2, 1.2, 1.2, 1.2],
-                status: "positive",
-              },
-              {
-                label: "Error Rate",
-                value: "0.02%",
-                trend: { value: -82.0 },
-                sparkline: [0.12, 0.1, 0.08, 0.06, 0.05, 0.04, 0.03, 0.03, 0.02, 0.02, 0.02, 0.02],
-                status: "positive",
-              },
-            ]}
-            variant="dark"
-          />
-        </section>
+      {/* Campaign table */}
+      <div className="px-5 py-4">
+        <DataTable columns={CAMPAIGN_COLS} rows={CAMPAIGNS} variant="dark" />
       </div>
     </div>
+  );
+}
+
+function OverviewTab() {
+  return (
+    <div className="space-y-0">
+      <KpiRow kpis={OVERVIEW_KPIS} variant="dark" className="rounded-none border-x-0 border-t-0" />
+      <div className="p-5 space-y-6">
+        {/* Account health */}
+        <div className="rounded-lg border border-white/[0.06] bg-[#0f172a] p-5">
+          <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-4">Account Health</h3>
+          <div className="space-y-4">
+            <StatusRow label="Pixel Status" value={0} color="red" note="Not installed" />
+            <StatusRow label="Budget Utilization" value={72} color="amber" />
+            <StatusRow label="CTR Performance" value={92} color="green" />
+            <StatusRow label="Audience Saturation" value={15} color="green" />
+          </div>
+        </div>
+
+        {/* Recent activity */}
+        <div className="rounded-lg border border-white/[0.06] bg-[#0f172a] p-5">
+          <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-4">Recent Activity</h3>
+          <div className="space-y-3">
+            {[
+              { time: "2h ago", event: "Daily spend reached $27.00", type: "info" },
+              { time: "6h ago", event: "CTR exceeded 7% benchmark", type: "positive" },
+              { time: "1d ago", event: "New campaign launched: Stamped Concrete", type: "info" },
+              { time: "2d ago", event: "Audience overlap detected in 2 ad sets", type: "warning" },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3 py-2">
+                <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${
+                  item.type === "positive" ? "bg-emerald-400" :
+                  item.type === "warning" ? "bg-amber-400" : "bg-sky-400"
+                }`} />
+                <span className="text-xs text-slate-300 flex-1">{item.event}</span>
+                <span className="text-[10px] font-mono text-slate-600 shrink-0">{item.time}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LeadsTab() {
+  return (
+    <div className="space-y-0">
+      <KpiRow
+        kpis={[
+          { label: "Total Leads", value: "6", trend: { value: 50 }, status: "positive", subtitle: "this month" },
+          { label: "Pipeline Value", value: "$49.7K", trend: { value: 82.3 }, sparkline: [12, 18, 24, 30, 36, 42], status: "positive" },
+          { label: "Avg Lead Score", value: "81", sparkline: [72, 74, 76, 78, 80, 81], status: "positive" },
+          { label: "Conversion Rate", value: "0%", status: "negative", subtitle: "no pixel" },
+        ]}
+        variant="dark"
+        className="rounded-none border-x-0 border-t-0"
+      />
+      <div className="px-5 py-4">
+        <DataTable columns={LEAD_COLS} rows={LEADS} variant="dark" />
+      </div>
+    </div>
+  );
+}
+
+function AuditTab() {
+  return (
+    <div className="space-y-0">
+      <KpiRow
+        kpis={[
+          { label: "Critical Issues", value: "1", status: "negative" },
+          { label: "Warnings", value: "2", status: "warning" },
+          { label: "Info", value: "1", status: "neutral" },
+          { label: "Health Score", value: "62/100", status: "warning" },
+        ]}
+        variant="dark"
+        className="rounded-none border-x-0 border-t-0"
+      />
+      <div className="px-5 py-4">
+        <DataTable columns={AUDIT_COLS} rows={AUDIT_ITEMS} variant="dark" />
+      </div>
+    </div>
+  );
+}
+
+function CreativesTab() {
+  return (
+    <div className="p-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {CREATIVES.map((c) => (
+          <div key={c.id} className="rounded-lg border border-white/[0.06] bg-[#0f172a] overflow-hidden">
+            {/* Placeholder image area */}
+            <div className="aspect-video bg-[#1e293b] flex items-center justify-center">
+              <span className="text-slate-600 text-xs font-mono">{c.format}</span>
+            </div>
+            <div className="p-4 space-y-2">
+              <div className="flex items-start justify-between gap-2">
+                <span className="text-xs font-medium text-slate-200 leading-tight">{c.name}</span>
+                <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full shrink-0 ${
+                  c.status === "Active" ? "bg-emerald-400/15 text-emerald-400" :
+                  c.status === "Paused" ? "bg-amber-400/15 text-amber-400" :
+                  "bg-slate-500/15 text-slate-500"
+                }`}>{c.status}</span>
+              </div>
+              <div className="flex items-center gap-4 text-[10px] text-slate-500">
+                <span>CTR <span className="text-slate-300 font-mono">{c.ctr}%</span></span>
+                <span>Spend <span className="text-slate-300 font-mono">${c.spend.toFixed(2)}</span></span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PlaceholderTab({ name }: { name: string }) {
+  return (
+    <div className="flex items-center justify-center py-24">
+      <div className="text-center space-y-2">
+        <div className="text-slate-600 text-sm font-mono">{name}</div>
+        <div className="text-slate-700 text-xs">
+          Each tab renders a self-contained view with its own data layout.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// MAIN DEMO COMPONENT
+// ═══════════════════════════════════════════════════════════════════
+export function DataOverlayDemo() {
+  const [activeTab, setActiveTab] = useState("performance");
+  const [activeSidebar, setActiveSidebar] = useState("revitalize");
+
+  const tabContent: Record<string, React.ReactNode> = {
+    overview: <OverviewTab />,
+    performance: <PerformanceTab />,
+    leads: <LeadsTab />,
+    audit: <AuditTab />,
+    creatives: <CreativesTab />,
+  };
+
+  return (
+    <AppShell
+      appName="Meta Ads OS"
+      appSubtitle="Upward Engine"
+      sidebarItems={SIDEBAR_ITEMS}
+      activeSidebarId={activeSidebar}
+      onSidebarSelect={setActiveSidebar}
+      headerContent={
+        <div className="flex items-center gap-3">
+          <span className="text-xs text-slate-500">Clients ›</span>
+          <span className="text-xs font-medium text-slate-200">
+            (NEW) Revitalize Concrete
+          </span>
+          <span className="text-[10px] font-mono text-slate-600 hidden sm:inline">
+            act_2082816418546591
+          </span>
+        </div>
+      }
+      headerRight={
+        <div className="flex items-center gap-4 text-[10px] font-mono text-slate-600">
+          <span>Mode: <span className="text-slate-400">manual</span></span>
+          <span>Status: <span className="text-emerald-400">active</span></span>
+        </div>
+      }
+      variant="dark"
+    >
+      {/* Tab bar — pinned below header */}
+      <TabBar
+        tabs={TABS}
+        activeTabId={activeTab}
+        onTabChange={setActiveTab}
+        variant="dark"
+        rightSlot={
+          <div className="flex items-center gap-3">
+            <TabPill label="Campaigns" active />
+            <TabPill label="Ad Sets" />
+            <TabPill label="Ads" />
+            <span className="text-[10px] font-mono text-slate-600 hidden lg:inline">
+              Last 30 days
+            </span>
+          </div>
+        }
+      />
+
+      {/* Tab content — scrolls naturally if longer than viewport */}
+      {tabContent[activeTab] ?? <PlaceholderTab name={activeTab} />}
+    </AppShell>
   );
 }
 
 // ── Small helpers ──────────────────────────────────────────────────
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="mb-3 flex items-center gap-2">
-      <div className="h-px flex-1 bg-white/[0.04]" />
-      <span className="text-[10px] font-semibold tracking-[0.14em] uppercase text-slate-600">
-        {children}
-      </span>
-      <div className="h-px flex-1 bg-white/[0.04]" />
-    </div>
-  );
-}
-
 function StatusRow({
   label,
   value,
   color,
+  note,
 }: {
   label: string;
   value: number;
   color: "green" | "red" | "amber" | "blue";
+  note?: string;
 }) {
   return (
     <div className="flex items-center gap-4">
       <span className="w-40 text-xs text-slate-500 shrink-0">{label}</span>
       <StatusBar value={value} color={color} className="flex-1" />
-      <span className="w-10 text-right text-xs font-mono text-slate-400">
-        {value}%
+      <span className="w-20 text-right text-xs font-mono text-slate-400">
+        {note ?? `${value}%`}
       </span>
     </div>
+  );
+}
+
+function TabPill({ label, active }: { label: string; active?: boolean }) {
+  return (
+    <button
+      className={`text-[10px] font-medium px-2.5 py-1 rounded-md transition-colors ${
+        active
+          ? "bg-amber-400/15 text-amber-400"
+          : "text-slate-500 hover:text-slate-300 hover:bg-white/[0.04]"
+      }`}
+    >
+      {label}
+    </button>
   );
 }

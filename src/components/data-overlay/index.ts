@@ -12,3 +12,5 @@ export {
   renderMoney,
 } from "./DataTable";
 export { StatusBar, type StatusBarProps } from "./StatusBar";
+export { AppShell, useAppShell, type AppShellProps, type SidebarItem } from "./AppShell";
+export { TabBar, type TabBarProps, type Tab } from "./TabBar";
