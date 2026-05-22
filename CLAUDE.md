@@ -20,6 +20,7 @@
    - For builds requiring product mockups or placeholder visuals: also read SVG-VISUALS.md.
    - For builds requiring advanced layouts: also read LAYOUT.md.
    - For builds requiring interactive components beyond basic: also read INTERACTIVE.md.
+   - For builds requiring dashboards, admin panels, or data-heavy views: also read DATA-OVERLAY.md.
 6. Read the project brief from briefs/[project-name].md
 7. Run `npm run build` to confirm the project builds before making changes
 
