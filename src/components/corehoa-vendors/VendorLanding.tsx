@@ -690,6 +690,16 @@ function TimelineSection() {
             />
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: DURATION.slow, delay: 0.15, ease: EASE.reveal }}
+          className="mt-8 max-w-lg mx-auto"
+        >
+          <FastLaneCard variant="light" />
+        </motion.div>
       </div>
     </section>
   );

@@ -40,7 +40,7 @@ export const TIER_DATA = {
 export const TIMELINE_WINDOWS = [
   {
     key: "fast_action" as VendorTier,
-    eyebrow: "WEEK 1",
+    eyebrow: "48 HOURS",
     dates: "Through Sun June 1",
     price: 495,
     subtitle: "Fast-action pricing",
@@ -48,7 +48,7 @@ export const TIMELINE_WINDOWS = [
   },
   {
     key: "vendor_program" as VendorTier,
-    eyebrow: "WEEK 2",
+    eyebrow: "WEEK 1",
     dates: "Mon June 2 → Sun June 8",
     price: 995,
     subtitle: "Vendor program",
@@ -56,7 +56,7 @@ export const TIMELINE_WINDOWS = [
   },
   {
     key: "final_window" as VendorTier,
-    eyebrow: "WEEK 3",
+    eyebrow: "WEEK 2",
     dates: "Mon June 9 → Sun June 15",
     price: 1495,
     subtitle: "Final window",
