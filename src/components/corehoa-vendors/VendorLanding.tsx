@@ -451,13 +451,17 @@ function WhyThisPriceSection() {
               same 2-week delivery.
             </p>
             <p>
-              Here&apos;s how the discount works: Core HOA gets discounted access to
-              Propertyolio, our intelligence platform for HOA management companies,
-              in exchange for introducing us to their vendor network. We think
-              that&apos;s a fair trade — Marc and his team get tools that help them
-              run a better operation, you get pricing you wouldn&apos;t otherwise
-              see, and we get the chance to work with vendors who&apos;ve already
-              earned the trust of someone we respect.
+              Our AI-powered build process delivers in 2 weeks what most agencies
+              charge $5,000–$10,000 for over 8 weeks. That efficiency is real —
+              and it&apos;s how the math works at this price point without
+              sacrificing quality.
+            </p>
+            <p>
+              The vendor program pricing exists because Marc vouched for his
+              network. When someone we trust brings us a group of businesses at
+              once, the volume lets us plan our build calendar and pass the
+              savings forward. You get better pricing. We get to work with
+              vendors who&apos;ve already earned the trust of someone we respect.
             </p>
             <div
               className="dash-card p-5 text-center"
@@ -874,8 +878,8 @@ function TermsSection() {
               Disclosure
             </span>
             <p className="mt-1">
-              Core HOA receives discounted access to XeedlyAI&apos;s Propertyolio
-              platform in connection with this vendor program.
+              Core HOA has a referral relationship with XeedlyAI in connection
+              with this vendor program.
             </p>
           </div>
         </div>
