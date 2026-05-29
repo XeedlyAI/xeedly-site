@@ -291,6 +291,7 @@ const BUILD_FEATURES = [
   "Structured data architecture for search visibility",
   "Mobile-first responsive design",
   "Contact form with lead routing to your email",
+  "Custom booking system built into your site (no Calendly or third-party widgets)",
   "Hosted on Vercel (fast, reliable, no extra hosting fees)",
   "Built in 2 weeks from kickoff",
   "Domain connection (you own your domain)",
@@ -371,12 +372,12 @@ function IncludedSection() {
               <PlatformTier
                 name="Growth"
                 price="$299/mo"
-                description="Full Core30 setup at build + ongoing content delivery (1 SEO article/mo + monthly content optimization). Everything in Foundation."
+                description="Full Core30 setup at build + ongoing content delivery (1 SEO article/mo + monthly content optimization). Data-layer architecture + AI intelligence console on your site. Everything in Foundation."
               />
               <PlatformTier
                 name="Authority"
                 price="$499/mo"
-                description="Full Core30 + content + complete SEO management (ongoing keyword strategy execution, GBP management, review generation, monthly ranking reports). Everything in Growth."
+                description="Full Core30 + content + complete SEO management (ongoing keyword strategy execution, GBP management, review generation, monthly ranking reports). Data-layer architecture + AI intelligence console on your site. Everything in Growth."
               />
             </div>
           </motion.div>
