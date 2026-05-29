@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Check, Zap, Calendar, FileText, Rocket } from "lucide-react";
+import { ChevronDown, Check, Zap, Calendar, FileText, Rocket, Phone, MessageSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { DURATION, EASE } from "@/lib/motion";
 import {
@@ -71,6 +71,128 @@ function BookingCTA({ className }: { className?: string }) {
   );
 }
 
+// ─── Fast Lane Card ───────────────────────────────────────────────────────────
+
+const PHONE = "8018820094";
+const PHONE_DISPLAY = "(801) 882-0094";
+
+function FastLaneCard({ variant = "light" }: { variant?: "light" | "dark" }) {
+  if (currentTier === "closed") return null;
+
+  const isDark = variant === "dark";
+
+  return (
+    <div
+      className={cn(
+        "rounded-xl p-5 md:p-6",
+        isDark
+          ? "border border-[#38b6ff]/20"
+          : "dash-card",
+      )}
+      style={isDark
+        ? { background: "rgba(255,255,255,0.04)" }
+        : { borderLeft: "3px solid #14b8a6" }
+      }
+    >
+      <div className="flex items-center gap-2 mb-3">
+        <span className="relative flex h-2 w-2">
+          <span className="absolute inset-0 rounded-full bg-[#14b8a6] animate-ping opacity-75" />
+          <span className="relative rounded-full h-2 w-2 bg-[#14b8a6]" />
+        </span>
+        <span className={cn(
+          "font-mono text-[10px] font-semibold uppercase tracking-[0.14em]",
+          isDark ? "text-[#14b8a6]" : "text-[#0d9488]",
+        )}>
+          Fast Lane
+        </span>
+      </div>
+      <p className={cn(
+        "text-[14px] font-semibold",
+        isDark ? "text-[#f1f5f9]" : "text-[#0f172a]",
+      )}>
+        Ready to lock in your price?
+      </p>
+      <p className={cn(
+        "mt-1.5 text-[13px] leading-[1.6]",
+        isDark ? "text-[#94a3b8]" : "text-[#334155]",
+      )}>
+        Skip the calendar. Text or call Shad directly — we&apos;ll send you a
+        sign-up link and get your build scheduled today.
+      </p>
+      <div className="mt-4 flex flex-col sm:flex-row gap-2.5">
+        <a
+          href={`sms:${PHONE}`}
+          className={cn(
+            "inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-[13px] font-semibold transition-all",
+            isDark
+              ? "bg-[#14b8a6] hover:bg-[#0d9488] text-[#0f172a]"
+              : "bg-[#14b8a6] hover:bg-[#0d9488] text-white",
+          )}
+        >
+          <MessageSquare className="h-4 w-4" />
+          Text {PHONE_DISPLAY}
+        </a>
+        <a
+          href={`tel:${PHONE}`}
+          className={cn(
+            "inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-[13px] font-semibold transition-all",
+            isDark
+              ? "border border-[#14b8a6]/40 hover:border-[#14b8a6] hover:bg-[#14b8a6]/10 text-[#14b8a6]"
+              : "border border-[#14b8a6]/40 hover:border-[#14b8a6] hover:bg-[#14b8a6]/5 text-[#0d9488]",
+          )}
+        >
+          <Phone className="h-4 w-4" />
+          Call {PHONE_DISPLAY}
+        </a>
+      </div>
+    </div>
+  );
+}
+
+// ─── Sticky Mobile CTA ───────────────────────────────────────────────────────
+
+function StickyMobileCTA() {
+  if (currentTier === "closed") return null;
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden">
+      <div
+        className="flex items-center justify-between gap-3 px-4 py-3"
+        style={{
+          background: "rgba(15,23,42,0.97)",
+          backdropFilter: "blur(12px)",
+          borderTop: "1px solid rgba(56,182,255,0.15)",
+        }}
+      >
+        <div className="min-w-0">
+          <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[#38b6ff]">
+            Lock in ${tier.price.toLocaleString()}
+          </div>
+          <div className="text-[11px] text-[#64748b] truncate">
+            {tier.dates}
+          </div>
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          <a
+            href={`sms:${PHONE}`}
+            className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#14b8a6] hover:bg-[#0d9488] text-white transition-all"
+            aria-label="Text Shad"
+          >
+            <MessageSquare className="h-4 w-4" />
+          </a>
+          <a
+            href={`tel:${PHONE}`}
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#14b8a6]/40 hover:border-[#14b8a6] text-[#14b8a6] transition-all"
+            aria-label="Call Shad"
+          >
+            <Phone className="h-4 w-4" />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Section 1: Hero ──────────────────────────────────────────────────────────
 
 function HeroSection() {
@@ -116,13 +238,7 @@ function HeroSection() {
             </p>
           </div>
 
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5">
-            <div className="flex flex-col items-center gap-2">
-              <BookingCTA />
-              <span className="text-[12px] text-[#64748b]">
-                20 minutes. No pressure. See if it fits.
-              </span>
-            </div>
+          <div className="mt-10 flex flex-col items-center gap-6">
             {currentTier !== "closed" && (
               <div
                 className="flex items-center gap-2.5 px-5 py-3 rounded-lg"
@@ -142,6 +258,15 @@ function HeroSection() {
                 </div>
               </div>
             )}
+            <div className="w-full max-w-lg">
+              <FastLaneCard variant="dark" />
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <BookingCTA />
+              <span className="text-[12px] text-[#64748b]">
+                Or book a 20-minute discovery call — no pressure.
+              </span>
+            </div>
           </div>
         </motion.div>
       </div>
@@ -236,6 +361,16 @@ function OfferSection() {
           <div className="mt-7">
             <BookingCTA className="w-full" />
           </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: DURATION.slow, delay: 0.1, ease: EASE.reveal }}
+          className="mt-5 max-w-xl mx-auto"
+        >
+          <FastLaneCard variant="light" />
         </motion.div>
       </div>
     </section>
@@ -833,11 +968,14 @@ function FinalCTASection() {
             <span className="text-[#38b6ff]">The next step is yours.</span>
           </h2>
           <p className="mt-5 text-[15px] leading-[1.7] text-[#94a3b8] max-w-xl mx-auto">
-            Book a 20-minute discovery call. We&apos;ll walk through your business,
-            answer your questions, and confirm which tier is right for you. If
-            it&apos;s not a fit, we&apos;ll tell you — no hard sell.
+            Text or call Shad directly to lock in your price today. Or book a
+            20-minute discovery call — we&apos;ll walk through your business,
+            answer your questions, and confirm which tier is right for you.
           </p>
-          <div className="mt-8 flex flex-col items-center gap-2">
+          <div className="mt-8 max-w-lg mx-auto">
+            <FastLaneCard variant="dark" />
+          </div>
+          <div className="mt-6 flex flex-col items-center gap-2">
             <BookingCTA />
             <span className="text-[12px] text-[#64748b]">
               {tier.ctaSubtext}
@@ -912,6 +1050,9 @@ export function VendorLanding() {
       <FAQSection />
       <FinalCTASection />
       <TermsSection />
+      {/* Bottom padding for sticky mobile CTA */}
+      <div className="h-16 lg:hidden" />
+      <StickyMobileCTA />
     </>
   );
 }
