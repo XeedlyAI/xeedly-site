@@ -22,7 +22,10 @@ type DealType =
   | "property_combined"
   | "vendor_build_495"
   | "vendor_build_995"
-  | "vendor_build_1495";
+  | "vendor_build_1495"
+  | "vendor_buildonly_495"
+  | "vendor_buildonly_995"
+  | "vendor_buildonly_1495";
 
 interface Body {
   dealType: DealType;
@@ -254,6 +257,33 @@ export async function POST(request: NextRequest) {
         totalAmountCents = 100000;
         productName = "PropertyDocz + PropertyJobz Combined Setup";
         break;
+
+      // -- Core HOA Vendor Builds: build only, no platform --
+      case "vendor_buildonly_495":
+      case "vendor_buildonly_995":
+      case "vendor_buildonly_1495": {
+        const buildOnlyAmounts: Record<string, number> = {
+          vendor_buildonly_495: 49500,
+          vendor_buildonly_995: 99500,
+          vendor_buildonly_1495: 149500,
+        };
+        const buildOnlyLabels: Record<string, string> = {
+          vendor_buildonly_495: "Core HOA Vendor Build — 48hr ($495)",
+          vendor_buildonly_995: "Core HOA Vendor Build — Week 1 ($995)",
+          vendor_buildonly_1495: "Core HOA Vendor Build — Week 2 ($1,495)",
+        };
+
+        totalAmountCents = buildOnlyAmounts[dealType];
+        upfrontAmountCents = totalAmountCents;
+        productName = buildOnlyLabels[dealType];
+
+        const bop = await createOneTimePrice(
+          upfrontAmountCents,
+          buildOnlyLabels[dealType],
+        );
+        checkoutPriceId = bop.id;
+        break;
+      }
 
       // -- Core HOA Vendor Builds: full payment, no split, + platform sub --
       case "vendor_build_495":

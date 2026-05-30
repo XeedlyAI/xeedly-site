@@ -22,7 +22,10 @@ type DealType =
   | "property_combined"
   | "vendor_build_495"
   | "vendor_build_995"
-  | "vendor_build_1495";
+  | "vendor_build_1495"
+  | "vendor_buildonly_495"
+  | "vendor_buildonly_995"
+  | "vendor_buildonly_1495";
 
 type Product = {
   id: DealType;
@@ -127,33 +130,61 @@ const PRODUCTS: Product[] = [
     structure: "one-time",
     fixedTotal: 1000,
   },
-  // --- Core HOA Vendor Program ---
+  // --- Core HOA Vendor Program: Build Only ---
   {
-    id: "vendor_build_495",
+    id: "vendor_buildonly_495",
     name: "Vendor · 48hr",
-    sub: "$495 build · + platform",
+    sub: "$495 build only",
     accent: "#14b8a6",
     accentTint: "rgba(20,184,166,0.1)",
+    structure: "one-time",
+    fixedTotal: 495,
+  },
+  {
+    id: "vendor_buildonly_995",
+    name: "Vendor · Wk 1",
+    sub: "$995 build only",
+    accent: "#14b8a6",
+    accentTint: "rgba(20,184,166,0.1)",
+    structure: "one-time",
+    fixedTotal: 995,
+  },
+  {
+    id: "vendor_buildonly_1495",
+    name: "Vendor · Wk 2",
+    sub: "$1,495 build only",
+    accent: "#14b8a6",
+    accentTint: "rgba(20,184,166,0.1)",
+    structure: "one-time",
+    fixedTotal: 1495,
+  },
+  // --- Core HOA Vendor Program: Build + Platform ---
+  {
+    id: "vendor_build_495",
+    name: "Vendor · 48hr+",
+    sub: "$495 build + platform",
+    accent: "#0A8FD4",
+    accentTint: "rgba(10,143,212,0.1)",
     structure: "one-time",
     fixedTotal: 495,
     hasPlatformTier: true,
   },
   {
     id: "vendor_build_995",
-    name: "Vendor · Wk 1",
-    sub: "$995 build · + platform",
-    accent: "#14b8a6",
-    accentTint: "rgba(20,184,166,0.1)",
+    name: "Vendor · Wk 1+",
+    sub: "$995 build + platform",
+    accent: "#0A8FD4",
+    accentTint: "rgba(10,143,212,0.1)",
     structure: "one-time",
     fixedTotal: 995,
     hasPlatformTier: true,
   },
   {
     id: "vendor_build_1495",
-    name: "Vendor · Wk 2",
-    sub: "$1,495 build · + platform",
-    accent: "#14b8a6",
-    accentTint: "rgba(20,184,166,0.1)",
+    name: "Vendor · Wk 2+",
+    sub: "$1,495 build + platform",
+    accent: "#0A8FD4",
+    accentTint: "rgba(10,143,212,0.1)",
     structure: "one-time",
     fixedTotal: 1495,
     hasPlatformTier: true,

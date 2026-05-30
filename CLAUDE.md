@@ -4,8 +4,12 @@
 1. Confirm you are on main branch: `git branch`
 2. Confirm clean git state: `git status`
 3. Read this file (CLAUDE.md)
-4. Identify the project type from the brief: Website or Landing Page
-5. Read the skill files:
+4. **Check the Obsidian vault for context:**
+   - Read the relevant project note from `C:\Users\shadd\Documents\xeedly-internal-tools\projects\`
+   - Read the most recent session note from `C:\Users\shadd\Documents\xeedly-internal-tools\sessions\` (pick up open threads)
+   - Skim any knowledge notes relevant to today's task
+5. Identify the project type from the brief: Website or Landing Page
+6. Read the skill files:
    - ALWAYS read: skills/CONTENT.md, skills/WEBDEV.md, skills/DESIGN.md, skills/DEPLOY.md, skills/SIGNATURE-COMPONENTS.md
    - If Website: ALSO read skills/SEO-ARCHITECTURE.md
    - If Landing Page: ALSO read skills/LANDING-PAGE.md
@@ -21,8 +25,8 @@
    - For builds requiring advanced layouts: also read LAYOUT.md.
    - For builds requiring interactive components beyond basic: also read INTERACTIVE.md.
    - For builds requiring dashboards, admin panels, or data-heavy views: also read DATA-OVERLAY.md.
-6. Read the project brief from briefs/[project-name].md
-7. Run `npm run build` to confirm the project builds before making changes
+7. Read the project brief from briefs/[project-name].md
+8. Run `npm run build` to confirm the project builds before making changes
 
 ## Build Rules
 - Framework: Next.js 15 (App Router)
@@ -75,3 +79,10 @@
 - [ ] No banned words from CONTENT.md appear anywhere
 - [ ] Responsive: looks correct at 375px, 768px, and 1440px widths
 - [ ] Lighthouse: 90+ on Performance, Accessibility, SEO
+
+## End of Session (Obsidian Vault Update)
+After the final commit, update the Obsidian vault at `C:\Users\shadd\Documents\xeedly-internal-tools`:
+1. Write a session summary to `sessions/YYYY-MM-DD.md` using the Session template format
+2. Update the relevant project note in `projects/` with current state and open threads
+3. If a significant architecture or strategy decision was made, create a decision note in `decisions/`
+4. Update any knowledge notes (Stack, Design System, etc.) if conventions changed
