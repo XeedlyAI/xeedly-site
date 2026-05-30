@@ -19,7 +19,10 @@ type DealType =
   | "intelligence_platform"
   | "propertydocz_setup"
   | "propertyjobz_setup"
-  | "property_combined";
+  | "property_combined"
+  | "vendor_build_495"
+  | "vendor_build_995"
+  | "vendor_build_1495";
 
 interface Body {
   dealType: DealType;
@@ -30,6 +33,7 @@ interface Body {
   notes?: string | null;
   totalAmount?: number; // dollars, for variable-price products
   monthlyAmount?: number; // dollars, for managed intelligence
+  platformTier?: "foundation" | "growth" | "authority"; // vendor builds
   goliveDate?: string | null; // ISO date string
   maintenanceStartDate?: string | null; // ISO date string
 }
@@ -76,6 +80,7 @@ export async function POST(request: NextRequest) {
     notes,
     totalAmount,
     monthlyAmount,
+    platformTier,
     goliveDate,
     maintenanceStartDate,
   } = body;
@@ -249,6 +254,45 @@ export async function POST(request: NextRequest) {
         totalAmountCents = 100000;
         productName = "PropertyDocz + PropertyJobz Combined Setup";
         break;
+
+      // -- Core HOA Vendor Builds: full payment, no split, + platform sub --
+      case "vendor_build_495":
+      case "vendor_build_995":
+      case "vendor_build_1495": {
+        const vendorAmounts: Record<string, number> = {
+          vendor_build_495: 49500,
+          vendor_build_995: 99500,
+          vendor_build_1495: 149500,
+        };
+        const vendorLabels: Record<string, string> = {
+          vendor_build_495: "Core HOA Vendor Build — 48hr ($495)",
+          vendor_build_995: "Core HOA Vendor Build — Week 1 ($995)",
+          vendor_build_1495: "Core HOA Vendor Build — Week 2 ($1,495)",
+        };
+        const platformAmounts: Record<string, number> = {
+          foundation: 19900,
+          growth: 29900,
+          authority: 49900,
+        };
+        const platformLabels: Record<string, string> = {
+          foundation: "Foundation $199/mo",
+          growth: "Growth $299/mo",
+          authority: "Authority $499/mo",
+        };
+        const tier = platformTier || "foundation";
+
+        totalAmountCents = vendorAmounts[dealType];
+        upfrontAmountCents = totalAmountCents; // full payment, no split
+        monthlyAmountCents = platformAmounts[tier];
+        productName = `${vendorLabels[dealType]} + ${platformLabels[tier]}`;
+
+        const vp = await createOneTimePrice(
+          upfrontAmountCents,
+          vendorLabels[dealType],
+        );
+        checkoutPriceId = vp.id;
+        break;
+      }
 
       default:
         return NextResponse.json(

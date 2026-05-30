@@ -19,7 +19,10 @@ type DealType =
   | "intelligence_platform"
   | "propertydocz_setup"
   | "propertyjobz_setup"
-  | "property_combined";
+  | "property_combined"
+  | "vendor_build_495"
+  | "vendor_build_995"
+  | "vendor_build_1495";
 
 type Product = {
   id: DealType;
@@ -33,6 +36,7 @@ type Product = {
   maxTotal?: number;
   hasMonthly?: boolean; // split products with optional maintenance
   hasCustomMonthly?: boolean; // intelligence_platform only
+  hasPlatformTier?: boolean; // vendor builds — pick $199/$299/$499
 };
 
 const PRODUCTS: Product[] = [
@@ -123,6 +127,37 @@ const PRODUCTS: Product[] = [
     structure: "one-time",
     fixedTotal: 1000,
   },
+  // --- Core HOA Vendor Program ---
+  {
+    id: "vendor_build_495",
+    name: "Vendor · 48hr",
+    sub: "$495 build · + platform",
+    accent: "#14b8a6",
+    accentTint: "rgba(20,184,166,0.1)",
+    structure: "one-time",
+    fixedTotal: 495,
+    hasPlatformTier: true,
+  },
+  {
+    id: "vendor_build_995",
+    name: "Vendor · Wk 1",
+    sub: "$995 build · + platform",
+    accent: "#14b8a6",
+    accentTint: "rgba(20,184,166,0.1)",
+    structure: "one-time",
+    fixedTotal: 995,
+    hasPlatformTier: true,
+  },
+  {
+    id: "vendor_build_1495",
+    name: "Vendor · Wk 2",
+    sub: "$1,495 build · + platform",
+    accent: "#14b8a6",
+    accentTint: "rgba(20,184,166,0.1)",
+    structure: "one-time",
+    fixedTotal: 1495,
+    hasPlatformTier: true,
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -153,6 +188,7 @@ export function DealCloser({
   const [product, setProduct] = useState<Product | null>(null);
   const [totalAmount, setTotalAmount] = useState<string>("");
   const [monthlyAmount, setMonthlyAmount] = useState<string>("");
+  const [platformTier, setPlatformTier] = useState<"foundation" | "growth" | "authority">("foundation");
   const [goliveDate, setGoliveDate] = useState<string>("");
   const [maintenanceDate, setMaintenanceDate] = useState<string>("");
 
@@ -228,6 +264,7 @@ export function DealCloser({
     };
 
     if (!product.fixedTotal) body.totalAmount = resolvedTotal;
+    if (product.hasPlatformTier) body.platformTier = platformTier;
     if (product.hasCustomMonthly && monthlyAmount) {
       const m = parseFloat(monthlyAmount);
       if (Number.isFinite(m) && m > 0) body.monthlyAmount = m;
@@ -259,6 +296,7 @@ export function DealCloser({
     setProduct(null);
     setTotalAmount("");
     setMonthlyAmount("");
+    setPlatformTier("foundation");
     setGoliveDate("");
     setMaintenanceDate("");
     setCustomer({ name: "", email: "", phone: "", company: "", notes: "" });
@@ -363,6 +401,49 @@ export function DealCloser({
                       onChange={setMonthlyAmount}
                       prefix="$"
                     />
+                  )}
+
+                  {product.hasPlatformTier && (
+                    <div>
+                      <span className="block font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-[#64748b] mb-2">
+                        Platform tier (starts at launch)
+                      </span>
+                      <div className="grid grid-cols-3 gap-2">
+                        {(
+                          [
+                            { key: "foundation" as const, label: "Foundation", price: "$199/mo" },
+                            { key: "growth" as const, label: "Growth", price: "$299/mo" },
+                            { key: "authority" as const, label: "Authority", price: "$499/mo" },
+                          ] as const
+                        ).map((t) => {
+                          const active = platformTier === t.key;
+                          return (
+                            <button
+                              key={t.key}
+                              type="button"
+                              onClick={() => setPlatformTier(t.key)}
+                              className="rounded-lg p-3 text-left transition-all"
+                              style={{
+                                background: active
+                                  ? "rgba(20,184,166,0.12)"
+                                  : "rgba(255,255,255,0.03)",
+                                border: `1px solid ${active ? "#14b8a6" : "rgba(255,255,255,0.08)"}`,
+                              }}
+                            >
+                              <div className="text-[13px] font-semibold text-white">
+                                {t.label}
+                              </div>
+                              <div className="font-mono text-[11px] text-[#94a3b8]">
+                                {t.price}
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                      <div className="mt-2 font-mono text-[10px] text-[#64748b]">
+                        6-month minimum · billed monthly starting at site launch
+                      </div>
+                    </div>
                   )}
                 </motion.div>
               )}
@@ -485,6 +566,16 @@ export function DealCloser({
                       />
                     )}
                   </>
+                )}
+                {product.hasPlatformTier && (
+                  <SummaryRow
+                    label="Platform (at launch)"
+                    value={`${platformTier.charAt(0).toUpperCase() + platformTier.slice(1)} · ${{
+                      foundation: "199",
+                      growth: "299",
+                      authority: "499",
+                    }[platformTier]}/mo · 6-mo min`}
+                  />
                 )}
                 <hr className="border-white/5" />
                 <SummaryRow label="Customer" value={customer.name} />
