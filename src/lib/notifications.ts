@@ -173,6 +173,7 @@ export async function sendVendorPromoLink(
       </div>
 
       <a href="${paymentUrl}" style="display: inline-block; background: #14b8a6; color: #ffffff; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px;">Lock In My Price →</a>
+      <div style="margin-top: 8px; font-size: 11px; color: #94a3b8;">🔒 Secure payment powered by Stripe</div>
 
       <div style="margin: 28px 0; padding: 16px; background: #f0fdf4; border-left: 3px solid #14b8a6; border-radius: 8px;">
         <div style="font-family: ui-monospace, Menlo, monospace; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #14b8a6;">Fast Pay Option</div>
