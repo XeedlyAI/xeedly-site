@@ -136,6 +136,86 @@ export async function sendPaymentLink(
   };
 }
 
+/**
+ * CoreHOA Vendor Promo — upbeat payment link for customers who booked a call
+ * that lands after the pricing window. Soft CTA to lock in the price now.
+ */
+export async function sendVendorPromoLink(
+  customer: { name: string; email: string; phone?: string | null },
+  paymentUrl: string,
+  amount: string,
+  tierLabel: string, // e.g. "48hr fast-action"
+): Promise<{ sms: boolean; email: boolean }> {
+  const firstName = customer.name.split(" ")[0];
+
+  const smsBody = [
+    `Hey ${firstName}! Shad here from XeedlyAI.`,
+    `Thank you for acting quickly to take advantage of your CoreHOA negotiated pricing.`,
+    `Your ${amount} vendor build is locked and loaded — use the link below to secure it before the window closes:`,
+    paymentUrl,
+    `Or pay instantly via Venmo: venmo.com/xeedly`,
+    `This covers your entire build — no hourly billing, no surprise invoices. Just a finished site you love.`,
+    `Looking forward to our call! — Shad`,
+  ].join("\n\n");
+
+  const emailHtml = `
+    <div style="font-family: -apple-system, Segoe UI, Inter, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #0f172a;">
+      <div style="font-family: ui-monospace, Menlo, monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #14b8a6;">XeedlyAI · CoreHOA Vendor Program</div>
+
+      <p style="margin-top: 20px; font-size: 16px; line-height: 1.6;">Hey ${escapeHtml(firstName)}!</p>
+
+      <p style="font-size: 15px; line-height: 1.7;">Thank you for acting quickly to take advantage of your CoreHOA negotiated pricing. I'm excited to build something great for your business.</p>
+
+      <p style="font-size: 15px; line-height: 1.7;">Your <strong>${escapeHtml(tierLabel)}</strong> vendor build is ready to lock in. Use either option below to secure the ${escapeHtml(amount)} rate before the pricing window closes:</p>
+
+      <div style="margin: 28px 0; padding: 24px; background: linear-gradient(135deg, #f0fdfa 0%, #f0f9ff 100%); border-left: 3px solid #14b8a6; border-radius: 8px;">
+        <div style="font-family: ui-monospace, Menlo, monospace; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #14b8a6;">Your Build Investment</div>
+        <div style="font-family: ui-monospace, Menlo, monospace; font-size: 32px; font-weight: 700; color: #0f172a; margin-top: 6px;">${escapeHtml(amount)}</div>
+        <div style="font-size: 13px; color: #64748b; margin-top: 4px;">One-time · No hourly billing · No surprise invoices</div>
+      </div>
+
+      <a href="${paymentUrl}" style="display: inline-block; background: #14b8a6; color: #ffffff; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px;">Lock In My Price →</a>
+
+      <div style="margin: 28px 0; padding: 16px; background: #f0fdf4; border-left: 3px solid #14b8a6; border-radius: 8px;">
+        <div style="font-family: ui-monospace, Menlo, monospace; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #14b8a6;">Fast Pay Option</div>
+        <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: #0f172a;">Pay instantly via Venmo: <a href="https://venmo.com/xeedly" style="color: #14b8a6; font-weight: 600; text-decoration: none;">venmo.com/xeedly</a></p>
+        <p style="margin: 4px 0 0; font-size: 12px; color: #64748b;">Include "CoreHOA Vendor Build" in the note.</p>
+      </div>
+
+      <div style="margin: 28px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
+        <p style="margin: 0; font-size: 14px; font-weight: 600; color: #0f172a;">What happens next:</p>
+        <ol style="margin: 12px 0 0; padding-left: 20px; font-size: 14px; line-height: 1.8; color: #334155;">
+          <li>Secure your build at the ${escapeHtml(amount)} rate</li>
+          <li>We meet on our scheduled call to map out your site</li>
+          <li>Your build goes live — a site you love, guaranteed</li>
+        </ol>
+      </div>
+
+      <p style="font-size: 15px; line-height: 1.7; color: #334155;">This covers your entire build from start to finish. No counting hours, no scope negotiations — just a finished site that works as advertised and makes your business look great.</p>
+
+      <p style="font-size: 15px; line-height: 1.7; color: #334155;">Looking forward to our call!</p>
+
+      <p style="font-size: 15px; font-weight: 600; color: #0f172a; margin-top: 4px;">— Shad</p>
+      <p style="font-size: 13px; color: #64748b; margin-top: 2px;">XeedlyAI · (801) 882-0094</p>
+      <p style="font-size: 12px; color: #94a3b8; margin-top: 16px;">Reply to this email or text me anytime.</p>
+    </div>
+  `;
+
+  const [smsResult, emailResult] = await Promise.allSettled([
+    customer.phone ? sendSMS(customer.phone, smsBody) : Promise.resolve(false),
+    sendEmail(
+      customer.email,
+      `${firstName}, your CoreHOA vendor build is ready to lock in`,
+      emailHtml,
+    ),
+  ]);
+
+  return {
+    sms: smsResult.status === "fulfilled" && smsResult.value === true,
+    email: emailResult.status === "fulfilled" && emailResult.value === true,
+  };
+}
+
 /** Notify Shad when a payment comes in. */
 export async function notifyPaymentReceived(
   customerName: string,

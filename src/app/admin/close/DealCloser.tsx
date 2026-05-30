@@ -220,6 +220,7 @@ export function DealCloser({
   const [totalAmount, setTotalAmount] = useState<string>("");
   const [monthlyAmount, setMonthlyAmount] = useState<string>("");
   const [platformTier, setPlatformTier] = useState<"foundation" | "growth" | "authority">("foundation");
+  const [promoMessage, setPromoMessage] = useState<boolean>(false);
   const [goliveDate, setGoliveDate] = useState<string>("");
   const [maintenanceDate, setMaintenanceDate] = useState<string>("");
 
@@ -296,6 +297,7 @@ export function DealCloser({
 
     if (!product.fixedTotal) body.totalAmount = resolvedTotal;
     if (product.hasPlatformTier) body.platformTier = platformTier;
+    if (promoMessage && product.id.startsWith("vendor_buildonly_")) body.promoMessage = true;
     if (product.hasCustomMonthly && monthlyAmount) {
       const m = parseFloat(monthlyAmount);
       if (Number.isFinite(m) && m > 0) body.monthlyAmount = m;
@@ -328,6 +330,7 @@ export function DealCloser({
     setTotalAmount("");
     setMonthlyAmount("");
     setPlatformTier("foundation");
+    setPromoMessage(false);
     setGoliveDate("");
     setMaintenanceDate("");
     setCustomer({ name: "", email: "", phone: "", company: "", notes: "" });
@@ -476,6 +479,38 @@ export function DealCloser({
                       </div>
                     </div>
                   )}
+
+                  {product.id.startsWith("vendor_buildonly_") && (
+                    <button
+                      type="button"
+                      onClick={() => setPromoMessage(!promoMessage)}
+                      className="w-full flex items-center gap-3 rounded-lg p-3 transition-all"
+                      style={{
+                        background: promoMessage
+                          ? "rgba(20,184,166,0.12)"
+                          : "rgba(255,255,255,0.03)",
+                        border: `1px solid ${promoMessage ? "#14b8a6" : "rgba(255,255,255,0.08)"}`,
+                      }}
+                    >
+                      <div
+                        className="flex-shrink-0 w-9 h-5 rounded-full relative transition-colors"
+                        style={{ background: promoMessage ? "#14b8a6" : "#334155" }}
+                      >
+                        <div
+                          className="absolute top-0.5 w-4 h-4 rounded-full bg-white transition-all"
+                          style={{ left: promoMessage ? 18 : 2 }}
+                        />
+                      </div>
+                      <div className="text-left">
+                        <div className="text-[13px] font-semibold text-white">
+                          CoreHOA promo message
+                        </div>
+                        <div className="font-mono text-[10px] text-[#94a3b8]">
+                          Upbeat lock-in-your-price template instead of standard payment link
+                        </div>
+                      </div>
+                    </button>
+                  )}
                 </motion.div>
               )}
 
@@ -616,6 +651,12 @@ export function DealCloser({
                 )}
                 {customer.company && (
                   <SummaryRow label="Company" value={customer.company} />
+                )}
+                {promoMessage && product.id.startsWith("vendor_buildonly_") && (
+                  <SummaryRow
+                    label="Message"
+                    value="CoreHOA promo (lock-in-your-price)"
+                  />
                 )}
                 <hr className="border-white/5" />
                 <SummaryRow

@@ -5,7 +5,7 @@ import {
   createOneTimePrice,
   createCheckoutSession,
 } from "@/lib/stripe";
-import { sendPaymentLink } from "@/lib/notifications";
+import { sendPaymentLink, sendVendorPromoLink } from "@/lib/notifications";
 import { requireAdmin } from "@/lib/admin-auth";
 
 export const runtime = "nodejs";
@@ -39,6 +39,7 @@ interface Body {
   platformTier?: "foundation" | "growth" | "authority"; // vendor builds
   goliveDate?: string | null; // ISO date string
   maintenanceStartDate?: string | null; // ISO date string
+  promoMessage?: boolean; // use CoreHOA vendor promo template
 }
 
 function formatDollars(cents: number): string {
@@ -86,6 +87,7 @@ export async function POST(request: NextRequest) {
     platformTier,
     goliveDate,
     maintenanceStartDate,
+    promoMessage,
   } = body;
 
   if (!dealType || !customerName || !customerEmail) {
@@ -386,16 +388,36 @@ export async function POST(request: NextRequest) {
         ? `${formatDollars(upfrontAmountCents)}/mo`
         : formatDollars(upfrontAmountCents);
 
-    const delivery = await sendPaymentLink(
-      {
-        name: customerName,
-        email: customerEmail,
-        phone: customerPhone ?? null,
-      },
-      session.url!,
-      productName,
-      formattedAmount,
-    );
+    const isVendorBuildOnly = dealType.startsWith("vendor_buildonly_");
+    const usePromo = promoMessage && isVendorBuildOnly;
+
+    const tierLabels: Record<string, string> = {
+      vendor_buildonly_495: "48hr fast-action",
+      vendor_buildonly_995: "Week 1 vendor program",
+      vendor_buildonly_1495: "Week 2 final window",
+    };
+
+    const delivery = usePromo
+      ? await sendVendorPromoLink(
+          {
+            name: customerName,
+            email: customerEmail,
+            phone: customerPhone ?? null,
+          },
+          session.url!,
+          formattedAmount,
+          tierLabels[dealType] || productName,
+        )
+      : await sendPaymentLink(
+          {
+            name: customerName,
+            email: customerEmail,
+            phone: customerPhone ?? null,
+          },
+          session.url!,
+          productName,
+          formattedAmount,
+        );
 
     // --------------------------------------------------------------------
     // 8. Log for observability
