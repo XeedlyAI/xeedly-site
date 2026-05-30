@@ -99,7 +99,7 @@ export async function sendPaymentLink(
   productName: string,
   amount: string,
 ): Promise<{ sms: boolean; email: boolean }> {
-  const smsBody = `XeedlyAI — Thanks for the conversation, ${customer.name}. Here's your ${productName} payment link (${amount}): ${paymentUrl}`;
+  const smsBody = `XeedlyAI — Thanks for the conversation, ${customer.name}. Here's your ${productName} payment link (${amount}): ${paymentUrl}\n\nPay instantly via Venmo: venmo.com/xeedly`;
 
   const emailHtml = `
     <div style="font-family: -apple-system, Segoe UI, Inter, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #0f172a;">
@@ -111,6 +111,11 @@ export async function sendPaymentLink(
         <div style="font-family: ui-monospace, Menlo, monospace; font-size: 28px; font-weight: 700; color: #0f172a; margin-top: 4px;">${escapeHtml(amount)}</div>
       </div>
       <a href="${paymentUrl}" style="display: inline-block; background: #38b6ff; color: #0f172a; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 15px;">Complete Payment →</a>
+      <div style="margin: 24px 0; padding: 16px; background: #f0fdf4; border-left: 3px solid #14b8a6; border-radius: 8px;">
+        <div style="font-family: ui-monospace, Menlo, monospace; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #14b8a6;">Fast Pay Option</div>
+        <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: #0f172a;">Pay instantly via Venmo: <a href="https://venmo.com/xeedly" style="color: #14b8a6; font-weight: 600; text-decoration: none;">venmo.com/xeedly</a></p>
+        <p style="margin: 4px 0 0; font-size: 12px; color: #64748b;">Include "${escapeHtml(productName)}" in the note.</p>
+      </div>
       <p style="color: #64748b; font-size: 13px; margin-top: 32px; line-height: 1.6;">Questions? Reply to this email or call (801) 882-0094.</p>
       <p style="color: #94a3b8; font-size: 12px; margin-top: 24px;">— XeedlyAI</p>
     </div>
