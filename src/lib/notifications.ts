@@ -150,12 +150,10 @@ export async function sendVendorPromoLink(
 
   const smsBody = [
     `Hey ${firstName}! Shad here from XeedlyAI.`,
-    `Thank you for acting quickly to take advantage of your CoreHOA negotiated pricing.`,
-    `Your ${amount} vendor build is locked and loaded — use the link below to secure it before the window closes:`,
+    `Thank you for acting quickly to take advantage of your CoreHOA negotiated pricing. Your ${amount} vendor build is ready to go — you can lock it in now or we can take care of it at our meeting, totally up to you:`,
     paymentUrl,
-    `Or pay instantly via Venmo: venmo.com/xeedly`,
-    `This covers your entire build — no hourly billing, no surprise invoices. Just a finished site you love.`,
-    `Looking forward to our call! — Shad`,
+    `Or Venmo: venmo.com/xeedly`,
+    `No hourly billing, no surprises — just a finished site you love. Looking forward to our call! — Shad`,
   ].join("\n\n");
 
   const emailHtml = `
@@ -182,11 +180,13 @@ export async function sendVendorPromoLink(
         <p style="margin: 4px 0 0; font-size: 12px; color: #64748b;">Include "CoreHOA Vendor Build" in the note.</p>
       </div>
 
+      <p style="font-size: 14px; line-height: 1.7; color: #64748b; margin-top: 20px; font-style: italic;">Of course, if you'd prefer to take care of this when we meet — no problem at all. We can handle everything during our discovery call. These options are simply here so you can lock in the rate ahead of time if that's easier for you.</p>
+
       <div style="margin: 28px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
         <p style="margin: 0; font-size: 14px; font-weight: 600; color: #0f172a;">What happens next:</p>
         <ol style="margin: 12px 0 0; padding-left: 20px; font-size: 14px; line-height: 1.8; color: #334155;">
-          <li>Secure your build at the ${escapeHtml(amount)} rate</li>
-          <li>We meet on our scheduled call to map out your site</li>
+          <li>Secure your build at the ${escapeHtml(amount)} rate (now or at our meeting)</li>
+          <li>We map out your site together on our scheduled call</li>
           <li>Your build goes live — a site you love, guaranteed</li>
         </ol>
       </div>
