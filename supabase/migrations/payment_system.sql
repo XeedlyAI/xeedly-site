@@ -29,7 +29,9 @@ CREATE TABLE IF NOT EXISTS deals (
     'digital_foundation',
     'operational_systems',
     'intelligence_platform',
-    'propertydocz_setup', 'propertyjobz_setup', 'property_combined'
+    'propertydocz_setup', 'propertyjobz_setup', 'property_combined',
+    'vendor_build_495', 'vendor_build_995', 'vendor_build_1495',
+    'vendor_buildonly_495', 'vendor_buildonly_995', 'vendor_buildonly_1495'
   )),
 
   -- Amounts in CENTS. $2,500 = 250000.
