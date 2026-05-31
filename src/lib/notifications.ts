@@ -181,7 +181,7 @@ export async function sendVendorPromoLink(
         <p style="margin: 4px 0 0; font-size: 12px; color: #64748b;">Include "CoreHOA Vendor Build" in the note.</p>
       </div>
 
-      <p style="font-size: 14px; line-height: 1.7; color: #64748b; margin-top: 20px; font-style: italic;">Of course, if you'd prefer to take care of this when we meet — no problem at all. We can handle everything during our discovery call. These options are simply here so you can lock in the rate ahead of time if that's easier for you.</p>
+      <p style="font-size: 15px; line-height: 1.7; color: #334155; margin-top: 20px;">If you'd like to lock in this rate now, you can do so right here. Otherwise, we'll hold this pricing in place for you until our scheduled discovery call. Thank you so much!</p>
 
       <div style="margin: 28px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
         <p style="margin: 0; font-size: 14px; font-weight: 600; color: #0f172a;">What happens next:</p>
