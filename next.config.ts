@@ -27,6 +27,26 @@ const nextConfig: NextConfig = {
         destination: "/pricing",
         permanent: true,
       },
+      {
+        source: "/communication",
+        destination: "/platform",
+        permanent: true,
+      },
+      {
+        source: "/web-development",
+        destination: "/platform",
+        permanent: true,
+      },
+      {
+        source: "/seo-autopilot",
+        destination: "/platform",
+        permanent: true,
+      },
+      {
+        source: "/leadgen",
+        destination: "/platform",
+        permanent: true,
+      },
     ];
   },
 };
