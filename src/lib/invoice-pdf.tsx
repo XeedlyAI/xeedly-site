@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Document,
+  Image as PdfImage,
   Page,
   Text,
   View,
@@ -313,6 +314,7 @@ export type InvoiceLineItem = {
 };
 
 export type InvoiceData = {
+  logoUrl: string;
   invoiceNumber: string;
   dateIssued: string;
   dueLabel: string;
@@ -357,8 +359,6 @@ function InvoiceDocument({ data }: { data: InvoiceData }) {
   const buildItems = data.lineItems.filter((i) => i.section === "build");
   const serviceItems = data.lineItems.filter((i) => i.section === "service");
   const buildSubtotal = buildItems.reduce((s, i) => s + i.amount, 0);
-  const serviceSubtotal = serviceItems.reduce((s, i) => s + i.amount, 0);
-  const grandTotal = buildSubtotal + serviceSubtotal;
 
   let rowIndex = 0;
 
@@ -368,9 +368,7 @@ function InvoiceDocument({ data }: { data: InvoiceData }) {
         {/* HEADER */}
         <View style={s.headerRow}>
           <View>
-            <Text style={s.wordmark}>
-              Xeedly<Text style={s.wordmarkAI}>AI</Text>
-            </Text>
+            <PdfImage src={data.logoUrl} style={{ width: 140, height: 36 }} />
             <Text style={s.tagline}>AI-Native Business Intelligence</Text>
             <Text style={s.contactLine}>
               xeedly.com | shad@xeedly.com
@@ -457,58 +455,52 @@ function InvoiceDocument({ data }: { data: InvoiceData }) {
           </>
         )}
 
-        {/* Service section */}
-        {serviceItems.length > 0 && (
-          <>
-            <View style={s.sectionRow}>
-              <Text style={s.sectionRowText}>
-                Ongoing Service Deliverables
-              </Text>
-            </View>
-            {serviceItems.map((item, i) => {
-              const alt = rowIndex++ % 2 === 1;
-              return (
-                <View
-                  key={`s-${i}`}
-                  style={alt ? [s.itemRow, s.itemRowAlt] : s.itemRow}
-                >
-                  <Text style={[s.cellText, s.colDesc]}>
-                    {item.description}
-                  </Text>
-                  <Text style={[s.cellMono, s.colQty]}>
-                    {item.quantity}
-                  </Text>
-                  <Text style={[s.cellMono, s.colUnit]}>
-                    {formatCents(item.unit_price)}
-                  </Text>
-                  <Text style={[s.cellMono, s.colAmt]}>
-                    {formatCents(item.amount)}
-                  </Text>
-                </View>
-              );
-            })}
-          </>
-        )}
-
-        {/* Subtotal */}
+        {/* Build total */}
         <View style={s.subtotalRow}>
           <Text style={[s.cellText, s.colDesc, { fontWeight: 600 }]}>
-            Subtotal
+            Build Total
           </Text>
           <Text style={[s.cellMono, s.colQty]} />
           <Text style={[s.cellMono, s.colUnit]} />
           <Text style={[s.cellMono, s.colAmt, { fontWeight: 700 }]}>
-            {formatCents(grandTotal)}
+            {formatCents(buildSubtotal)}
           </Text>
         </View>
 
-        {/* Total */}
+        {/* Total due now */}
         <View style={s.totalRow}>
-          <Text style={[s.totalText, s.colDesc]}>TOTAL</Text>
+          <Text style={[s.totalText, s.colDesc]}>TOTAL DUE NOW</Text>
           <Text style={[s.totalText, s.colQty]} />
           <Text style={[s.totalText, s.colUnit]} />
-          <Text style={[s.totalText, s.colAmt]}>{formatCents(grandTotal)}</Text>
+          <Text style={[s.totalText, s.colAmt]}>{formatCents(buildSubtotal)}</Text>
         </View>
+
+        {/* Monthly service note */}
+        <View style={{ flexDirection: "row", paddingVertical: 6, paddingHorizontal: 8, marginTop: 4 }}>
+          <Text style={{ fontSize: 8, color: C.gray500, flex: 1 }}>
+            Monthly service (begins 30 days after build payment)
+          </Text>
+          <Text style={{ fontFamily: "JetBrains Mono", fontSize: 8, fontWeight: 700, color: C.accent }}>
+            {formatCents(data.serviceMonthly)}/mo
+          </Text>
+        </View>
+
+        {/* Service deliverables — checklist, not priced table rows */}
+        {serviceItems.length > 0 && (
+          <View style={{ marginTop: 10, paddingHorizontal: 8 }}>
+            <Text style={[s.sectionRowText, { marginBottom: 6 }]}>
+              Ongoing Service Deliverables — Included
+            </Text>
+            {serviceItems.map((item, i) => (
+              <View key={`s-${i}`} style={{ flexDirection: "row", marginBottom: 3, paddingLeft: 4 }}>
+                <Text style={{ fontSize: 7, color: C.accent, marginRight: 5, marginTop: 1 }}>✓</Text>
+                <Text style={{ fontSize: 7.5, color: C.gray700, lineHeight: 1.5 }}>
+                  {item.description}
+                </Text>
+              </View>
+            ))}
+          </View>
+        )}
 
         {/* PAYMENT OPTIONS */}
         <View style={s.paymentSection}>

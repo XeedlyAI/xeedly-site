@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -407,7 +408,6 @@ export function DealCloser({
   const serviceItems = lineItems.filter((i) => i.section === "service");
   const buildSubtotal = buildItems.reduce((s, i) => s + i.amount, 0);
   const serviceSubtotal = serviceItems.reduce((s, i) => s + i.amount, 0);
-  const grandTotal = buildSubtotal + serviceSubtotal;
 
   // ------------------------------------------------------------------
   // Render
@@ -706,10 +706,14 @@ export function DealCloser({
                 {/* Header */}
                 <div className="bg-[#0f172a] px-6 py-5 flex items-start justify-between">
                   <div>
-                    <div className="text-[22px] font-bold text-white tracking-tight">
-                      Xeedly<span className="text-[#38b6ff]">AI</span>
-                    </div>
-                    <div className="text-[9px] text-[#64748b] mt-1">AI-Native Business Intelligence</div>
+                    <Image
+                      src="/images/logos/xeedly-logo-bright-blue.png"
+                      alt="XeedlyAI"
+                      width={140}
+                      height={36}
+                      className="h-9 w-auto"
+                    />
+                    <div className="text-[9px] text-[#64748b] mt-2">AI-Native Business Intelligence</div>
                     <div className="font-mono text-[8px] text-[#64748b] mt-1">xeedly.com | shad@xeedly.com</div>
                   </div>
                   <div className="text-right">
@@ -774,39 +778,41 @@ export function DealCloser({
                     </>
                   )}
 
-                  {/* Service items */}
-                  {serviceItems.length > 0 && (
-                    <>
-                      <div className="flex bg-[#f8fafc]/5 px-3 py-1.5 border-b border-white/5">
-                        <span className="font-mono text-[8px] font-bold text-[#38b6ff] uppercase tracking-[0.1em]">Ongoing Service Deliverables</span>
-                      </div>
-                      {serviceItems.map((item, i) => (
-                        <div
-                          key={item.id}
-                          className="flex px-3 py-1.5 border-b border-white/5"
-                          style={{ background: i % 2 === 1 ? "rgba(255,255,255,0.02)" : "transparent" }}
-                        >
-                          <div className="flex-1 text-[10px] text-[#cbd5e1] pr-2">{item.description}</div>
-                          <div className="w-12 font-mono text-[10px] text-[#cbd5e1] text-center">{item.quantity}</div>
-                          <div className="w-20 font-mono text-[10px] text-[#cbd5e1] text-right">{fmtCents(item.unit_price)}</div>
-                          <div className="w-20 font-mono text-[10px] text-white text-right">{fmtCents(item.amount)}</div>
-                        </div>
-                      ))}
-                    </>
-                  )}
-
-                  {/* Subtotal */}
+                  {/* Build total */}
                   <div className="flex px-3 py-2 border-t border-white/10">
-                    <div className="flex-1 text-[10px] font-semibold text-[#94a3b8]">Subtotal</div>
-                    <div className="w-20 font-mono text-[10px] font-bold text-white text-right">{fmtCents(grandTotal)}</div>
+                    <div className="flex-1 text-[10px] font-semibold text-[#94a3b8]">Build Total</div>
+                    <div className="w-20 font-mono text-[10px] font-bold text-white text-right">{fmtCents(buildSubtotal)}</div>
                   </div>
 
-                  {/* Total */}
+                  {/* Total due now */}
                   <div className="flex bg-[#0f172a] rounded-b px-3 py-2.5">
-                    <div className="flex-1 font-mono text-[11px] font-bold text-white">TOTAL</div>
-                    <div className="w-20 font-mono text-[11px] font-bold text-white text-right">{fmtCents(grandTotal)}</div>
+                    <div className="flex-1 font-mono text-[11px] font-bold text-white">TOTAL DUE NOW</div>
+                    <div className="w-20 font-mono text-[11px] font-bold text-white text-right">{fmtCents(buildSubtotal)}</div>
+                  </div>
+
+                  {/* Monthly service note */}
+                  <div className="flex px-3 py-2.5 border-t border-white/5">
+                    <div className="flex-1 text-[10px] text-[#94a3b8]">Monthly service (begins 30 days after build payment)</div>
+                    <div className="w-20 font-mono text-[10px] font-semibold text-[#38b6ff] text-right">{fmtCents(serviceTier.monthlyCents)}/mo</div>
                   </div>
                 </div>
+
+                {/* Service deliverables — listed as included scope, not priced line items */}
+                {serviceItems.length > 0 && (
+                  <div className="px-6 pb-4">
+                    <div className="font-mono text-[8px] font-bold text-[#38b6ff] uppercase tracking-[0.1em] mb-2">
+                      Ongoing Service Deliverables — included at {serviceTier.price}
+                    </div>
+                    <div className="space-y-1">
+                      {serviceItems.map((item) => (
+                        <div key={item.id} className="flex items-start gap-2">
+                          <span className="text-[#38b6ff] text-[8px] mt-0.5">✓</span>
+                          <span className="text-[10px] text-[#cbd5e1]">{item.description}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* Payment options preview */}
                 <div className="px-6 pb-4 grid grid-cols-3 gap-2">

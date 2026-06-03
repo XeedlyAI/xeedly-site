@@ -122,12 +122,14 @@ export async function POST(request: NextRequest) {
     // ------------------------------------------------------------------
     // 4. Create Stripe Invoice (finalized, not sent via Stripe)
     // ------------------------------------------------------------------
-    const stripeLineItems = body.line_items.map((item) => ({
-      description: item.description,
-      quantity: item.quantity,
-      unit_price: item.unit_price,
-      amount: item.amount,
-    }));
+    const stripeLineItems = body.line_items
+      .filter((item) => item.section === "build" && item.amount > 0)
+      .map((item) => ({
+        description: item.description,
+        quantity: item.quantity,
+        unit_price: item.unit_price,
+        amount: item.amount,
+      }));
 
     const { stripe_invoice_id, hosted_invoice_url } =
       await createStripeInvoiceWithSOW(
@@ -139,7 +141,10 @@ export async function POST(request: NextRequest) {
     // ------------------------------------------------------------------
     // 5. Generate PDF
     // ------------------------------------------------------------------
+    const siteUrl =
+      process.env.NEXT_PUBLIC_SITE_URL || "https://xeedly.com";
     const pdfBuffer = await generateInvoicePdf({
+      logoUrl: `${siteUrl}/images/logos/xeedly-logo-bright-blue.png`,
       invoiceNumber,
       dateIssued: new Date().toLocaleDateString("en-US", {
         year: "numeric",
