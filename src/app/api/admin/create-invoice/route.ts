@@ -169,12 +169,7 @@ export async function POST(request: NextRequest) {
       terms: body.terms,
       stripeInvoiceUrl: hosted_invoice_url,
       venmoHandle: process.env.VENMO_HANDLE || "@XeedlyAI",
-      ach: {
-        bankName: process.env.BANK_NAME || "",
-        routing: process.env.ACH_ROUTING || "",
-        account: process.env.ACH_ACCOUNT || "",
-        accountType: process.env.ACH_ACCOUNT_TYPE || "checking",
-      },
+      venmoQrUrl: process.env.VENMO_QR_URL || undefined,
     });
 
     // ------------------------------------------------------------------
@@ -231,12 +226,6 @@ export async function POST(request: NextRequest) {
       serviceAmount: service_amount,
       comparableValue: body.comparable_value,
       venmoHandle: process.env.VENMO_HANDLE || "@XeedlyAI",
-      ach: {
-        bankName: process.env.BANK_NAME || "",
-        routing: process.env.ACH_ROUTING || "",
-        account: process.env.ACH_ACCOUNT || "",
-        accountType: process.env.ACH_ACCOUNT_TYPE || "checking",
-      },
     });
 
     const emailSent = await sendInvoiceEmail(

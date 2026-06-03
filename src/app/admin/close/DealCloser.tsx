@@ -815,14 +815,10 @@ export function DealCloser({
                 )}
 
                 {/* Payment options preview */}
-                <div className="px-6 pb-4 grid grid-cols-3 gap-2">
+                <div className="px-6 pb-4 grid grid-cols-2 gap-2">
                   <div className="rounded-lg bg-white/[0.03] border border-white/5 p-3">
-                    <div className="font-mono text-[8px] font-bold text-[#64748b] uppercase tracking-[0.1em]">Card</div>
-                    <div className="text-[9px] text-[#94a3b8] mt-1">Stripe Secure Checkout</div>
-                  </div>
-                  <div className="rounded-lg bg-white/[0.03] border border-white/5 p-3">
-                    <div className="font-mono text-[8px] font-bold text-[#64748b] uppercase tracking-[0.1em]">ACH Transfer</div>
-                    <div className="text-[9px] text-[#14b8a6] font-bold mt-0.5">Preferred &gt;$1,000</div>
+                    <div className="font-mono text-[8px] font-bold text-[#64748b] uppercase tracking-[0.1em]">Pay Online</div>
+                    <div className="text-[9px] text-[#94a3b8] mt-1">Card or bank transfer via Stripe</div>
                   </div>
                   <div className="rounded-lg bg-white/[0.03] border border-white/5 p-3">
                     <div className="font-mono text-[8px] font-bold text-[#64748b] uppercase tracking-[0.1em]">Venmo</div>

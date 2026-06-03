@@ -334,12 +334,7 @@ export type InvoiceData = {
   terms: string;
   stripeInvoiceUrl: string;
   venmoHandle: string;
-  ach: {
-    bankName: string;
-    routing: string;
-    account: string;
-    accountType: string;
-  };
+  venmoQrUrl?: string;
 };
 
 // ---------------------------------------------------------------------------
@@ -504,45 +499,26 @@ function InvoiceDocument({ data }: { data: InvoiceData }) {
 
         {/* PAYMENT OPTIONS */}
         <View style={s.paymentSection}>
-          {/* Card */}
-          <View style={s.paymentCol}>
-            <Text style={s.paymentTitle}>Credit / Debit Card</Text>
-            <Text style={s.paymentBody}>Stripe Secure Checkout</Text>
-            <Link src={data.stripeInvoiceUrl} style={s.paymentLink}>
-              {data.stripeInvoiceUrl.length > 50
-                ? data.stripeInvoiceUrl.slice(0, 50) + "..."
-                : data.stripeInvoiceUrl}
+          {/* Pay Online — Stripe handles card + ACH */}
+          <View style={[s.paymentCol, { flex: 2 }]}>
+            <Text style={s.paymentTitle}>Pay Online</Text>
+            <Text style={s.paymentBody}>
+              Secure payment via card or bank transfer
+            </Text>
+            <Link src={data.stripeInvoiceUrl} style={[s.paymentLink, { fontSize: 8, marginTop: 6 }]}>
+              Click here to pay invoice →
             </Link>
           </View>
 
-          {/* ACH */}
-          <View style={s.paymentCol}>
-            <Text style={s.paymentTitle}>ACH Bank Transfer</Text>
-            <Text style={s.paymentPreferred}>
-              PREFERRED for amounts over $1,000
-            </Text>
-            <Text style={s.paymentBody}>
-              Bank: {data.ach.bankName}
-            </Text>
-            <Text style={s.paymentBody}>
-              Routing: {data.ach.routing}
-            </Text>
-            <Text style={s.paymentBody}>
-              Account: {data.ach.account}
-            </Text>
-            <Text style={s.paymentBody}>
-              Type: {data.ach.accountType}
-            </Text>
-            <Text style={[s.paymentBody, { marginTop: 3, fontSize: 6.5 }]}>
-              Reference: {data.invoiceNumber}
-            </Text>
-          </View>
-
           {/* Venmo */}
-          <View style={s.paymentCol}>
+          <View style={[s.paymentCol, { flex: 1, alignItems: "center" as const }]}>
             <Text style={s.paymentTitle}>Venmo</Text>
-            <Text style={s.paymentBody}>{data.venmoHandle}</Text>
-            <Text style={[s.paymentBody, { marginTop: 3, fontSize: 6.5 }]}>
+            {data.venmoQrUrl ? (
+              <PdfImage src={data.venmoQrUrl} style={{ width: 70, height: 70, marginVertical: 4 }} />
+            ) : (
+              <Text style={s.paymentBody}>{data.venmoHandle}</Text>
+            )}
+            <Text style={[s.paymentBody, { marginTop: 3, fontSize: 6.5, textAlign: "center" as const }]}>
               Include invoice # in memo
             </Text>
           </View>

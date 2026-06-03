@@ -8,19 +8,11 @@ type InvoiceEmailData = {
   serviceAmount: number; // cents
   comparableValue?: string;
   venmoHandle: string;
-  ach: {
-    bankName: string;
-    routing: string;
-    account: string;
-    accountType: string;
-  };
 };
 
 export function buildInvoiceEmailHtml(data: InvoiceEmailData): string {
   const firstName = escapeHtml(data.customerName.split(" ")[0]);
-  const buildDollars = `$${(data.buildAmount / 100).toLocaleString("en-US")}`;
   const serviceDollars = `$${(data.serviceAmount / 100).toLocaleString("en-US")}`;
-  const invNum = escapeHtml(data.invoiceNumber);
 
   const comparableBlock = data.comparableValue
     ? `<div style="margin:20px 0;padding:12px 20px;background:#eef7ff;border-radius:6px;text-align:center;">
@@ -53,49 +45,26 @@ export function buildInvoiceEmailHtml(data: InvoiceEmailData): string {
 
     ${comparableBlock}
 
-    <!-- Payment Options -->
-    <div style="margin:24px 0;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;">
-      <!-- Card -->
-      <div style="padding:16px 20px;border-bottom:1px solid #e2e8f0;">
-        <div style="font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#64748b;margin-bottom:6px;">
-          Credit / Debit Card
-        </div>
-        <div style="font-size:13px;color:#334155;">Stripe Secure Checkout</div>
-      </div>
-      <!-- ACH -->
-      <div style="padding:16px 20px;border-bottom:1px solid #e2e8f0;background:#f8fafc;">
-        <div style="font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#64748b;margin-bottom:2px;">
-          ACH Bank Transfer
-        </div>
-        <div style="font-size:10px;font-weight:700;color:#14b8a6;margin-bottom:6px;">
-          PREFERRED for amounts over $1,000
-        </div>
-        <div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#334155;line-height:1.7;">
-          Bank: ${escapeHtml(data.ach.bankName)}<br>
-          Routing: ${escapeHtml(data.ach.routing)}<br>
-          Account: ${escapeHtml(data.ach.account)}<br>
-          Type: ${escapeHtml(data.ach.accountType)}<br>
-          <span style="font-size:11px;color:#64748b;">Reference: ${invNum}</span>
-        </div>
-      </div>
-      <!-- Venmo -->
-      <div style="padding:16px 20px;">
-        <div style="font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#64748b;margin-bottom:6px;">
-          Venmo
-        </div>
-        <div style="font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#334155;">
-          ${escapeHtml(data.venmoHandle)}
-        </div>
-        <div style="font-size:11px;color:#64748b;margin-top:2px;">Include invoice # in memo</div>
-      </div>
-    </div>
-
-    <!-- CTA -->
+    <!-- Primary CTA -->
     <div style="text-align:center;margin:28px 0;">
       <a href="${data.stripeInvoiceUrl}"
          style="display:inline-block;background:#38b6ff;color:#0f172a;padding:16px 40px;border-radius:8px;text-decoration:none;font-weight:700;font-size:16px;">
         Pay Invoice Online →
       </a>
+      <div style="font-size:12px;color:#64748b;margin-top:8px;">
+        Secure payment via card or bank transfer
+      </div>
+    </div>
+
+    <!-- Venmo alternative -->
+    <div style="margin:20px 0;padding:14px 20px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;">
+      <div style="font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#64748b;margin-bottom:6px;">
+        Or pay via Venmo
+      </div>
+      <div style="font-family:ui-monospace,Menlo,monospace;font-size:14px;color:#334155;font-weight:600;">
+        ${escapeHtml(data.venmoHandle)}
+      </div>
+      <div style="font-size:11px;color:#64748b;margin-top:4px;">Include invoice # ${escapeHtml(data.invoiceNumber)} in memo</div>
     </div>
 
     <p style="font-size:14px;line-height:1.7;color:#334155;">
