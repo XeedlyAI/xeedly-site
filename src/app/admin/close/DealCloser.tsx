@@ -947,7 +947,7 @@ export function DealCloser({
 // ---------------------------------------------------------------------------
 
 function fmtCents(n: number): string {
-  if (!n && n !== 0) return "—";
+  if (!n) return "";
   return `$${(n / 100).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 }
 

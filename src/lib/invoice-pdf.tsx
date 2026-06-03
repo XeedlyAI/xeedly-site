@@ -274,7 +274,6 @@ const s = StyleSheet.create({
   },
   partnershipText: {
     fontSize: 9,
-    fontStyle: "italic" as const,
     color: C.dark,
     lineHeight: 1.6,
   },
@@ -348,6 +347,7 @@ export type InvoiceData = {
 // ---------------------------------------------------------------------------
 
 function formatCents(cents: number): string {
+  if (!cents) return "";
   return `$${(cents / 100).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 }
 
