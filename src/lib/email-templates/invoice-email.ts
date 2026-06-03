@@ -28,9 +28,7 @@ export function buildInvoiceEmailHtml(data: InvoiceEmailData): string {
 
   <!-- Header -->
   <div style="background:#0f172a;padding:28px 32px;">
-    <div style="font-size:24px;font-weight:700;color:#ffffff;letter-spacing:-0.5px;">
-      Xeedly<span style="color:#38b6ff;">AI</span>
-    </div>
+    <img src="https://xeedly.com/images/logos/xeedly-logo-bright-blue.png" alt="XeedlyAI" width="160" height="41" style="display:block;height:41px;width:auto;" />
     <div style="height:3px;background:#38b6ff;margin-top:14px;border-radius:2px;"></div>
   </div>
 
