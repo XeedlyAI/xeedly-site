@@ -156,6 +156,53 @@ export async function createScheduledSubscription(
   });
 }
 
+/** Create a Stripe Invoice with full SOW line items. Finalizes but does NOT send via Stripe — we send via Resend with the PDF attached. */
+export async function createStripeInvoiceWithSOW(
+  customerId: string,
+  lineItems: Array<{
+    description: string;
+    quantity: number;
+    unit_price: number; // cents
+    amount: number; // cents
+  }>,
+  memo: string,
+  dueDate?: Date,
+): Promise<{ stripe_invoice_id: string; hosted_invoice_url: string }> {
+  const client = getStripe();
+
+  const invoice = await client.invoices.create({
+    customer: customerId,
+    collection_method: "send_invoice",
+    days_until_due: 0,
+    due_date: dueDate
+      ? Math.floor(dueDate.getTime() / 1000)
+      : undefined,
+    footer:
+      "Questions? Reply to this email or contact shad@xeedly.com",
+    metadata: { source: "invoice_system" },
+    payment_settings: {
+      payment_method_types: ["card", "us_bank_account"],
+    },
+  });
+
+  for (const item of lineItems) {
+    await client.invoiceItems.create({
+      customer: customerId,
+      invoice: invoice.id,
+      description: item.description,
+      amount: item.amount,
+      currency: "usd",
+    });
+  }
+
+  const finalized = await client.invoices.finalizeInvoice(invoice.id!);
+
+  return {
+    stripe_invoice_id: finalized.id!,
+    hosted_invoice_url: finalized.hosted_invoice_url || "",
+  };
+}
+
 /** Create a subscription that starts immediately. */
 export async function createSubscription(
   customerId: string,

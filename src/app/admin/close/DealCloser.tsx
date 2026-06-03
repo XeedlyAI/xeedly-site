@@ -1,74 +1,50 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 // ---------------------------------------------------------------------------
-// Product catalog — exact mirror of /api/admin/close-deal switch statement
+// Build Tier catalog
 // ---------------------------------------------------------------------------
 
-type DealType =
-  | "growth_maintain"
-  | "growth_get_found"
-  | "growth_get_chosen"
-  | "digital_foundation"
-  | "operational_systems"
-  | "intelligence_platform"
-  | "propertydocz_setup"
-  | "propertyjobz_setup"
-  | "property_combined"
-  | "vendor_build_495"
-  | "vendor_build_995"
-  | "vendor_build_1495"
-  | "vendor_buildonly_495"
-  | "vendor_buildonly_995"
-  | "vendor_buildonly_1495";
-
-type Product = {
-  id: DealType;
+type BuildTier = {
+  id: string;
   name: string;
-  sub: string; // sub-label shown on the card
-  accent: string; // left-border hex
-  accentTint: string; // selected bg tint
-  structure: "subscription" | "split" | "one-time";
+  sub: string;
+  accent: string;
+  accentTint: string;
   fixedTotal?: number; // dollars
   minTotal?: number;
   maxTotal?: number;
-  hasMonthly?: boolean; // split products with optional maintenance
-  hasCustomMonthly?: boolean; // intelligence_platform only
-  hasPlatformTier?: boolean; // vendor builds — pick $199/$299/$499
 };
 
-const PRODUCTS: Product[] = [
+const BUILD_TIERS: BuildTier[] = [
   {
-    id: "growth_maintain",
-    name: "GS Maintain",
-    sub: "$199/mo · subscription",
-    accent: "#3b82f6",
-    accentTint: "rgba(59,130,246,0.1)",
-    structure: "subscription",
-    fixedTotal: 199,
-  },
-  {
-    id: "growth_get_found",
-    name: "GS Get Found",
-    sub: "$299/mo · subscription",
+    id: "vendor_build_495",
+    name: "Rapid Launch",
+    sub: "$495 · one-time",
     accent: "#14b8a6",
     accentTint: "rgba(20,184,166,0.1)",
-    structure: "subscription",
-    fixedTotal: 299,
+    fixedTotal: 495,
   },
   {
-    id: "growth_get_chosen",
-    name: "GS Get Chosen",
-    sub: "$499/mo · subscription",
-    accent: "#38b6ff",
-    accentTint: "rgba(56,182,255,0.1)",
-    structure: "subscription",
-    fixedTotal: 499,
+    id: "vendor_build_995",
+    name: "Standard Launch",
+    sub: "$995 · one-time",
+    accent: "#14b8a6",
+    accentTint: "rgba(20,184,166,0.1)",
+    fixedTotal: 995,
+  },
+  {
+    id: "vendor_build_1495",
+    name: "Full Launch",
+    sub: "$1,495 · one-time",
+    accent: "#14b8a6",
+    accentTint: "rgba(20,184,166,0.1)",
+    fixedTotal: 1495,
   },
   {
     id: "digital_foundation",
@@ -76,9 +52,7 @@ const PRODUCTS: Product[] = [
     sub: "$2,500 · 50/50 split",
     accent: "#0A8FD4",
     accentTint: "rgba(10,143,212,0.12)",
-    structure: "split",
     fixedTotal: 2500,
-    hasMonthly: true,
   },
   {
     id: "operational_systems",
@@ -86,10 +60,8 @@ const PRODUCTS: Product[] = [
     sub: "$4K–$7K · enter amount",
     accent: "#14b8a6",
     accentTint: "rgba(20,184,166,0.1)",
-    structure: "split",
     minTotal: 4000,
     maxTotal: 7000,
-    hasMonthly: true,
   },
   {
     id: "intelligence_platform",
@@ -97,11 +69,8 @@ const PRODUCTS: Product[] = [
     sub: "$5K–$25K · enter amount",
     accent: "#8b5cf6",
     accentTint: "rgba(139,92,246,0.1)",
-    structure: "split",
     minTotal: 5000,
     maxTotal: 25000,
-    hasMonthly: true,
-    hasCustomMonthly: true,
   },
   {
     id: "propertydocz_setup",
@@ -109,7 +78,6 @@ const PRODUCTS: Product[] = [
     sub: "$500 · one-time",
     accent: "#38b6ff",
     accentTint: "rgba(56,182,255,0.1)",
-    structure: "one-time",
     fixedTotal: 500,
   },
   {
@@ -118,7 +86,6 @@ const PRODUCTS: Product[] = [
     sub: "$500 · one-time",
     accent: "#38b6ff",
     accentTint: "rgba(56,182,255,0.1)",
-    structure: "one-time",
     fixedTotal: 500,
   },
   {
@@ -127,83 +94,97 @@ const PRODUCTS: Product[] = [
     sub: "$1,000 · one-time",
     accent: "#38b6ff",
     accentTint: "rgba(56,182,255,0.1)",
-    structure: "one-time",
     fixedTotal: 1000,
-  },
-  // --- Core HOA Vendor Program: Build Only ---
-  {
-    id: "vendor_buildonly_495",
-    name: "Vendor · 48hr",
-    sub: "$495 build only",
-    accent: "#14b8a6",
-    accentTint: "rgba(20,184,166,0.1)",
-    structure: "one-time",
-    fixedTotal: 495,
-  },
-  {
-    id: "vendor_buildonly_995",
-    name: "Vendor · Wk 1",
-    sub: "$995 build only",
-    accent: "#14b8a6",
-    accentTint: "rgba(20,184,166,0.1)",
-    structure: "one-time",
-    fixedTotal: 995,
-  },
-  {
-    id: "vendor_buildonly_1495",
-    name: "Vendor · Wk 2",
-    sub: "$1,495 build only",
-    accent: "#14b8a6",
-    accentTint: "rgba(20,184,166,0.1)",
-    structure: "one-time",
-    fixedTotal: 1495,
-  },
-  // --- Core HOA Vendor Program: Build + Platform ---
-  {
-    id: "vendor_build_495",
-    name: "Vendor · 48hr+",
-    sub: "$495 build + platform",
-    accent: "#0A8FD4",
-    accentTint: "rgba(10,143,212,0.1)",
-    structure: "one-time",
-    fixedTotal: 495,
-    hasPlatformTier: true,
-  },
-  {
-    id: "vendor_build_995",
-    name: "Vendor · Wk 1+",
-    sub: "$995 build + platform",
-    accent: "#0A8FD4",
-    accentTint: "rgba(10,143,212,0.1)",
-    structure: "one-time",
-    fixedTotal: 995,
-    hasPlatformTier: true,
-  },
-  {
-    id: "vendor_build_1495",
-    name: "Vendor · Wk 2+",
-    sub: "$1,495 build + platform",
-    accent: "#0A8FD4",
-    accentTint: "rgba(10,143,212,0.1)",
-    structure: "one-time",
-    fixedTotal: 1495,
-    hasPlatformTier: true,
   },
 ];
 
 // ---------------------------------------------------------------------------
-// Result shape from /api/admin/close-deal
+// Service tiers
 // ---------------------------------------------------------------------------
 
-type CloseResult = {
-  success: true;
-  deal: { id: string };
-  checkoutUrl: string;
-  productName: string;
-  upfrontAmount: string;
-  delivery: { sms: boolean; email: boolean };
+type ServiceTier = {
+  key: "foundation" | "growth" | "authority";
+  label: string;
+  price: string;
+  monthlyCents: number;
 };
 
+const SERVICE_TIERS: ServiceTier[] = [
+  { key: "foundation", label: "Foundation", price: "$199/mo", monthlyCents: 19900 },
+  { key: "growth", label: "Growth", price: "$299/mo", monthlyCents: 29900 },
+  { key: "authority", label: "Authority", price: "$499/mo", monthlyCents: 49900 },
+];
+
+// ---------------------------------------------------------------------------
+// SOW defaults
+// ---------------------------------------------------------------------------
+
+type LineItem = {
+  id: string;
+  section: "build" | "service";
+  description: string;
+  quantity: number;
+  unit_price: number; // cents
+  amount: number; // cents
+};
+
+const FULL_SERVICE_BUILD_ITEMS: Omit<LineItem, "id">[] = [
+  { section: "build", description: "Custom-coded website built on Next.js — fully portable, client owns all code", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "XeedlyAI design system — branded, conversion-optimized, professionally designed", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "AI Intelligence Console — embedded AI that answers visitor questions and qualifies leads", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Custom Google Calendar booking system — no third-party dependencies", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Stripe payment gateway integration", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Client admin panel — manage content, bookings, and site data independently", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Core30 content build — 30 foundational content pieces establishing topical authority", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Google Business Profile optimization and full content alignment", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "AI search visibility architecture — structured data, schema markup, LLM-readable site structure", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Local listing site submissions and NAP consistency audit", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Initial backlink foundation", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "GA4, Google Search Console, and heatmap analytics setup", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Brand and go-to-market strategy defined and embedded in site architecture", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Vercel hosting setup and configuration included", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "2-week build timeline from payment receipt", quantity: 1, unit_price: 0, amount: 0 },
+];
+
+const FULL_SERVICE_ONGOING_ITEMS: Omit<LineItem, "id">[] = [
+  { section: "service", description: "Continuous site evolution — ongoing improvements, never static", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "service", description: "Review automation — AI-powered review requests and optional auto-response", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "service", description: "Lead capture with email and SMS notification — optional CRM connection available", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "service", description: "Core30 content process continuation — ongoing content that ranks in search and AI", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "service", description: "Google Business Profile management and posting cadence", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "service", description: "Ongoing backlink building", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "service", description: "AI search monitoring and optimization", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "service", description: "Monthly performance reporting", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "service", description: "Strategic partnership — proactive opportunity and threat identification", quantity: 1, unit_price: 0, amount: 0 },
+];
+
+function defaultTerms(serviceAmount: string): string {
+  return `Build fee is due upon receipt and triggers the start of your project. Monthly service fee of ${serviceAmount}/mo begins 30 days from the date build payment is received. A 6-month minimum commitment applies at promotional pricing, after which billing continues month-to-month with 30 days written notice to cancel. Client owns all code and site assets upon payment in full. Payment constitutes acceptance of this scope of work.`;
+}
+
+let _itemId = 0;
+function nextId(): string {
+  return `item-${++_itemId}`;
+}
+
+function withIds(items: Omit<LineItem, "id">[]): LineItem[] {
+  return items.map((i) => ({ ...i, id: nextId() }));
+}
+
+// ---------------------------------------------------------------------------
+// Result type
+// ---------------------------------------------------------------------------
+
+type InvoiceResult = {
+  invoice_number: string;
+  deal_id: string;
+  pdf_url: string;
+  stripe_invoice_url: string;
+  email_sent: boolean;
+};
+
+// ---------------------------------------------------------------------------
+// Main component
 // ---------------------------------------------------------------------------
 
 export function DealCloser({
@@ -215,15 +196,17 @@ export function DealCloser({
   stripeReturnCancelled: boolean;
   stripeReturnDealId?: string;
 }) {
-  const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
-  const [product, setProduct] = useState<Product | null>(null);
-  const [totalAmount, setTotalAmount] = useState<string>("");
-  const [monthlyAmount, setMonthlyAmount] = useState<string>("");
-  const [platformTier, setPlatformTier] = useState<"foundation" | "growth" | "authority">("foundation");
-  const [promoMessage, setPromoMessage] = useState<boolean>(false);
-  const [goliveDate, setGoliveDate] = useState<string>("");
-  const [maintenanceDate, setMaintenanceDate] = useState<string>("");
+  const [step, setStep] = useState<1 | 2 | 3 | 4 | 5>(1);
 
+  // Step 1
+  const [buildTier, setBuildTier] = useState<BuildTier | null>(null);
+  const [customTotal, setCustomTotal] = useState("");
+  const [fullServiceIncluded, setFullServiceIncluded] = useState(true);
+
+  // Step 2
+  const [serviceTier, setServiceTier] = useState<ServiceTier>(SERVICE_TIERS[0]);
+
+  // Step 3
   const [customer, setCustomer] = useState({
     name: "",
     email: "",
@@ -232,91 +215,169 @@ export function DealCloser({
     notes: "",
   });
 
+  // Step 4
+  const [lineItems, setLineItems] = useState<LineItem[]>([]);
+  const [terms, setTerms] = useState("");
+  const [comparableValue, setComparableValue] = useState("Comparable to $3,500/mo elsewhere");
+  const [sowInitialized, setSowInitialized] = useState(false);
+
+  // Step 5
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [result, setResult] = useState<CloseResult | null>(null);
+  const [result, setResult] = useState<InvoiceResult | null>(null);
 
   // ------------------------------------------------------------------
-  // Derived: resolved total (from fixed price OR user input)
+  // Derived
   // ------------------------------------------------------------------
-  const resolvedTotal = useMemo<number | null>(() => {
-    if (!product) return null;
-    if (product.fixedTotal) return product.fixedTotal;
-    const n = parseFloat(totalAmount);
+  const resolvedBuildTotal = useMemo<number | null>(() => {
+    if (!buildTier) return null;
+    if (buildTier.fixedTotal) return buildTier.fixedTotal;
+    const n = parseFloat(customTotal);
     return Number.isFinite(n) && n > 0 ? n : null;
-  }, [product, totalAmount]);
+  }, [buildTier, customTotal]);
 
-  const upfront = useMemo(() => {
-    if (!product || !resolvedTotal) return null;
-    if (product.structure === "split") {
-      return Math.round((resolvedTotal * 100) / 2) / 100;
-    }
-    return resolvedTotal;
-  }, [product, resolvedTotal]);
-
-  const golive = useMemo(() => {
-    if (!product || !resolvedTotal || product.structure !== "split")
-      return null;
-    return Math.round(resolvedTotal * 100 - Math.round((resolvedTotal * 100) / 2)) / 100;
-  }, [product, resolvedTotal]);
+  const buildAmountCents = useMemo(
+    () => (resolvedBuildTotal ? Math.round(resolvedBuildTotal * 100) : 0),
+    [resolvedBuildTotal],
+  );
 
   // ------------------------------------------------------------------
   // Validation
   // ------------------------------------------------------------------
-  const canProceedStep1 = useMemo(() => {
-    if (!product) return false;
-    if (!product.fixedTotal && !resolvedTotal) return false;
-    return true;
-  }, [product, resolvedTotal]);
+  const canProceedStep1 = !!buildTier && !!resolvedBuildTotal;
+  const canProceedStep2 = !!serviceTier;
+  const canProceedStep3 =
+    customer.name.trim().length > 0 &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email.trim());
 
-  const canProceedStep2 = useMemo(() => {
-    return (
-      customer.name.trim().length > 0 &&
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email.trim())
+  // ------------------------------------------------------------------
+  // SOW initialization (called when entering step 4)
+  // ------------------------------------------------------------------
+  const initSow = useCallback(() => {
+    if (sowInitialized) return;
+
+    const serviceDollars = `$${(serviceTier.monthlyCents / 100).toLocaleString("en-US")}`;
+
+    if (fullServiceIncluded) {
+      const buildItems = withIds(FULL_SERVICE_BUILD_ITEMS);
+      if (buildItems.length > 0) {
+        buildItems[0] = {
+          ...buildItems[0],
+          unit_price: buildAmountCents,
+          amount: buildAmountCents,
+        };
+      }
+      const serviceItems = withIds(FULL_SERVICE_ONGOING_ITEMS);
+      if (serviceItems.length > 0) {
+        serviceItems[0] = {
+          ...serviceItems[0],
+          unit_price: serviceTier.monthlyCents,
+          amount: serviceTier.monthlyCents,
+        };
+      }
+      setLineItems([...buildItems, ...serviceItems]);
+    } else {
+      setLineItems(
+        withIds([
+          {
+            section: "build" as const,
+            description: `${buildTier?.name ?? "Build"} — website build`,
+            quantity: 1,
+            unit_price: buildAmountCents,
+            amount: buildAmountCents,
+          },
+          {
+            section: "service" as const,
+            description: `${serviceTier.label} service tier — monthly`,
+            quantity: 1,
+            unit_price: serviceTier.monthlyCents,
+            amount: serviceTier.monthlyCents,
+          },
+        ]),
+      );
+    }
+
+    setTerms(defaultTerms(serviceDollars));
+    setSowInitialized(true);
+  }, [sowInitialized, fullServiceIncluded, buildAmountCents, buildTier, serviceTier]);
+
+  // ------------------------------------------------------------------
+  // SOW line item management
+  // ------------------------------------------------------------------
+  function updateLineItem(id: string, field: keyof LineItem, value: string) {
+    setLineItems((prev) =>
+      prev.map((item) => {
+        if (item.id !== id) return item;
+        if (field === "description") return { ...item, description: value };
+        const n = parseInt(value, 10) || 0;
+        if (field === "quantity") {
+          return { ...item, quantity: n, amount: n * item.unit_price };
+        }
+        if (field === "unit_price") {
+          return { ...item, unit_price: n, amount: item.quantity * n };
+        }
+        return item;
+      }),
     );
-  }, [customer]);
+  }
+
+  function removeLineItem(id: string) {
+    setLineItems((prev) => prev.filter((i) => i.id !== id));
+  }
+
+  function addLineItem(section: "build" | "service") {
+    setLineItems((prev) => [
+      ...prev,
+      {
+        id: nextId(),
+        section,
+        description: "",
+        quantity: 1,
+        unit_price: 0,
+        amount: 0,
+      },
+    ]);
+  }
 
   // ------------------------------------------------------------------
   // Submit
   // ------------------------------------------------------------------
-  async function submitDeal() {
-    if (!product || !resolvedTotal) return;
+  async function submitInvoice() {
+    if (!buildTier || !resolvedBuildTotal) return;
     setSubmitting(true);
     setError(null);
 
-    const body: Record<string, unknown> = {
-      dealType: product.id,
-      customerName: customer.name.trim(),
-      customerEmail: customer.email.trim(),
-      customerPhone: customer.phone.trim() || null,
-      customerCompany: customer.company.trim() || null,
-      notes: customer.notes.trim() || null,
-      goliveDate: goliveDate || null,
-      maintenanceStartDate: maintenanceDate || null,
-    };
-
-    if (!product.fixedTotal) body.totalAmount = resolvedTotal;
-    if (product.hasPlatformTier) body.platformTier = platformTier;
-    if (promoMessage && product.id.startsWith("vendor_buildonly_")) body.promoMessage = true;
-    if (product.hasCustomMonthly && monthlyAmount) {
-      const m = parseFloat(monthlyAmount);
-      if (Number.isFinite(m) && m > 0) body.monthlyAmount = m;
-    }
-
     try {
-      const res = await fetch("/api/admin/close-deal", {
+      const res = await fetch("/api/admin/create-invoice", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
+        body: JSON.stringify({
+          customer: {
+            name: customer.name.trim(),
+            company: customer.company.trim() || undefined,
+            email: customer.email.trim(),
+            phone: customer.phone.trim() || undefined,
+          },
+          build_tier: buildTier.id,
+          service_tier: serviceTier.key,
+          build_amount: buildAmountCents,
+          service_amount: serviceTier.monthlyCents,
+          full_service_included: fullServiceIncluded,
+          line_items: lineItems.map(({ id: _id, ...rest }) => rest),
+          comparable_value: comparableValue.trim() || undefined,
+          terms,
+          notes: customer.notes.trim() || undefined,
+        }),
       });
-      const data = (await res.json()) as CloseResult | { error: string };
-      if (!res.ok || !("success" in data)) {
-        setError("error" in data ? data.error : "Failed to close deal");
+
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error || "Failed to create invoice");
         setSubmitting(false);
         return;
       }
       setResult(data);
-      setStep(4);
+      setStep(5);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Network error");
     } finally {
@@ -326,17 +387,27 @@ export function DealCloser({
 
   function reset() {
     setStep(1);
-    setProduct(null);
-    setTotalAmount("");
-    setMonthlyAmount("");
-    setPlatformTier("foundation");
-    setPromoMessage(false);
-    setGoliveDate("");
-    setMaintenanceDate("");
+    setBuildTier(null);
+    setCustomTotal("");
+    setFullServiceIncluded(true);
+    setServiceTier(SERVICE_TIERS[0]);
     setCustomer({ name: "", email: "", phone: "", company: "", notes: "" });
+    setLineItems([]);
+    setTerms("");
+    setComparableValue("Comparable to $3,500/mo elsewhere");
+    setSowInitialized(false);
     setResult(null);
     setError(null);
   }
+
+  // ------------------------------------------------------------------
+  // Computed for invoice preview
+  // ------------------------------------------------------------------
+  const buildItems = lineItems.filter((i) => i.section === "build");
+  const serviceItems = lineItems.filter((i) => i.section === "service");
+  const buildSubtotal = buildItems.reduce((s, i) => s + i.amount, 0);
+  const serviceSubtotal = serviceItems.reduce((s, i) => s + i.amount, 0);
+  const grandTotal = buildSubtotal + serviceSubtotal;
 
   // ------------------------------------------------------------------
   // Render
@@ -346,196 +417,172 @@ export function DealCloser({
       <TopBar step={step} onReset={reset} />
 
       <div className="mx-auto max-w-3xl px-4 sm:px-6 pb-24 pt-6">
-        {/* Stripe checkout return banners */}
         {stripeReturnSuccess && (
           <ReturnBanner
             tone="success"
-            title="Stripe Checkout completed"
-            body={`Deal ${stripeReturnDealId ?? ""} · The webhook will finalize status automatically.`}
+            title="Payment received"
+            body={`Deal ${stripeReturnDealId ?? ""} — status will update automatically.`}
           />
         )}
         {stripeReturnCancelled && (
           <ReturnBanner
             tone="warn"
             title="Checkout cancelled"
-            body="The customer closed the Stripe checkout without paying. The payment link is still valid for 24h."
+            body="The customer closed checkout without paying. The payment link is still valid."
           />
         )}
 
         <AnimatePresence mode="wait">
+          {/* ============================================================ */}
+          {/* STEP 1: Build Tier Selection                                 */}
+          {/* ============================================================ */}
           {step === 1 && (
-            <motion.div
-              key="s1"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25, ease: EASE }}
-            >
-              <SectionLabel n={1} label="Select Product" />
-              <ProductGrid
-                selected={product}
-                onSelect={(p) => setProduct(p)}
-              />
-
-              {product && (
-                <motion.div
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-6 space-y-4"
-                >
-                  {!product.fixedTotal && (
-                    <InputField
-                      label={`Total amount (${product.minTotal?.toLocaleString()}–${product.maxTotal?.toLocaleString()} typical)`}
-                      type="number"
-                      inputMode="decimal"
-                      placeholder={`e.g. ${product.minTotal ?? 5000}`}
-                      value={totalAmount}
-                      onChange={setTotalAmount}
-                      prefix="$"
-                    />
-                  )}
-
-                  {product.structure === "split" && resolvedTotal && (
-                    <div className="rounded-lg bg-white/[0.04] border border-white/10 p-4">
-                      <RowLabel
-                        label="Upfront (50%, charged now)"
-                        value={`$${upfront?.toLocaleString()}`}
-                      />
-                      <RowLabel
-                        label="Go-live (50%, invoice later)"
-                        value={`$${golive?.toLocaleString()}`}
-                      />
-                    </div>
-                  )}
-
-                  {product.structure === "split" && (
-                    <>
-                      <InputField
-                        label="Schedule go-live invoice for (optional)"
-                        type="date"
-                        value={goliveDate}
-                        onChange={setGoliveDate}
-                      />
-                      <InputField
-                        label="Start maintenance on (optional)"
-                        type="date"
-                        value={maintenanceDate}
-                        onChange={setMaintenanceDate}
-                      />
-                    </>
-                  )}
-
-                  {product.hasCustomMonthly && (
-                    <InputField
-                      label="Monthly managed amount (optional · $495–$995)"
-                      type="number"
-                      inputMode="decimal"
-                      placeholder="e.g. 795"
-                      value={monthlyAmount}
-                      onChange={setMonthlyAmount}
-                      prefix="$"
-                    />
-                  )}
-
-                  {product.hasPlatformTier && (
-                    <div>
-                      <span className="block font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-[#64748b] mb-2">
-                        Platform tier (starts at launch)
-                      </span>
-                      <div className="grid grid-cols-3 gap-2">
-                        {(
-                          [
-                            { key: "foundation" as const, label: "Foundation", price: "$199/mo" },
-                            { key: "growth" as const, label: "Growth", price: "$299/mo" },
-                            { key: "authority" as const, label: "Authority", price: "$499/mo" },
-                          ] as const
-                        ).map((t) => {
-                          const active = platformTier === t.key;
-                          return (
-                            <button
-                              key={t.key}
-                              type="button"
-                              onClick={() => setPlatformTier(t.key)}
-                              className="rounded-lg p-3 text-left transition-all"
-                              style={{
-                                background: active
-                                  ? "rgba(20,184,166,0.12)"
-                                  : "rgba(255,255,255,0.03)",
-                                border: `1px solid ${active ? "#14b8a6" : "rgba(255,255,255,0.08)"}`,
-                              }}
-                            >
-                              <div className="text-[13px] font-semibold text-white">
-                                {t.label}
-                              </div>
-                              <div className="font-mono text-[11px] text-[#94a3b8]">
-                                {t.price}
-                              </div>
-                            </button>
-                          );
-                        })}
-                      </div>
-                      <div className="mt-2 font-mono text-[10px] text-[#64748b]">
-                        6-month minimum · billed monthly starting at site launch
-                      </div>
-                    </div>
-                  )}
-
-                  {product.id.startsWith("vendor_buildonly_") && (
+            <Step k="s1">
+              <SectionLabel n={1} label="Build Tier" />
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {BUILD_TIERS.map((t) => {
+                  const active = buildTier?.id === t.id;
+                  return (
                     <button
+                      key={t.id}
                       type="button"
-                      onClick={() => setPromoMessage(!promoMessage)}
-                      className="w-full flex items-center gap-3 rounded-lg p-3 transition-all"
+                      onClick={() => {
+                        setBuildTier(t);
+                        setSowInitialized(false);
+                      }}
+                      className="relative rounded-xl p-4 text-left transition-all"
                       style={{
-                        background: promoMessage
-                          ? "rgba(20,184,166,0.12)"
-                          : "rgba(255,255,255,0.03)",
-                        border: `1px solid ${promoMessage ? "#14b8a6" : "rgba(255,255,255,0.08)"}`,
+                        background: active ? t.accentTint : "rgba(255,255,255,0.03)",
+                        borderLeft: `3px solid ${t.accent}`,
+                        border: `1px solid ${active ? t.accent : "rgba(255,255,255,0.08)"}`,
+                        borderLeftWidth: 3,
                       }}
                     >
-                      <div
-                        className="flex-shrink-0 w-9 h-5 rounded-full relative transition-colors"
-                        style={{ background: promoMessage ? "#14b8a6" : "#334155" }}
-                      >
-                        <div
-                          className="absolute top-0.5 w-4 h-4 rounded-full bg-white transition-all"
-                          style={{ left: promoMessage ? 18 : 2 }}
-                        />
+                      <div className="font-semibold text-white text-[14px] leading-tight">
+                        {t.name}
                       </div>
-                      <div className="text-left">
-                        <div className="text-[13px] font-semibold text-white">
-                          CoreHOA promo message
-                        </div>
-                        <div className="font-mono text-[10px] text-[#94a3b8]">
-                          Upbeat lock-in-your-price template instead of standard payment link
-                        </div>
+                      <div className="mt-1.5 font-mono text-[10.5px] text-[#94a3b8] leading-[1.45]">
+                        {t.sub}
                       </div>
                     </button>
-                  )}
+                  );
+                })}
+              </div>
+
+              {buildTier && !buildTier.fixedTotal && (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-4">
+                  <InputField
+                    label={`Total amount (${buildTier.minTotal?.toLocaleString()}–${buildTier.maxTotal?.toLocaleString()} typical)`}
+                    type="number"
+                    inputMode="decimal"
+                    placeholder={`e.g. ${buildTier.minTotal ?? 5000}`}
+                    value={customTotal}
+                    onChange={setCustomTotal}
+                    prefix="$"
+                  />
                 </motion.div>
               )}
+
+              {/* Full Service Toggle */}
+              <div className="mt-6">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setFullServiceIncluded(!fullServiceIncluded);
+                    setSowInitialized(false);
+                  }}
+                  className="w-full flex items-center gap-3 rounded-lg p-4 transition-all"
+                  style={{
+                    background: fullServiceIncluded
+                      ? "rgba(20,184,166,0.12)"
+                      : "rgba(255,255,255,0.03)",
+                    border: `1px solid ${fullServiceIncluded ? "#14b8a6" : "rgba(255,255,255,0.08)"}`,
+                  }}
+                >
+                  <div
+                    className="flex-shrink-0 w-11 h-6 rounded-full relative transition-colors"
+                    style={{ background: fullServiceIncluded ? "#14b8a6" : "#334155" }}
+                  >
+                    <div
+                      className="absolute top-0.5 w-5 h-5 rounded-full bg-white transition-all"
+                      style={{ left: fullServiceIncluded ? 22 : 2 }}
+                    />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-[14px] font-bold text-white tracking-tight">
+                      FULL SERVICE INCLUDED
+                    </div>
+                    <div className="font-mono text-[10px] text-[#94a3b8] mt-0.5">
+                      SOW includes complete deliverable list regardless of tier
+                    </div>
+                  </div>
+                </button>
+                <div className="mt-2 font-mono text-[10px] text-[#64748b] px-1">
+                  Promo pricing includes our complete service stack.
+                </div>
+              </div>
 
               <StepButton
                 onClick={() => setStep(2)}
                 disabled={!canProceedStep1}
-                label="Next: customer info →"
+                label="Next: service tier →"
               />
-            </motion.div>
+            </Step>
           )}
 
+          {/* ============================================================ */}
+          {/* STEP 2: Service Tier Selection                               */}
+          {/* ============================================================ */}
           {step === 2 && (
-            <motion.div
-              key="s2"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25, ease: EASE }}
-            >
-              <SectionLabel n={2} label="Customer Info" />
-              <p className="text-[12px] text-[#64748b] mb-4 font-mono">
-                {/* TODO: pull from booking system when bookings are persisted. */}
-                Enter customer details manually — booking prefill coming soon.
-              </p>
+            <Step k="s2">
+              <SectionLabel n={2} label="Service Tier" />
+              <div className="grid grid-cols-3 gap-3">
+                {SERVICE_TIERS.map((t) => {
+                  const active = serviceTier.key === t.key;
+                  return (
+                    <button
+                      key={t.key}
+                      type="button"
+                      onClick={() => {
+                        setServiceTier(t);
+                        setSowInitialized(false);
+                      }}
+                      className="rounded-xl p-4 text-left transition-all"
+                      style={{
+                        background: active
+                          ? "rgba(20,184,166,0.12)"
+                          : "rgba(255,255,255,0.03)",
+                        border: `1px solid ${active ? "#14b8a6" : "rgba(255,255,255,0.08)"}`,
+                      }}
+                    >
+                      <div className="text-[15px] font-semibold text-white">{t.label}</div>
+                      <div className="font-mono text-[12px] text-[#94a3b8] mt-1">{t.price}</div>
+                    </button>
+                  );
+                })}
+              </div>
+              <div className="mt-3 font-mono text-[10px] text-[#64748b] px-1">
+                Monthly service begins 30 days from build payment date. 6-month minimum, then month-to-month.
+              </div>
 
+              <div className="flex gap-3 mt-6">
+                <BackButton onClick={() => setStep(1)} />
+                <StepButton
+                  onClick={() => setStep(3)}
+                  disabled={!canProceedStep2}
+                  label="Next: customer info →"
+                  flex
+                />
+              </div>
+            </Step>
+          )}
+
+          {/* ============================================================ */}
+          {/* STEP 3: Customer Info                                        */}
+          {/* ============================================================ */}
+          {step === 3 && (
+            <Step k="s3">
+              <SectionLabel n={3} label="Customer Info" />
               <div className="space-y-3">
                 <InputField
                   label="Name *"
@@ -572,133 +619,248 @@ export function DealCloser({
                   placeholder="Wants fleet focus · 30 locations"
                 />
               </div>
-
               <div className="flex gap-3 mt-6">
-                <button
-                  type="button"
-                  onClick={() => setStep(1)}
-                  className="px-5 py-3 rounded-lg text-[13px] font-semibold text-[#94a3b8] hover:text-white border border-white/10 hover:border-white/20 transition-colors"
-                >
-                  ← Back
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setStep(3)}
-                  disabled={!canProceedStep2}
-                  className="flex-1 px-5 py-3 rounded-lg bg-[#38b6ff] hover:bg-[#0A8FD4] disabled:opacity-40 text-[#0f172a] text-[14px] font-semibold transition-all"
-                >
-                  Next: review →
-                </button>
+                <BackButton onClick={() => setStep(2)} />
+                <StepButton
+                  onClick={() => {
+                    initSow();
+                    setStep(4);
+                  }}
+                  disabled={!canProceedStep3}
+                  label="Next: scope of work →"
+                  flex
+                />
               </div>
-            </motion.div>
+            </Step>
           )}
 
-          {step === 3 && product && resolvedTotal && (
-            <motion.div
-              key="s3"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25, ease: EASE }}
-            >
-              <SectionLabel n={3} label="Review & Send" />
+          {/* ============================================================ */}
+          {/* STEP 4: Scope of Work Builder                                */}
+          {/* ============================================================ */}
+          {step === 4 && (
+            <Step k="s4">
+              <SectionLabel n={4} label="Scope of Work" />
 
-              <div className="rounded-xl bg-white/[0.04] border border-white/10 p-5 space-y-4">
-                <SummaryRow label="Product" value={product.name} mono />
-                <SummaryRow
-                  label={product.structure === "subscription" ? "Amount" : "Total"}
-                  value={`$${resolvedTotal.toLocaleString()}${product.structure === "subscription" ? "/mo" : ""}`}
+              {/* Build items */}
+              <SowSection
+                title="Build Deliverables"
+                items={buildItems}
+                onUpdate={updateLineItem}
+                onRemove={removeLineItem}
+                onAdd={() => addLineItem("build")}
+              />
+
+              {/* Service items */}
+              <SowSection
+                title="Ongoing Service Deliverables"
+                items={serviceItems}
+                onUpdate={updateLineItem}
+                onRemove={removeLineItem}
+                onAdd={() => addLineItem("service")}
+              />
+
+              {/* Comparable value */}
+              <div className="mt-6">
+                <InputField
+                  label="Comparable Value Statement (optional)"
+                  value={comparableValue}
+                  onChange={setComparableValue}
+                  placeholder="Comparable to $3,500/mo elsewhere"
                 />
-                {product.structure === "split" && (
-                  <>
-                    <SummaryRow
-                      label="Charged now (upfront 50%)"
-                      value={`$${upfront?.toLocaleString()}`}
-                    />
-                    <SummaryRow
-                      label="Go-live invoice (50%)"
-                      value={`$${golive?.toLocaleString()} · ${goliveDate || "unscheduled"}`}
-                    />
-                    {product.hasMonthly && (
-                      <SummaryRow
-                        label="Maintenance / Managed"
-                        value={`${
-                          product.hasCustomMonthly
-                            ? monthlyAmount
-                              ? `$${parseFloat(monthlyAmount).toLocaleString()}/mo`
-                              : "—"
-                            : "$199/mo"
-                        } · ${maintenanceDate || "not scheduled"}`}
-                      />
-                    )}
-                  </>
-                )}
-                {product.hasPlatformTier && (
-                  <SummaryRow
-                    label="Platform (at launch)"
-                    value={`${platformTier.charAt(0).toUpperCase() + platformTier.slice(1)} · ${{
-                      foundation: "199",
-                      growth: "299",
-                      authority: "499",
-                    }[platformTier]}/mo · 6-mo min`}
-                  />
-                )}
-                <hr className="border-white/5" />
-                <SummaryRow label="Customer" value={customer.name} />
-                <SummaryRow label="Email" value={customer.email} mono />
-                {customer.phone && (
-                  <SummaryRow label="Phone" value={customer.phone} mono />
-                )}
-                {customer.company && (
-                  <SummaryRow label="Company" value={customer.company} />
-                )}
-                {promoMessage && product.id.startsWith("vendor_buildonly_") && (
-                  <SummaryRow
-                    label="Message"
-                    value="CoreHOA promo (lock-in-your-price)"
-                  />
-                )}
-                <hr className="border-white/5" />
-                <SummaryRow
-                  label="Delivery"
-                  value={customer.phone ? "SMS + Email" : "Email only"}
+              </div>
+
+              {/* Terms */}
+              <div className="mt-4">
+                <TextareaField
+                  label="Terms & Conditions"
+                  value={terms}
+                  onChange={setTerms}
+                  rows={5}
                 />
+              </div>
+
+              <div className="flex gap-3 mt-6">
+                <BackButton onClick={() => setStep(3)} />
+                <StepButton
+                  onClick={() => setStep(5)}
+                  disabled={lineItems.length === 0}
+                  label="Next: preview invoice →"
+                  flex
+                />
+              </div>
+            </Step>
+          )}
+
+          {/* ============================================================ */}
+          {/* STEP 5: Invoice Preview + Send  (or Result)                  */}
+          {/* ============================================================ */}
+          {step === 5 && !result && (
+            <Step k="s5">
+              <SectionLabel n={5} label="Invoice Preview" />
+
+              {/* Preview card */}
+              <div
+                className="rounded-xl overflow-hidden"
+                style={{ border: "1px solid rgba(255,255,255,0.1)" }}
+              >
+                {/* Header */}
+                <div className="bg-[#0f172a] px-6 py-5 flex items-start justify-between">
+                  <div>
+                    <div className="text-[22px] font-bold text-white tracking-tight">
+                      Xeedly<span className="text-[#38b6ff]">AI</span>
+                    </div>
+                    <div className="text-[9px] text-[#64748b] mt-1">AI-Native Business Intelligence</div>
+                    <div className="font-mono text-[8px] text-[#64748b] mt-1">xeedly.com | shad@xeedly.com</div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-mono text-[18px] font-bold text-white tracking-[2px]">INVOICE</div>
+                    <div className="font-mono text-[9px] text-[#64748b] mt-1">Draft preview</div>
+                    <div className="font-mono text-[9px] text-[#64748b]">Due: Upon Receipt</div>
+                  </div>
+                </div>
+                <div className="h-[2px] bg-[#38b6ff]" />
+
+                {/* Billing */}
+                <div className="px-6 py-4 flex gap-6 bg-white/[0.02]">
+                  <div className="flex-1">
+                    <div className="font-mono text-[8px] font-bold uppercase tracking-[0.15em] text-[#64748b] mb-2">From</div>
+                    <div className="text-[12px] text-white leading-[1.6]">XeedlyAI</div>
+                    <div className="text-[10px] text-[#64748b]">shad@xeedly.com</div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-mono text-[8px] font-bold uppercase tracking-[0.15em] text-[#64748b] mb-2">Bill To</div>
+                    <div className="text-[12px] text-white leading-[1.6]">{customer.name}</div>
+                    {customer.company && <div className="text-[11px] text-white">{customer.company}</div>}
+                    <div className="text-[10px] text-[#64748b]">{customer.email}</div>
+                    {customer.phone && <div className="text-[10px] text-[#64748b]">{customer.phone}</div>}
+                  </div>
+                </div>
+
+                {/* Comparable value banner */}
+                {comparableValue.trim() && (
+                  <div className="mx-6 my-3 px-4 py-2 rounded bg-[#38b6ff]/10 text-center">
+                    <span className="text-[11px] font-semibold text-[#38b6ff]">{comparableValue}</span>
+                  </div>
+                )}
+
+                {/* Line items table */}
+                <div className="px-6 pb-4">
+                  {/* Header */}
+                  <div className="flex bg-[#0f172a] rounded-t px-3 py-2">
+                    <div className="flex-1 font-mono text-[8px] font-bold text-white uppercase tracking-[0.1em]">Description</div>
+                    <div className="w-12 font-mono text-[8px] font-bold text-white uppercase tracking-[0.1em] text-center">Qty</div>
+                    <div className="w-20 font-mono text-[8px] font-bold text-white uppercase tracking-[0.1em] text-right">Unit</div>
+                    <div className="w-20 font-mono text-[8px] font-bold text-white uppercase tracking-[0.1em] text-right">Amount</div>
+                  </div>
+
+                  {/* Build items */}
+                  {buildItems.length > 0 && (
+                    <>
+                      <div className="flex bg-[#f8fafc]/5 px-3 py-1.5 border-b border-white/5">
+                        <span className="font-mono text-[8px] font-bold text-[#38b6ff] uppercase tracking-[0.1em]">Build Deliverables</span>
+                      </div>
+                      {buildItems.map((item, i) => (
+                        <div
+                          key={item.id}
+                          className="flex px-3 py-1.5 border-b border-white/5"
+                          style={{ background: i % 2 === 1 ? "rgba(255,255,255,0.02)" : "transparent" }}
+                        >
+                          <div className="flex-1 text-[10px] text-[#cbd5e1] pr-2">{item.description}</div>
+                          <div className="w-12 font-mono text-[10px] text-[#cbd5e1] text-center">{item.quantity}</div>
+                          <div className="w-20 font-mono text-[10px] text-[#cbd5e1] text-right">{fmtCents(item.unit_price)}</div>
+                          <div className="w-20 font-mono text-[10px] text-white text-right">{fmtCents(item.amount)}</div>
+                        </div>
+                      ))}
+                    </>
+                  )}
+
+                  {/* Service items */}
+                  {serviceItems.length > 0 && (
+                    <>
+                      <div className="flex bg-[#f8fafc]/5 px-3 py-1.5 border-b border-white/5">
+                        <span className="font-mono text-[8px] font-bold text-[#38b6ff] uppercase tracking-[0.1em]">Ongoing Service Deliverables</span>
+                      </div>
+                      {serviceItems.map((item, i) => (
+                        <div
+                          key={item.id}
+                          className="flex px-3 py-1.5 border-b border-white/5"
+                          style={{ background: i % 2 === 1 ? "rgba(255,255,255,0.02)" : "transparent" }}
+                        >
+                          <div className="flex-1 text-[10px] text-[#cbd5e1] pr-2">{item.description}</div>
+                          <div className="w-12 font-mono text-[10px] text-[#cbd5e1] text-center">{item.quantity}</div>
+                          <div className="w-20 font-mono text-[10px] text-[#cbd5e1] text-right">{fmtCents(item.unit_price)}</div>
+                          <div className="w-20 font-mono text-[10px] text-white text-right">{fmtCents(item.amount)}</div>
+                        </div>
+                      ))}
+                    </>
+                  )}
+
+                  {/* Subtotal */}
+                  <div className="flex px-3 py-2 border-t border-white/10">
+                    <div className="flex-1 text-[10px] font-semibold text-[#94a3b8]">Subtotal</div>
+                    <div className="w-20 font-mono text-[10px] font-bold text-white text-right">{fmtCents(grandTotal)}</div>
+                  </div>
+
+                  {/* Total */}
+                  <div className="flex bg-[#0f172a] rounded-b px-3 py-2.5">
+                    <div className="flex-1 font-mono text-[11px] font-bold text-white">TOTAL</div>
+                    <div className="w-20 font-mono text-[11px] font-bold text-white text-right">{fmtCents(grandTotal)}</div>
+                  </div>
+                </div>
+
+                {/* Payment options preview */}
+                <div className="px-6 pb-4 grid grid-cols-3 gap-2">
+                  <div className="rounded-lg bg-white/[0.03] border border-white/5 p-3">
+                    <div className="font-mono text-[8px] font-bold text-[#64748b] uppercase tracking-[0.1em]">Card</div>
+                    <div className="text-[9px] text-[#94a3b8] mt-1">Stripe Secure Checkout</div>
+                  </div>
+                  <div className="rounded-lg bg-white/[0.03] border border-white/5 p-3">
+                    <div className="font-mono text-[8px] font-bold text-[#64748b] uppercase tracking-[0.1em]">ACH Transfer</div>
+                    <div className="text-[9px] text-[#14b8a6] font-bold mt-0.5">Preferred &gt;$1,000</div>
+                  </div>
+                  <div className="rounded-lg bg-white/[0.03] border border-white/5 p-3">
+                    <div className="font-mono text-[8px] font-bold text-[#64748b] uppercase tracking-[0.1em]">Venmo</div>
+                    <div className="text-[9px] text-[#94a3b8] mt-1">@XeedlyAI</div>
+                  </div>
+                </div>
+
+                {/* Terms preview */}
+                <div className="px-6 pb-4">
+                  <div className="font-mono text-[8px] font-bold text-[#64748b] uppercase tracking-[0.1em] mb-2">Terms</div>
+                  <div className="text-[9px] text-[#94a3b8] leading-[1.6]">{terms}</div>
+                </div>
+
+                {/* Partnership */}
+                <div className="px-6 py-4 border-t border-white/5 text-center">
+                  <div className="text-[10px] italic text-[#94a3b8] leading-[1.6]">
+                    We don&apos;t deliver a website and disappear. Your site is a living system — we build it, grow it, and never stop. You own the code. Always.
+                  </div>
+                </div>
               </div>
 
               {error && (
-                <div className="mt-4 text-[12px] text-[#ef4444] font-mono">
-                  {error}
-                </div>
+                <div className="mt-4 text-[12px] text-[#ef4444] font-mono">{error}</div>
               )}
 
               <div className="flex gap-3 mt-6">
+                <BackButton onClick={() => setStep(4)} label="← Edit SOW" disabled={submitting} />
                 <button
                   type="button"
-                  onClick={() => setStep(2)}
-                  disabled={submitting}
-                  className="px-5 py-3 rounded-lg text-[13px] font-semibold text-[#94a3b8] hover:text-white border border-white/10 hover:border-white/20 transition-colors"
-                >
-                  ← Back
-                </button>
-                <button
-                  type="button"
-                  onClick={submitDeal}
+                  onClick={submitInvoice}
                   disabled={submitting}
                   className="flex-1 px-5 py-3.5 rounded-lg bg-[#38b6ff] hover:bg-[#0A8FD4] disabled:opacity-60 text-[#0f172a] text-[15px] font-bold transition-all"
                 >
-                  {submitting ? "Sending payment link..." : "Send Payment Link"}
+                  {submitting ? "Generating invoice..." : "Send Invoice"}
                 </button>
               </div>
-            </motion.div>
+            </Step>
           )}
 
-          {step === 4 && result && (
-            <motion.div
-              key="s4"
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.35, ease: EASE }}
-            >
+          {/* ============================================================ */}
+          {/* RESULT                                                       */}
+          {/* ============================================================ */}
+          {step === 5 && result && (
+            <Step k="result">
               <div
                 className="rounded-xl p-6 md:p-8"
                 style={{
@@ -708,56 +870,46 @@ export function DealCloser({
                 }}
               >
                 <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-[#14b8a6]">
-                  ✓ Payment Link Sent
+                  Invoice Sent
                 </div>
                 <div className="mt-3 text-[18px] font-bold text-white">
-                  {result.productName} — {result.upfrontAmount}
+                  {result.invoice_number}
                 </div>
                 <div className="mt-1 text-[13px] text-[#94a3b8]">
-                  Sent to {customer.name}
+                  Sent to {customer.name} · {customer.email}
                 </div>
-                <div className="mt-4 space-y-1 font-mono text-[12px]">
+                <div className="mt-4 space-y-2 font-mono text-[12px]">
                   <div className="text-[#f1f5f9]">
-                    {result.delivery.email ? "✉️" : "⚠️"} {customer.email}
-                    {!result.delivery.email && (
-                      <span className="text-[#f59e0b] ml-2">
-                        email stub (Resend not configured)
-                      </span>
-                    )}
+                    {result.email_sent ? "✓" : "⚠"} Email{" "}
+                    {result.email_sent ? "delivered" : "stub (Resend not configured)"}
                   </div>
-                  {customer.phone && (
-                    <div className="text-[#f1f5f9]">
-                      {result.delivery.sms ? "📱" : "⚠️"} {customer.phone}
-                      {!result.delivery.sms && (
-                        <span className="text-[#f59e0b] ml-2">
-                          SMS stub (Twilio not configured)
-                        </span>
-                      )}
+                  {result.pdf_url && (
+                    <div>
+                      <a
+                        href={result.pdf_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#38b6ff] hover:underline"
+                      >
+                        View PDF →
+                      </a>
+                    </div>
+                  )}
+                  {result.stripe_invoice_url && (
+                    <div>
+                      <a
+                        href={result.stripe_invoice_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#38b6ff] hover:underline"
+                      >
+                        Stripe Invoice →
+                      </a>
                     </div>
                   )}
                 </div>
-
-                {product?.structure === "split" && (
-                  <div className="mt-5 pt-4 border-t border-white/10 space-y-1 text-[12px] text-[#cbd5e1]">
-                    <div>
-                      Go-live invoice:{" "}
-                      <span className="font-mono text-white">
-                        {goliveDate || "unscheduled (trigger manually later)"}
-                      </span>
-                    </div>
-                    <div>
-                      Maintenance:{" "}
-                      <span className="font-mono text-white">
-                        {maintenanceDate
-                          ? `starts ${maintenanceDate}`
-                          : "not scheduled"}
-                      </span>
-                    </div>
-                  </div>
-                )}
-
-                <div className="mt-5 font-mono text-[10px] text-[#64748b]">
-                  Deal ID: {result.deal.id}
+                <div className="mt-4 font-mono text-[10px] text-[#64748b]">
+                  Deal ID: {result.deal_id}
                 </div>
               </div>
 
@@ -767,7 +919,7 @@ export function DealCloser({
                   onClick={reset}
                   className="flex-1 px-5 py-3 rounded-lg bg-[#38b6ff] hover:bg-[#0A8FD4] text-[#0f172a] text-[14px] font-semibold transition-colors"
                 >
-                  Close another deal
+                  Create another invoice
                 </button>
                 <Link
                   href="/admin/dashboard"
@@ -776,7 +928,7 @@ export function DealCloser({
                   View dashboard →
                 </Link>
               </div>
-            </motion.div>
+            </Step>
           )}
         </AnimatePresence>
       </div>
@@ -785,28 +937,47 @@ export function DealCloser({
 }
 
 // ---------------------------------------------------------------------------
-// Presentational helpers
+// Helpers
 // ---------------------------------------------------------------------------
 
-function TopBar({
-  step,
-  onReset,
-}: {
-  step: number;
-  onReset: () => void;
-}) {
+function fmtCents(n: number): string {
+  if (!n && n !== 0) return "—";
+  return `$${(n / 100).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+}
+
+// ---------------------------------------------------------------------------
+// Shared presentational components
+// ---------------------------------------------------------------------------
+
+function Step({ k, children }: { k: string; children: React.ReactNode }) {
+  return (
+    <motion.div
+      key={k}
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25, ease: EASE }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function TopBar({ step, onReset }: { step: number; onReset: () => void }) {
+  async function logout() {
+    await fetch("/api/admin/logout", { method: "POST" });
+    window.location.href = "/admin/login";
+  }
   return (
     <div className="sticky top-0 z-10 bg-[#0f172a]/90 backdrop-blur border-b border-white/5">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-[#38b6ff]">
-            XeedlyAI · Close
+            XeedlyAI · Invoice
           </span>
-          <span className="font-mono text-[10px] text-[#64748b]">
-            step {step} / 4
-          </span>
+          <span className="font-mono text-[10px] text-[#64748b]">step {step} / 5</span>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <button
             type="button"
             onClick={onReset}
@@ -820,6 +991,13 @@ function TopBar({
           >
             dashboard →
           </Link>
+          <button
+            type="button"
+            onClick={logout}
+            className="font-mono text-[10px] text-[#64748b] hover:text-[#f1f5f9] transition-colors"
+          >
+            sign out
+          </button>
         </div>
       </div>
     </div>
@@ -832,49 +1010,52 @@ function SectionLabel({ n, label }: { n: number; label: string }) {
       <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#38b6ff]/10 font-mono text-[11px] font-bold text-[#38b6ff]">
         {n}
       </span>
-      <h2 className="text-[15px] font-semibold text-white tracking-tight">
-        {label}
-      </h2>
+      <h2 className="text-[15px] font-semibold text-white tracking-tight">{label}</h2>
     </div>
   );
 }
 
-function ProductGrid({
-  selected,
-  onSelect,
+function StepButton({
+  onClick,
+  disabled,
+  label,
+  flex,
 }: {
-  selected: Product | null;
-  onSelect: (p: Product) => void;
+  onClick: () => void;
+  disabled?: boolean;
+  label: string;
+  flex?: boolean;
 }) {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-      {PRODUCTS.map((p) => {
-        const isActive = selected?.id === p.id;
-        return (
-          <button
-            key={p.id}
-            type="button"
-            onClick={() => onSelect(p)}
-            className="relative rounded-xl p-4 text-left transition-all"
-            style={{
-              background: isActive ? p.accentTint : "rgba(255,255,255,0.03)",
-              borderLeft: `3px solid ${p.accent}`,
-              border: `1px solid ${
-                isActive ? p.accent : "rgba(255,255,255,0.08)"
-              }`,
-              borderLeftWidth: 3,
-            }}
-          >
-            <div className="font-semibold text-white text-[14px] leading-tight">
-              {p.name}
-            </div>
-            <div className="mt-1.5 font-mono text-[10.5px] text-[#94a3b8] leading-[1.45]">
-              {p.sub}
-            </div>
-          </button>
-        );
-      })}
-    </div>
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      className={`${flex ? "flex-1" : "w-full"} mt-6 px-5 py-3 rounded-lg bg-[#38b6ff] hover:bg-[#0A8FD4] disabled:opacity-40 text-[#0f172a] text-[14px] font-semibold transition-all`}
+    >
+      {label}
+    </button>
+  );
+}
+
+function BackButton({
+  onClick,
+  label = "← Back",
+  disabled,
+}: {
+  onClick: () => void;
+  label?: string;
+  disabled?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      className="px-5 py-3 rounded-lg text-[13px] font-semibold text-[#94a3b8] hover:text-white border border-white/10 hover:border-white/20 transition-colors"
+    >
+      {label}
+    </button>
   );
 }
 
@@ -927,11 +1108,13 @@ function TextareaField({
   value,
   onChange,
   placeholder,
+  rows = 3,
 }: {
   label: string;
   value: string;
   onChange: (v: string) => void;
   placeholder?: string;
+  rows?: number;
 }) {
   return (
     <label className="block">
@@ -942,67 +1125,10 @@ function TextareaField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        rows={3}
+        rows={rows}
         className="w-full px-3 py-2.5 text-[14px] text-white bg-white/[0.04] border border-white/10 rounded-lg focus:outline-none focus:border-[#38b6ff]/50 focus:bg-white/[0.06] transition-colors placeholder:text-[#475569] resize-none"
       />
     </label>
-  );
-}
-
-function RowLabel({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex items-center justify-between py-1.5">
-      <span className="text-[12px] text-[#94a3b8]">{label}</span>
-      <span className="font-mono text-[13px] font-semibold text-white tabular-nums">
-        {value}
-      </span>
-    </div>
-  );
-}
-
-function SummaryRow({
-  label,
-  value,
-  mono,
-}: {
-  label: string;
-  value: string;
-  mono?: boolean;
-}) {
-  return (
-    <div className="flex items-start justify-between gap-3">
-      <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#64748b]">
-        {label}
-      </span>
-      <span
-        className={`text-[13px] text-white text-right ${
-          mono ? "font-mono" : ""
-        }`}
-      >
-        {value}
-      </span>
-    </div>
-  );
-}
-
-function StepButton({
-  onClick,
-  disabled,
-  label,
-}: {
-  onClick: () => void;
-  disabled?: boolean;
-  label: string;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
-      className="mt-6 w-full px-5 py-3 rounded-lg bg-[#38b6ff] hover:bg-[#0A8FD4] disabled:opacity-40 text-[#0f172a] text-[14px] font-semibold transition-all"
-    >
-      {label}
-    </button>
   );
 }
 
@@ -1032,6 +1158,84 @@ function ReturnBanner({
         {title}
       </div>
       <div className="mt-1 text-[12px] text-[#cbd5e1]">{body}</div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// SOW Section — editable line items table
+// ---------------------------------------------------------------------------
+
+function SowSection({
+  title,
+  items,
+  onUpdate,
+  onRemove,
+  onAdd,
+}: {
+  title: string;
+  items: LineItem[];
+  onUpdate: (id: string, field: keyof LineItem, value: string) => void;
+  onRemove: (id: string) => void;
+  onAdd: () => void;
+}) {
+  return (
+    <div className="mt-4">
+      <div className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-[#38b6ff] mb-2">
+        {title}
+      </div>
+      <div className="space-y-1.5">
+        {items.map((item) => (
+          <div
+            key={item.id}
+            className="flex items-start gap-2 rounded-lg bg-white/[0.03] border border-white/5 p-3"
+          >
+            <div className="flex-1 min-w-0">
+              <input
+                type="text"
+                value={item.description}
+                onChange={(e) => onUpdate(item.id, "description", e.target.value)}
+                className="w-full text-[12px] text-white bg-transparent border-none outline-none placeholder:text-[#475569]"
+                placeholder="Line item description"
+              />
+            </div>
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <input
+                type="number"
+                value={item.quantity || ""}
+                onChange={(e) => onUpdate(item.id, "quantity", e.target.value)}
+                className="w-10 text-[11px] font-mono text-[#94a3b8] bg-white/[0.04] border border-white/10 rounded px-1.5 py-1 text-center outline-none focus:border-[#38b6ff]/50"
+                placeholder="1"
+              />
+              <input
+                type="number"
+                value={item.unit_price ? (item.unit_price / 100).toString() : ""}
+                onChange={(e) => {
+                  const v = parseFloat(e.target.value);
+                  onUpdate(item.id, "unit_price", Number.isFinite(v) ? Math.round(v * 100).toString() : "0");
+                }}
+                className="w-20 text-[11px] font-mono text-[#94a3b8] bg-white/[0.04] border border-white/10 rounded px-1.5 py-1 text-right outline-none focus:border-[#38b6ff]/50"
+                placeholder="$0"
+              />
+              <button
+                type="button"
+                onClick={() => onRemove(item.id)}
+                className="text-[#ef4444]/60 hover:text-[#ef4444] text-[14px] transition-colors px-1"
+                title="Remove"
+              >
+                ×
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+      <button
+        type="button"
+        onClick={onAdd}
+        className="mt-2 font-mono text-[10px] text-[#64748b] hover:text-[#38b6ff] transition-colors"
+      >
+        + Add line item
+      </button>
     </div>
   );
 }
