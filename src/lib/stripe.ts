@@ -181,7 +181,7 @@ export async function createStripeInvoiceWithSOW(
       "Questions? Reply to this email or contact shad@xeedly.com",
     metadata: { source: "invoice_system" },
     payment_settings: {
-      payment_method_types: ["card", "us_bank_account"],
+      payment_method_types: ["card"],
     },
   });
 
