@@ -20,6 +20,7 @@ type BuildTier = {
   fixedTotal?: number; // dollars
   minTotal?: number;
   maxTotal?: number;
+  includesPlatform?: boolean; // combo deal
 };
 
 const BUILD_TIERS: BuildTier[] = [
@@ -97,6 +98,25 @@ const BUILD_TIERS: BuildTier[] = [
     accentTint: "rgba(56,182,255,0.1)",
     fixedTotal: 1000,
   },
+  {
+    id: "platform_build",
+    name: "Platform Build",
+    sub: "custom · enter amount",
+    accent: "#8b5cf6",
+    accentTint: "rgba(139,92,246,0.1)",
+    minTotal: 495,
+    maxTotal: 25000,
+  },
+  {
+    id: "website_platform_combo",
+    name: "Website + Platform",
+    sub: "custom · enter amount",
+    accent: "#f59e0b",
+    accentTint: "rgba(245,158,11,0.1)",
+    minTotal: 990,
+    maxTotal: 50000,
+    includesPlatform: true,
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -147,6 +167,33 @@ const FULL_SERVICE_BUILD_ITEMS: Omit<LineItem, "id">[] = [
   { section: "build", description: "2-week build timeline from payment receipt", quantity: 1, unit_price: 0, amount: 0 },
 ];
 
+const PLATFORM_BUILD_ITEMS: Omit<LineItem, "id">[] = [
+  { section: "build", description: "[PRELIMINARY SCOPE — Final scope defined during discovery. Items may be added, modified, or reprioritized. No reduction in overall project commitment.]", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Item intake system — cell phone photo capture with auto-upload and categorization", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "AI-powered item labeling — auto-identify, describe, and tag items from photos", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Public marketplace storefront — browsable, searchable listing of available items", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Pricing engine — automated and manual pricing based on item category and condition", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Designation workflow — route items to donate, sell, or dispose with one tap", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Donation tracking — partner organization routing, tax receipt documentation", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Payment and invoicing — Stripe-integrated checkout for purchased items", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Delivery/pickup scheduling — buyer selects pickup or requests delivery with date/time", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Order management dashboard — track items from intake through fulfillment", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Inventory lifecycle tracking — intake to listed to claimed/sold to fulfilled to closed", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Notification system — SMS and email alerts for sellers, buyers, and operations", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Admin panel — manage listings, pricing overrides, fulfillment status, and reporting", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "Mobile-optimized workflow — field crew captures items on-site from any phone", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "build", description: "6-8 week platform build timeline from first payment receipt", quantity: 1, unit_price: 0, amount: 0 },
+];
+
+const PLATFORM_ONGOING_ITEMS: Omit<LineItem, "id">[] = [
+  { section: "service", description: "Platform updates and feature iteration", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "service", description: "Marketplace performance monitoring", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "service", description: "Payment system maintenance and reconciliation", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "service", description: "Bug fixes and security patches", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "service", description: "Listing optimization and category management support", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "service", description: "Integration maintenance (Stripe, notifications, scheduling)", quantity: 1, unit_price: 0, amount: 0 },
+];
+
 const FULL_SERVICE_ONGOING_ITEMS: Omit<LineItem, "id">[] = [
   { section: "service", description: "Continuous site evolution — ongoing improvements, never static", quantity: 1, unit_price: 0, amount: 0 },
   { section: "service", description: "Review automation — AI-powered review requests and optional auto-response", quantity: 1, unit_price: 0, amount: 0 },
@@ -159,7 +206,12 @@ const FULL_SERVICE_ONGOING_ITEMS: Omit<LineItem, "id">[] = [
   { section: "service", description: "Strategic partnership — proactive opportunity and threat identification", quantity: 1, unit_price: 0, amount: 0 },
 ];
 
-function defaultTerms(serviceAmount: string): string {
+function defaultTerms(serviceAmount: string, splitPayment?: { dueNow: number; dueAtDelivery: number }): string {
+  if (splitPayment) {
+    const dueNow = `$${splitPayment.dueNow.toLocaleString("en-US")}`;
+    const dueAtDelivery = `$${splitPayment.dueAtDelivery.toLocaleString("en-US")}`;
+    return `First build payment of ${dueNow} is due upon receipt and triggers the start of your website rebuild and platform development. A second build payment of ${dueAtDelivery} is due upon platform delivery (estimated 6-8 weeks). Monthly service fee of ${serviceAmount}/mo begins 30 days from the date the first build payment is received and covers both website and platform ongoing service. A 6-month minimum commitment applies at promotional pricing, after which billing continues month-to-month with 30 days written notice to cancel. Referral credit: If a client referral signs a service agreement with XeedlyAI, the second build payment of ${dueAtDelivery} will be waived in full as a referral credit. Client owns all code and site assets upon payment in full. Payment constitutes acceptance of this scope of work.`;
+  }
   return `Build fee is due upon receipt and triggers the start of your project. Monthly service fee of ${serviceAmount}/mo begins 30 days from the date build payment is received. A 6-month minimum commitment applies at promotional pricing, after which billing continues month-to-month with 30 days written notice to cancel. Client owns all code and site assets upon payment in full. Payment constitutes acceptance of this scope of work.`;
 }
 
@@ -203,6 +255,8 @@ export function DealCloser({
   const [buildTier, setBuildTier] = useState<BuildTier | null>(null);
   const [customTotal, setCustomTotal] = useState("");
   const [fullServiceIncluded, setFullServiceIncluded] = useState(true);
+  const [splitPayment, setSplitPayment] = useState(false);
+  const [dueNowDollars, setDueNowDollars] = useState("");
 
   // Step 2
   const [serviceTier, setServiceTier] = useState<ServiceTier>(SERVICE_TIERS[0]);
@@ -242,6 +296,19 @@ export function DealCloser({
     [resolvedBuildTotal],
   );
 
+  const dueNowCents = useMemo(() => {
+    if (!splitPayment || !dueNowDollars) return buildAmountCents;
+    const n = parseFloat(dueNowDollars);
+    return Number.isFinite(n) && n > 0 ? Math.round(n * 100) : buildAmountCents;
+  }, [splitPayment, dueNowDollars, buildAmountCents]);
+
+  const dueAtDeliveryCents = useMemo(
+    () => (splitPayment ? buildAmountCents - dueNowCents : 0),
+    [splitPayment, buildAmountCents, dueNowCents],
+  );
+
+  const isPlatformDeal = buildTier?.id === "platform_build" || buildTier?.id === "website_platform_combo";
+
   // ------------------------------------------------------------------
   // Validation
   // ------------------------------------------------------------------
@@ -258,49 +325,93 @@ export function DealCloser({
     if (sowInitialized) return;
 
     const serviceDollars = `$${(serviceTier.monthlyCents / 100).toLocaleString("en-US")}`;
+    const isCombo = buildTier?.id === "website_platform_combo";
+    const isPlatformOnly = buildTier?.id === "platform_build";
 
     if (fullServiceIncluded) {
-      const buildItems = withIds(FULL_SERVICE_BUILD_ITEMS);
-      if (buildItems.length > 0) {
-        buildItems[0] = {
-          ...buildItems[0],
+      // Website build items (skip for platform-only)
+      const websiteBuildItems = isPlatformOnly ? [] : withIds(FULL_SERVICE_BUILD_ITEMS);
+      if (websiteBuildItems.length > 0) {
+        const websitePrice = isCombo ? dueNowCents : buildAmountCents;
+        websiteBuildItems[0] = {
+          ...websiteBuildItems[0],
+          unit_price: websitePrice,
+          amount: websitePrice,
+        };
+      }
+
+      // Platform build items (for platform or combo deals)
+      const platformBuildItems = (isPlatformOnly || isCombo)
+        ? withIds(PLATFORM_BUILD_ITEMS)
+        : [];
+      if (platformBuildItems.length > 0 && isCombo) {
+        // Price goes on first real item (index 1, since 0 is the disclaimer)
+        platformBuildItems[1] = {
+          ...platformBuildItems[1],
+          unit_price: dueAtDeliveryCents,
+          amount: dueAtDeliveryCents,
+        };
+      } else if (platformBuildItems.length > 1 && isPlatformOnly) {
+        platformBuildItems[1] = {
+          ...platformBuildItems[1],
           unit_price: buildAmountCents,
           amount: buildAmountCents,
         };
       }
-      const serviceItems = withIds(FULL_SERVICE_ONGOING_ITEMS);
-      if (serviceItems.length > 0) {
-        serviceItems[0] = {
-          ...serviceItems[0],
+
+      // Service items — combine website + platform ongoing for combo
+      const websiteServiceItems = isPlatformOnly ? [] : withIds(FULL_SERVICE_ONGOING_ITEMS);
+      const platformServiceItems = (isPlatformOnly || isCombo) ? withIds(PLATFORM_ONGOING_ITEMS) : [];
+      const allServiceItems = [...websiteServiceItems, ...platformServiceItems];
+      if (allServiceItems.length > 0) {
+        allServiceItems[0] = {
+          ...allServiceItems[0],
           unit_price: serviceTier.monthlyCents,
           amount: serviceTier.monthlyCents,
         };
       }
-      setLineItems([...buildItems, ...serviceItems]);
+
+      setLineItems([...websiteBuildItems, ...platformBuildItems, ...allServiceItems]);
     } else {
-      setLineItems(
-        withIds([
-          {
-            section: "build" as const,
-            description: `${buildTier?.name ?? "Build"} — website build`,
-            quantity: 1,
-            unit_price: buildAmountCents,
-            amount: buildAmountCents,
-          },
-          {
-            section: "service" as const,
-            description: `${serviceTier.label} service tier — monthly`,
-            quantity: 1,
-            unit_price: serviceTier.monthlyCents,
-            amount: serviceTier.monthlyCents,
-          },
-        ]),
-      );
+      const items: Omit<LineItem, "id">[] = [];
+      if (!isPlatformOnly) {
+        items.push({
+          section: "build" as const,
+          description: `${buildTier?.name ?? "Build"} — website build`,
+          quantity: 1,
+          unit_price: isCombo ? dueNowCents : buildAmountCents,
+          amount: isCombo ? dueNowCents : buildAmountCents,
+        });
+      }
+      if (isPlatformOnly || isCombo) {
+        items.push({
+          section: "build" as const,
+          description: "Platform build",
+          quantity: 1,
+          unit_price: isPlatformOnly ? buildAmountCents : dueAtDeliveryCents,
+          amount: isPlatformOnly ? buildAmountCents : dueAtDeliveryCents,
+        });
+      }
+      items.push({
+        section: "service" as const,
+        description: `${serviceTier.label} service tier — monthly`,
+        quantity: 1,
+        unit_price: serviceTier.monthlyCents,
+        amount: serviceTier.monthlyCents,
+      });
+      setLineItems(withIds(items));
     }
 
-    setTerms(defaultTerms(serviceDollars));
+    if (splitPayment && dueNowCents > 0 && dueAtDeliveryCents > 0) {
+      setTerms(defaultTerms(serviceDollars, {
+        dueNow: dueNowCents / 100,
+        dueAtDelivery: dueAtDeliveryCents / 100,
+      }));
+    } else {
+      setTerms(defaultTerms(serviceDollars));
+    }
     setSowInitialized(true);
-  }, [sowInitialized, fullServiceIncluded, buildAmountCents, buildTier, serviceTier]);
+  }, [sowInitialized, fullServiceIncluded, buildAmountCents, buildTier, serviceTier, splitPayment, dueNowCents, dueAtDeliveryCents]);
 
   // ------------------------------------------------------------------
   // SOW line item management
@@ -362,6 +473,7 @@ export function DealCloser({
           build_tier: buildTier.id,
           service_tier: serviceTier.key,
           build_amount: buildAmountCents,
+          due_now_amount: splitPayment ? dueNowCents : undefined,
           service_amount: serviceTier.monthlyCents,
           full_service_included: fullServiceIncluded,
           line_items: lineItems.map(({ id: _id, ...rest }) => rest),
@@ -391,6 +503,8 @@ export function DealCloser({
     setBuildTier(null);
     setCustomTotal("");
     setFullServiceIncluded(true);
+    setSplitPayment(false);
+    setDueNowDollars("");
     setServiceTier(SERVICE_TIERS[0]);
     setCustomer({ name: "", email: "", phone: "", company: "", notes: "" });
     setLineItems([]);
@@ -520,6 +634,75 @@ export function DealCloser({
                 <div className="mt-2 font-mono text-[10px] text-[#64748b] px-1">
                   Promo pricing includes our complete service stack.
                 </div>
+              </div>
+
+              {/* Split Payment Toggle */}
+              <div className="mt-4">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSplitPayment(!splitPayment);
+                    setSowInitialized(false);
+                  }}
+                  className="w-full flex items-center gap-3 rounded-lg p-4 transition-all"
+                  style={{
+                    background: splitPayment
+                      ? "rgba(245,158,11,0.12)"
+                      : "rgba(255,255,255,0.03)",
+                    border: `1px solid ${splitPayment ? "#f59e0b" : "rgba(255,255,255,0.08)"}`,
+                  }}
+                >
+                  <div
+                    className="flex-shrink-0 w-11 h-6 rounded-full relative transition-colors"
+                    style={{ background: splitPayment ? "#f59e0b" : "#334155" }}
+                  >
+                    <div
+                      className="absolute top-0.5 w-5 h-5 rounded-full bg-white transition-all"
+                      style={{ left: splitPayment ? 22 : 2 }}
+                    />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-[14px] font-bold text-white tracking-tight">
+                      SPLIT PAYMENT
+                    </div>
+                    <div className="font-mono text-[10px] text-[#94a3b8] mt-0.5">
+                      Charge a portion now, remainder due at delivery
+                    </div>
+                  </div>
+                </button>
+
+                {splitPayment && (
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-3 space-y-3">
+                    <InputField
+                      label="Amount due now"
+                      type="number"
+                      inputMode="decimal"
+                      placeholder="e.g. 495"
+                      value={dueNowDollars}
+                      onChange={(v) => {
+                        setDueNowDollars(v);
+                        setSowInitialized(false);
+                      }}
+                      prefix="$"
+                    />
+                    {resolvedBuildTotal && dueNowDollars && (
+                      <div className="rounded-lg bg-white/[0.04] border border-white/10 p-3 space-y-1">
+                        <div className="flex justify-between text-[12px]">
+                          <span className="text-[#94a3b8]">Due now</span>
+                          <span className="font-mono text-white font-semibold">${parseFloat(dueNowDollars).toLocaleString("en-US")}</span>
+                        </div>
+                        <div className="flex justify-between text-[12px]">
+                          <span className="text-[#94a3b8]">Due at delivery</span>
+                          <span className="font-mono text-white font-semibold">${(resolvedBuildTotal - parseFloat(dueNowDollars)).toLocaleString("en-US")}</span>
+                        </div>
+                        <div className="flex justify-between text-[12px] pt-1 border-t border-white/5">
+                          <span className="text-[#94a3b8] font-semibold">Total project</span>
+                          <span className="font-mono text-white font-bold">${resolvedBuildTotal.toLocaleString("en-US")}</span>
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
+                )}
               </div>
 
               <StepButton
@@ -784,15 +967,35 @@ export function DealCloser({
                     <div className="w-20 font-mono text-[10px] font-bold text-white text-right">{fmtCents(buildSubtotal)}</div>
                   </div>
 
+                  {/* Total project */}
+                  {splitPayment && (
+                    <div className="flex px-3 py-2 border-t border-white/10">
+                      <div className="flex-1 text-[10px] font-semibold text-[#94a3b8]">Total Project</div>
+                      <div className="w-20 font-mono text-[10px] font-bold text-white text-right">{fmtCents(buildSubtotal)}</div>
+                    </div>
+                  )}
+
                   {/* Total due now */}
                   <div className="flex bg-[#0f172a] rounded-b px-3 py-2.5">
-                    <div className="flex-1 font-mono text-[11px] font-bold text-white">TOTAL DUE NOW</div>
-                    <div className="w-20 font-mono text-[11px] font-bold text-white text-right">{fmtCents(buildSubtotal)}</div>
+                    <div className="flex-1 font-mono text-[11px] font-bold text-white">
+                      {splitPayment ? "DUE NOW" : "TOTAL DUE NOW"}
+                    </div>
+                    <div className="w-20 font-mono text-[11px] font-bold text-white text-right">
+                      {fmtCents(splitPayment ? dueNowCents : buildSubtotal)}
+                    </div>
                   </div>
+
+                  {/* Due at delivery */}
+                  {splitPayment && dueAtDeliveryCents > 0 && (
+                    <div className="flex px-3 py-2 border-t border-white/5">
+                      <div className="flex-1 text-[10px] text-[#f59e0b] font-semibold">Due at platform delivery</div>
+                      <div className="w-20 font-mono text-[10px] font-semibold text-[#f59e0b] text-right">{fmtCents(dueAtDeliveryCents)}</div>
+                    </div>
+                  )}
 
                   {/* Monthly service note */}
                   <div className="flex px-3 py-2.5 border-t border-white/5">
-                    <div className="flex-1 text-[10px] text-[#94a3b8]">Monthly service (begins 30 days after build payment)</div>
+                    <div className="flex-1 text-[10px] text-[#94a3b8]">Monthly service (begins 30 days after first payment)</div>
                     <div className="w-20 font-mono text-[10px] font-semibold text-[#38b6ff] text-right">{fmtCents(serviceTier.monthlyCents)}/mo</div>
                   </div>
                 </div>

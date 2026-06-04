@@ -330,6 +330,8 @@ export type InvoiceData = {
   comparableValue?: string;
   lineItems: InvoiceLineItem[];
   buildTotal: number; // cents
+  dueNow?: number; // cents — if split payment
+  dueAtDelivery?: number; // cents — remainder due later
   serviceMonthly: number; // cents
   terms: string;
   stripeInvoiceUrl: string;
@@ -462,18 +464,44 @@ function InvoiceDocument({ data }: { data: InvoiceData }) {
           </Text>
         </View>
 
+        {/* Total project (shown for split payments) */}
+        {data.dueNow && data.dueAtDelivery && (
+          <View style={s.subtotalRow}>
+            <Text style={[s.cellText, s.colDesc, { fontWeight: 600 }]}>Total Project</Text>
+            <Text style={[s.cellMono, s.colQty]} />
+            <Text style={[s.cellMono, s.colUnit]} />
+            <Text style={[s.cellMono, s.colAmt, { fontWeight: 700 }]}>{formatCents(buildSubtotal)}</Text>
+          </View>
+        )}
+
         {/* Total due now */}
         <View style={s.totalRow}>
-          <Text style={[s.totalText, s.colDesc]}>TOTAL DUE NOW</Text>
+          <Text style={[s.totalText, s.colDesc]}>
+            {data.dueNow ? "DUE NOW" : "TOTAL DUE NOW"}
+          </Text>
           <Text style={[s.totalText, s.colQty]} />
           <Text style={[s.totalText, s.colUnit]} />
-          <Text style={[s.totalText, s.colAmt]}>{formatCents(buildSubtotal)}</Text>
+          <Text style={[s.totalText, s.colAmt]}>
+            {formatCents(data.dueNow || buildSubtotal)}
+          </Text>
         </View>
+
+        {/* Due at delivery (split payment) */}
+        {data.dueAtDelivery && data.dueAtDelivery > 0 && (
+          <View style={{ flexDirection: "row", paddingVertical: 6, paddingHorizontal: 8, marginTop: 2 }}>
+            <Text style={{ fontSize: 8, color: "#f59e0b", fontWeight: 700, flex: 1 }}>
+              Due at platform delivery
+            </Text>
+            <Text style={{ fontFamily: "JetBrains Mono", fontSize: 8, fontWeight: 700, color: "#f59e0b" }}>
+              {formatCents(data.dueAtDelivery)}
+            </Text>
+          </View>
+        )}
 
         {/* Monthly service note */}
         <View style={{ flexDirection: "row", paddingVertical: 6, paddingHorizontal: 8, marginTop: 4 }}>
           <Text style={{ fontSize: 8, color: C.gray500, flex: 1 }}>
-            Monthly service (begins 30 days after build payment)
+            Monthly service (begins 30 days after first payment)
           </Text>
           <Text style={{ fontFamily: "JetBrains Mono", fontSize: 8, fontWeight: 700, color: C.accent }}>
             {formatCents(data.serviceMonthly)}/mo

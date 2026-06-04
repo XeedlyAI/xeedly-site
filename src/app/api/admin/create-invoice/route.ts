@@ -23,7 +23,8 @@ interface Body {
   };
   build_tier: string;
   service_tier: string;
-  build_amount: number; // cents
+  build_amount: number; // cents — total project build cost
+  due_now_amount?: number; // cents — if split payment, amount to charge now
   service_amount: number; // cents
   full_service_included: boolean;
   line_items: InvoiceLineItem[];
@@ -121,15 +122,19 @@ export async function POST(request: NextRequest) {
 
     // ------------------------------------------------------------------
     // 4. Create Stripe Invoice (finalized, not sent via Stripe)
+    //    If split payment, only charge the due-now portion via Stripe.
     // ------------------------------------------------------------------
-    const stripeLineItems = body.line_items
-      .filter((item) => item.section === "build" && item.amount > 0)
-      .map((item) => ({
-        description: item.description,
-        quantity: item.quantity,
-        unit_price: item.unit_price,
-        amount: item.amount,
-      }));
+    const chargeNow = body.due_now_amount ?? build_amount;
+    const stripeLineItems = body.due_now_amount
+      ? [{ description: "Build payment — due now", quantity: 1, unit_price: chargeNow, amount: chargeNow }]
+      : body.line_items
+          .filter((item) => item.section === "build" && item.amount > 0)
+          .map((item) => ({
+            description: item.description,
+            quantity: item.quantity,
+            unit_price: item.unit_price,
+            amount: item.amount,
+          }));
 
     const { stripe_invoice_id, hosted_invoice_url } =
       await createStripeInvoiceWithSOW(
@@ -165,6 +170,8 @@ export async function POST(request: NextRequest) {
       comparableValue: body.comparable_value,
       lineItems: body.line_items,
       buildTotal: build_amount,
+      dueNow: body.due_now_amount || undefined,
+      dueAtDelivery: body.due_now_amount ? (build_amount - body.due_now_amount) : undefined,
       serviceMonthly: service_amount,
       terms: body.terms,
       stripeInvoiceUrl: hosted_invoice_url,
