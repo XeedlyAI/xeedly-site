@@ -38,3 +38,19 @@ ALTER TABLE invoices ENABLE ROW LEVEL SECURITY;
 -- Storage bucket (run via Supabase dashboard or SQL):
 -- INSERT INTO storage.buckets (id, name, public) VALUES ('invoices', 'invoices', true)
 -- ON CONFLICT DO NOTHING;
+
+-- ---------------------------------------------------------------------------
+-- Migration: Add platform deal types to deals CHECK constraint
+-- ---------------------------------------------------------------------------
+ALTER TABLE deals DROP CONSTRAINT IF EXISTS deals_deal_type_check;
+ALTER TABLE deals ADD CONSTRAINT deals_deal_type_check
+  CHECK (deal_type IN (
+    'growth_maintain', 'growth_get_found', 'growth_get_chosen',
+    'digital_foundation',
+    'operational_systems',
+    'intelligence_platform',
+    'propertydocz_setup', 'propertyjobz_setup', 'property_combined',
+    'vendor_build_495', 'vendor_build_995', 'vendor_build_1495',
+    'vendor_buildonly_495', 'vendor_buildonly_995', 'vendor_buildonly_1495',
+    'platform_build', 'website_platform_combo'
+  ));
