@@ -55,14 +55,15 @@ export function buildInvoiceEmailHtml(data: InvoiceEmailData): string {
     </div>
 
     <!-- Venmo alternative -->
-    <div style="margin:20px 0;padding:14px 20px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;">
-      <div style="font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#64748b;margin-bottom:6px;">
+    <div style="margin:20px 0;padding:14px 20px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;text-align:center;">
+      <div style="font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#64748b;margin-bottom:8px;">
         Or pay via Venmo
       </div>
-      <div style="font-family:ui-monospace,Menlo,monospace;font-size:14px;color:#334155;font-weight:600;">
-        ${escapeHtml(data.venmoHandle)}
-      </div>
-      <div style="font-size:11px;color:#64748b;margin-top:4px;">Include invoice # ${escapeHtml(data.invoiceNumber)} in memo</div>
+      <a href="https://venmo.com/${escapeHtml(data.venmoHandle.replace('@', ''))}"
+         style="display:inline-block;background:#008CFF;color:#ffffff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;">
+        Pay with Venmo →
+      </a>
+      <div style="font-size:11px;color:#64748b;margin-top:8px;">Include invoice # ${escapeHtml(data.invoiceNumber)} in memo</div>
     </div>
 
     <p style="font-size:14px;line-height:1.7;color:#334155;">

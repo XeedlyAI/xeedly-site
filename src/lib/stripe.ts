@@ -170,13 +170,14 @@ export async function createStripeInvoiceWithSOW(
 ): Promise<{ stripe_invoice_id: string; hosted_invoice_url: string }> {
   const client = getStripe();
 
+  const dueDateUnix = dueDate
+    ? Math.floor(dueDate.getTime() / 1000)
+    : Math.floor(Date.now() / 1000);
+
   const invoice = await client.invoices.create({
     customer: customerId,
     collection_method: "send_invoice",
-    days_until_due: 0,
-    due_date: dueDate
-      ? Math.floor(dueDate.getTime() / 1000)
-      : undefined,
+    due_date: dueDateUnix,
     footer:
       "Questions? Reply to this email or contact shad@xeedly.com",
     metadata: { source: "invoice_system" },

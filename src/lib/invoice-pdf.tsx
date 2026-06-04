@@ -513,11 +513,15 @@ function InvoiceDocument({ data }: { data: InvoiceData }) {
           {/* Venmo */}
           <View style={[s.paymentCol, { flex: 1, alignItems: "center" as const }]}>
             <Text style={s.paymentTitle}>Venmo</Text>
-            {data.venmoQrUrl ? (
+            {data.venmoQrUrl && (
               <PdfImage src={data.venmoQrUrl} style={{ width: 70, height: 70, marginVertical: 4 }} />
-            ) : (
-              <Text style={s.paymentBody}>{data.venmoHandle}</Text>
             )}
+            <Link
+              src={`https://venmo.com/${data.venmoHandle.replace("@", "")}`}
+              style={[s.paymentLink, { fontSize: 8, marginTop: 4, textAlign: "center" as const }]}
+            >
+              Pay with Venmo →
+            </Link>
             <Text style={[s.paymentBody, { marginTop: 3, fontSize: 6.5, textAlign: "center" as const }]}>
               Include invoice # in memo
             </Text>
