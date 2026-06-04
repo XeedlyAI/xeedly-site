@@ -822,7 +822,7 @@ export function DealCloser({
                   </div>
                   <div className="rounded-lg bg-white/[0.03] border border-white/5 p-3">
                     <div className="font-mono text-[8px] font-bold text-[#64748b] uppercase tracking-[0.1em]">Venmo</div>
-                    <div className="text-[9px] text-[#94a3b8] mt-1">@XeedlyAI</div>
+                    <div className="text-[9px] text-[#94a3b8] mt-1">@xeedly</div>
                   </div>
                 </div>
 

@@ -168,7 +168,7 @@ export async function POST(request: NextRequest) {
       serviceMonthly: service_amount,
       terms: body.terms,
       stripeInvoiceUrl: hosted_invoice_url,
-      venmoHandle: process.env.VENMO_HANDLE || "@XeedlyAI",
+      venmoHandle: process.env.VENMO_HANDLE || "@xeedly",
       venmoQrUrl: process.env.VENMO_QR_URL || undefined,
     });
 
@@ -225,7 +225,7 @@ export async function POST(request: NextRequest) {
       buildAmount: build_amount,
       serviceAmount: service_amount,
       comparableValue: body.comparable_value,
-      venmoHandle: process.env.VENMO_HANDLE || "@XeedlyAI",
+      venmoHandle: process.env.VENMO_HANDLE || "@xeedly",
     });
 
     const emailSent = await sendInvoiceEmail(
