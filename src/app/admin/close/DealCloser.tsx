@@ -142,7 +142,7 @@ const SERVICE_TIERS: ServiceTier[] = [
 
 type LineItem = {
   id: string;
-  section: "build" | "service";
+  section: "build" | "platform" | "service";
   description: string;
   quantity: number;
   unit_price: number; // cents
@@ -168,21 +168,21 @@ const FULL_SERVICE_BUILD_ITEMS: Omit<LineItem, "id">[] = [
 ];
 
 const PLATFORM_BUILD_ITEMS: Omit<LineItem, "id">[] = [
-  { section: "build", description: "[PRELIMINARY SCOPE — Final scope defined during discovery. Items may be added, modified, or reprioritized. No reduction in overall project commitment.]", quantity: 1, unit_price: 0, amount: 0 },
-  { section: "build", description: "Item intake system — cell phone photo capture with auto-upload and categorization", quantity: 1, unit_price: 0, amount: 0 },
-  { section: "build", description: "AI-powered item labeling — auto-identify, describe, and tag items from photos", quantity: 1, unit_price: 0, amount: 0 },
-  { section: "build", description: "Public marketplace storefront — browsable, searchable listing of available items", quantity: 1, unit_price: 0, amount: 0 },
-  { section: "build", description: "Pricing engine — automated and manual pricing based on item category and condition", quantity: 1, unit_price: 0, amount: 0 },
-  { section: "build", description: "Designation workflow — route items to donate, sell, or dispose with one tap", quantity: 1, unit_price: 0, amount: 0 },
-  { section: "build", description: "Donation tracking — partner organization routing, tax receipt documentation", quantity: 1, unit_price: 0, amount: 0 },
-  { section: "build", description: "Payment and invoicing — Stripe-integrated checkout for purchased items", quantity: 1, unit_price: 0, amount: 0 },
-  { section: "build", description: "Delivery/pickup scheduling — buyer selects pickup or requests delivery with date/time", quantity: 1, unit_price: 0, amount: 0 },
-  { section: "build", description: "Order management dashboard — track items from intake through fulfillment", quantity: 1, unit_price: 0, amount: 0 },
-  { section: "build", description: "Inventory lifecycle tracking — intake to listed to claimed/sold to fulfilled to closed", quantity: 1, unit_price: 0, amount: 0 },
-  { section: "build", description: "Notification system — SMS and email alerts for sellers, buyers, and operations", quantity: 1, unit_price: 0, amount: 0 },
-  { section: "build", description: "Admin panel — manage listings, pricing overrides, fulfillment status, and reporting", quantity: 1, unit_price: 0, amount: 0 },
-  { section: "build", description: "Mobile-optimized workflow — field crew captures items on-site from any phone", quantity: 1, unit_price: 0, amount: 0 },
-  { section: "build", description: "6-8 week platform build timeline from first payment receipt", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "platform", description: "[PRELIMINARY SCOPE — Final scope defined during discovery. Items may be added, modified, or reprioritized. No reduction in overall project commitment.]", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "platform", description: "Item intake system — cell phone photo capture with auto-upload and categorization", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "platform", description: "AI-powered item labeling — auto-identify, describe, and tag items from photos", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "platform", description: "Public marketplace storefront — browsable, searchable listing of available items", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "platform", description: "Pricing engine — automated and manual pricing based on item category and condition", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "platform", description: "Designation workflow — route items to donate, sell, or dispose with one tap", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "platform", description: "Donation tracking — partner organization routing, tax receipt documentation", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "platform", description: "Payment and invoicing — Stripe-integrated checkout for purchased items", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "platform", description: "Delivery/pickup scheduling — buyer selects pickup or requests delivery with date/time", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "platform", description: "Order management dashboard — track items from intake through fulfillment", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "platform", description: "Inventory lifecycle tracking — intake to listed to claimed/sold to fulfilled to closed", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "platform", description: "Notification system — SMS and email alerts for sellers, buyers, and operations", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "platform", description: "Admin panel — manage listings, pricing overrides, fulfillment status, and reporting", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "platform", description: "Mobile-optimized workflow — field crew captures items on-site from any phone", quantity: 1, unit_price: 0, amount: 0 },
+  { section: "platform", description: "6-8 week platform build timeline from first payment receipt", quantity: 1, unit_price: 0, amount: 0 },
 ];
 
 const PLATFORM_ONGOING_ITEMS: Omit<LineItem, "id">[] = [
@@ -437,7 +437,7 @@ export function DealCloser({
     setLineItems((prev) => prev.filter((i) => i.id !== id));
   }
 
-  function addLineItem(section: "build" | "service") {
+  function addLineItem(section: "build" | "platform" | "service") {
     setLineItems((prev) => [
       ...prev,
       {
@@ -519,9 +519,9 @@ export function DealCloser({
   // Computed for invoice preview
   // ------------------------------------------------------------------
   const buildItems = lineItems.filter((i) => i.section === "build");
+  const platformItems = lineItems.filter((i) => i.section === "platform");
   const serviceItems = lineItems.filter((i) => i.section === "service");
-  const buildSubtotal = buildItems.reduce((s, i) => s + i.amount, 0);
-  const serviceSubtotal = serviceItems.reduce((s, i) => s + i.amount, 0);
+  const buildSubtotal = buildItems.reduce((s, i) => s + i.amount, 0) + platformItems.reduce((s, i) => s + i.amount, 0);
 
   // ------------------------------------------------------------------
   // Render
@@ -824,18 +824,31 @@ export function DealCloser({
             <Step k="s4">
               <SectionLabel n={4} label="Scope of Work" />
 
-              {/* Build items */}
-              <SowSection
-                title="Build Deliverables"
-                items={buildItems}
-                onUpdate={updateLineItem}
-                onRemove={removeLineItem}
-                onAdd={() => addLineItem("build")}
-              />
+              {/* Site build items */}
+              {buildItems.length > 0 && (
+                <SowSection
+                  title="Site Build Deliverables"
+                  items={buildItems}
+                  onUpdate={updateLineItem}
+                  onRemove={removeLineItem}
+                  onAdd={() => addLineItem("build")}
+                />
+              )}
+
+              {/* Platform build items */}
+              {platformItems.length > 0 && (
+                <SowSection
+                  title="Platform Build Deliverables"
+                  items={platformItems}
+                  onUpdate={updateLineItem}
+                  onRemove={removeLineItem}
+                  onAdd={() => addLineItem("platform")}
+                />
+              )}
 
               {/* Service items */}
               <SowSection
-                title="Ongoing Service Deliverables"
+                title="Ongoing Service Deliverables — Site + Platform"
                 items={serviceItems}
                 onUpdate={updateLineItem}
                 onRemove={removeLineItem}
@@ -940,13 +953,36 @@ export function DealCloser({
                     <div className="w-20 font-mono text-[8px] font-bold text-white uppercase tracking-[0.1em] text-right">Amount</div>
                   </div>
 
-                  {/* Build items */}
+                  {/* Site build items */}
                   {buildItems.length > 0 && (
                     <>
                       <div className="flex bg-[#f8fafc]/5 px-3 py-1.5 border-b border-white/5">
-                        <span className="font-mono text-[8px] font-bold text-[#38b6ff] uppercase tracking-[0.1em]">Build Deliverables</span>
+                        <span className="font-mono text-[8px] font-bold text-[#38b6ff] uppercase tracking-[0.1em]">
+                          {platformItems.length > 0 ? "Site Build Deliverables" : "Build Deliverables"}
+                        </span>
                       </div>
                       {buildItems.map((item, i) => (
+                        <div
+                          key={item.id}
+                          className="flex px-3 py-1.5 border-b border-white/5"
+                          style={{ background: i % 2 === 1 ? "rgba(255,255,255,0.02)" : "transparent" }}
+                        >
+                          <div className="flex-1 text-[10px] text-[#cbd5e1] pr-2">{item.description}</div>
+                          <div className="w-12 font-mono text-[10px] text-[#cbd5e1] text-center">{item.quantity}</div>
+                          <div className="w-20 font-mono text-[10px] text-[#cbd5e1] text-right">{fmtCents(item.unit_price)}</div>
+                          <div className="w-20 font-mono text-[10px] text-white text-right">{fmtCents(item.amount)}</div>
+                        </div>
+                      ))}
+                    </>
+                  )}
+
+                  {/* Platform build items */}
+                  {platformItems.length > 0 && (
+                    <>
+                      <div className="flex bg-[#f8fafc]/5 px-3 py-1.5 border-b border-white/5">
+                        <span className="font-mono text-[8px] font-bold text-[#8b5cf6] uppercase tracking-[0.1em]">Platform Build Deliverables</span>
+                      </div>
+                      {platformItems.map((item, i) => (
                         <div
                           key={item.id}
                           className="flex px-3 py-1.5 border-b border-white/5"
@@ -1004,7 +1040,7 @@ export function DealCloser({
                 {serviceItems.length > 0 && (
                   <div className="px-6 pb-4">
                     <div className="font-mono text-[8px] font-bold text-[#38b6ff] uppercase tracking-[0.1em] mb-2">
-                      Ongoing Service Deliverables — included at {serviceTier.price}
+                      Ongoing Service Deliverables{platformItems.length > 0 ? " — Site + Platform" : ""} — included at {serviceTier.price}
                     </div>
                     <div className="space-y-1">
                       {serviceItems.map((item) => (

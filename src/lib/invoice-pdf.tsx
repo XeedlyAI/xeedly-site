@@ -305,7 +305,7 @@ const s = StyleSheet.create({
 // ---------------------------------------------------------------------------
 
 export type InvoiceLineItem = {
-  section: "build" | "service";
+  section: "build" | "platform" | "service";
   description: string;
   quantity: number;
   unit_price: number; // cents
@@ -354,8 +354,10 @@ function formatCents(cents: number): string {
 
 function InvoiceDocument({ data }: { data: InvoiceData }) {
   const buildItems = data.lineItems.filter((i) => i.section === "build");
+  const platformItems = data.lineItems.filter((i) => i.section === "platform");
   const serviceItems = data.lineItems.filter((i) => i.section === "service");
-  const buildSubtotal = buildItems.reduce((s, i) => s + i.amount, 0);
+  const buildSubtotal = buildItems.reduce((s, i) => s + i.amount, 0) + platformItems.reduce((s, i) => s + i.amount, 0);
+  const hasPlatform = platformItems.length > 0;
 
   let rowIndex = 0;
 
@@ -421,17 +423,52 @@ function InvoiceDocument({ data }: { data: InvoiceData }) {
           <Text style={[s.tableHeaderText, s.colAmt]}>Amount</Text>
         </View>
 
-        {/* Build section */}
+        {/* Site build section */}
         {buildItems.length > 0 && (
           <>
             <View style={s.sectionRow}>
-              <Text style={s.sectionRowText}>Build Deliverables</Text>
+              <Text style={s.sectionRowText}>
+                {hasPlatform ? "Site Build Deliverables" : "Build Deliverables"}
+              </Text>
             </View>
             {buildItems.map((item, i) => {
               const alt = rowIndex++ % 2 === 1;
               return (
                 <View
                   key={`b-${i}`}
+                  style={alt ? [s.itemRow, s.itemRowAlt] : s.itemRow}
+                >
+                  <Text style={[s.cellText, s.colDesc]}>
+                    {item.description}
+                  </Text>
+                  <Text style={[s.cellMono, s.colQty]}>
+                    {item.quantity}
+                  </Text>
+                  <Text style={[s.cellMono, s.colUnit]}>
+                    {formatCents(item.unit_price)}
+                  </Text>
+                  <Text style={[s.cellMono, s.colAmt]}>
+                    {formatCents(item.amount)}
+                  </Text>
+                </View>
+              );
+            })}
+          </>
+        )}
+
+        {/* Platform build section */}
+        {platformItems.length > 0 && (
+          <>
+            <View style={s.sectionRow}>
+              <Text style={[s.sectionRowText, { color: "#8b5cf6" }]}>
+                Platform Build Deliverables
+              </Text>
+            </View>
+            {platformItems.map((item, i) => {
+              const alt = rowIndex++ % 2 === 1;
+              return (
+                <View
+                  key={`p-${i}`}
                   style={alt ? [s.itemRow, s.itemRowAlt] : s.itemRow}
                 >
                   <Text style={[s.cellText, s.colDesc]}>
@@ -512,7 +549,7 @@ function InvoiceDocument({ data }: { data: InvoiceData }) {
         {serviceItems.length > 0 && (
           <View style={{ marginTop: 10, paddingHorizontal: 8 }}>
             <Text style={[s.sectionRowText, { marginBottom: 6 }]}>
-              Ongoing Service Deliverables — Included
+              Ongoing Service Deliverables{hasPlatform ? " — Site + Platform" : ""} — Included
             </Text>
             {serviceItems.map((item, i) => (
               <View key={`s-${i}`} style={{ flexDirection: "row", marginBottom: 3, paddingLeft: 4 }}>
