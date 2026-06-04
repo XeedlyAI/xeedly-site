@@ -173,7 +173,7 @@ export async function createStripeInvoiceWithSOW(
   const invoice = await client.invoices.create({
     customer: customerId,
     collection_method: "send_invoice",
-    days_until_due: dueDate ? undefined : 7,
+    days_until_due: dueDate ? undefined : 0,
     due_date: dueDate
       ? Math.floor(dueDate.getTime() / 1000)
       : undefined,
