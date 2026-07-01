@@ -5,11 +5,11 @@
 2. Confirm clean git state: `git status`
 3. Read this file (CLAUDE.md)
 4. **Check the Obsidian vault for context:**
-   - Read the relevant project note from `C:\Users\shadd\Documents\xeedly-internal-tools\projects\`
-   - Read the most recent session note from `C:\Users\shadd\Documents\xeedly-internal-tools\sessions\` (pick up open threads)
+   - Read the relevant project note from `..\xeedly-internal-tools\projects\`
+   - Read the most recent session note from `..\xeedly-internal-tools\sessions\` (pick up open threads)
    - Skim any knowledge notes relevant to today's task
 5. Identify the project type from the brief: Website or Landing Page
-6. Read the skill files — canonical copies live in the XeedlyAI library at `C:\Users\shadd\Documents\standards` (this repo no longer carries local copies):
+6. Read the skill files — canonical copies live in the XeedlyAI library at `..\standards` (this repo no longer carries local copies):
    - ALWAYS read (library): `skills\shared\content-voice\SKILL.md`, `skills\shared\webdev\SKILL.md`, `skills\site\site-design\SKILL.md`, `skills\shared\deploy\SKILL.md`, `standards\SIGNATURE-COMPONENTS.md`
    - If Website: ALSO read `skills\site\seo-architecture\SKILL.md`
    - If Landing Page: ALSO read `skills\site\landing-page\SKILL.md`
@@ -80,7 +80,7 @@
 - [ ] Lighthouse: 90+ on Performance, Accessibility, SEO
 
 ## End of Session (Obsidian Vault Update)
-After the final commit, update the Obsidian vault at `C:\Users\shadd\Documents\xeedly-internal-tools`:
+After the final commit, update the Obsidian vault at `..\xeedly-internal-tools`:
 1. Write a session summary to `sessions/YYYY-MM-DD.md` using the Session template format
 2. Update the relevant project note in `projects/` with current state and open threads
 3. If a significant architecture or strategy decision was made, create a decision note in `decisions/`
