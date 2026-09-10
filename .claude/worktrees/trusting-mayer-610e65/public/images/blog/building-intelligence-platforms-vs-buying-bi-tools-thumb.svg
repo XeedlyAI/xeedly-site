@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="t7-title">
+  <title id="t7-title">Build vs Buy Intelligence Platforms — thumbnail</title>
+  <defs>
+    <pattern id="t7-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="0.5" opacity="0.6"/>
+    </pattern>
+  </defs>
+
+  <!-- Off-white -->
+  <rect width="1200" height="675" fill="#FAFAFA"/>
+  <rect width="1200" height="675" fill="url(#t7-grid)"/>
+
+  <g transform="translate(80, 80)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#0A8FD4" font-weight="700" letter-spacing="0.15em">PRINCIPAL-INTELLIGENCE · #007</text>
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#64748b" letter-spacing="0.1em" y="22">HIGH-INTENT COMMERCIAL · 8 MIN</text>
+  </g>
+
+  <!-- DOMINANT ELEMENT: Cost comparison bar chart, 24mo total -->
+  <g transform="translate(80, 180)">
+    <rect x="2" y="2" width="560" height="400" rx="10" fill="#0f172a" opacity="0.04"/>
+    <rect width="560" height="400" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <rect width="5" height="400" fill="#38b6ff"/>
+
+    <g transform="translate(28, 32)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#0A8FD4" font-weight="700" letter-spacing="0.12em">24-MONTH TOTAL COST · 25 UNITS</text>
+      <text font-family="Inter, sans-serif" font-size="18" fill="#0f172a" font-weight="700" y="28">Build vs Buy</text>
+    </g>
+
+    <line x1="28" y1="92" x2="532" y2="92" stroke="#e2e8f0" stroke-width="1"/>
+
+    <!-- BUY bar (large) -->
+    <g transform="translate(28, 112)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#ef4444" font-weight="700" letter-spacing="0.08em">BUY · ENTERPRISE BI</text>
+      <g transform="translate(0, 16)">
+        <rect width="500" height="36" rx="4" fill="#fee2e2"/>
+        <rect width="500" height="36" rx="4" fill="#ef4444" opacity="0.7"/>
+        <text x="490" y="23" text-anchor="end" font-family="Inter, sans-serif" font-size="14" fill="#ffffff" font-weight="700">$135K–$410K</text>
+      </g>
+      <text x="0" y="68" font-family="Inter, sans-serif" font-size="11" fill="#64748b">Setup + 24mo licensing + internal maintenance</text>
+    </g>
+
+    <!-- BUILD bar (small) -->
+    <g transform="translate(28, 220)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#10b981" font-weight="700" letter-spacing="0.08em">BUILD · CUSTOM PLATFORM</text>
+      <g transform="translate(0, 16)">
+        <rect width="500" height="36" rx="4" fill="#dcfce7"/>
+        <rect width="80" height="36" rx="4" fill="#10b981"/>
+        <text x="490" y="23" text-anchor="end" font-family="Inter, sans-serif" font-size="14" fill="#10b981" font-weight="700">$16K–$49K</text>
+      </g>
+      <text x="0" y="68" font-family="Inter, sans-serif" font-size="11" fill="#64748b">One-time build + managed intelligence</text>
+    </g>
+
+    <line x1="28" y1="332" x2="532" y2="332" stroke="#e2e8f0" stroke-width="1"/>
+
+    <g transform="translate(28, 354)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#10b981" font-weight="700" letter-spacing="0.06em">4–10× LESS EXPENSIVE</text>
+    </g>
+  </g>
+
+  <!-- Right side title -->
+  <g transform="translate(700, 220)">
+    <text font-family="Inter, sans-serif" fill="#0f172a" font-weight="800" letter-spacing="-0.02em">
+      <tspan x="0" y="0" font-size="40">Build vs</tspan>
+      <tspan x="0" y="48" font-size="40" fill="#38b6ff">Buy BI?</tspan>
+    </text>
+    <text font-family="Inter, sans-serif" font-size="14" fill="#475569" letter-spacing="0" y="88">
+      <tspan x="0">The math has changed.</tspan>
+      <tspan x="0" y="108">Here&apos;s what it looks like</tspan>
+      <tspan x="0" y="128">at 25 units.</tspan>
+    </text>
+  </g>
+
+  <g transform="translate(80, 620)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.12em">XEEDLY · THE BRIEFINGS</text>
+  </g>
+  <g transform="translate(1120, 620)" text-anchor="end">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.08em">BRIEFING-007 · LIVE</text>
+  </g>
+</svg>

@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="b12-title">
+  <title id="b12-title">Five leak points in the home services quote-to-cash funnel</title>
+  <defs><pattern id="b12-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/></pattern></defs>
+  <rect width="1200" height="675" fill="#0f172a"/><rect width="1200" height="675" fill="url(#b12-grid)"/>
+
+  <g transform="translate(80, 70)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">QUOTE-TO-CASH FUNNEL · WHERE REVENUE LEAKS</text>
+    <text font-family="Inter, sans-serif" font-size="22" fill="#f1f5f9" font-weight="700" y="32">5 stages · 5 leak points · ~50% cumulative loss</text>
+  </g>
+
+  <!-- Funnel visualization: tapered stages with leak arrows -->
+  <g transform="translate(140, 200)">
+    <!-- Stage labels at top -->
+    <g font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.1em" font-weight="700">
+      <text x="100" y="0" text-anchor="middle">QUOTE SENT</text>
+      <text x="280" y="0" text-anchor="middle">FOLLOW-UP</text>
+      <text x="460" y="0" text-anchor="middle">SCHEDULED</text>
+      <text x="640" y="0" text-anchor="middle">INVOICED</text>
+      <text x="820" y="0" text-anchor="middle">PAID</text>
+    </g>
+
+    <!-- Funnel stages (decreasing width) -->
+    <g transform="translate(0, 30)">
+      <!-- Stage 1: 200 wide -->
+      <rect x="0" y="0" width="200" height="80" rx="6" fill="#38b6ff" opacity="0.15" stroke="#38b6ff"/>
+      <text x="100" y="36" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" fill="#f1f5f9" font-weight="800">100%</text>
+      <text x="100" y="58" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8">BASELINE</text>
+
+      <!-- Leak 1 arrow -->
+      <g transform="translate(200, 40)">
+        <line x1="0" y1="0" x2="40" y2="0" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="60" y="-12" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#ef4444" font-weight="700">LEAK 1</text>
+        <text x="60" y="2" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#ef4444">LATE</text>
+        <text x="60" y="14" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#ef4444">−40%</text>
+      </g>
+
+      <!-- Stage 2: 60% -->
+      <rect x="180" y="8" width="180" height="64" rx="6" fill="#38b6ff" opacity="0.2" stroke="#38b6ff"/>
+      <text x="270" y="36" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" fill="#f1f5f9" font-weight="800">60%</text>
+      <text x="270" y="58" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8">REPLIED</text>
+
+      <!-- Leak 2 -->
+      <g transform="translate(360, 40)">
+        <line x1="0" y1="0" x2="40" y2="0" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="60" y="-12" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#f59e0b" font-weight="700">LEAK 2</text>
+        <text x="60" y="2" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#f59e0b">LOST</text>
+        <text x="60" y="14" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#f59e0b">−25%</text>
+      </g>
+
+      <!-- Stage 3: 45% -->
+      <rect x="370" y="16" width="160" height="48" rx="6" fill="#38b6ff" opacity="0.25" stroke="#38b6ff"/>
+      <text x="450" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" fill="#f1f5f9" font-weight="800">45%</text>
+      <text x="450" y="58" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8">BOOKED</text>
+
+      <!-- Leak 3 -->
+      <g transform="translate(530, 40)">
+        <line x1="0" y1="0" x2="40" y2="0" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="60" y="-12" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#f59e0b" font-weight="700">LEAK 3</text>
+        <text x="60" y="2" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#f59e0b">SLOW</text>
+        <text x="60" y="14" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#f59e0b">−15%</text>
+      </g>
+
+      <!-- Stage 4: 38% -->
+      <rect x="540" y="20" width="144" height="40" rx="6" fill="#38b6ff" opacity="0.3" stroke="#38b6ff"/>
+      <text x="612" y="42" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#f1f5f9" font-weight="800">38%</text>
+      <text x="612" y="58" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">BILLED</text>
+
+      <!-- Leak 4 -->
+      <g transform="translate(684, 40)">
+        <line x1="0" y1="0" x2="40" y2="0" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="60" y="-12" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#f59e0b" font-weight="700">LEAK 4</text>
+        <text x="60" y="2" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#f59e0b">DELAY</text>
+        <text x="60" y="14" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#f59e0b">−10%</text>
+      </g>
+
+      <!-- Stage 5: 34% (final paid) -->
+      <rect x="700" y="24" width="120" height="32" rx="6" fill="#10b981" opacity="0.4" stroke="#10b981"/>
+      <text x="760" y="44" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#10b981" font-weight="800">34%</text>
+    </g>
+
+    <!-- Summary band below funnel -->
+    <g transform="translate(0, 160)">
+      <rect width="820" height="50" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="1.5"/>
+      <text x="20" y="20" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#ef4444" font-weight="700" letter-spacing="0.1em">CUMULATIVE LOSS</text>
+      <text x="20" y="40" font-family="Inter, sans-serif" font-size="14" fill="#f1f5f9" font-weight="700">~66% of initial leads lost between quote and paid invoice</text>
+    </g>
+
+    <!-- The fix band -->
+    <g transform="translate(0, 230)">
+      <rect width="820" height="50" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+      <text x="20" y="20" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#10b981" font-weight="700" letter-spacing="0.1em">THE FIX · CONNECTED PIPELINE</text>
+      <text x="20" y="40" font-family="Inter, sans-serif" font-size="14" fill="#f1f5f9" font-weight="700">Automated handoffs + signal alerts at each stage transition</text>
+    </g>
+
+    <!-- Result -->
+    <g transform="translate(0, 300)">
+      <rect width="820" height="60" rx="8" fill="#10b981"/>
+      <text x="20" y="22" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#ffffff" font-weight="700" letter-spacing="0.1em">RESULT · ALL 5 LEAKS PLUGGED</text>
+      <text x="20" y="46" font-family="Inter, sans-serif" font-size="16" fill="#ffffff" font-weight="700">8–15% annual revenue lift from same operational footprint</text>
+    </g>
+  </g>
+
+  <g transform="translate(80, 638)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.12em">FIGURE 1 · QUOTE-TO-CASH LEAK POINTS</text></g>
+</svg>

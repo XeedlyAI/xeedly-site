@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img"><title>Cross-system correlation architecture</title>
+<defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/></pattern></defs>
+<rect width="1200" height="675" fill="#0f172a"/><rect width="1200" height="675" fill="url(#g)"/>
+<g transform="translate(80, 70)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">CROSS-SYSTEM CORRELATION ARCHITECTURE</text>
+  <text font-family="Inter, sans-serif" font-size="22" fill="#f1f5f9" font-weight="700" y="32">How patterns spanning multiple tools get detected</text>
+</g>
+<!-- 3 source systems publishing events -->
+<g transform="translate(100, 180)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.1em" font-weight="700">SOURCE SYSTEMS</text>
+  <g transform="translate(0, 16)">
+    <rect width="280" height="64" rx="8" fill="#1e293b" stroke="#475569"/>
+    <text x="20" y="24" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8">VENDOR MGMT</text>
+    <text x="20" y="46" font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1">→ insurance.lapsed event</text>
+  </g>
+  <g transform="translate(320, 16)">
+    <rect width="280" height="64" rx="8" fill="#1e293b" stroke="#475569"/>
+    <text x="20" y="24" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8">WORK ORDERS</text>
+    <text x="20" y="46" font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1">→ work_order.pending events</text>
+  </g>
+  <g transform="translate(640, 16)">
+    <rect width="280" height="64" rx="8" fill="#1e293b" stroke="#475569"/>
+    <text x="20" y="24" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8">DOCUMENTS</text>
+    <text x="20" y="46" font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1">→ doc.request_created events</text>
+  </g>
+</g>
+
+<g transform="translate(100, 290)" stroke="#38b6ff" stroke-width="2" fill="none">
+  <line x1="140" y1="0" x2="140" y2="40"/><polygon points="135,36 140,48 145,36" fill="#38b6ff" stroke="none"/>
+  <line x1="460" y1="0" x2="460" y2="40"/><polygon points="455,36 460,48 465,36" fill="#38b6ff" stroke="none"/>
+  <line x1="780" y1="0" x2="780" y2="40"/><polygon points="775,36 780,48 785,36" fill="#38b6ff" stroke="none"/>
+</g>
+
+<!-- Event bus + correlation engine -->
+<g transform="translate(100, 350)">
+  <rect width="920" height="120" rx="12" fill="#38b6ff"/>
+  <text x="460" y="48" text-anchor="middle" font-family="Inter, sans-serif" font-size="28" fill="#ffffff" font-weight="800">Event Bus + Correlation Engine</text>
+  <g transform="translate(0, 70)" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#bae6fd" letter-spacing="0.1em">
+    <text x="180" y="0" text-anchor="middle">RULE-BASED</text>
+    <text x="460" y="0" text-anchor="middle">·</text>
+    <text x="320" y="0" text-anchor="middle">AI CORRELATION</text>
+    <text x="600" y="0" text-anchor="middle">·</text>
+    <text x="740" y="0" text-anchor="middle">REAL-TIME</text>
+  </g>
+  <g transform="translate(180, 92)" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#bae6fd" letter-spacing="0.08em">
+    <text text-anchor="middle">37 ACTIVE RULES · 24/7 SCAN</text>
+  </g>
+</g>
+
+<g transform="translate(560, 470)" stroke="#0f172a" stroke-width="2" fill="none">
+  <line x1="0" y1="0" x2="0" y2="40"/><polygon points="-5,36 0,48 5,36" fill="#0f172a" stroke="none"/>
+</g>
+
+<!-- Cross-system signal output -->
+<g transform="translate(160, 530)">
+  <rect width="800" height="80" rx="10" fill="#1e293b" stroke="#ef4444" stroke-width="1.5"/>
+  <rect width="5" height="80" fill="#ef4444"/>
+  <g transform="translate(28, 28)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#ef4444" font-weight="700" letter-spacing="0.12em">HIGH-SEVERITY CROSS-SYSTEM SIGNAL</text>
+    <text font-family="Inter, sans-serif" font-size="14" fill="#f1f5f9" font-weight="700" y="22">Vendor lapsed (Vendor) + 3 pending jobs (Work Orders) + new doc request (Documents) = COMPLIANCE EXPOSURE</text>
+  </g>
+</g>
+<g transform="translate(80, 638)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.12em">FIGURE 1 · CROSS-SYSTEM CORRELATION ARCHITECTURE</text></g>
+</svg>

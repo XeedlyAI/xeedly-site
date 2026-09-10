@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img"><title>AI Morning Briefing</title>
+<defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="0.5" opacity="0.6"/></pattern></defs>
+<rect width="1200" height="675" fill="#FAFAFA"/><rect width="1200" height="675" fill="url(#g)"/>
+<g transform="translate(80, 80)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">PRINCIPAL-INTELLIGENCE · #005</text>
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#64748b" letter-spacing="0.1em" y="24">COMPLETER · 6 MIN</text>
+</g>
+<!-- LEFT: Mock briefing card -->
+<g transform="translate(80, 200)">
+  <rect x="3" y="3" width="540" height="380" rx="14" fill="#0f172a" opacity="0.06"/>
+  <rect width="540" height="380" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect width="8" height="380" fill="#38b6ff"/>
+  <g transform="translate(36, 32)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#38b6ff" font-weight="700" letter-spacing="0.12em">MORNING BRIEFING · TUE · 06:00 AM</text>
+    <text font-family="Inter, sans-serif" font-size="20" fill="#0f172a" font-weight="800" y="32">5 sections need your attention</text>
+  </g>
+  <line x1="36" y1="100" x2="504" y2="100" stroke="#e2e8f0"/>
+  <g transform="translate(36, 124)" font-family="Inter, sans-serif" font-size="15" fill="#475569">
+    <g><circle cx="6" cy="-4" r="5" fill="#10b981"/><text x="22" y="0" font-weight="600">Revenue health</text></g>
+    <g transform="translate(0, 36)"><circle cx="6" cy="-4" r="5" fill="#f59e0b"/><text x="22" y="0" font-weight="600">Cost position</text></g>
+    <g transform="translate(0, 72)"><circle cx="6" cy="-4" r="5" fill="#ef4444"/><text x="22" y="0" font-weight="600">Operations</text></g>
+    <g transform="translate(0, 108)"><circle cx="6" cy="-4" r="5" fill="#10b981"/><text x="22" y="0" font-weight="600">Voice + reviews</text></g>
+    <g transform="translate(0, 144)"><circle cx="6" cy="-4" r="5" fill="#38b6ff"/><text x="22" y="0" font-weight="600">Today&apos;s priorities</text></g>
+  </g>
+  <line x1="36" y1="332" x2="504" y2="332" stroke="#e2e8f0"/>
+  <g transform="translate(36, 354)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.08em">REPLACES THE 7 AM STANDUP · READS IN 60 SECONDS</text>
+  </g>
+</g>
+<g transform="translate(720, 260)">
+  <text font-family="Inter, sans-serif" fill="#0f172a" font-weight="800" letter-spacing="-0.02em">
+    <tspan x="0" y="0" font-size="48">The Morning</tspan>
+    <tspan x="0" y="58" font-size="48" fill="#38b6ff">Briefing.</tspan>
+  </text>
+  <text font-family="Inter, sans-serif" font-size="14" fill="#64748b"><tspan x="0" y="104">AI replaces the</tspan><tspan x="0" y="124">7 AM status meeting.</tspan></text>
+</g>
+<g transform="translate(80, 620)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.12em">XEEDLY · THE BRIEFINGS</text></g>
+<g transform="translate(1120, 620)" text-anchor="end"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.08em">BRIEFING #005 · LIVE</text></g>
+</svg>

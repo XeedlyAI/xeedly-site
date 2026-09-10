@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="b16-title">
+  <title id="b16-title">The contractor's five-layer operating stack</title>
+  <defs><pattern id="b16-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/></pattern></defs>
+  <rect width="1200" height="675" fill="#0f172a"/><rect width="1200" height="675" fill="url(#b16-grid)"/>
+
+  <g transform="translate(80, 70)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">THE CONTRACTOR&apos;S OPERATING STACK</text>
+    <text font-family="Inter, sans-serif" font-size="22" fill="#f1f5f9" font-weight="700" y="32">5 layers + integration · $490–$1,200/mo</text>
+  </g>
+
+  <g transform="translate(160, 180)">
+    <!-- Integration layer (top) -->
+    <g>
+      <rect width="880" height="56" rx="8" fill="#38b6ff"/>
+      <text x="28" y="22" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#ffffff" font-weight="700" letter-spacing="0.12em">INTEGRATION LAYER</text>
+      <text x="28" y="42" font-family="Inter, sans-serif" font-size="14" fill="#bae6fd" font-weight="700">$2K–$5K one-time build · what turns stack into system</text>
+      <text x="852" y="34" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#ffffff" font-weight="700" letter-spacing="0.08em">LAYER 6</text>
+    </g>
+
+    <!-- Layer 5: Marketplace -->
+    <g transform="translate(0, 80)">
+      <rect width="880" height="56" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+      <rect width="5" height="56" fill="#10b981"/>
+      <g transform="translate(28, 22)">
+        <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#10b981" font-weight="700" letter-spacing="0.12em">LAYER 5 · VENDOR MARKETPLACE</text>
+        <text font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1" y="22" font-weight="600">PropertyJobz · HOA channel access · compliance tracking</text>
+      </g>
+      <text x="852" y="34" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#10b981" font-weight="700">$0 / MO</text>
+    </g>
+
+    <!-- Layer 4: Voice -->
+    <g transform="translate(0, 152)">
+      <rect width="880" height="56" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+      <rect width="5" height="56" fill="#f59e0b"/>
+      <g transform="translate(28, 22)">
+        <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#f59e0b" font-weight="700" letter-spacing="0.12em">LAYER 4 · AI VOICE AGENT</text>
+        <text font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1" y="22" font-weight="600">Vapi + ElevenLabs + Twilio · 24/7 pickup · transcripts</text>
+      </g>
+      <text x="852" y="34" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#f59e0b" font-weight="700">$200–500 / MO</text>
+    </g>
+
+    <!-- Layer 3: Payments -->
+    <g transform="translate(0, 224)">
+      <rect width="880" height="56" rx="8" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+      <rect width="5" height="56" fill="#8b5cf6"/>
+      <g transform="translate(28, 22)">
+        <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#8b5cf6" font-weight="700" letter-spacing="0.12em">LAYER 3 · PAYMENTS</text>
+        <text font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1" y="22" font-weight="600">Stripe + ACH · 2.9% + 30¢ cards · ~$0.80 ACH</text>
+      </g>
+      <text x="852" y="34" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#8b5cf6" font-weight="700">PER-TXN</text>
+    </g>
+
+    <!-- Layer 2: Accounting -->
+    <g transform="translate(0, 296)">
+      <rect width="880" height="56" rx="8" fill="#1e293b" stroke="#38b6ff" stroke-width="1.5"/>
+      <rect width="5" height="56" fill="#38b6ff"/>
+      <g transform="translate(28, 22)">
+        <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#38b6ff" font-weight="700" letter-spacing="0.12em">LAYER 2 · ACCOUNTING</text>
+        <text font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1" y="22" font-weight="600">QuickBooks Online · AR · AP · payroll · tax prep</text>
+      </g>
+      <text x="852" y="34" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#38b6ff" font-weight="700">$90–200 / MO</text>
+    </g>
+
+    <!-- Layer 1: CRM -->
+    <g transform="translate(0, 368)">
+      <rect width="880" height="56" rx="8" fill="#1e293b" stroke="#14b8a6" stroke-width="1.5"/>
+      <rect width="5" height="56" fill="#14b8a6"/>
+      <g transform="translate(28, 22)">
+        <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#14b8a6" font-weight="700" letter-spacing="0.12em">LAYER 1 · FIELD SERVICE CRM</text>
+        <text font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1" y="22" font-weight="600">Jobber / Housecall Pro / ServiceTitan · jobs · scheduling · dispatch</text>
+      </g>
+      <text x="852" y="34" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#14b8a6" font-weight="700">$200–500 / MO</text>
+    </g>
+  </g>
+
+  <g transform="translate(80, 638)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.12em">FIGURE 1 · THE 5-LAYER OPERATING STACK</text></g>
+</svg>

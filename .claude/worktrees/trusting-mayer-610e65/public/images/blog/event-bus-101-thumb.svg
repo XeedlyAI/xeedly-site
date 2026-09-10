@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img"><title>Event Bus 101</title>
+<defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/></pattern></defs>
+<rect width="1200" height="675" fill="#0f172a"/><rect width="1200" height="675" fill="url(#g)"/>
+<g transform="translate(80, 80)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">PRINCIPAL-INTELLIGENCE · #007</text>
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#64748b" letter-spacing="0.1em" y="24">COMPLETER · 6 MIN</text>
+</g>
+<!-- LEFT: Event bus visualization -->
+<g transform="translate(80, 200)">
+  <!-- Top: sources -->
+  <g font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.1em" font-weight="700">
+    <text x="0" y="0">SOURCES</text>
+  </g>
+  <g transform="translate(0, 16)" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#cbd5e1">
+    <rect width="90" height="36" rx="4" fill="#1e293b" stroke="#475569"/><text x="45" y="22" text-anchor="middle">CRM</text>
+    <rect x="100" width="90" height="36" rx="4" fill="#1e293b" stroke="#475569"/><text x="145" y="22" text-anchor="middle">ACCOUNTING</text>
+    <rect x="200" width="90" height="36" rx="4" fill="#1e293b" stroke="#475569"/><text x="245" y="22" text-anchor="middle">VENDOR</text>
+    <rect x="300" width="90" height="36" rx="4" fill="#1e293b" stroke="#475569"/><text x="345" y="22" text-anchor="middle">VOICE</text>
+    <rect x="400" width="90" height="36" rx="4" fill="#1e293b" stroke="#475569"/><text x="445" y="22" text-anchor="middle">PAYMENTS</text>
+  </g>
+  <!-- Arrows down -->
+  <g transform="translate(45, 56)" stroke="#38b6ff" stroke-width="2" fill="none">
+    <line x1="0" y1="0" x2="0" y2="30"/><polygon points="-5,26 0,36 5,26" fill="#38b6ff" stroke="none"/>
+    <line x1="100" y1="0" x2="100" y2="30"/><polygon points="95,26 100,36 105,26" fill="#38b6ff" stroke="none"/>
+    <line x1="200" y1="0" x2="200" y2="30"/><polygon points="195,26 200,36 205,26" fill="#38b6ff" stroke="none"/>
+    <line x1="300" y1="0" x2="300" y2="30"/><polygon points="295,26 300,36 305,26" fill="#38b6ff" stroke="none"/>
+    <line x1="400" y1="0" x2="400" y2="30"/><polygon points="395,26 400,36 405,26" fill="#38b6ff" stroke="none"/>
+  </g>
+  <!-- THE BUS (hero element) -->
+  <g transform="translate(0, 108)">
+    <rect width="490" height="80" rx="10" fill="#38b6ff"/>
+    <text x="245" y="38" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" fill="#ffffff" font-weight="800">Event Bus</text>
+    <text x="245" y="62" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#bae6fd" letter-spacing="0.1em">UNIFIED REAL-TIME STREAM</text>
+  </g>
+  <!-- Arrows down -->
+  <g transform="translate(45, 198)" stroke="#0f172a" stroke-width="2" fill="none">
+    <line x1="0" y1="0" x2="0" y2="30"/><polygon points="-5,26 0,36 5,26" fill="#0f172a" stroke="none"/>
+    <line x1="200" y1="0" x2="200" y2="30"/><polygon points="195,26 200,36 205,26" fill="#0f172a" stroke="none"/>
+    <line x1="400" y1="0" x2="400" y2="30"/><polygon points="395,26 400,36 405,26" fill="#0f172a" stroke="none"/>
+  </g>
+  <!-- Consumers -->
+  <g transform="translate(0, 250)" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#cbd5e1">
+    <rect width="120" height="40" rx="4" fill="#1e293b" stroke="#10b981"/><text x="60" y="25" text-anchor="middle" font-weight="700">SIGNAL ENGINE</text>
+    <rect x="170" width="120" height="40" rx="4" fill="#1e293b" stroke="#38b6ff"/><text x="230" y="25" text-anchor="middle" font-weight="700">BRIEFINGS</text>
+    <rect x="370" width="120" height="40" rx="4" fill="#1e293b" stroke="#8b5cf6"/><text x="430" y="25" text-anchor="middle" font-weight="700">AI AGENTS</text>
+  </g>
+</g>
+<!-- RIGHT title -->
+<g transform="translate(720, 260)">
+  <text font-family="Inter, sans-serif" fill="#ffffff" font-weight="800" letter-spacing="-0.02em">
+    <tspan x="0" y="0" font-size="56">Event</tspan>
+    <tspan x="0" y="68" font-size="56">Bus</tspan>
+    <tspan x="0" y="136" font-size="56" fill="#38b6ff">101.</tspan>
+  </text>
+</g>
+<g transform="translate(80, 620)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.12em">XEEDLY · THE BRIEFINGS</text></g>
+<g transform="translate(1120, 620)" text-anchor="end"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.08em">BRIEFING #007 · LIVE</text></g>
+</svg>

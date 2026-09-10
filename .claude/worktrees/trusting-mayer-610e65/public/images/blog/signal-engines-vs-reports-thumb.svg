@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img"><title>Signal Engines vs Reports</title>
+<defs><pattern id="g" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M 48 0 L 0 0 0 48" fill="none" stroke="#bae6fd" stroke-width="0.5" opacity="0.5"/></pattern></defs>
+<rect width="1200" height="675" fill="#F0F9FF"/><rect width="1200" height="675" fill="url(#g)"/>
+<g transform="translate(80, 80)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#0A8FD4" font-weight="700" letter-spacing="0.15em">PRINCIPAL-INTELLIGENCE · #006</text>
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#64748b" letter-spacing="0.1em" y="24">COMPLETER · 6 MIN</text>
+</g>
+<!-- LEFT: VS comparison -->
+<g transform="translate(80, 200)">
+  <!-- REPORTS -->
+  <g>
+    <rect width="540" height="170" rx="10" fill="#ffffff" stroke="#ef4444" stroke-width="1.5"/>
+    <rect width="6" height="170" fill="#ef4444"/>
+    <g transform="translate(28, 36)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#ef4444" font-weight="700" letter-spacing="0.12em">✗ REPORTS · REACTIVE</text>
+      <text font-family="Inter, sans-serif" font-size="18" fill="#0f172a" font-weight="700" y="28">You go look</text>
+      <text font-family="Inter, sans-serif" font-size="14" fill="#64748b" y="56">Static · scheduled · query-driven</text>
+      <text font-family="Inter, sans-serif" font-size="14" fill="#ef4444" y="80" font-weight="600">Latency: days</text>
+    </g>
+  </g>
+
+  <text transform="translate(270, 200)" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#475569" letter-spacing="0.2em" font-weight="700">VS</text>
+
+  <!-- SIGNAL ENGINE -->
+  <g transform="translate(0, 220)">
+    <rect width="540" height="170" rx="10" fill="#ffffff" stroke="#10b981" stroke-width="1.5"/>
+    <rect width="6" height="170" fill="#10b981"/>
+    <g transform="translate(28, 36)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#10b981" font-weight="700" letter-spacing="0.12em">✓ SIGNAL ENGINE · PROACTIVE</text>
+      <text font-family="Inter, sans-serif" font-size="18" fill="#0f172a" font-weight="700" y="28">It finds you</text>
+      <text font-family="Inter, sans-serif" font-size="14" fill="#64748b" y="56">Live · push-based · event-driven</text>
+      <text font-family="Inter, sans-serif" font-size="14" fill="#10b981" y="80" font-weight="600">Latency: minutes</text>
+    </g>
+  </g>
+</g>
+<g transform="translate(720, 260)">
+  <text font-family="Inter, sans-serif" fill="#0f172a" font-weight="800" letter-spacing="-0.02em">
+    <tspan x="0" y="0" font-size="46">Signal</tspan>
+    <tspan x="0" y="56" font-size="46">Engines</tspan>
+    <tspan x="0" y="112" font-size="46" fill="#38b6ff">vs Reports.</tspan>
+  </text>
+  <text font-family="Inter, sans-serif" font-size="14" fill="#475569"><tspan x="0" y="158">The architecture difference.</tspan></text>
+</g>
+<g transform="translate(80, 620)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.12em">XEEDLY · THE BRIEFINGS</text></g>
+<g transform="translate(1120, 620)" text-anchor="end"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.08em">BRIEFING #006 · LIVE</text></g>
+</svg>

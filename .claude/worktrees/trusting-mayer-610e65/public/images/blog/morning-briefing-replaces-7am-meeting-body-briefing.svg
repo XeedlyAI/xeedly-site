@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img"><title>Anatomy of an AI morning briefing</title>
+<defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="0.5" opacity="0.6"/></pattern></defs>
+<rect width="1200" height="675" fill="#FAFAFA"/><rect width="1200" height="675" fill="url(#g)"/>
+<g transform="translate(80, 70)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">ANATOMY · AI MORNING BRIEFING</text>
+  <text font-family="Inter, sans-serif" font-size="22" fill="#0f172a" font-weight="700" y="32">Six categorized sections · 60-second read</text>
+</g>
+<!-- Mock briefing -->
+<g transform="translate(180, 180)">
+  <rect x="3" y="3" width="840" height="430" rx="14" fill="#0f172a" opacity="0.06"/>
+  <rect width="840" height="430" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect width="8" height="430" fill="#38b6ff"/>
+  <g transform="translate(36, 32)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#38b6ff" font-weight="700" letter-spacing="0.12em">MORNING BRIEFING · TUE APR 15 · 06:00 AM</text>
+    <text font-family="Inter, sans-serif" font-size="22" fill="#0f172a" font-weight="800" y="34">Today: 4 priorities, 2 warnings</text>
+  </g>
+  <line x1="36" y1="100" x2="804" y2="100" stroke="#e2e8f0"/>
+  <!-- 6 sections -->
+  <g transform="translate(36, 124)" font-family="Inter, sans-serif" font-size="14">
+    <g><circle cx="6" cy="-4" r="5" fill="#10b981"/><text x="22" y="0" font-weight="700" fill="#0f172a">REVENUE HEALTH</text><text x="22" y="20" fill="#64748b">$847K MTD · on pace · 2 locations above forecast</text></g>
+    <g transform="translate(0, 60)"><circle cx="6" cy="-4" r="5" fill="#f59e0b"/><text x="22" y="0" font-weight="700" fill="#0f172a">COST POSITION</text><text x="22" y="20" fill="#64748b">Food cost trending 2.1% over · day-of-month confidence: 64%</text></g>
+    <g transform="translate(420, 0)"><circle cx="6" cy="-4" r="5" fill="#ef4444"/><text x="22" y="0" font-weight="700" fill="#0f172a">OPERATIONS</text><text x="22" y="20" fill="#64748b">Vendor compliance: 4 expiring &lt;30d</text></g>
+    <g transform="translate(420, 60)"><circle cx="6" cy="-4" r="5" fill="#10b981"/><text x="22" y="0" font-weight="700" fill="#0f172a">VOICE INTELLIGENCE</text><text x="22" y="20" fill="#64748b">Missed call rate down 12% · 3 reservation opps</text></g>
+    <g transform="translate(0, 120)"><circle cx="6" cy="-4" r="5" fill="#10b981"/><text x="22" y="0" font-weight="700" fill="#0f172a">REVIEWS &amp; MARKETING</text><text x="22" y="20" fill="#64748b">8 new reviews · 4.7 avg · 1 cluster needs response</text></g>
+    <g transform="translate(420, 120)"><circle cx="6" cy="-4" r="5" fill="#38b6ff"/><text x="22" y="0" font-weight="700" fill="#0f172a">TODAY&apos;S PRIORITIES</text><text x="22" y="20" fill="#64748b">4 actions · ranked by severity</text></g>
+  </g>
+  <line x1="36" y1="370" x2="804" y2="370" stroke="#e2e8f0"/>
+  <g transform="translate(36, 392)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.08em">DELIVERED VIA EMAIL · SMS · SLACK · TEAMS</text>
+  </g>
+</g>
+<g transform="translate(80, 638)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.12em">FIGURE 1 · MORNING BRIEFING ANATOMY</text></g>
+</svg>

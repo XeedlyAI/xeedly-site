@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="b9-title">
+  <title id="b9-title">The 3-to-6 crew breakdown pattern</title>
+  <defs><pattern id="b9-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/></pattern></defs>
+  <rect width="1200" height="675" fill="#0f172a"/><rect width="1200" height="675" fill="url(#b9-grid)"/>
+
+  <g transform="translate(80, 70)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">SCALING HOME SERVICES · 1 TRUCK TO 8 TRUCKS</text>
+    <text font-family="Inter, sans-serif" font-size="22" fill="#f1f5f9" font-weight="700" y="32">Where each capability breaks</text>
+  </g>
+
+  <!-- X-axis: truck count -->
+  <g transform="translate(140, 200)">
+    <line x1="0" y1="380" x2="940" y2="380" stroke="#475569" stroke-width="1.5"/>
+    <g font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#64748b" letter-spacing="0.05em">
+      <line x1="0" y1="375" x2="0" y2="385" stroke="#475569" stroke-width="1.5"/><text x="0" y="402" text-anchor="middle">1 TRUCK</text>
+      <line x1="135" y1="375" x2="135" y2="385" stroke="#475569" stroke-width="1.5"/><text x="135" y="402" text-anchor="middle">2 TRUCKS</text>
+      <line x1="270" y1="375" x2="270" y2="385" stroke="#475569" stroke-width="1.5"/><text x="270" y="402" text-anchor="middle">3 TRUCKS</text>
+      <line x1="405" y1="375" x2="405" y2="385" stroke="#475569" stroke-width="1.5"/><text x="405" y="402" text-anchor="middle">4 TRUCKS</text>
+      <line x1="540" y1="375" x2="540" y2="385" stroke="#475569" stroke-width="1.5"/><text x="540" y="402" text-anchor="middle">5 TRUCKS</text>
+      <line x1="675" y1="375" x2="675" y2="385" stroke="#475569" stroke-width="1.5"/><text x="675" y="402" text-anchor="middle">6 TRUCKS</text>
+      <line x1="810" y1="375" x2="810" y2="385" stroke="#475569" stroke-width="1.5"/><text x="810" y="402" text-anchor="middle">7 TRUCKS</text>
+      <line x1="940" y1="375" x2="940" y2="385" stroke="#475569" stroke-width="1.5"/><text x="940" y="402" text-anchor="middle">8 TRUCKS</text>
+    </g>
+
+    <!-- Breaking point highlight zone -->
+    <rect x="270" y="0" width="405" height="380" fill="#ef4444" opacity="0.06"/>
+    <text x="472" y="-8" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#ef4444" font-weight="700" letter-spacing="0.12em">BREAKING POINT ZONE</text>
+
+    <!-- 5 capability bands -->
+    <g>
+      <!-- Capability 1: Quote response -->
+      <text x="-8" y="40" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.08em">QUOTE</text>
+      <text x="-8" y="52" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.08em">RESPONSE</text>
+      <line x1="0" y1="46" x2="305" y2="46" stroke="#10b981" stroke-width="3"/>
+      <line x1="305" y1="46" x2="500" y2="60" stroke="#f59e0b" stroke-width="3"/>
+      <line x1="500" y1="60" x2="940" y2="80" stroke="#ef4444" stroke-width="3"/>
+
+      <!-- Capability 2: Schedule reliability -->
+      <text x="-8" y="120" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.08em">SCHEDULE</text>
+      <text x="-8" y="132" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.08em">RELIABILITY</text>
+      <line x1="0" y1="126" x2="370" y2="126" stroke="#10b981" stroke-width="3"/>
+      <line x1="370" y1="126" x2="540" y2="142" stroke="#f59e0b" stroke-width="3"/>
+      <line x1="540" y1="142" x2="940" y2="170" stroke="#ef4444" stroke-width="3"/>
+
+      <!-- Capability 3: Quality consistency -->
+      <text x="-8" y="200" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.08em">QUALITY</text>
+      <text x="-8" y="212" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.08em">CONSISTENCY</text>
+      <line x1="0" y1="206" x2="400" y2="206" stroke="#10b981" stroke-width="3"/>
+      <line x1="400" y1="206" x2="600" y2="224" stroke="#f59e0b" stroke-width="3"/>
+      <line x1="600" y1="224" x2="940" y2="252" stroke="#ef4444" stroke-width="3"/>
+
+      <!-- Capability 4: Cash flow -->
+      <text x="-8" y="280" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.08em">CASH FLOW</text>
+      <line x1="0" y1="286" x2="430" y2="286" stroke="#10b981" stroke-width="3"/>
+      <line x1="430" y1="286" x2="620" y2="302" stroke="#f59e0b" stroke-width="3"/>
+      <line x1="620" y1="302" x2="940" y2="334" stroke="#ef4444" stroke-width="3"/>
+
+      <!-- Capability 5: Owner availability -->
+      <text x="-8" y="355" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" letter-spacing="0.08em">OWNER</text>
+      <line x1="0" y1="360" x2="270" y2="360" stroke="#10b981" stroke-width="3"/>
+      <line x1="270" y1="360" x2="500" y2="370" stroke="#f59e0b" stroke-width="3"/>
+      <line x1="500" y1="370" x2="940" y2="376" stroke="#ef4444" stroke-width="3"/>
+    </g>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(140, 626)">
+    <g><rect width="14" height="3" y="6" fill="#10b981"/><text x="20" y="11" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.08em">HEALTHY</text></g>
+    <g transform="translate(160, 0)"><rect width="14" height="3" y="6" fill="#f59e0b"/><text x="20" y="11" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.08em">STRAINING</text></g>
+    <g transform="translate(340, 0)"><rect width="14" height="3" y="6" fill="#ef4444"/><text x="20" y="11" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" letter-spacing="0.08em">BROKEN</text></g>
+  </g>
+
+  <g transform="translate(80, 658)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.12em">FIGURE 1 · THE 3-TO-6 CREW BREAKDOWN</text></g>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img"><title>Four margins of a leader's life</title>
+<defs><pattern id="g" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M 48 0 L 0 0 0 48" fill="none" stroke="#e7e1d6" stroke-width="0.5" opacity="0.6"/></pattern></defs>
+<rect width="1200" height="675" fill="#FAF7F2"/><rect width="1200" height="675" fill="url(#g)"/>
+<g transform="translate(80, 70)">
+  <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">THE FOUR MARGINS</text>
+  <text font-family="Inter, sans-serif" font-size="22" fill="#0f172a" font-weight="700" y="32">Real wealth = Financial × Calendar × Attention × Presence</text>
+</g>
+<!-- 4 margin cards in 2x2 grid -->
+<g transform="translate(80, 180)">
+  <g>
+    <rect width="500" height="180" rx="12" fill="#ffffff" stroke="#10b981" stroke-width="1.5"/>
+    <rect width="6" height="180" fill="#10b981"/>
+    <g transform="translate(28, 40)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#10b981" font-weight="700" letter-spacing="0.12em">01 · FINANCIAL MARGIN</text>
+      <text font-family="Inter, sans-serif" font-size="18" fill="#0f172a" font-weight="700" y="30">Profit per dollar of revenue</text>
+      <text font-family="Inter, sans-serif" font-size="13" fill="#64748b" y="56">What most leaders optimize</text>
+      <text font-family="Inter, sans-serif" font-size="12" fill="#475569" y="88" font-weight="600">Architecture: pricing + cost management + ops</text>
+    </g>
+  </g>
+  <g transform="translate(540, 0)">
+    <rect width="500" height="180" rx="12" fill="#ffffff" stroke="#38b6ff" stroke-width="1.5"/>
+    <rect width="6" height="180" fill="#38b6ff"/>
+    <g transform="translate(28, 40)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#38b6ff" font-weight="700" letter-spacing="0.12em">02 · CALENDAR MARGIN</text>
+      <text font-family="Inter, sans-serif" font-size="18" fill="#0f172a" font-weight="700" y="30">Unstructured time in your week</text>
+      <text font-family="Inter, sans-serif" font-size="13" fill="#64748b" y="56">Most leaders: zero</text>
+      <text font-family="Inter, sans-serif" font-size="12" fill="#475569" y="88" font-weight="600">Architecture: intelligence layer + delegation</text>
+    </g>
+  </g>
+  <g transform="translate(0, 210)">
+    <rect width="500" height="180" rx="12" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+    <rect width="6" height="180" fill="#8b5cf6"/>
+    <g transform="translate(28, 40)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#8b5cf6" font-weight="700" letter-spacing="0.12em">03 · ATTENTION MARGIN</text>
+      <text font-family="Inter, sans-serif" font-size="18" fill="#0f172a" font-weight="700" y="30">Mental capacity free</text>
+      <text font-family="Inter, sans-serif" font-size="13" fill="#64748b" y="56">Calendar without attention = wasted</text>
+      <text font-family="Inter, sans-serif" font-size="12" fill="#475569" y="88" font-weight="600">Architecture: signal engine eliminates anxiety</text>
+    </g>
+  </g>
+  <g transform="translate(540, 210)">
+    <rect width="500" height="180" rx="12" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect width="6" height="180" fill="#f59e0b"/>
+    <g transform="translate(28, 40)">
+      <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#f59e0b" font-weight="700" letter-spacing="0.12em">04 · PRESENCE MARGIN</text>
+      <text font-family="Inter, sans-serif" font-size="18" fill="#0f172a" font-weight="700" y="30">Being where you are</text>
+      <text font-family="Inter, sans-serif" font-size="13" fill="#64748b" y="56">The compounding result</text>
+      <text font-family="Inter, sans-serif" font-size="12" fill="#475569" y="88" font-weight="600">Calendar + attention working together</text>
+    </g>
+  </g>
+</g>
+<g transform="translate(80, 620)">
+  <rect width="1040" height="40" rx="8" fill="#0f172a"/>
+  <text x="20" y="26" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#38b6ff" font-weight="700" letter-spacing="0.12em">MOST LEADERS MAXIMIZE 1 · LET 3 GO TO ZERO · ARCHITECTURE = ALL FOUR COMPOUND</text>
+</g>
+</svg>

@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="b15-title">
+  <title id="b15-title">Three operational levers of home services growth</title>
+  <defs><pattern id="b15-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/></pattern></defs>
+  <rect width="1200" height="675" fill="#0f172a"/><rect width="1200" height="675" fill="url(#b15-grid)"/>
+
+  <g transform="translate(80, 70)">
+    <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#38b6ff" font-weight="700" letter-spacing="0.15em">THE THREE GROWTH LEVERS · HOME SERVICES</text>
+    <text font-family="Inter, sans-serif" font-size="22" fill="#f1f5f9" font-weight="700" y="32">Operational, not marketing — and they compound</text>
+  </g>
+
+  <g transform="translate(80, 180)">
+    <!-- Reviews -->
+    <g>
+      <rect width="350" height="380" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+      <rect width="5" height="380" fill="#10b981"/>
+      <g transform="translate(28, 32)">
+        <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#10b981" font-weight="700" letter-spacing="0.12em">LEVER 01 · REVIEWS</text>
+        <text font-family="Inter, sans-serif" font-size="18" fill="#f1f5f9" font-weight="700" y="28">Volume + recency</text>
+      </g>
+      <line x1="28" y1="100" x2="322" y2="100" stroke="#334155"/>
+      <g transform="translate(28, 124)" font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1">
+        <text>What it drives</text>
+        <text y="22" font-size="12" fill="#94a3b8">→ Google local pack rank</text>
+        <text y="42" font-size="12" fill="#94a3b8">→ Inbound lead volume</text>
+        <text y="62" font-size="12" fill="#94a3b8">→ Conversion trust signal</text>
+
+        <text y="108" font-weight="600">Tactics</text>
+        <text y="130" font-size="12" fill="#94a3b8">→ Auto-solicit SMS post-job</text>
+        <text y="150" font-size="12" fill="#94a3b8">→ Multi-platform distribution</text>
+        <text y="170" font-size="12" fill="#94a3b8">→ Owner responds within 24h</text>
+
+        <g transform="translate(0, 200)">
+          <rect width="294" height="34" rx="4" fill="#0f172a" stroke="#10b981"/>
+          <text x="12" y="14" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#10b981" font-weight="700" letter-spacing="0.08em">METRIC TO TRACK</text>
+          <text x="12" y="28" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#f1f5f9" font-weight="700">REVIEWS / WEEK</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Routing -->
+    <g transform="translate(370, 0)">
+      <rect width="350" height="380" rx="10" fill="#1e293b" stroke="#38b6ff" stroke-width="1.5"/>
+      <rect width="5" height="380" fill="#38b6ff"/>
+      <g transform="translate(28, 32)">
+        <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#38b6ff" font-weight="700" letter-spacing="0.12em">LEVER 02 · ROUTING</text>
+        <text font-family="Inter, sans-serif" font-size="18" fill="#f1f5f9" font-weight="700" y="28">Geographic density</text>
+      </g>
+      <line x1="28" y1="100" x2="322" y2="100" stroke="#334155"/>
+      <g transform="translate(28, 124)" font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1">
+        <text>What it drives</text>
+        <text y="22" font-size="12" fill="#94a3b8">→ Margin per truck-hour</text>
+        <text y="42" font-size="12" fill="#94a3b8">→ Crew utilization rate</text>
+        <text y="62" font-size="12" fill="#94a3b8">→ Fuel + downtime savings</text>
+
+        <text y="108" font-weight="600">Tactics</text>
+        <text y="130" font-size="12" fill="#94a3b8">→ Cluster service zips tightly</text>
+        <text y="150" font-size="12" fill="#94a3b8">→ Schedule by geography first</text>
+        <text y="170" font-size="12" fill="#94a3b8">→ HOA contracts concentrate work</text>
+
+        <g transform="translate(0, 200)">
+          <rect width="294" height="34" rx="4" fill="#0f172a" stroke="#38b6ff"/>
+          <text x="12" y="14" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#38b6ff" font-weight="700" letter-spacing="0.08em">METRIC TO TRACK</text>
+          <text x="12" y="28" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#f1f5f9" font-weight="700">JOBS / 5-MILE RADIUS</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Response -->
+    <g transform="translate(740, 0)">
+      <rect width="320" height="380" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+      <rect width="5" height="380" fill="#8b5cf6"/>
+      <g transform="translate(28, 32)">
+        <text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#8b5cf6" font-weight="700" letter-spacing="0.12em">LEVER 03 · RESPONSE</text>
+        <text font-family="Inter, sans-serif" font-size="18" fill="#f1f5f9" font-weight="700" y="28">Speed to quote</text>
+      </g>
+      <line x1="28" y1="100" x2="292" y2="100" stroke="#334155"/>
+      <g transform="translate(28, 124)" font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1">
+        <text>What it drives</text>
+        <text y="22" font-size="12" fill="#94a3b8">→ Close rate (2–3× lift)</text>
+        <text y="42" font-size="12" fill="#94a3b8">→ Lead-to-revenue conversion</text>
+        <text y="62" font-size="12" fill="#94a3b8">→ Customer trust signal</text>
+
+        <text y="108" font-weight="600">Tactics</text>
+        <text y="130" font-size="12" fill="#94a3b8">→ AI voice agent for 24/7</text>
+        <text y="150" font-size="12" fill="#94a3b8">→ Same-day quote turnaround</text>
+        <text y="170" font-size="12" fill="#94a3b8">→ Auto follow-up at 48/72h</text>
+
+        <g transform="translate(0, 200)">
+          <rect width="264" height="34" rx="4" fill="#0f172a" stroke="#8b5cf6"/>
+          <text x="12" y="14" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#8b5cf6" font-weight="700" letter-spacing="0.08em">METRIC TO TRACK</text>
+          <text x="12" y="28" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#f1f5f9" font-weight="700">FIRST-RESPONSE TIME</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(80, 638)"><text font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="0.12em">FIGURE 1 · THE THREE GROWTH LEVERS</text></g>
+</svg>
