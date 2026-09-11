@@ -79,6 +79,13 @@
 - [ ] Responsive: looks correct at 375px, 768px, and 1440px widths
 - [ ] Lighthouse: 90+ on Performance, Accessibility, SEO
 
+## Cloud sessions (claude.ai/code)
+
+- The **environment chip** in the session picker (currently named "Sovvrn") is the container config every XeedlyAI cloud session runs in — network policy, env vars, setup script. It is not a repo, whatever the project.
+- Attach `XeedlyAI/standards` and `XeedlyAI/xeedly-internal-tools` as additional repos (the `+` beside the repo chip). They clone as siblings under `/home/user/`, so `..\standards` and `..\xeedly-internal-tools` resolve exactly as they do locally.
+- The container is ephemeral: vault notes written in a cloud session must be committed and pushed (branch + PR) or they are lost.
+- `npm run build` needs `npm ci` first — the container starts without `node_modules`.
+
 ## End of Session (Obsidian Vault Update)
 After the final commit, update the Obsidian vault at `..\xeedly-internal-tools`:
 1. Write a session summary to `sessions/YYYY-MM-DD.md` using the Session template format
