@@ -854,16 +854,16 @@ export const HOMEPAGE_PREVIEW_SLUGS = [
 export const OVERVIEW_KPIS: Kpi[] = [
   {
     label: "Deployments Shipped",
-    value: "7",
-    target: 7,
+    value: "6",
+    target: 6,
     format: (n) => Math.round(n).toString(),
   },
   {
     label: "Industries Covered",
-    value: "6",
-    target: 6,
+    value: "5",
+    target: 5,
     format: (n) => Math.round(n).toString(),
-    subtitle: "restaurants · property · investment · HOA · concrete · SaaS",
+    subtitle: "restaurants · property · investment · HOA · SaaS",
   },
   {
     label: "Avg Build Time",
