@@ -23,7 +23,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/case-studies/propertyjobz", priority: 0.75, changeFrequency: "monthly", lastModified: "2026-04-23" },
     { path: "/case-studies/sovvrn", priority: 0.75, changeFrequency: "monthly", lastModified: "2026-04-22" },
     { path: "/case-studies/xeedly-platform", priority: 0.7, changeFrequency: "monthly", lastModified: "2026-04-22" },
-    { path: "/case-studies/zion-concrete", priority: 0.7, changeFrequency: "monthly", lastModified: "2026-05-06" },
     { path: "/blog", priority: 0.85, changeFrequency: "weekly", lastModified: "2026-05-17" },
     { path: "/manifesto", priority: 0.8, changeFrequency: "monthly", lastModified: "2026-05-17" },
     { path: "/booking", priority: 0.8, changeFrequency: "monthly", lastModified: "2026-04-22" },

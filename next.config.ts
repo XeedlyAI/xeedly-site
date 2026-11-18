@@ -47,6 +47,12 @@ const nextConfig: NextConfig = {
         destination: "/platform",
         permanent: true,
       },
+      // Retired case study (client separated from XeedlyAI, 2026-11)
+      {
+        source: "/case-studies/zion-concrete",
+        destination: "/case-studies",
+        permanent: true,
+      },
     ];
   },
 };
