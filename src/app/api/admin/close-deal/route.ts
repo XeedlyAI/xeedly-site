@@ -25,7 +25,8 @@ type DealType =
   | "vendor_build_1495"
   | "vendor_buildonly_495"
   | "vendor_buildonly_995"
-  | "vendor_buildonly_1495";
+  | "vendor_buildonly_1495"
+  | "desk_sprint";
 
 interface Body {
   dealType: DealType;
@@ -323,6 +324,17 @@ export async function POST(request: NextRequest) {
           vendorLabels[dealType],
         );
         checkoutPriceId = vp.id;
+        break;
+      }
+
+      // -- Desk Sprint: $5,950 one-time now, $995/mo from go-live (Black Friday 2026) --
+      case "desk_sprint": {
+        totalAmountCents = 595000;
+        upfrontAmountCents = totalAmountCents; // paid at purchase, no split
+        monthlyAmountCents = 99500; // starts at go-live, via send-golive / scheduled subscription
+        productName = "Desk Sprint — one desk, consult + build + deploy ($5,950) + $995/mo from go-live";
+        const dsp = await createOneTimePrice(upfrontAmountCents, "Desk Sprint ($5,950)");
+        checkoutPriceId = dsp.id;
         break;
       }
 
