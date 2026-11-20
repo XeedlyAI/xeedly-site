@@ -26,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/blog", priority: 0.85, changeFrequency: "weekly", lastModified: "2026-05-17" },
     { path: "/manifesto", priority: 0.8, changeFrequency: "monthly", lastModified: "2026-05-17" },
     { path: "/booking", priority: 0.8, changeFrequency: "monthly", lastModified: "2026-04-22" },
+    { path: "/desks", priority: 0.9, changeFrequency: "weekly", lastModified: "2026-11-20" },
     { path: "/pricing", priority: 0.8, changeFrequency: "monthly", lastModified: "2026-05-01" },
     { path: "/about", priority: 0.6, changeFrequency: "monthly", lastModified: "2026-05-17" },
     { path: "/contact", priority: 0.7, changeFrequency: "monthly", lastModified: "2026-04-22" },

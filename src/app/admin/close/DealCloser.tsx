@@ -99,6 +99,14 @@ const BUILD_TIERS: BuildTier[] = [
     fixedTotal: 1000,
   },
   {
+    id: "desk_sprint",
+    name: "Desk Sprint",
+    sub: "$5,950 · one-time · +$995/mo from go-live",
+    accent: "#38b6ff",
+    accentTint: "rgba(56,182,255,0.1)",
+    fixedTotal: 5950,
+  },
+  {
     id: "platform_build",
     name: "Platform Build",
     sub: "custom · enter amount",
