@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { IntelligenceConsoleMini } from "@/components/shared/IntelligenceConsoleMini";
+import { DeskSprintStrip } from "@/components/home/DeskSprintStrip";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -38,6 +39,7 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left — Positioning */}
           <div className="lg:col-span-7 text-left">
+            <DeskSprintStrip />
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}

@@ -8,11 +8,13 @@ const PRODUCT_LINKS = [
   { href: "/products#propertyolio", label: "Propertyolio" },
   { href: "/products#propertydocz", label: "PropertyDocz" },
   { href: "/products#propertyjobz", label: "PropertyJobz" },
+  { href: "/desks", label: "Desks" },
 ];
 
 const COMPANY_LINKS = [
   { href: "/platform", label: "Platform" },
   { href: "/products", label: "Products" },
+  { href: "/desks", label: "Desks" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/blog", label: "Briefings" },
   { href: "/pricing", label: "Pricing" },
