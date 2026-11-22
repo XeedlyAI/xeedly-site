@@ -10,6 +10,7 @@ import { CONTACT } from "@/lib/contact";
 const NAV_LINKS = [
   { href: "/platform", label: "Platform" },
   { href: "/products", label: "Products" },
+  { href: "/desks", label: "Desks" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/blog", label: "Briefings" },
   { href: "/pricing", label: "Pricing" },
